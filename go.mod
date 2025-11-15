@@ -1,4 +1,4 @@
-module github.com/yourcompany/shared-protos
+module github.com/kalina-malina/IM-PROTOS
 
 go 1.21
 
