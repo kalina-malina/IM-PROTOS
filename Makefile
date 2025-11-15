@@ -35,7 +35,7 @@ generate:
 	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
 		--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
 		--proto_path=proto \
-		proto/auth/v1/auth.proto
+		proto/users_service/v1/users_service.proto
 	
 	@echo "✅ Генерация завершена! Файлы в generated/"
 

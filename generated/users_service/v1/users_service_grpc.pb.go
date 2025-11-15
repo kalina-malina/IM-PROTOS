@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v6.33.0
-// source: auth/v1/auth.proto
+// source: users_service/v1/users_service.proto
 
 package v1
 
@@ -19,28 +19,28 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AuthService_RegisterCustomerSendSMS_FullMethodName       = "/auth.v1.AuthService/RegisterCustomerSendSMS"
-	AuthService_RegisterCustomerVerifySMS_FullMethodName     = "/auth.v1.AuthService/RegisterCustomerVerifySMS"
-	AuthService_RegisterAdminSendEmail_FullMethodName        = "/auth.v1.AuthService/RegisterAdminSendEmail"
-	AuthService_RegisterAdminVerifyEmail_FullMethodName      = "/auth.v1.AuthService/RegisterAdminVerifyEmail"
-	AuthService_LoginCustomerSendSMS_FullMethodName          = "/auth.v1.AuthService/LoginCustomerSendSMS"
-	AuthService_LoginCustomerVerifySMS_FullMethodName        = "/auth.v1.AuthService/LoginCustomerVerifySMS"
-	AuthService_LoginCustomerWithTempPassword_FullMethodName = "/auth.v1.AuthService/LoginCustomerWithTempPassword"
-	AuthService_LoginAdmin_FullMethodName                    = "/auth.v1.AuthService/LoginAdmin"
-	AuthService_Logout_FullMethodName                        = "/auth.v1.AuthService/Logout"
-	AuthService_RefreshToken_FullMethodName                  = "/auth.v1.AuthService/RefreshToken"
-	AuthService_ValidateToken_FullMethodName                 = "/auth.v1.AuthService/ValidateToken"
-	AuthService_GetMyProfile_FullMethodName                  = "/auth.v1.AuthService/GetMyProfile"
-	AuthService_UpdateCustomerProfile_FullMethodName         = "/auth.v1.AuthService/UpdateCustomerProfile"
-	AuthService_UpdateCustomerSettings_FullMethodName        = "/auth.v1.AuthService/UpdateCustomerSettings"
-	AuthService_DeleteMyAccount_FullMethodName               = "/auth.v1.AuthService/DeleteMyAccount"
-	AuthService_ListUsers_FullMethodName                     = "/auth.v1.AuthService/ListUsers"
-	AuthService_GetUserById_FullMethodName                   = "/auth.v1.AuthService/GetUserById"
-	AuthService_CreateStaffUser_FullMethodName               = "/auth.v1.AuthService/CreateStaffUser"
-	AuthService_BanUser_FullMethodName                       = "/auth.v1.AuthService/BanUser"
-	AuthService_UnbanUser_FullMethodName                     = "/auth.v1.AuthService/UnbanUser"
-	AuthService_SetTemporaryPassword_FullMethodName          = "/auth.v1.AuthService/SetTemporaryPassword"
-	AuthService_ChangeUserRole_FullMethodName                = "/auth.v1.AuthService/ChangeUserRole"
+	AuthService_RegisterCustomerSendSMS_FullMethodName       = "/UsersService.v1.AuthService/RegisterCustomerSendSMS"
+	AuthService_RegisterCustomerVerifySMS_FullMethodName     = "/UsersService.v1.AuthService/RegisterCustomerVerifySMS"
+	AuthService_RegisterAdminSendEmail_FullMethodName        = "/UsersService.v1.AuthService/RegisterAdminSendEmail"
+	AuthService_RegisterAdminVerifyEmail_FullMethodName      = "/UsersService.v1.AuthService/RegisterAdminVerifyEmail"
+	AuthService_LoginCustomerSendSMS_FullMethodName          = "/UsersService.v1.AuthService/LoginCustomerSendSMS"
+	AuthService_LoginCustomerVerifySMS_FullMethodName        = "/UsersService.v1.AuthService/LoginCustomerVerifySMS"
+	AuthService_LoginCustomerWithTempPassword_FullMethodName = "/UsersService.v1.AuthService/LoginCustomerWithTempPassword"
+	AuthService_LoginAdmin_FullMethodName                    = "/UsersService.v1.AuthService/LoginAdmin"
+	AuthService_Logout_FullMethodName                        = "/UsersService.v1.AuthService/Logout"
+	AuthService_RefreshToken_FullMethodName                  = "/UsersService.v1.AuthService/RefreshToken"
+	AuthService_ValidateToken_FullMethodName                 = "/UsersService.v1.AuthService/ValidateToken"
+	AuthService_GetMyProfile_FullMethodName                  = "/UsersService.v1.AuthService/GetMyProfile"
+	AuthService_UpdateCustomerProfile_FullMethodName         = "/UsersService.v1.AuthService/UpdateCustomerProfile"
+	AuthService_UpdateCustomerSettings_FullMethodName        = "/UsersService.v1.AuthService/UpdateCustomerSettings"
+	AuthService_DeleteMyAccount_FullMethodName               = "/UsersService.v1.AuthService/DeleteMyAccount"
+	AuthService_ListUsers_FullMethodName                     = "/UsersService.v1.AuthService/ListUsers"
+	AuthService_GetUserById_FullMethodName                   = "/UsersService.v1.AuthService/GetUserById"
+	AuthService_CreateStaffUser_FullMethodName               = "/UsersService.v1.AuthService/CreateStaffUser"
+	AuthService_BanUser_FullMethodName                       = "/UsersService.v1.AuthService/BanUser"
+	AuthService_UnbanUser_FullMethodName                     = "/UsersService.v1.AuthService/UnbanUser"
+	AuthService_SetTemporaryPassword_FullMethodName          = "/UsersService.v1.AuthService/SetTemporaryPassword"
+	AuthService_ChangeUserRole_FullMethodName                = "/UsersService.v1.AuthService/ChangeUserRole"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -866,7 +866,7 @@ func _AuthService_ChangeUserRole_Handler(srv interface{}, ctx context.Context, d
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AuthService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "auth.v1.AuthService",
+	ServiceName: "UsersService.v1.AuthService",
 	HandlerType: (*AuthServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -959,5 +959,5 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "auth/v1/auth.proto",
+	Metadata: "users_service/v1/users_service.proto",
 }
