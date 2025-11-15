@@ -7,7 +7,7 @@
 package v1
 
 import (
-	common "github.com/yourcompany/shared-protos/generated/go/common"
+	common "github.com/kalina-malina/IM-PROTOS/generated/generated/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -3308,7 +3308,7 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\aBanUser\x12\x17.auth.v1.BanUserRequest\x1a\x18.auth.v1.BanUserResponse\x12B\n" +
 	"\tUnbanUser\x12\x19.auth.v1.UnbanUserRequest\x1a\x1a.auth.v1.UnbanUserResponse\x12c\n" +
 	"\x14SetTemporaryPassword\x12$.auth.v1.SetTemporaryPasswordRequest\x1a%.auth.v1.SetTemporaryPasswordResponse\x12Q\n" +
-	"\x0eChangeUserRole\x12\x1e.auth.v1.ChangeUserRoleRequest\x1a\x1f.auth.v1.ChangeUserRoleResponseB;Z9github.com/yourcompany/shared-protos/generated/go/auth/v1b\x06proto3"
+	"\x0eChangeUserRole\x12\x1e.auth.v1.ChangeUserRoleRequest\x1a\x1f.auth.v1.ChangeUserRoleResponseB6Z4github.com/kalina-malina/IM-PROTOS/generated/auth/v1b\x06proto3"
 
 var (
 	file_auth_v1_auth_proto_rawDescOnce sync.Once

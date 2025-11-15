@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package auth.v1;
 
-option go_package = "github.com/yourcompany/shared-protos/generated/go/auth/v1";
+option go_package = "github.com/kalina-malina/IM-PROTOS/generated/auth/v1";
 
 import "common/types.proto";
 
