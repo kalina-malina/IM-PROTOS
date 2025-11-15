@@ -1,4 +1,4 @@
-.PHONY: help generate clean install-tools release version
+.PHONY: help generate clean install-tools release release-patch release-minor release-major version
 
 GOPATH_BIN := $(shell go env GOPATH)/bin
 
@@ -8,7 +8,11 @@ help:
 	@echo "  make clean         - Удаление сгенерированного кода"
 	@echo "  make install-tools - Установка необходимых инструментов"
 	@echo "  make version       - Показать текущую версию (из git tag)"
-	@echo "  make release VER=v1.0.0 - Создать релиз (генерация + коммит + тег)"
+	@echo "  make release       - Автоматический релиз (patch версия: v1.0.0 -> v1.0.1)"
+	@echo "  make release-patch - Релиз patch версии (v1.0.0 -> v1.0.1)"
+	@echo "  make release-minor - Релиз minor версии (v1.0.0 -> v1.1.0)"
+	@echo "  make release-major - Релиз major версии (v1.0.0 -> v2.0.0)"
+	@echo "  make release VER=v1.0.0 - Релиз конкретной версии"
 
 # Установка инструментов для генерации proto
 install-tools:
@@ -20,20 +24,20 @@ install-tools:
 # Генерация Go кода из всех proto файлов
 generate:
 	@echo "Генерация proto файлов..."
-	@mkdir -p generated/go
+	@mkdir -p generated
 	
 	@echo "Генерация common types..."
-	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated/go --go_opt=paths=source_relative \
+	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
 		--proto_path=proto \
 		proto/common/types.proto
 	
 	@echo "Генерация auth service..."
-	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated/go --go_opt=paths=source_relative \
-		--go-grpc_out=generated/go --go-grpc_opt=paths=source_relative \
+	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
+		--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
 		--proto_path=proto \
 		proto/auth/v1/auth.proto
 	
-	@echo "✅ Генерация завершена! Файлы в generated/go/"
+	@echo "✅ Генерация завершена! Файлы в generated/"
 
 # Очистка сгенерированного кода
 clean:
@@ -43,28 +47,73 @@ clean:
 
 # Показать текущую версию
 version:
-	@git describe --tags --always --dirty 2>/dev/null || echo "Версия не определена (нет git тегов)"
+	@git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0"
 
-# Создать новый релиз
-# Использование: make release VER=v1.0.0
-release:
+# Получить следующую patch версию (v1.0.0 -> v1.0.1)
+get-next-patch:
+	@LAST_TAG=$$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0"); \
+	VERSION=$$(echo $$LAST_TAG | sed 's/v//'); \
+	MAJOR=$$(echo $$VERSION | cut -d. -f1); \
+	MINOR=$$(echo $$VERSION | cut -d. -f2); \
+	PATCH=$$(echo $$VERSION | cut -d. -f3); \
+	NEXT_PATCH=$$((PATCH + 1)); \
+	echo "v$${MAJOR}.$${MINOR}.$${NEXT_PATCH}"
+
+# Получить следующую minor версию (v1.0.0 -> v1.1.0)
+get-next-minor:
+	@LAST_TAG=$$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0"); \
+	VERSION=$$(echo $$LAST_TAG | sed 's/v//'); \
+	MAJOR=$$(echo $$VERSION | cut -d. -f1); \
+	MINOR=$$(echo $$VERSION | cut -d. -f2); \
+	NEXT_MINOR=$$((MINOR + 1)); \
+	echo "v$${MAJOR}.$${NEXT_MINOR}.0"
+
+# Получить следующую major версию (v1.0.0 -> v2.0.0)
+get-next-major:
+	@LAST_TAG=$$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0"); \
+	VERSION=$$(echo $$LAST_TAG | sed 's/v//'); \
+	MAJOR=$$(echo $$VERSION | cut -d. -f1); \
+	NEXT_MAJOR=$$((MAJOR + 1)); \
+	echo "v$${NEXT_MAJOR}.0.0"
+
+# Автоматический релиз (patch версия по умолчанию)
+release: release-patch
+
+# Релиз patch версии (v1.0.0 -> v1.0.1)
+release-patch:
+	@VER=$$($(MAKE) -s get-next-patch); \
+	$(MAKE) do-release VER=$$VER
+
+# Релиз minor версии (v1.0.0 -> v1.1.0)
+release-minor:
+	@VER=$$($(MAKE) -s get-next-minor); \
+	$(MAKE) do-release VER=$$VER
+
+# Релиз major версии (v1.0.0 -> v2.0.0)
+release-major:
+	@VER=$$($(MAKE) -s get-next-major); \
+	$(MAKE) do-release VER=$$VER
+
+# Внутренняя команда для выполнения релиза
+do-release:
 	@if [ -z "$(VER)" ]; then \
-		echo "❌ Ошибка: укажите версию. Пример: make release VER=v1.0.0"; \
+		echo "❌ Ошибка: версия не указана"; \
 		exit 1; \
 	fi
 	@echo "🚀 Создание релиза $(VER)..."
 	@echo "1. Генерация кода..."
 	@$(MAKE) generate
-	@echo "2. Проверка git статуса..."
-	@if ! git diff --quiet generated/ 2>/dev/null; then \
-		echo "   Обнаружены изменения в generated/"; \
+	@echo "2. Проверка изменений..."
+	@if git diff --quiet generated/ 2>/dev/null && git diff --cached --quiet 2>/dev/null; then \
+		echo "   ⚠️  Нет изменений для коммита"; \
+	else \
+		echo "3. Добавление файлов в git..."; \
+		git add .; \
+		echo "4. Создание коммита..."; \
+		git commit -m "Release $(VER)" || true; \
+		echo "5. Создание тега..."; \
+		git tag -a $(VER) -m "Release $(VER)" || true; \
+		echo "6. Отправка на удаленный репозиторий..."; \
+		git push origin main --tags || echo "   ⚠️  Не удалось отправить (проверьте настройки git)"; \
+		echo "✅ Релиз $(VER) создан и отправлен!"; \
 	fi
-	@echo "3. Создание git тега $(VER)..."
-	@echo "   Выполните вручную:"
-	@echo "   git add ."
-	@echo "   git commit -m 'Release $(VER)'"
-	@echo "   git tag -a $(VER) -m 'Release $(VER)'"
-	@echo "   git push origin main --tags"
-	@echo "✅ Готово к релизу! Выполните команды выше."
-
-
