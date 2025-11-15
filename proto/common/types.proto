@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package common;
 
-option go_package = "github.com/kalina-malina/IM-PROTOS/generated/generated/common";
+option go_package = "github.com/kalina-malina/IM-PROTOS/generated/common";
 
 // Временная метка в Unix формате
 message Timestamp {

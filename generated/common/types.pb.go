@@ -128,7 +128,7 @@ const file_common_types_proto_rawDesc = "" +
 	"\aseconds\x18\x01 \x01(\x03R\aseconds\"E\n" +
 	"\x0fSuccessResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessageB?Z=github.com/kalina-malina/IM-PROTOS/generated/generated/commonb\x06proto3"
+	"\amessage\x18\x02 \x01(\tR\amessageB5Z3github.com/kalina-malina/IM-PROTOS/generated/commonb\x06proto3"
 
 var (
 	file_common_types_proto_rawDescOnce sync.Once
