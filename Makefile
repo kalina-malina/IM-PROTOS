@@ -104,7 +104,7 @@ do-release:
 	@echo "1. Генерация кода..."
 	@$(MAKE) generate
 	@echo "2. Проверка изменений..."
-	@if git diff --quiet generated/ 2>/dev/null && git diff --cached --quiet 2>/dev/null; then \
+	@if git diff --quiet 2>/dev/null && git diff --cached --quiet 2>/dev/null; then \
 		echo "   ⚠️  Нет изменений для коммита"; \
 	else \
 		echo "3. Добавление файлов в git..."; \
