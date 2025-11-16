@@ -8,9 +8,6 @@ import "common/types.proto";
 
 service AuthService {
 
-  // ============================================================================
-  // ОТКРЫТЫЕ МЕТОДЫ - РЕГИСТРАЦИЯ И АВТОРИЗАЦИЯ
-  // ============================================================================
   
   // Регистрация клиента (шаг 1) - отправка SMS с кодом
   rpc RegisterCustomerSendSMS(RegisterCustomerSendSMSRequest) returns (RegisterCustomerSendSMSResponse);
@@ -36,10 +33,8 @@ service AuthService {
   // Вход админа через email и пароль
   rpc LoginAdmin(LoginAdminRequest) returns (LoginAdminResponse);
   
-  // ============================================================================
-  // ЗАЩИЩЕННЫЕ МЕТОДЫ - ОБЩИЕ
-  // ============================================================================
-  
+  //------закрытые
+
   // Выход пользователя
   rpc Logout(LogoutRequest) returns (LogoutResponse);
   
@@ -51,10 +46,6 @@ service AuthService {
   
   // Получение информации о текущем пользователе
   rpc GetMyProfile(GetMyProfileRequest) returns (GetMyProfileResponse);
-  
-  // ============================================================================
-  // ЗАЩИЩЕННЫЕ МЕТОДЫ - КЛИЕНТ
-  // ============================================================================
   
   // Редактирование профиля клиента
   rpc UpdateCustomerProfile(UpdateCustomerProfileRequest) returns (UpdateCustomerProfileResponse);

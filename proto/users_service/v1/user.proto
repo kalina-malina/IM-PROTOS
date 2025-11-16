@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package users_service.v1;
+
+option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users_service/v1";
+
+import "common/types.proto";
+
+
+message User {
+  uint64 id_user = 1;                 // ID пользователя (числовой для быстрой обработки)
+  uint64 phone = 2;                   // Телефон в числовом формате (для клиента)
+  string email = 3;                   // Email
+  string firstname = 4;               // Имя
+  string lastname = 5;                // Фамилия
+  string middlename = 6;              // Отчество
+  Gender gender = 7;                  // Пол
+  UserRole role = 8;                  // Роль
+  UserStatus status = 9;              // Статус
+  string avatar_url = 10;             // URL аватара
+  string date_of_birth = 11;          // Дата рождения (YYYY-MM-DD)
+  int32 city_id = 12;                 // ID города из справочника
+  int32 region_id = 13;               // ID региона из справочника
+  CustomerSettings settings = 14;     // Настройки (только для клиентов)
+  common.Timestamp created_at = 15;   // Дата создания
+  common.Timestamp updated_at = 16;   // Дата обновления
+  common.Timestamp last_login = 17;   // Последний вход
+}
+
+message CustomerSettings {
+  bool push_notifications = 1;        // Push уведомления
+  bool email_notifications = 2;       // Email уведомления
+  bool sms_notifications = 3;         // SMS уведомления
+  bool marketing_emails = 4;          // Маркетинговые рассылки
+  bool marketing_sms = 5;             // Маркетинговые SMS
+  bool order_updates = 6;             // Уведомления о заказах
+  bool promotional_offers = 7;        // Промо-акции
+  string language = 8;                // Язык (ru/en/kk)
+  string timezone = 9;                // Часовой пояс
+}
+
+// ============================================================================
+// ENUMS
+// ============================================================================
+
+enum Gender {
+  GENDER_UNSPECIFIED = 0;             // Не указан
+  GENDER_MALE = 1;                    // Мужской
+  GENDER_FEMALE = 2;                  // Женский
+}
+
+enum UserRole {
+  USER_ROLE_UNSPECIFIED = 0;          // Не указано
+  USER_ROLE_CUSTOMER = 1;             // Клиент
+  USER_ROLE_OPERATOR = 2;             // Оператор
+  USER_ROLE_MANAGER = 3;              // Менеджер
+  USER_ROLE_ADMIN = 4;                // Администратор
+  USER_ROLE_SUPER_ADMIN = 5;          // Супер-администратор
+}
+
+enum UserStatus {
+  USER_STATUS_UNSPECIFIED = 0;        // Не указано
+  USER_STATUS_ACTIVE = 1;             // Активный
+  USER_STATUS_INACTIVE = 2;           // Неактивный
+  USER_STATUS_BANNED = 3;             // Заблокирован
+  USER_STATUS_DELETED = 4;            // Удален
+}
+
+enum BanReason {
+  BAN_REASON_UNSPECIFIED = 0;                 // Не указано
+  BAN_REASON_THEFT_RETAIL_STORE = 1;          // Кража на торговой точке
+  BAN_REASON_THEFT_NIGHT_STORE = 2;           // Кража в ночном магазине
+  BAN_REASON_THEFT_MICROMARKET = 3;           // Кража в микромаркете
+  BAN_REASON_INSULT = 4;                      // Оскорбление
+  BAN_REASON_PROPERTY_DAMAGE = 5;             // Порча имущества
+  BAN_REASON_PERSONAL_INITIATIVE = 6;         // Личная инициатива
+}
+

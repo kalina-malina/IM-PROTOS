@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v6.33.0
-// source: users_service/v1/users_service.proto
+// source: users_service/v1/auth_service.proto
 
 package v1
 
@@ -19,28 +19,17 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AuthService_RegisterCustomerSendSMS_FullMethodName       = "/UsersService.v1.AuthService/RegisterCustomerSendSMS"
-	AuthService_RegisterCustomerVerifySMS_FullMethodName     = "/UsersService.v1.AuthService/RegisterCustomerVerifySMS"
-	AuthService_RegisterAdminSendEmail_FullMethodName        = "/UsersService.v1.AuthService/RegisterAdminSendEmail"
-	AuthService_RegisterAdminVerifyEmail_FullMethodName      = "/UsersService.v1.AuthService/RegisterAdminVerifyEmail"
-	AuthService_LoginCustomerSendSMS_FullMethodName          = "/UsersService.v1.AuthService/LoginCustomerSendSMS"
-	AuthService_LoginCustomerVerifySMS_FullMethodName        = "/UsersService.v1.AuthService/LoginCustomerVerifySMS"
-	AuthService_LoginCustomerWithTempPassword_FullMethodName = "/UsersService.v1.AuthService/LoginCustomerWithTempPassword"
-	AuthService_LoginAdmin_FullMethodName                    = "/UsersService.v1.AuthService/LoginAdmin"
-	AuthService_Logout_FullMethodName                        = "/UsersService.v1.AuthService/Logout"
-	AuthService_RefreshToken_FullMethodName                  = "/UsersService.v1.AuthService/RefreshToken"
-	AuthService_ValidateToken_FullMethodName                 = "/UsersService.v1.AuthService/ValidateToken"
-	AuthService_GetMyProfile_FullMethodName                  = "/UsersService.v1.AuthService/GetMyProfile"
-	AuthService_UpdateCustomerProfile_FullMethodName         = "/UsersService.v1.AuthService/UpdateCustomerProfile"
-	AuthService_UpdateCustomerSettings_FullMethodName        = "/UsersService.v1.AuthService/UpdateCustomerSettings"
-	AuthService_DeleteMyAccount_FullMethodName               = "/UsersService.v1.AuthService/DeleteMyAccount"
-	AuthService_ListUsers_FullMethodName                     = "/UsersService.v1.AuthService/ListUsers"
-	AuthService_GetUserById_FullMethodName                   = "/UsersService.v1.AuthService/GetUserById"
-	AuthService_CreateStaffUser_FullMethodName               = "/UsersService.v1.AuthService/CreateStaffUser"
-	AuthService_BanUser_FullMethodName                       = "/UsersService.v1.AuthService/BanUser"
-	AuthService_UnbanUser_FullMethodName                     = "/UsersService.v1.AuthService/UnbanUser"
-	AuthService_SetTemporaryPassword_FullMethodName          = "/UsersService.v1.AuthService/SetTemporaryPassword"
-	AuthService_ChangeUserRole_FullMethodName                = "/UsersService.v1.AuthService/ChangeUserRole"
+	AuthService_RegisterCustomerSendSMS_FullMethodName       = "/users_service.v1.AuthService/RegisterCustomerSendSMS"
+	AuthService_RegisterCustomerVerifySMS_FullMethodName     = "/users_service.v1.AuthService/RegisterCustomerVerifySMS"
+	AuthService_RegisterAdminSendEmail_FullMethodName        = "/users_service.v1.AuthService/RegisterAdminSendEmail"
+	AuthService_RegisterAdminVerifyEmail_FullMethodName      = "/users_service.v1.AuthService/RegisterAdminVerifyEmail"
+	AuthService_LoginCustomerSendSMS_FullMethodName          = "/users_service.v1.AuthService/LoginCustomerSendSMS"
+	AuthService_LoginCustomerVerifySMS_FullMethodName        = "/users_service.v1.AuthService/LoginCustomerVerifySMS"
+	AuthService_LoginCustomerWithTempPassword_FullMethodName = "/users_service.v1.AuthService/LoginCustomerWithTempPassword"
+	AuthService_LoginAdmin_FullMethodName                    = "/users_service.v1.AuthService/LoginAdmin"
+	AuthService_Logout_FullMethodName                        = "/users_service.v1.AuthService/Logout"
+	AuthService_RefreshToken_FullMethodName                  = "/users_service.v1.AuthService/RefreshToken"
+	AuthService_ValidateToken_FullMethodName                 = "/users_service.v1.AuthService/ValidateToken"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -69,28 +58,6 @@ type AuthServiceClient interface {
 	RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*RefreshTokenResponse, error)
 	// Валидация токена (для Gateway)
 	ValidateToken(ctx context.Context, in *ValidateTokenRequest, opts ...grpc.CallOption) (*ValidateTokenResponse, error)
-	// Получение информации о текущем пользователе
-	GetMyProfile(ctx context.Context, in *GetMyProfileRequest, opts ...grpc.CallOption) (*GetMyProfileResponse, error)
-	// Редактирование профиля клиента
-	UpdateCustomerProfile(ctx context.Context, in *UpdateCustomerProfileRequest, opts ...grpc.CallOption) (*UpdateCustomerProfileResponse, error)
-	// Обновление настроек клиента
-	UpdateCustomerSettings(ctx context.Context, in *UpdateCustomerSettingsRequest, opts ...grpc.CallOption) (*UpdateCustomerSettingsResponse, error)
-	// Удаление аккаунта клиентом
-	DeleteMyAccount(ctx context.Context, in *DeleteMyAccountRequest, opts ...grpc.CallOption) (*DeleteMyAccountResponse, error)
-	// Получение списка всех пользователей
-	ListUsers(ctx context.Context, in *ListUsersRequest, opts ...grpc.CallOption) (*ListUsersResponse, error)
-	// Получение информации о пользователе по ID
-	GetUserById(ctx context.Context, in *GetUserByIdRequest, opts ...grpc.CallOption) (*GetUserByIdResponse, error)
-	// Создание админа/оператора/менеджера супер-админом
-	CreateStaffUser(ctx context.Context, in *CreateStaffUserRequest, opts ...grpc.CallOption) (*CreateStaffUserResponse, error)
-	// Блокировка пользователя
-	BanUser(ctx context.Context, in *BanUserRequest, opts ...grpc.CallOption) (*BanUserResponse, error)
-	// Разблокировка пользователя
-	UnbanUser(ctx context.Context, in *UnbanUserRequest, opts ...grpc.CallOption) (*UnbanUserResponse, error)
-	// Назначение временного пароля для клиента
-	SetTemporaryPassword(ctx context.Context, in *SetTemporaryPasswordRequest, opts ...grpc.CallOption) (*SetTemporaryPasswordResponse, error)
-	// Изменение роли пользователя
-	ChangeUserRole(ctx context.Context, in *ChangeUserRoleRequest, opts ...grpc.CallOption) (*ChangeUserRoleResponse, error)
 }
 
 type authServiceClient struct {
@@ -211,116 +178,6 @@ func (c *authServiceClient) ValidateToken(ctx context.Context, in *ValidateToken
 	return out, nil
 }
 
-func (c *authServiceClient) GetMyProfile(ctx context.Context, in *GetMyProfileRequest, opts ...grpc.CallOption) (*GetMyProfileResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetMyProfileResponse)
-	err := c.cc.Invoke(ctx, AuthService_GetMyProfile_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authServiceClient) UpdateCustomerProfile(ctx context.Context, in *UpdateCustomerProfileRequest, opts ...grpc.CallOption) (*UpdateCustomerProfileResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateCustomerProfileResponse)
-	err := c.cc.Invoke(ctx, AuthService_UpdateCustomerProfile_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authServiceClient) UpdateCustomerSettings(ctx context.Context, in *UpdateCustomerSettingsRequest, opts ...grpc.CallOption) (*UpdateCustomerSettingsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateCustomerSettingsResponse)
-	err := c.cc.Invoke(ctx, AuthService_UpdateCustomerSettings_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authServiceClient) DeleteMyAccount(ctx context.Context, in *DeleteMyAccountRequest, opts ...grpc.CallOption) (*DeleteMyAccountResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteMyAccountResponse)
-	err := c.cc.Invoke(ctx, AuthService_DeleteMyAccount_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authServiceClient) ListUsers(ctx context.Context, in *ListUsersRequest, opts ...grpc.CallOption) (*ListUsersResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListUsersResponse)
-	err := c.cc.Invoke(ctx, AuthService_ListUsers_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authServiceClient) GetUserById(ctx context.Context, in *GetUserByIdRequest, opts ...grpc.CallOption) (*GetUserByIdResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetUserByIdResponse)
-	err := c.cc.Invoke(ctx, AuthService_GetUserById_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authServiceClient) CreateStaffUser(ctx context.Context, in *CreateStaffUserRequest, opts ...grpc.CallOption) (*CreateStaffUserResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateStaffUserResponse)
-	err := c.cc.Invoke(ctx, AuthService_CreateStaffUser_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authServiceClient) BanUser(ctx context.Context, in *BanUserRequest, opts ...grpc.CallOption) (*BanUserResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(BanUserResponse)
-	err := c.cc.Invoke(ctx, AuthService_BanUser_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authServiceClient) UnbanUser(ctx context.Context, in *UnbanUserRequest, opts ...grpc.CallOption) (*UnbanUserResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UnbanUserResponse)
-	err := c.cc.Invoke(ctx, AuthService_UnbanUser_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authServiceClient) SetTemporaryPassword(ctx context.Context, in *SetTemporaryPasswordRequest, opts ...grpc.CallOption) (*SetTemporaryPasswordResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SetTemporaryPasswordResponse)
-	err := c.cc.Invoke(ctx, AuthService_SetTemporaryPassword_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authServiceClient) ChangeUserRole(ctx context.Context, in *ChangeUserRoleRequest, opts ...grpc.CallOption) (*ChangeUserRoleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ChangeUserRoleResponse)
-	err := c.cc.Invoke(ctx, AuthService_ChangeUserRole_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // AuthServiceServer is the server API for AuthService service.
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility.
@@ -347,28 +204,6 @@ type AuthServiceServer interface {
 	RefreshToken(context.Context, *RefreshTokenRequest) (*RefreshTokenResponse, error)
 	// Валидация токена (для Gateway)
 	ValidateToken(context.Context, *ValidateTokenRequest) (*ValidateTokenResponse, error)
-	// Получение информации о текущем пользователе
-	GetMyProfile(context.Context, *GetMyProfileRequest) (*GetMyProfileResponse, error)
-	// Редактирование профиля клиента
-	UpdateCustomerProfile(context.Context, *UpdateCustomerProfileRequest) (*UpdateCustomerProfileResponse, error)
-	// Обновление настроек клиента
-	UpdateCustomerSettings(context.Context, *UpdateCustomerSettingsRequest) (*UpdateCustomerSettingsResponse, error)
-	// Удаление аккаунта клиентом
-	DeleteMyAccount(context.Context, *DeleteMyAccountRequest) (*DeleteMyAccountResponse, error)
-	// Получение списка всех пользователей
-	ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error)
-	// Получение информации о пользователе по ID
-	GetUserById(context.Context, *GetUserByIdRequest) (*GetUserByIdResponse, error)
-	// Создание админа/оператора/менеджера супер-админом
-	CreateStaffUser(context.Context, *CreateStaffUserRequest) (*CreateStaffUserResponse, error)
-	// Блокировка пользователя
-	BanUser(context.Context, *BanUserRequest) (*BanUserResponse, error)
-	// Разблокировка пользователя
-	UnbanUser(context.Context, *UnbanUserRequest) (*UnbanUserResponse, error)
-	// Назначение временного пароля для клиента
-	SetTemporaryPassword(context.Context, *SetTemporaryPasswordRequest) (*SetTemporaryPasswordResponse, error)
-	// Изменение роли пользователя
-	ChangeUserRole(context.Context, *ChangeUserRoleRequest) (*ChangeUserRoleResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -411,39 +246,6 @@ func (UnimplementedAuthServiceServer) RefreshToken(context.Context, *RefreshToke
 }
 func (UnimplementedAuthServiceServer) ValidateToken(context.Context, *ValidateTokenRequest) (*ValidateTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ValidateToken not implemented")
-}
-func (UnimplementedAuthServiceServer) GetMyProfile(context.Context, *GetMyProfileRequest) (*GetMyProfileResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetMyProfile not implemented")
-}
-func (UnimplementedAuthServiceServer) UpdateCustomerProfile(context.Context, *UpdateCustomerProfileRequest) (*UpdateCustomerProfileResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateCustomerProfile not implemented")
-}
-func (UnimplementedAuthServiceServer) UpdateCustomerSettings(context.Context, *UpdateCustomerSettingsRequest) (*UpdateCustomerSettingsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateCustomerSettings not implemented")
-}
-func (UnimplementedAuthServiceServer) DeleteMyAccount(context.Context, *DeleteMyAccountRequest) (*DeleteMyAccountResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteMyAccount not implemented")
-}
-func (UnimplementedAuthServiceServer) ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListUsers not implemented")
-}
-func (UnimplementedAuthServiceServer) GetUserById(context.Context, *GetUserByIdRequest) (*GetUserByIdResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUserById not implemented")
-}
-func (UnimplementedAuthServiceServer) CreateStaffUser(context.Context, *CreateStaffUserRequest) (*CreateStaffUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateStaffUser not implemented")
-}
-func (UnimplementedAuthServiceServer) BanUser(context.Context, *BanUserRequest) (*BanUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BanUser not implemented")
-}
-func (UnimplementedAuthServiceServer) UnbanUser(context.Context, *UnbanUserRequest) (*UnbanUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UnbanUser not implemented")
-}
-func (UnimplementedAuthServiceServer) SetTemporaryPassword(context.Context, *SetTemporaryPasswordRequest) (*SetTemporaryPasswordResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetTemporaryPassword not implemented")
-}
-func (UnimplementedAuthServiceServer) ChangeUserRole(context.Context, *ChangeUserRoleRequest) (*ChangeUserRoleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChangeUserRole not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 func (UnimplementedAuthServiceServer) testEmbeddedByValue()                     {}
@@ -664,209 +466,11 @@ func _AuthService_ValidateToken_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AuthService_GetMyProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetMyProfileRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).GetMyProfile(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_GetMyProfile_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).GetMyProfile(ctx, req.(*GetMyProfileRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuthService_UpdateCustomerProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateCustomerProfileRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).UpdateCustomerProfile(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_UpdateCustomerProfile_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).UpdateCustomerProfile(ctx, req.(*UpdateCustomerProfileRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuthService_UpdateCustomerSettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateCustomerSettingsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).UpdateCustomerSettings(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_UpdateCustomerSettings_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).UpdateCustomerSettings(ctx, req.(*UpdateCustomerSettingsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuthService_DeleteMyAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteMyAccountRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).DeleteMyAccount(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_DeleteMyAccount_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).DeleteMyAccount(ctx, req.(*DeleteMyAccountRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuthService_ListUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListUsersRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).ListUsers(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_ListUsers_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).ListUsers(ctx, req.(*ListUsersRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuthService_GetUserById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetUserByIdRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).GetUserById(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_GetUserById_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).GetUserById(ctx, req.(*GetUserByIdRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuthService_CreateStaffUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateStaffUserRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).CreateStaffUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_CreateStaffUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).CreateStaffUser(ctx, req.(*CreateStaffUserRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuthService_BanUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BanUserRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).BanUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_BanUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).BanUser(ctx, req.(*BanUserRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuthService_UnbanUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UnbanUserRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).UnbanUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_UnbanUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).UnbanUser(ctx, req.(*UnbanUserRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuthService_SetTemporaryPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetTemporaryPasswordRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).SetTemporaryPassword(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_SetTemporaryPassword_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).SetTemporaryPassword(ctx, req.(*SetTemporaryPasswordRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuthService_ChangeUserRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ChangeUserRoleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).ChangeUserRole(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_ChangeUserRole_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).ChangeUserRole(ctx, req.(*ChangeUserRoleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AuthService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "UsersService.v1.AuthService",
+	ServiceName: "users_service.v1.AuthService",
 	HandlerType: (*AuthServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -913,51 +517,7 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "ValidateToken",
 			Handler:    _AuthService_ValidateToken_Handler,
 		},
-		{
-			MethodName: "GetMyProfile",
-			Handler:    _AuthService_GetMyProfile_Handler,
-		},
-		{
-			MethodName: "UpdateCustomerProfile",
-			Handler:    _AuthService_UpdateCustomerProfile_Handler,
-		},
-		{
-			MethodName: "UpdateCustomerSettings",
-			Handler:    _AuthService_UpdateCustomerSettings_Handler,
-		},
-		{
-			MethodName: "DeleteMyAccount",
-			Handler:    _AuthService_DeleteMyAccount_Handler,
-		},
-		{
-			MethodName: "ListUsers",
-			Handler:    _AuthService_ListUsers_Handler,
-		},
-		{
-			MethodName: "GetUserById",
-			Handler:    _AuthService_GetUserById_Handler,
-		},
-		{
-			MethodName: "CreateStaffUser",
-			Handler:    _AuthService_CreateStaffUser_Handler,
-		},
-		{
-			MethodName: "BanUser",
-			Handler:    _AuthService_BanUser_Handler,
-		},
-		{
-			MethodName: "UnbanUser",
-			Handler:    _AuthService_UnbanUser_Handler,
-		},
-		{
-			MethodName: "SetTemporaryPassword",
-			Handler:    _AuthService_SetTemporaryPassword_Handler,
-		},
-		{
-			MethodName: "ChangeUserRole",
-			Handler:    _AuthService_ChangeUserRole_Handler,
-		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "users_service/v1/users_service.proto",
+	Metadata: "users_service/v1/auth_service.proto",
 }

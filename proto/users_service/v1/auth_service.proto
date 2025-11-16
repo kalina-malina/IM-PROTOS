@@ -1,0 +1,195 @@
+syntax = "proto3";
+
+package users_service.v1;
+
+option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users_service/v1";
+
+import "users_service/v1/user.proto";
+import "common/types.proto";
+
+service AuthService {
+
+  // ============================================================================
+  // ОТКРЫТЫЕ МЕТОДЫ - РЕГИСТРАЦИЯ И АВТОРИЗАЦИЯ
+  // ============================================================================
+  
+  // Регистрация клиента (шаг 1) - отправка SMS с кодом
+  rpc RegisterCustomerSendSMS(RegisterCustomerSendSMSRequest) returns (RegisterCustomerSendSMSResponse);
+  
+  // Регистрация клиента (шаг 2) - подтверждение кода из SMS
+  rpc RegisterCustomerVerifySMS(RegisterCustomerVerifySMSRequest) returns (RegisterCustomerVerifySMSResponse);
+  
+  // Регистрация админа (шаг 1) - отправка кода на email
+  rpc RegisterAdminSendEmail(RegisterAdminSendEmailRequest) returns (RegisterAdminSendEmailResponse);
+  
+  // Регистрация админа (шаг 2) - подтверждение кода из email
+  rpc RegisterAdminVerifyEmail(RegisterAdminVerifyEmailRequest) returns (RegisterAdminVerifyEmailResponse);
+  
+  // Вход клиента (шаг 1) - отправка SMS с кодом
+  rpc LoginCustomerSendSMS(LoginCustomerSendSMSRequest) returns (LoginCustomerSendSMSResponse);
+  
+  // Вход клиента (шаг 2) - подтверждение кода из SMS
+  rpc LoginCustomerVerifySMS(LoginCustomerVerifySMSRequest) returns (LoginCustomerVerifySMSResponse);
+  
+  // Вход клиента через временный пароль (без SMS)
+  rpc LoginCustomerWithTempPassword(LoginCustomerWithTempPasswordRequest) returns (LoginCustomerWithTempPasswordResponse);
+  
+  // Вход админа через email и пароль
+  rpc LoginAdmin(LoginAdminRequest) returns (LoginAdminResponse);
+  
+  // ============================================================================
+  // ЗАЩИЩЕННЫЕ МЕТОДЫ - ОБЩИЕ
+  // ============================================================================
+  
+  // Выход пользователя
+  rpc Logout(LogoutRequest) returns (LogoutResponse);
+  
+  // Обновление access токена
+  rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
+  
+  // Валидация токена (для Gateway)
+  rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse);
+  
+}
+
+// ============================================================================
+// РЕГИСТРАЦИЯ КЛИЕНТА
+// ============================================================================
+
+message RegisterCustomerSendSMSRequest {
+  uint64 phone = 1;                   // Номер телефона (числовой формат)
+  string firstname = 2;               // Имя
+  string lastname = 3;                // Фамилия
+  string middlename = 4;              // Отчество
+  Gender gender = 5;                  // Пол
+  string email = 6;                   // Email (опционально)
+}
+
+message RegisterCustomerSendSMSResponse {
+  string verification_id = 1;         // ID верификации для следующего шага
+  int32 code_expires_in = 2;          // Время жизни кода в секундах
+}
+
+message RegisterCustomerVerifySMSRequest {
+  string verification_id = 1;         // ID верификации из предыдущего шага
+  string code = 2;                    // Код из SMS
+}
+
+message RegisterCustomerVerifySMSResponse {
+  User user = 1;                      // Созданный пользователь
+  string access_token = 2;            // JWT access token (содержит session_id внутри)
+  string refresh_token = 3;           // JWT refresh token
+}
+
+// ============================================================================
+// РЕГИСТРАЦИЯ АДМИНА
+// ============================================================================
+
+message RegisterAdminSendEmailRequest {
+  string email = 1;                   // Email
+  string password = 2;                // Пароль
+  string firstname = 3;               // Имя
+  string lastname = 4;                // Фамилия
+  string middlename = 5;              // Отчество
+}
+
+message RegisterAdminSendEmailResponse {
+  string verification_id = 1;         // ID верификации
+  int32 code_expires_in = 2;          // Время жизни кода в секундах
+}
+
+message RegisterAdminVerifyEmailRequest {
+  string verification_id = 1;         // ID верификации
+  string code = 2;                    // Код из email
+}
+
+message RegisterAdminVerifyEmailResponse {
+  User user = 1;                      // Созданный админ
+  string access_token = 2;            // JWT access token (содержит session_id внутри)
+  string refresh_token = 3;           // JWT refresh token
+}
+
+// ============================================================================
+// ВХОД КЛИЕНТА
+// ============================================================================
+
+message LoginCustomerSendSMSRequest {
+  uint64 phone = 1;                   // Номер телефона (числовой формат)
+}
+
+message LoginCustomerSendSMSResponse {
+  string verification_id = 1;         // ID верификации
+  int32 code_expires_in = 2;          // Время жизни кода в секундах
+}
+
+message LoginCustomerVerifySMSRequest {
+  string verification_id = 1;         // ID верификации
+  string code = 2;                    // Код из SMS
+}
+
+message LoginCustomerVerifySMSResponse {
+  User user = 1;                      // Информация о пользователе
+  string access_token = 2;            // JWT access token (содержит session_id внутри)
+  string refresh_token = 3;           // JWT refresh token
+}
+
+message LoginCustomerWithTempPasswordRequest {
+  uint64 phone = 1;                   // Номер телефона (числовой формат)
+  string temp_password = 2;           // Временный пароль
+}
+
+message LoginCustomerWithTempPasswordResponse {
+  User user = 1;                      // Информация о пользователе
+  string access_token = 2;            // JWT access token (содержит session_id внутри)
+  string refresh_token = 3;           // JWT refresh token
+}
+
+// ============================================================================
+// ВХОД АДМИНА
+// ============================================================================
+
+message LoginAdminRequest {
+  string email = 1;                   // Email
+  string password = 2;                // Пароль
+}
+
+message LoginAdminResponse {
+  User user = 1;                      // Информация об админе
+  string access_token = 2;            // JWT access token (содержит session_id внутри)
+  string refresh_token = 3;           // JWT refresh token
+}
+
+// ============================================================================
+// ОБЩИЕ МЕТОДЫ
+// ============================================================================
+
+message LogoutRequest {
+  // session_id извлекается из access_token на сервере
+}
+
+message LogoutResponse {
+  bool success = 1;                   // Успешность операции
+  string message = 2;                 // Сообщение
+}
+
+message RefreshTokenRequest {
+  string refresh_token = 1;           // Refresh token
+}
+
+message RefreshTokenResponse {
+  string access_token = 1;            // Новый access token
+  string refresh_token = 2;           // Новый refresh token
+}
+
+message ValidateTokenRequest {
+  string access_token = 1;            // Access token
+}
+
+message ValidateTokenResponse {
+  bool valid = 1;                     // Валидность токена
+  uint64 id_user = 2;                 // ID пользователя (числовой)
+  uint64 phone = 3;                   // Телефон (для клиента, числовой)
+  string email = 4;                   // Email (для админа)
+  UserRole role = 5;                  // Роль пользователя
+  // session_id находится внутри токена и не нужен клиенту
+}
