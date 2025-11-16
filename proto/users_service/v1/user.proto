@@ -8,8 +8,8 @@ import "common/types.proto";
 
 
 message User {
-  uint64 id_user = 1;                 // ID пользователя (числовой для быстрой обработки)
-  uint64 phone = 2;                   // Телефон в числовом формате (для клиента)
+  uint64 id_user = 1;                 // ID пользователя
+  uint64 phone = 2;                   // Телефон в числовом формате
   string email = 3;                   // Email
   string firstname = 4;               // Имя
   string lastname = 5;                // Фамилия
@@ -21,7 +21,7 @@ message User {
   string date_of_birth = 11;          // Дата рождения (YYYY-MM-DD)
   int32 city_id = 12;                 // ID города из справочника
   int32 region_id = 13;               // ID региона из справочника
-  CustomerSettings settings = 14;     // Настройки (только для клиентов)
+  CustomerSettings settings = 14;     // Настройки
   common.Timestamp created_at = 15;   // Дата создания
   common.Timestamp updated_at = 16;   // Дата обновления
   common.Timestamp last_login = 17;   // Последний вход

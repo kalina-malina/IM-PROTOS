@@ -13,6 +13,9 @@ service AdminService {
   // ЗАЩИЩЕННЫЕ МЕТОДЫ - АДМИН
   // ============================================================================
   
+  // Получение информации о текущем пользователе
+  rpc GetMyProfileAdmin(GetMyProfileAdminRequest) returns (GetMyProfileAdminResponse);
+
   // Получение списка всех пользователей
   rpc ListUsers(ListUsersRequest) returns (ListUsersResponse);
   
@@ -39,6 +42,18 @@ service AdminService {
 // ============================================================================
 // АДМИНИСТРАТИВНЫЕ МЕТОДЫ
 // ============================================================================
+
+
+message GetMyProfileAdminRequest {
+  uint64 id_user = 1;                 // ID пользователя из токена
+}
+
+message GetMyProfileAdminResponse {
+  User user = 1;                      // Информация о пользователе
+}
+
+
+
 
 message ListUsersRequest {
   int32 page = 1;                     // Страница

@@ -247,8 +247,8 @@ func (BanReason) EnumDescriptor() ([]byte, []int) {
 
 type User struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	IdUser        uint64                 `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`                    // ID пользователя (числовой для быстрой обработки)
-	Phone         uint64                 `protobuf:"varint,2,opt,name=phone,proto3" json:"phone,omitempty"`                                    // Телефон в числовом формате (для клиента)
+	IdUser        uint64                 `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`                    // ID пользователя
+	Phone         uint64                 `protobuf:"varint,2,opt,name=phone,proto3" json:"phone,omitempty"`                                    // Телефон в числовом формате
 	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`                                     // Email
 	Firstname     string                 `protobuf:"bytes,4,opt,name=firstname,proto3" json:"firstname,omitempty"`                             // Имя
 	Lastname      string                 `protobuf:"bytes,5,opt,name=lastname,proto3" json:"lastname,omitempty"`                               // Фамилия
@@ -260,7 +260,7 @@ type User struct {
 	DateOfBirth   string                 `protobuf:"bytes,11,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`   // Дата рождения (YYYY-MM-DD)
 	CityId        int32                  `protobuf:"varint,12,opt,name=city_id,json=cityId,proto3" json:"city_id,omitempty"`                   // ID города из справочника
 	RegionId      int32                  `protobuf:"varint,13,opt,name=region_id,json=regionId,proto3" json:"region_id,omitempty"`             // ID региона из справочника
-	Settings      *CustomerSettings      `protobuf:"bytes,14,opt,name=settings,proto3" json:"settings,omitempty"`                              // Настройки (только для клиентов)
+	Settings      *CustomerSettings      `protobuf:"bytes,14,opt,name=settings,proto3" json:"settings,omitempty"`                              // Настройки
 	CreatedAt     *common.Timestamp      `protobuf:"bytes,15,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`           // Дата создания
 	UpdatedAt     *common.Timestamp      `protobuf:"bytes,16,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`           // Дата обновления
 	LastLogin     *common.Timestamp      `protobuf:"bytes,17,opt,name=last_login,json=lastLogin,proto3" json:"last_login,omitempty"`           // Последний вход

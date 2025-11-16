@@ -19,6 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	AdminService_GetMyProfileAdmin_FullMethodName    = "/users_service.v1.AdminService/GetMyProfileAdmin"
 	AdminService_ListUsers_FullMethodName            = "/users_service.v1.AdminService/ListUsers"
 	AdminService_GetUserById_FullMethodName          = "/users_service.v1.AdminService/GetUserById"
 	AdminService_CreateStaffUser_FullMethodName      = "/users_service.v1.AdminService/CreateStaffUser"
@@ -32,6 +33,8 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AdminServiceClient interface {
+	// Получение информации о текущем пользователе
+	GetMyProfileAdmin(ctx context.Context, in *GetMyProfileAdminRequest, opts ...grpc.CallOption) (*GetMyProfileAdminResponse, error)
 	// Получение списка всех пользователей
 	ListUsers(ctx context.Context, in *ListUsersRequest, opts ...grpc.CallOption) (*ListUsersResponse, error)
 	// Получение информации о пользователе по ID
@@ -54,6 +57,16 @@ type adminServiceClient struct {
 
 func NewAdminServiceClient(cc grpc.ClientConnInterface) AdminServiceClient {
 	return &adminServiceClient{cc}
+}
+
+func (c *adminServiceClient) GetMyProfileAdmin(ctx context.Context, in *GetMyProfileAdminRequest, opts ...grpc.CallOption) (*GetMyProfileAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetMyProfileAdminResponse)
+	err := c.cc.Invoke(ctx, AdminService_GetMyProfileAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *adminServiceClient) ListUsers(ctx context.Context, in *ListUsersRequest, opts ...grpc.CallOption) (*ListUsersResponse, error) {
@@ -130,6 +143,8 @@ func (c *adminServiceClient) ChangeUserRole(ctx context.Context, in *ChangeUserR
 // All implementations must embed UnimplementedAdminServiceServer
 // for forward compatibility.
 type AdminServiceServer interface {
+	// Получение информации о текущем пользователе
+	GetMyProfileAdmin(context.Context, *GetMyProfileAdminRequest) (*GetMyProfileAdminResponse, error)
 	// Получение списка всех пользователей
 	ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error)
 	// Получение информации о пользователе по ID
@@ -154,6 +169,9 @@ type AdminServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAdminServiceServer struct{}
 
+func (UnimplementedAdminServiceServer) GetMyProfileAdmin(context.Context, *GetMyProfileAdminRequest) (*GetMyProfileAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMyProfileAdmin not implemented")
+}
 func (UnimplementedAdminServiceServer) ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListUsers not implemented")
 }
@@ -194,6 +212,24 @@ func RegisterAdminServiceServer(s grpc.ServiceRegistrar, srv AdminServiceServer)
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&AdminService_ServiceDesc, srv)
+}
+
+func _AdminService_GetMyProfileAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMyProfileAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AdminServiceServer).GetMyProfileAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AdminService_GetMyProfileAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AdminServiceServer).GetMyProfileAdmin(ctx, req.(*GetMyProfileAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _AdminService_ListUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -329,6 +365,10 @@ var AdminService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "users_service.v1.AdminService",
 	HandlerType: (*AdminServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetMyProfileAdmin",
+			Handler:    _AdminService_GetMyProfileAdmin_Handler,
+		},
 		{
 			MethodName: "ListUsers",
 			Handler:    _AdminService_ListUsers_Handler,

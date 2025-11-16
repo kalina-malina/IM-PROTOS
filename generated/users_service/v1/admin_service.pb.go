@@ -22,6 +22,94 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type GetMyProfileAdminRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	IdUser        uint64                 `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"` // ID пользователя из токена
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetMyProfileAdminRequest) Reset() {
+	*x = GetMyProfileAdminRequest{}
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetMyProfileAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetMyProfileAdminRequest) ProtoMessage() {}
+
+func (x *GetMyProfileAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetMyProfileAdminRequest.ProtoReflect.Descriptor instead.
+func (*GetMyProfileAdminRequest) Descriptor() ([]byte, []int) {
+	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *GetMyProfileAdminRequest) GetIdUser() uint64 {
+	if x != nil {
+		return x.IdUser
+	}
+	return 0
+}
+
+type GetMyProfileAdminResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"` // Информация о пользователе
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetMyProfileAdminResponse) Reset() {
+	*x = GetMyProfileAdminResponse{}
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetMyProfileAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetMyProfileAdminResponse) ProtoMessage() {}
+
+func (x *GetMyProfileAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetMyProfileAdminResponse.ProtoReflect.Descriptor instead.
+func (*GetMyProfileAdminResponse) Descriptor() ([]byte, []int) {
+	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *GetMyProfileAdminResponse) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
 type ListUsersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                                                                      // Страница
@@ -39,7 +127,7 @@ type ListUsersRequest struct {
 
 func (x *ListUsersRequest) Reset() {
 	*x = ListUsersRequest{}
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[0]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -51,7 +139,7 @@ func (x *ListUsersRequest) String() string {
 func (*ListUsersRequest) ProtoMessage() {}
 
 func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[0]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -64,7 +152,7 @@ func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUsersRequest.ProtoReflect.Descriptor instead.
 func (*ListUsersRequest) Descriptor() ([]byte, []int) {
-	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{0}
+	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListUsersRequest) GetPage() int32 {
@@ -142,7 +230,7 @@ type ListUsersResponse struct {
 
 func (x *ListUsersResponse) Reset() {
 	*x = ListUsersResponse{}
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[1]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -154,7 +242,7 @@ func (x *ListUsersResponse) String() string {
 func (*ListUsersResponse) ProtoMessage() {}
 
 func (x *ListUsersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[1]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -167,7 +255,7 @@ func (x *ListUsersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUsersResponse.ProtoReflect.Descriptor instead.
 func (*ListUsersResponse) Descriptor() ([]byte, []int) {
-	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{1}
+	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListUsersResponse) GetUsers() []*User {
@@ -207,7 +295,7 @@ type GetUserByIdRequest struct {
 
 func (x *GetUserByIdRequest) Reset() {
 	*x = GetUserByIdRequest{}
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[2]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -219,7 +307,7 @@ func (x *GetUserByIdRequest) String() string {
 func (*GetUserByIdRequest) ProtoMessage() {}
 
 func (x *GetUserByIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[2]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -232,7 +320,7 @@ func (x *GetUserByIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserByIdRequest.ProtoReflect.Descriptor instead.
 func (*GetUserByIdRequest) Descriptor() ([]byte, []int) {
-	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{2}
+	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetUserByIdRequest) GetIdUser() uint64 {
@@ -251,7 +339,7 @@ type GetUserByIdResponse struct {
 
 func (x *GetUserByIdResponse) Reset() {
 	*x = GetUserByIdResponse{}
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[3]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -263,7 +351,7 @@ func (x *GetUserByIdResponse) String() string {
 func (*GetUserByIdResponse) ProtoMessage() {}
 
 func (x *GetUserByIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[3]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -276,7 +364,7 @@ func (x *GetUserByIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserByIdResponse.ProtoReflect.Descriptor instead.
 func (*GetUserByIdResponse) Descriptor() ([]byte, []int) {
-	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{3}
+	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetUserByIdResponse) GetUser() *User {
@@ -301,7 +389,7 @@ type CreateStaffUserRequest struct {
 
 func (x *CreateStaffUserRequest) Reset() {
 	*x = CreateStaffUserRequest{}
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[4]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -313,7 +401,7 @@ func (x *CreateStaffUserRequest) String() string {
 func (*CreateStaffUserRequest) ProtoMessage() {}
 
 func (x *CreateStaffUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[4]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -326,7 +414,7 @@ func (x *CreateStaffUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateStaffUserRequest.ProtoReflect.Descriptor instead.
 func (*CreateStaffUserRequest) Descriptor() ([]byte, []int) {
-	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{4}
+	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CreateStaffUserRequest) GetEmail() string {
@@ -387,7 +475,7 @@ type CreateStaffUserResponse struct {
 
 func (x *CreateStaffUserResponse) Reset() {
 	*x = CreateStaffUserResponse{}
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[5]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -399,7 +487,7 @@ func (x *CreateStaffUserResponse) String() string {
 func (*CreateStaffUserResponse) ProtoMessage() {}
 
 func (x *CreateStaffUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[5]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -412,7 +500,7 @@ func (x *CreateStaffUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateStaffUserResponse.ProtoReflect.Descriptor instead.
 func (*CreateStaffUserResponse) Descriptor() ([]byte, []int) {
-	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{5}
+	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *CreateStaffUserResponse) GetUser() *User {
@@ -433,7 +521,7 @@ type BanUserRequest struct {
 
 func (x *BanUserRequest) Reset() {
 	*x = BanUserRequest{}
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[6]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -445,7 +533,7 @@ func (x *BanUserRequest) String() string {
 func (*BanUserRequest) ProtoMessage() {}
 
 func (x *BanUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[6]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -458,7 +546,7 @@ func (x *BanUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BanUserRequest.ProtoReflect.Descriptor instead.
 func (*BanUserRequest) Descriptor() ([]byte, []int) {
-	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{6}
+	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *BanUserRequest) GetIdUser() uint64 {
@@ -492,7 +580,7 @@ type BanUserResponse struct {
 
 func (x *BanUserResponse) Reset() {
 	*x = BanUserResponse{}
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[7]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -504,7 +592,7 @@ func (x *BanUserResponse) String() string {
 func (*BanUserResponse) ProtoMessage() {}
 
 func (x *BanUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[7]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -517,7 +605,7 @@ func (x *BanUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BanUserResponse.ProtoReflect.Descriptor instead.
 func (*BanUserResponse) Descriptor() ([]byte, []int) {
-	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{7}
+	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *BanUserResponse) GetSuccess() bool {
@@ -544,7 +632,7 @@ type UnbanUserRequest struct {
 
 func (x *UnbanUserRequest) Reset() {
 	*x = UnbanUserRequest{}
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[8]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -556,7 +644,7 @@ func (x *UnbanUserRequest) String() string {
 func (*UnbanUserRequest) ProtoMessage() {}
 
 func (x *UnbanUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[8]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -569,7 +657,7 @@ func (x *UnbanUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnbanUserRequest.ProtoReflect.Descriptor instead.
 func (*UnbanUserRequest) Descriptor() ([]byte, []int) {
-	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{8}
+	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *UnbanUserRequest) GetIdUser() uint64 {
@@ -596,7 +684,7 @@ type UnbanUserResponse struct {
 
 func (x *UnbanUserResponse) Reset() {
 	*x = UnbanUserResponse{}
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[9]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -608,7 +696,7 @@ func (x *UnbanUserResponse) String() string {
 func (*UnbanUserResponse) ProtoMessage() {}
 
 func (x *UnbanUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[9]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -621,7 +709,7 @@ func (x *UnbanUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnbanUserResponse.ProtoReflect.Descriptor instead.
 func (*UnbanUserResponse) Descriptor() ([]byte, []int) {
-	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{9}
+	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *UnbanUserResponse) GetSuccess() bool {
@@ -649,7 +737,7 @@ type SetTemporaryPasswordRequest struct {
 
 func (x *SetTemporaryPasswordRequest) Reset() {
 	*x = SetTemporaryPasswordRequest{}
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[10]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -661,7 +749,7 @@ func (x *SetTemporaryPasswordRequest) String() string {
 func (*SetTemporaryPasswordRequest) ProtoMessage() {}
 
 func (x *SetTemporaryPasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[10]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -674,7 +762,7 @@ func (x *SetTemporaryPasswordRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetTemporaryPasswordRequest.ProtoReflect.Descriptor instead.
 func (*SetTemporaryPasswordRequest) Descriptor() ([]byte, []int) {
-	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{10}
+	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *SetTemporaryPasswordRequest) GetIdUser() uint64 {
@@ -709,7 +797,7 @@ type SetTemporaryPasswordResponse struct {
 
 func (x *SetTemporaryPasswordResponse) Reset() {
 	*x = SetTemporaryPasswordResponse{}
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[11]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -721,7 +809,7 @@ func (x *SetTemporaryPasswordResponse) String() string {
 func (*SetTemporaryPasswordResponse) ProtoMessage() {}
 
 func (x *SetTemporaryPasswordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[11]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -734,7 +822,7 @@ func (x *SetTemporaryPasswordResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetTemporaryPasswordResponse.ProtoReflect.Descriptor instead.
 func (*SetTemporaryPasswordResponse) Descriptor() ([]byte, []int) {
-	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{11}
+	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *SetTemporaryPasswordResponse) GetSuccess() bool {
@@ -768,7 +856,7 @@ type ChangeUserRoleRequest struct {
 
 func (x *ChangeUserRoleRequest) Reset() {
 	*x = ChangeUserRoleRequest{}
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[12]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -780,7 +868,7 @@ func (x *ChangeUserRoleRequest) String() string {
 func (*ChangeUserRoleRequest) ProtoMessage() {}
 
 func (x *ChangeUserRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[12]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -793,7 +881,7 @@ func (x *ChangeUserRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUserRoleRequest.ProtoReflect.Descriptor instead.
 func (*ChangeUserRoleRequest) Descriptor() ([]byte, []int) {
-	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{12}
+	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ChangeUserRoleRequest) GetIdUser() uint64 {
@@ -820,7 +908,7 @@ type ChangeUserRoleResponse struct {
 
 func (x *ChangeUserRoleResponse) Reset() {
 	*x = ChangeUserRoleResponse{}
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[13]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -832,7 +920,7 @@ func (x *ChangeUserRoleResponse) String() string {
 func (*ChangeUserRoleResponse) ProtoMessage() {}
 
 func (x *ChangeUserRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_service_v1_admin_service_proto_msgTypes[13]
+	mi := &file_users_service_v1_admin_service_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -845,7 +933,7 @@ func (x *ChangeUserRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUserRoleResponse.ProtoReflect.Descriptor instead.
 func (*ChangeUserRoleResponse) Descriptor() ([]byte, []int) {
-	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{13}
+	return file_users_service_v1_admin_service_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ChangeUserRoleResponse) GetSuccess() bool {
@@ -866,7 +954,11 @@ var File_users_service_v1_admin_service_proto protoreflect.FileDescriptor
 
 const file_users_service_v1_admin_service_proto_rawDesc = "" +
 	"\n" +
-	"$users_service/v1/admin_service.proto\x12\x10users_service.v1\x1a\x1busers_service/v1/user.proto\x1a\x12common/types.proto\"\xc5\x02\n" +
+	"$users_service/v1/admin_service.proto\x12\x10users_service.v1\x1a\x1busers_service/v1/user.proto\x1a\x12common/types.proto\"3\n" +
+	"\x18GetMyProfileAdminRequest\x12\x17\n" +
+	"\aid_user\x18\x01 \x01(\x04R\x06idUser\"G\n" +
+	"\x19GetMyProfileAdminResponse\x12*\n" +
+	"\x04user\x18\x01 \x01(\v2\x16.users_service.v1.UserR\x04user\"\xc5\x02\n" +
 	"\x10ListUsersRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\x05R\x05limit\x12\x16\n" +
@@ -927,8 +1019,9 @@ const file_users_service_v1_admin_service_proto_rawDesc = "" +
 	"\bnew_role\x18\x02 \x01(\x0e2\x1a.users_service.v1.UserRoleR\anewRole\"^\n" +
 	"\x16ChangeUserRoleResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12*\n" +
-	"\x04user\x18\x02 \x01(\v2\x16.users_service.v1.UserR\x04user2\xaa\x05\n" +
-	"\fAdminService\x12T\n" +
+	"\x04user\x18\x02 \x01(\v2\x16.users_service.v1.UserR\x04user2\x98\x06\n" +
+	"\fAdminService\x12l\n" +
+	"\x11GetMyProfileAdmin\x12*.users_service.v1.GetMyProfileAdminRequest\x1a+.users_service.v1.GetMyProfileAdminResponse\x12T\n" +
 	"\tListUsers\x12\".users_service.v1.ListUsersRequest\x1a#.users_service.v1.ListUsersResponse\x12Z\n" +
 	"\vGetUserById\x12$.users_service.v1.GetUserByIdRequest\x1a%.users_service.v1.GetUserByIdResponse\x12f\n" +
 	"\x0fCreateStaffUser\x12(.users_service.v1.CreateStaffUserRequest\x1a).users_service.v1.CreateStaffUserResponse\x12N\n" +
@@ -949,60 +1042,65 @@ func file_users_service_v1_admin_service_proto_rawDescGZIP() []byte {
 	return file_users_service_v1_admin_service_proto_rawDescData
 }
 
-var file_users_service_v1_admin_service_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_users_service_v1_admin_service_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_users_service_v1_admin_service_proto_goTypes = []any{
-	(*ListUsersRequest)(nil),             // 0: users_service.v1.ListUsersRequest
-	(*ListUsersResponse)(nil),            // 1: users_service.v1.ListUsersResponse
-	(*GetUserByIdRequest)(nil),           // 2: users_service.v1.GetUserByIdRequest
-	(*GetUserByIdResponse)(nil),          // 3: users_service.v1.GetUserByIdResponse
-	(*CreateStaffUserRequest)(nil),       // 4: users_service.v1.CreateStaffUserRequest
-	(*CreateStaffUserResponse)(nil),      // 5: users_service.v1.CreateStaffUserResponse
-	(*BanUserRequest)(nil),               // 6: users_service.v1.BanUserRequest
-	(*BanUserResponse)(nil),              // 7: users_service.v1.BanUserResponse
-	(*UnbanUserRequest)(nil),             // 8: users_service.v1.UnbanUserRequest
-	(*UnbanUserResponse)(nil),            // 9: users_service.v1.UnbanUserResponse
-	(*SetTemporaryPasswordRequest)(nil),  // 10: users_service.v1.SetTemporaryPasswordRequest
-	(*SetTemporaryPasswordResponse)(nil), // 11: users_service.v1.SetTemporaryPasswordResponse
-	(*ChangeUserRoleRequest)(nil),        // 12: users_service.v1.ChangeUserRoleRequest
-	(*ChangeUserRoleResponse)(nil),       // 13: users_service.v1.ChangeUserRoleResponse
-	(UserRole)(0),                        // 14: users_service.v1.UserRole
-	(UserStatus)(0),                      // 15: users_service.v1.UserStatus
+	(*GetMyProfileAdminRequest)(nil),     // 0: users_service.v1.GetMyProfileAdminRequest
+	(*GetMyProfileAdminResponse)(nil),    // 1: users_service.v1.GetMyProfileAdminResponse
+	(*ListUsersRequest)(nil),             // 2: users_service.v1.ListUsersRequest
+	(*ListUsersResponse)(nil),            // 3: users_service.v1.ListUsersResponse
+	(*GetUserByIdRequest)(nil),           // 4: users_service.v1.GetUserByIdRequest
+	(*GetUserByIdResponse)(nil),          // 5: users_service.v1.GetUserByIdResponse
+	(*CreateStaffUserRequest)(nil),       // 6: users_service.v1.CreateStaffUserRequest
+	(*CreateStaffUserResponse)(nil),      // 7: users_service.v1.CreateStaffUserResponse
+	(*BanUserRequest)(nil),               // 8: users_service.v1.BanUserRequest
+	(*BanUserResponse)(nil),              // 9: users_service.v1.BanUserResponse
+	(*UnbanUserRequest)(nil),             // 10: users_service.v1.UnbanUserRequest
+	(*UnbanUserResponse)(nil),            // 11: users_service.v1.UnbanUserResponse
+	(*SetTemporaryPasswordRequest)(nil),  // 12: users_service.v1.SetTemporaryPasswordRequest
+	(*SetTemporaryPasswordResponse)(nil), // 13: users_service.v1.SetTemporaryPasswordResponse
+	(*ChangeUserRoleRequest)(nil),        // 14: users_service.v1.ChangeUserRoleRequest
+	(*ChangeUserRoleResponse)(nil),       // 15: users_service.v1.ChangeUserRoleResponse
 	(*User)(nil),                         // 16: users_service.v1.User
-	(BanReason)(0),                       // 17: users_service.v1.BanReason
-	(*common.Timestamp)(nil),             // 18: common.Timestamp
+	(UserRole)(0),                        // 17: users_service.v1.UserRole
+	(UserStatus)(0),                      // 18: users_service.v1.UserStatus
+	(BanReason)(0),                       // 19: users_service.v1.BanReason
+	(*common.Timestamp)(nil),             // 20: common.Timestamp
 }
 var file_users_service_v1_admin_service_proto_depIdxs = []int32{
-	14, // 0: users_service.v1.ListUsersRequest.role_filter:type_name -> users_service.v1.UserRole
-	15, // 1: users_service.v1.ListUsersRequest.status_filter:type_name -> users_service.v1.UserStatus
-	16, // 2: users_service.v1.ListUsersResponse.users:type_name -> users_service.v1.User
-	16, // 3: users_service.v1.GetUserByIdResponse.user:type_name -> users_service.v1.User
-	14, // 4: users_service.v1.CreateStaffUserRequest.role:type_name -> users_service.v1.UserRole
-	16, // 5: users_service.v1.CreateStaffUserResponse.user:type_name -> users_service.v1.User
-	17, // 6: users_service.v1.BanUserRequest.reason:type_name -> users_service.v1.BanReason
-	16, // 7: users_service.v1.BanUserResponse.user:type_name -> users_service.v1.User
-	16, // 8: users_service.v1.UnbanUserResponse.user:type_name -> users_service.v1.User
-	18, // 9: users_service.v1.SetTemporaryPasswordResponse.expires_at:type_name -> common.Timestamp
-	14, // 10: users_service.v1.ChangeUserRoleRequest.new_role:type_name -> users_service.v1.UserRole
-	16, // 11: users_service.v1.ChangeUserRoleResponse.user:type_name -> users_service.v1.User
-	0,  // 12: users_service.v1.AdminService.ListUsers:input_type -> users_service.v1.ListUsersRequest
-	2,  // 13: users_service.v1.AdminService.GetUserById:input_type -> users_service.v1.GetUserByIdRequest
-	4,  // 14: users_service.v1.AdminService.CreateStaffUser:input_type -> users_service.v1.CreateStaffUserRequest
-	6,  // 15: users_service.v1.AdminService.BanUser:input_type -> users_service.v1.BanUserRequest
-	8,  // 16: users_service.v1.AdminService.UnbanUser:input_type -> users_service.v1.UnbanUserRequest
-	10, // 17: users_service.v1.AdminService.SetTemporaryPassword:input_type -> users_service.v1.SetTemporaryPasswordRequest
-	12, // 18: users_service.v1.AdminService.ChangeUserRole:input_type -> users_service.v1.ChangeUserRoleRequest
-	1,  // 19: users_service.v1.AdminService.ListUsers:output_type -> users_service.v1.ListUsersResponse
-	3,  // 20: users_service.v1.AdminService.GetUserById:output_type -> users_service.v1.GetUserByIdResponse
-	5,  // 21: users_service.v1.AdminService.CreateStaffUser:output_type -> users_service.v1.CreateStaffUserResponse
-	7,  // 22: users_service.v1.AdminService.BanUser:output_type -> users_service.v1.BanUserResponse
-	9,  // 23: users_service.v1.AdminService.UnbanUser:output_type -> users_service.v1.UnbanUserResponse
-	11, // 24: users_service.v1.AdminService.SetTemporaryPassword:output_type -> users_service.v1.SetTemporaryPasswordResponse
-	13, // 25: users_service.v1.AdminService.ChangeUserRole:output_type -> users_service.v1.ChangeUserRoleResponse
-	19, // [19:26] is the sub-list for method output_type
-	12, // [12:19] is the sub-list for method input_type
-	12, // [12:12] is the sub-list for extension type_name
-	12, // [12:12] is the sub-list for extension extendee
-	0,  // [0:12] is the sub-list for field type_name
+	16, // 0: users_service.v1.GetMyProfileAdminResponse.user:type_name -> users_service.v1.User
+	17, // 1: users_service.v1.ListUsersRequest.role_filter:type_name -> users_service.v1.UserRole
+	18, // 2: users_service.v1.ListUsersRequest.status_filter:type_name -> users_service.v1.UserStatus
+	16, // 3: users_service.v1.ListUsersResponse.users:type_name -> users_service.v1.User
+	16, // 4: users_service.v1.GetUserByIdResponse.user:type_name -> users_service.v1.User
+	17, // 5: users_service.v1.CreateStaffUserRequest.role:type_name -> users_service.v1.UserRole
+	16, // 6: users_service.v1.CreateStaffUserResponse.user:type_name -> users_service.v1.User
+	19, // 7: users_service.v1.BanUserRequest.reason:type_name -> users_service.v1.BanReason
+	16, // 8: users_service.v1.BanUserResponse.user:type_name -> users_service.v1.User
+	16, // 9: users_service.v1.UnbanUserResponse.user:type_name -> users_service.v1.User
+	20, // 10: users_service.v1.SetTemporaryPasswordResponse.expires_at:type_name -> common.Timestamp
+	17, // 11: users_service.v1.ChangeUserRoleRequest.new_role:type_name -> users_service.v1.UserRole
+	16, // 12: users_service.v1.ChangeUserRoleResponse.user:type_name -> users_service.v1.User
+	0,  // 13: users_service.v1.AdminService.GetMyProfileAdmin:input_type -> users_service.v1.GetMyProfileAdminRequest
+	2,  // 14: users_service.v1.AdminService.ListUsers:input_type -> users_service.v1.ListUsersRequest
+	4,  // 15: users_service.v1.AdminService.GetUserById:input_type -> users_service.v1.GetUserByIdRequest
+	6,  // 16: users_service.v1.AdminService.CreateStaffUser:input_type -> users_service.v1.CreateStaffUserRequest
+	8,  // 17: users_service.v1.AdminService.BanUser:input_type -> users_service.v1.BanUserRequest
+	10, // 18: users_service.v1.AdminService.UnbanUser:input_type -> users_service.v1.UnbanUserRequest
+	12, // 19: users_service.v1.AdminService.SetTemporaryPassword:input_type -> users_service.v1.SetTemporaryPasswordRequest
+	14, // 20: users_service.v1.AdminService.ChangeUserRole:input_type -> users_service.v1.ChangeUserRoleRequest
+	1,  // 21: users_service.v1.AdminService.GetMyProfileAdmin:output_type -> users_service.v1.GetMyProfileAdminResponse
+	3,  // 22: users_service.v1.AdminService.ListUsers:output_type -> users_service.v1.ListUsersResponse
+	5,  // 23: users_service.v1.AdminService.GetUserById:output_type -> users_service.v1.GetUserByIdResponse
+	7,  // 24: users_service.v1.AdminService.CreateStaffUser:output_type -> users_service.v1.CreateStaffUserResponse
+	9,  // 25: users_service.v1.AdminService.BanUser:output_type -> users_service.v1.BanUserResponse
+	11, // 26: users_service.v1.AdminService.UnbanUser:output_type -> users_service.v1.UnbanUserResponse
+	13, // 27: users_service.v1.AdminService.SetTemporaryPassword:output_type -> users_service.v1.SetTemporaryPasswordResponse
+	15, // 28: users_service.v1.AdminService.ChangeUserRole:output_type -> users_service.v1.ChangeUserRoleResponse
+	21, // [21:29] is the sub-list for method output_type
+	13, // [13:21] is the sub-list for method input_type
+	13, // [13:13] is the sub-list for extension type_name
+	13, // [13:13] is the sub-list for extension extendee
+	0,  // [0:13] is the sub-list for field type_name
 }
 
 func init() { file_users_service_v1_admin_service_proto_init() }
@@ -1017,7 +1115,7 @@ func file_users_service_v1_admin_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_service_v1_admin_service_proto_rawDesc), len(file_users_service_v1_admin_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   14,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
