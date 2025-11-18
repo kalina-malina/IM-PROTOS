@@ -7,9 +7,10 @@
 package v1
 
 import (
-	common "github.com/kalina-malina/IM-PROTOS/generated/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -261,9 +262,9 @@ type User struct {
 	CityId        int32                  `protobuf:"varint,12,opt,name=city_id,json=cityId,proto3" json:"city_id,omitempty"`                   // ID города из справочника
 	RegionId      int32                  `protobuf:"varint,13,opt,name=region_id,json=regionId,proto3" json:"region_id,omitempty"`             // ID региона из справочника
 	Settings      *CustomerSettings      `protobuf:"bytes,14,opt,name=settings,proto3" json:"settings,omitempty"`                              // Настройки
-	CreatedAt     *common.Timestamp      `protobuf:"bytes,15,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`           // Дата создания
-	UpdatedAt     *common.Timestamp      `protobuf:"bytes,16,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`           // Дата обновления
-	LastLogin     *common.Timestamp      `protobuf:"bytes,17,opt,name=last_login,json=lastLogin,proto3" json:"last_login,omitempty"`           // Последний вход
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`           // Дата создания
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`           // Дата обновления
+	LastLogin     *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=last_login,json=lastLogin,proto3" json:"last_login,omitempty"`           // Последний вход
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -396,21 +397,21 @@ func (x *User) GetSettings() *CustomerSettings {
 	return nil
 }
 
-func (x *User) GetCreatedAt() *common.Timestamp {
+func (x *User) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
 	}
 	return nil
 }
 
-func (x *User) GetUpdatedAt() *common.Timestamp {
+func (x *User) GetUpdatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdatedAt
 	}
 	return nil
 }
 
-func (x *User) GetLastLogin() *common.Timestamp {
+func (x *User) GetLastLogin() *timestamppb.Timestamp {
 	if x != nil {
 		return x.LastLogin
 	}
@@ -418,16 +419,14 @@ func (x *User) GetLastLogin() *common.Timestamp {
 }
 
 type CustomerSettings struct {
-	state              protoimpl.MessageState `protogen:"open.v1"`
-	PushNotifications  bool                   `protobuf:"varint,1,opt,name=push_notifications,json=pushNotifications,proto3" json:"push_notifications,omitempty"`    // Push уведомления
-	EmailNotifications bool                   `protobuf:"varint,2,opt,name=email_notifications,json=emailNotifications,proto3" json:"email_notifications,omitempty"` // Email уведомления
-	SmsNotifications   bool                   `protobuf:"varint,3,opt,name=sms_notifications,json=smsNotifications,proto3" json:"sms_notifications,omitempty"`       // SMS уведомления
-	MarketingEmails    bool                   `protobuf:"varint,4,opt,name=marketing_emails,json=marketingEmails,proto3" json:"marketing_emails,omitempty"`          // Маркетинговые рассылки
-	MarketingSms       bool                   `protobuf:"varint,5,opt,name=marketing_sms,json=marketingSms,proto3" json:"marketing_sms,omitempty"`                   // Маркетинговые SMS
-	OrderUpdates       bool                   `protobuf:"varint,6,opt,name=order_updates,json=orderUpdates,proto3" json:"order_updates,omitempty"`                   // Уведомления о заказах
-	PromotionalOffers  bool                   `protobuf:"varint,7,opt,name=promotional_offers,json=promotionalOffers,proto3" json:"promotional_offers,omitempty"`    // Промо-акции
-	Language           string                 `protobuf:"bytes,8,opt,name=language,proto3" json:"language,omitempty"`                                                // Язык (ru/en/kk)
-	Timezone           string                 `protobuf:"bytes,9,opt,name=timezone,proto3" json:"timezone,omitempty"`                                                // Часовой пояс
+	state              protoimpl.MessageState  `protogen:"open.v1"`
+	PushNotifications  bool                    `protobuf:"varint,1,opt,name=push_notifications,json=pushNotifications,proto3" json:"push_notifications,omitempty"`    // Push уведомления
+	EmailNotifications bool                    `protobuf:"varint,2,opt,name=email_notifications,json=emailNotifications,proto3" json:"email_notifications,omitempty"` // Email уведомления
+	MarketingEmails    bool                    `protobuf:"varint,3,opt,name=marketing_emails,json=marketingEmails,proto3" json:"marketing_emails,omitempty"`          // Маркетинговые рассылки
+	OrderUpdates       bool                    `protobuf:"varint,4,opt,name=order_updates,json=orderUpdates,proto3" json:"order_updates,omitempty"`                   // Уведомления о заказах
+	PromotionalOffers  bool                    `protobuf:"varint,5,opt,name=promotional_offers,json=promotionalOffers,proto3" json:"promotional_offers,omitempty"`    // Промо-акции
+	Language           *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=language,proto3" json:"language,omitempty"`                                                // Язык (ru/en/kk)
+	Timezone           *timestamppb.Timestamp  `protobuf:"bytes,7,opt,name=timezone,proto3" json:"timezone,omitempty"`                                                // Часовой пояс
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -476,23 +475,9 @@ func (x *CustomerSettings) GetEmailNotifications() bool {
 	return false
 }
 
-func (x *CustomerSettings) GetSmsNotifications() bool {
-	if x != nil {
-		return x.SmsNotifications
-	}
-	return false
-}
-
 func (x *CustomerSettings) GetMarketingEmails() bool {
 	if x != nil {
 		return x.MarketingEmails
-	}
-	return false
-}
-
-func (x *CustomerSettings) GetMarketingSms() bool {
-	if x != nil {
-		return x.MarketingSms
 	}
 	return false
 }
@@ -511,25 +496,25 @@ func (x *CustomerSettings) GetPromotionalOffers() bool {
 	return false
 }
 
-func (x *CustomerSettings) GetLanguage() string {
+func (x *CustomerSettings) GetLanguage() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Language
 	}
-	return ""
+	return nil
 }
 
-func (x *CustomerSettings) GetTimezone() string {
+func (x *CustomerSettings) GetTimezone() *timestamppb.Timestamp {
 	if x != nil {
 		return x.Timezone
 	}
-	return ""
+	return nil
 }
 
 var File_users_service_v1_user_proto protoreflect.FileDescriptor
 
 const file_users_service_v1_user_proto_rawDesc = "" +
 	"\n" +
-	"\x1busers_service/v1/user.proto\x12\x10users_service.v1\x1a\x12common/types.proto\"\x8c\x05\n" +
+	"\x1busers_service/v1/user.proto\x12\x10users_service.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/wrappers.proto\"\xa7\x05\n" +
 	"\x04User\x12\x17\n" +
 	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12\x14\n" +
 	"\x05phone\x18\x02 \x01(\x04R\x05phone\x12\x14\n" +
@@ -548,23 +533,21 @@ const file_users_service_v1_user_proto_rawDesc = "" +
 	"\rdate_of_birth\x18\v \x01(\tR\vdateOfBirth\x12\x17\n" +
 	"\acity_id\x18\f \x01(\x05R\x06cityId\x12\x1b\n" +
 	"\tregion_id\x18\r \x01(\x05R\bregionId\x12>\n" +
-	"\bsettings\x18\x0e \x01(\v2\".users_service.v1.CustomerSettingsR\bsettings\x120\n" +
+	"\bsettings\x18\x0e \x01(\v2\".users_service.v1.CustomerSettingsR\bsettings\x129\n" +
 	"\n" +
-	"created_at\x18\x0f \x01(\v2\x11.common.TimestampR\tcreatedAt\x120\n" +
+	"created_at\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x10 \x01(\v2\x11.common.TimestampR\tupdatedAt\x120\n" +
+	"updated_at\x18\x10 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"last_login\x18\x11 \x01(\v2\x11.common.TimestampR\tlastLogin\"\xfb\x02\n" +
+	"last_login\x18\x11 \x01(\v2\x1a.google.protobuf.TimestampR\tlastLogin\"\xe3\x02\n" +
 	"\x10CustomerSettings\x12-\n" +
 	"\x12push_notifications\x18\x01 \x01(\bR\x11pushNotifications\x12/\n" +
-	"\x13email_notifications\x18\x02 \x01(\bR\x12emailNotifications\x12+\n" +
-	"\x11sms_notifications\x18\x03 \x01(\bR\x10smsNotifications\x12)\n" +
-	"\x10marketing_emails\x18\x04 \x01(\bR\x0fmarketingEmails\x12#\n" +
-	"\rmarketing_sms\x18\x05 \x01(\bR\fmarketingSms\x12#\n" +
-	"\rorder_updates\x18\x06 \x01(\bR\forderUpdates\x12-\n" +
-	"\x12promotional_offers\x18\a \x01(\bR\x11promotionalOffers\x12\x1a\n" +
-	"\blanguage\x18\b \x01(\tR\blanguage\x12\x1a\n" +
-	"\btimezone\x18\t \x01(\tR\btimezone*D\n" +
+	"\x13email_notifications\x18\x02 \x01(\bR\x12emailNotifications\x12)\n" +
+	"\x10marketing_emails\x18\x03 \x01(\bR\x0fmarketingEmails\x12#\n" +
+	"\rorder_updates\x18\x04 \x01(\bR\forderUpdates\x12-\n" +
+	"\x12promotional_offers\x18\x05 \x01(\bR\x11promotionalOffers\x128\n" +
+	"\blanguage\x18\x06 \x01(\v2\x1c.google.protobuf.StringValueR\blanguage\x126\n" +
+	"\btimezone\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\btimezone*D\n" +
 	"\x06Gender\x12\x16\n" +
 	"\x12GENDER_UNSPECIFIED\x10\x00\x12\x0f\n" +
 	"\vGENDER_MALE\x10\x01\x12\x11\n" +
@@ -607,27 +590,30 @@ func file_users_service_v1_user_proto_rawDescGZIP() []byte {
 var file_users_service_v1_user_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
 var file_users_service_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_users_service_v1_user_proto_goTypes = []any{
-	(Gender)(0),              // 0: users_service.v1.Gender
-	(UserRole)(0),            // 1: users_service.v1.UserRole
-	(UserStatus)(0),          // 2: users_service.v1.UserStatus
-	(BanReason)(0),           // 3: users_service.v1.BanReason
-	(*User)(nil),             // 4: users_service.v1.User
-	(*CustomerSettings)(nil), // 5: users_service.v1.CustomerSettings
-	(*common.Timestamp)(nil), // 6: common.Timestamp
+	(Gender)(0),                    // 0: users_service.v1.Gender
+	(UserRole)(0),                  // 1: users_service.v1.UserRole
+	(UserStatus)(0),                // 2: users_service.v1.UserStatus
+	(BanReason)(0),                 // 3: users_service.v1.BanReason
+	(*User)(nil),                   // 4: users_service.v1.User
+	(*CustomerSettings)(nil),       // 5: users_service.v1.CustomerSettings
+	(*timestamppb.Timestamp)(nil),  // 6: google.protobuf.Timestamp
+	(*wrapperspb.StringValue)(nil), // 7: google.protobuf.StringValue
 }
 var file_users_service_v1_user_proto_depIdxs = []int32{
 	0, // 0: users_service.v1.User.gender:type_name -> users_service.v1.Gender
 	1, // 1: users_service.v1.User.role:type_name -> users_service.v1.UserRole
 	2, // 2: users_service.v1.User.status:type_name -> users_service.v1.UserStatus
 	5, // 3: users_service.v1.User.settings:type_name -> users_service.v1.CustomerSettings
-	6, // 4: users_service.v1.User.created_at:type_name -> common.Timestamp
-	6, // 5: users_service.v1.User.updated_at:type_name -> common.Timestamp
-	6, // 6: users_service.v1.User.last_login:type_name -> common.Timestamp
-	7, // [7:7] is the sub-list for method output_type
-	7, // [7:7] is the sub-list for method input_type
-	7, // [7:7] is the sub-list for extension type_name
-	7, // [7:7] is the sub-list for extension extendee
-	0, // [0:7] is the sub-list for field type_name
+	6, // 4: users_service.v1.User.created_at:type_name -> google.protobuf.Timestamp
+	6, // 5: users_service.v1.User.updated_at:type_name -> google.protobuf.Timestamp
+	6, // 6: users_service.v1.User.last_login:type_name -> google.protobuf.Timestamp
+	7, // 7: users_service.v1.CustomerSettings.language:type_name -> google.protobuf.StringValue
+	6, // 8: users_service.v1.CustomerSettings.timezone:type_name -> google.protobuf.Timestamp
+	9, // [9:9] is the sub-list for method output_type
+	9, // [9:9] is the sub-list for method input_type
+	9, // [9:9] is the sub-list for extension type_name
+	9, // [9:9] is the sub-list for extension extendee
+	0, // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_users_service_v1_user_proto_init() }

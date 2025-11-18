@@ -5,7 +5,6 @@ package users_service.v1;
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users_service/v1";
 
 import "users_service/v1/user.proto";
-import "common/types.proto";
 
 service UserService {
   

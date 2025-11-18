@@ -3,9 +3,8 @@ syntax = "proto3";
 package users_service.v1;
 
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users_service/v1";
-
-import "common/types.proto";
-
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
 
 message User {
   uint64 id_user = 1;                 // ID пользователя
@@ -22,21 +21,19 @@ message User {
   int32 city_id = 12;                 // ID города из справочника
   int32 region_id = 13;               // ID региона из справочника
   CustomerSettings settings = 14;     // Настройки
-  common.Timestamp created_at = 15;   // Дата создания
-  common.Timestamp updated_at = 16;   // Дата обновления
-  common.Timestamp last_login = 17;   // Последний вход
+  google.protobuf.Timestamp created_at = 15;   // Дата создания
+  google.protobuf.Timestamp updated_at = 16;   // Дата обновления
+  google.protobuf.Timestamp last_login = 17;   // Последний вход
 }
 
 message CustomerSettings {
   bool push_notifications = 1;        // Push уведомления
   bool email_notifications = 2;       // Email уведомления
-  bool sms_notifications = 3;         // SMS уведомления
-  bool marketing_emails = 4;          // Маркетинговые рассылки
-  bool marketing_sms = 5;             // Маркетинговые SMS
-  bool order_updates = 6;             // Уведомления о заказах
-  bool promotional_offers = 7;        // Промо-акции
-  string language = 8;                // Язык (ru/en/kk)
-  string timezone = 9;                // Часовой пояс
+  bool marketing_emails = 3;          // Маркетинговые рассылки
+  bool order_updates = 4;             // Уведомления о заказах
+  bool promotional_offers = 5;        // Промо-акции
+  google.protobuf.StringValue language = 6; // Язык (ru/en/kk)
+  google.protobuf.Timestamp timezone = 7; // Часовой пояс
 }
 
 // ============================================================================

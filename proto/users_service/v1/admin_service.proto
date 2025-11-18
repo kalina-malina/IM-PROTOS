@@ -5,7 +5,8 @@ package users_service.v1;
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users_service/v1";
 
 import "users_service/v1/user.proto";
-import "common/types.proto";
+import "google/protobuf/timestamp.proto";
+
 
 service AdminService {
 
@@ -126,7 +127,7 @@ message SetTemporaryPasswordRequest {
 message SetTemporaryPasswordResponse {
   bool success = 1;                   // Успешность операции
   string temp_password = 2;           // Временный пароль
-  common.Timestamp expires_at = 3;    // Дата истечения
+  google.protobuf.Timestamp expires_at = 3;    // Дата истечения
 }
 
 message ChangeUserRoleRequest {

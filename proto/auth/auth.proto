@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package auth.v1;
+
+option go_package = "github.com/kalina-malina/IM-PROTOS/generated/auth/v1";
+import "union/user_setting.proto"; 
+
+service AuthOrRegistrationService {
+  rpc RegiterUser(RegisterUserRequest) returns (RegisterUserResponse);
+  rpc VerifySmsCode(VerifySmsCodeRequest) returns (VerifySmsCodeResponse);
+}
+
+message RegisterUserRequest {
+  string PhoneNumber = 1;
+}
+
+message RegisterUserResponse {
+  string verification_id  = 1;
+  string code_expires_in = 2;
+  bool is_new_user = 3;
+}
+
+message VerifySmsCodeRequest {
+  string verification_id = 1;
+  string code = 2;
+}
+
+message VerifySmsCodeResponse {
+  bool is_verified = 1;
+  bool is_new_user = 2;
+  UserInfo userInfo = 3;
+  optional union.v1.UserSettings UserSettings = 4;
+}
+
+message UserInfo {
+    uint32 id = 1;
+  Role role = 2;
+  optional uint32 lastSelectedStoreId = 3;
+}
+
+enum Role {
+  ROLE_CLIENT = 0;
+  ROLE_OPERATOR = 1;
+  ROLE_MANAGER = 2;
+  ROLE_ADMIN = 3;
+  ROLE_ANALYST = 4;
+}

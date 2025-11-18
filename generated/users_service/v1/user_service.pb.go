@@ -7,7 +7,6 @@
 package v1
 
 import (
-	_ "github.com/kalina-malina/IM-PROTOS/generated/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -482,7 +481,7 @@ var File_users_service_v1_user_service_proto protoreflect.FileDescriptor
 
 const file_users_service_v1_user_service_proto_rawDesc = "" +
 	"\n" +
-	"#users_service/v1/user_service.proto\x12\x10users_service.v1\x1a\x1busers_service/v1/user.proto\x1a\x12common/types.proto\".\n" +
+	"#users_service/v1/user_service.proto\x12\x10users_service.v1\x1a\x1busers_service/v1/user.proto\".\n" +
 	"\x13GetMyProfileRequest\x12\x17\n" +
 	"\aid_user\x18\x01 \x01(\x04R\x06idUser\"B\n" +
 	"\x14GetMyProfileResponse\x12*\n" +

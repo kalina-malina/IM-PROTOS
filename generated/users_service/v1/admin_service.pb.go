@@ -7,9 +7,9 @@
 package v1
 
 import (
-	common "github.com/kalina-malina/IM-PROTOS/generated/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -790,7 +790,7 @@ type SetTemporaryPasswordResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`                              // Успешность операции
 	TempPassword  string                 `protobuf:"bytes,2,opt,name=temp_password,json=tempPassword,proto3" json:"temp_password,omitempty"` // Временный пароль
-	ExpiresAt     *common.Timestamp      `protobuf:"bytes,3,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`          // Дата истечения
+	ExpiresAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`          // Дата истечения
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -839,7 +839,7 @@ func (x *SetTemporaryPasswordResponse) GetTempPassword() string {
 	return ""
 }
 
-func (x *SetTemporaryPasswordResponse) GetExpiresAt() *common.Timestamp {
+func (x *SetTemporaryPasswordResponse) GetExpiresAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ExpiresAt
 	}
@@ -954,7 +954,7 @@ var File_users_service_v1_admin_service_proto protoreflect.FileDescriptor
 
 const file_users_service_v1_admin_service_proto_rawDesc = "" +
 	"\n" +
-	"$users_service/v1/admin_service.proto\x12\x10users_service.v1\x1a\x1busers_service/v1/user.proto\x1a\x12common/types.proto\"3\n" +
+	"$users_service/v1/admin_service.proto\x12\x10users_service.v1\x1a\x1busers_service/v1/user.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"3\n" +
 	"\x18GetMyProfileAdminRequest\x12\x17\n" +
 	"\aid_user\x18\x01 \x01(\x04R\x06idUser\"G\n" +
 	"\x19GetMyProfileAdminResponse\x12*\n" +
@@ -1008,12 +1008,12 @@ const file_users_service_v1_admin_service_proto_rawDesc = "" +
 	"\x1bSetTemporaryPasswordRequest\x12\x17\n" +
 	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12#\n" +
 	"\rtemp_password\x18\x02 \x01(\tR\ftempPassword\x12,\n" +
-	"\x12expires_in_minutes\x18\x03 \x01(\x05R\x10expiresInMinutes\"\x8f\x01\n" +
+	"\x12expires_in_minutes\x18\x03 \x01(\x05R\x10expiresInMinutes\"\x98\x01\n" +
 	"\x1cSetTemporaryPasswordResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12#\n" +
-	"\rtemp_password\x18\x02 \x01(\tR\ftempPassword\x120\n" +
+	"\rtemp_password\x18\x02 \x01(\tR\ftempPassword\x129\n" +
 	"\n" +
-	"expires_at\x18\x03 \x01(\v2\x11.common.TimestampR\texpiresAt\"g\n" +
+	"expires_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\"g\n" +
 	"\x15ChangeUserRoleRequest\x12\x17\n" +
 	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x125\n" +
 	"\bnew_role\x18\x02 \x01(\x0e2\x1a.users_service.v1.UserRoleR\anewRole\"^\n" +
@@ -1064,7 +1064,7 @@ var file_users_service_v1_admin_service_proto_goTypes = []any{
 	(UserRole)(0),                        // 17: users_service.v1.UserRole
 	(UserStatus)(0),                      // 18: users_service.v1.UserStatus
 	(BanReason)(0),                       // 19: users_service.v1.BanReason
-	(*common.Timestamp)(nil),             // 20: common.Timestamp
+	(*timestamppb.Timestamp)(nil),        // 20: google.protobuf.Timestamp
 }
 var file_users_service_v1_admin_service_proto_depIdxs = []int32{
 	16, // 0: users_service.v1.GetMyProfileAdminResponse.user:type_name -> users_service.v1.User
@@ -1077,7 +1077,7 @@ var file_users_service_v1_admin_service_proto_depIdxs = []int32{
 	19, // 7: users_service.v1.BanUserRequest.reason:type_name -> users_service.v1.BanReason
 	16, // 8: users_service.v1.BanUserResponse.user:type_name -> users_service.v1.User
 	16, // 9: users_service.v1.UnbanUserResponse.user:type_name -> users_service.v1.User
-	20, // 10: users_service.v1.SetTemporaryPasswordResponse.expires_at:type_name -> common.Timestamp
+	20, // 10: users_service.v1.SetTemporaryPasswordResponse.expires_at:type_name -> google.protobuf.Timestamp
 	17, // 11: users_service.v1.ChangeUserRoleRequest.new_role:type_name -> users_service.v1.UserRole
 	16, // 12: users_service.v1.ChangeUserRoleResponse.user:type_name -> users_service.v1.User
 	0,  // 13: users_service.v1.AdminService.GetMyProfileAdmin:input_type -> users_service.v1.GetMyProfileAdminRequest
