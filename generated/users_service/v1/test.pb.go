@@ -23,7 +23,7 @@ const (
 
 type TestRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	IdUser        uint32                 `protobuf:"varint,2,opt,name=idUser,proto3" json:"idUser,omitempty"`
+	IdUser        uint32                 `protobuf:"varint,1,opt,name=idUser,proto3" json:"idUser,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -125,19 +125,121 @@ func (x *TestResponse) GetEmailUser() string {
 	return ""
 }
 
+type Test2Request struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	EmailUser     string                 `protobuf:"bytes,2,opt,name=emailUser,proto3" json:"emailUser,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Test2Request) Reset() {
+	*x = Test2Request{}
+	mi := &file_users_service_v1_test_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Test2Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Test2Request) ProtoMessage() {}
+
+func (x *Test2Request) ProtoReflect() protoreflect.Message {
+	mi := &file_users_service_v1_test_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Test2Request.ProtoReflect.Descriptor instead.
+func (*Test2Request) Descriptor() ([]byte, []int) {
+	return file_users_service_v1_test_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *Test2Request) GetEmailUser() string {
+	if x != nil {
+		return x.EmailUser
+	}
+	return ""
+}
+
+type Test2Response struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	IdUser        uint32                 `protobuf:"varint,1,opt,name=idUser,proto3" json:"idUser,omitempty"`
+	NameUser      string                 `protobuf:"bytes,2,opt,name=nameUser,proto3" json:"nameUser,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Test2Response) Reset() {
+	*x = Test2Response{}
+	mi := &file_users_service_v1_test_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Test2Response) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Test2Response) ProtoMessage() {}
+
+func (x *Test2Response) ProtoReflect() protoreflect.Message {
+	mi := &file_users_service_v1_test_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Test2Response.ProtoReflect.Descriptor instead.
+func (*Test2Response) Descriptor() ([]byte, []int) {
+	return file_users_service_v1_test_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *Test2Response) GetIdUser() uint32 {
+	if x != nil {
+		return x.IdUser
+	}
+	return 0
+}
+
+func (x *Test2Response) GetNameUser() string {
+	if x != nil {
+		return x.NameUser
+	}
+	return ""
+}
+
 var File_users_service_v1_test_proto protoreflect.FileDescriptor
 
 const file_users_service_v1_test_proto_rawDesc = "" +
 	"\n" +
 	"\x1busers_service/v1/test.proto\x12\x10users_service.v1\"%\n" +
 	"\vTestRequest\x12\x16\n" +
-	"\x06idUser\x18\x02 \x01(\rR\x06idUser\"`\n" +
+	"\x06idUser\x18\x01 \x01(\rR\x06idUser\"`\n" +
 	"\fTestResponse\x12\x16\n" +
 	"\x06idUser\x18\x01 \x01(\rR\x06idUser\x12\x1a\n" +
 	"\bnameUser\x18\x02 \x01(\tR\bnameUser\x12\x1c\n" +
-	"\temailUser\x18\x03 \x01(\tR\temailUser2T\n" +
+	"\temailUser\x18\x03 \x01(\tR\temailUser\",\n" +
+	"\fTest2Request\x12\x1c\n" +
+	"\temailUser\x18\x02 \x01(\tR\temailUser\"C\n" +
+	"\rTest2Response\x12\x16\n" +
+	"\x06idUser\x18\x01 \x01(\rR\x06idUser\x12\x1a\n" +
+	"\bnameUser\x18\x02 \x01(\tR\bnameUser2\xa3\x01\n" +
 	"\vTestService\x12E\n" +
-	"\x04Test\x12\x1d.users_service.v1.TestRequest\x1a\x1e.users_service.v1.TestResponseB?Z=github.com/kalina-malina/IM-PROTOS/generated/users_service/v1b\x06proto3"
+	"\x04Test\x12\x1d.users_service.v1.TestRequest\x1a\x1e.users_service.v1.TestResponse\x12M\n" +
+	"\fGetemailUser\x12\x1d.users_service.v1.TestRequest\x1a\x1e.users_service.v1.TestResponseB?Z=github.com/kalina-malina/IM-PROTOS/generated/users_service/v1b\x06proto3"
 
 var (
 	file_users_service_v1_test_proto_rawDescOnce sync.Once
@@ -151,16 +253,20 @@ func file_users_service_v1_test_proto_rawDescGZIP() []byte {
 	return file_users_service_v1_test_proto_rawDescData
 }
 
-var file_users_service_v1_test_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_users_service_v1_test_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_users_service_v1_test_proto_goTypes = []any{
-	(*TestRequest)(nil),  // 0: users_service.v1.TestRequest
-	(*TestResponse)(nil), // 1: users_service.v1.TestResponse
+	(*TestRequest)(nil),   // 0: users_service.v1.TestRequest
+	(*TestResponse)(nil),  // 1: users_service.v1.TestResponse
+	(*Test2Request)(nil),  // 2: users_service.v1.Test2Request
+	(*Test2Response)(nil), // 3: users_service.v1.Test2Response
 }
 var file_users_service_v1_test_proto_depIdxs = []int32{
 	0, // 0: users_service.v1.TestService.Test:input_type -> users_service.v1.TestRequest
-	1, // 1: users_service.v1.TestService.Test:output_type -> users_service.v1.TestResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	0, // 1: users_service.v1.TestService.GetemailUser:input_type -> users_service.v1.TestRequest
+	1, // 2: users_service.v1.TestService.Test:output_type -> users_service.v1.TestResponse
+	1, // 3: users_service.v1.TestService.GetemailUser:output_type -> users_service.v1.TestResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -177,7 +283,7 @@ func file_users_service_v1_test_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_service_v1_test_proto_rawDesc), len(file_users_service_v1_test_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

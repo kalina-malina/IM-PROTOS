@@ -19,7 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	TestService_Test_FullMethodName = "/users_service.v1.TestService/Test"
+	TestService_Test_FullMethodName         = "/users_service.v1.TestService/Test"
+	TestService_GetemailUser_FullMethodName = "/users_service.v1.TestService/GetemailUser"
 )
 
 // TestServiceClient is the client API for TestService service.
@@ -27,6 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TestServiceClient interface {
 	Test(ctx context.Context, in *TestRequest, opts ...grpc.CallOption) (*TestResponse, error)
+	GetemailUser(ctx context.Context, in *TestRequest, opts ...grpc.CallOption) (*TestResponse, error)
 }
 
 type testServiceClient struct {
@@ -47,11 +49,22 @@ func (c *testServiceClient) Test(ctx context.Context, in *TestRequest, opts ...g
 	return out, nil
 }
 
+func (c *testServiceClient) GetemailUser(ctx context.Context, in *TestRequest, opts ...grpc.CallOption) (*TestResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(TestResponse)
+	err := c.cc.Invoke(ctx, TestService_GetemailUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TestServiceServer is the server API for TestService service.
 // All implementations must embed UnimplementedTestServiceServer
 // for forward compatibility.
 type TestServiceServer interface {
 	Test(context.Context, *TestRequest) (*TestResponse, error)
+	GetemailUser(context.Context, *TestRequest) (*TestResponse, error)
 	mustEmbedUnimplementedTestServiceServer()
 }
 
@@ -64,6 +77,9 @@ type UnimplementedTestServiceServer struct{}
 
 func (UnimplementedTestServiceServer) Test(context.Context, *TestRequest) (*TestResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Test not implemented")
+}
+func (UnimplementedTestServiceServer) GetemailUser(context.Context, *TestRequest) (*TestResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetemailUser not implemented")
 }
 func (UnimplementedTestServiceServer) mustEmbedUnimplementedTestServiceServer() {}
 func (UnimplementedTestServiceServer) testEmbeddedByValue()                     {}
@@ -104,6 +120,24 @@ func _TestService_Test_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TestService_GetemailUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TestRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TestServiceServer).GetemailUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TestService_GetemailUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TestServiceServer).GetemailUser(ctx, req.(*TestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // TestService_ServiceDesc is the grpc.ServiceDesc for TestService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +148,10 @@ var TestService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Test",
 			Handler:    _TestService_Test_Handler,
+		},
+		{
+			MethodName: "GetemailUser",
+			Handler:    _TestService_GetemailUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
