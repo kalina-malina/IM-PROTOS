@@ -23,7 +23,7 @@ const (
 
 type TestRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	IdUser        uint32                 `protobuf:"varint,1,opt,name=idUser,proto3" json:"idUser,omitempty"`
+	IdUser        uint32                 `protobuf:"varint,2,opt,name=idUser,proto3" json:"idUser,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -131,7 +131,7 @@ const file_users_service_v1_test_proto_rawDesc = "" +
 	"\n" +
 	"\x1busers_service/v1/test.proto\x12\x10users_service.v1\"%\n" +
 	"\vTestRequest\x12\x16\n" +
-	"\x06idUser\x18\x01 \x01(\rR\x06idUser\"`\n" +
+	"\x06idUser\x18\x02 \x01(\rR\x06idUser\"`\n" +
 	"\fTestResponse\x12\x16\n" +
 	"\x06idUser\x18\x01 \x01(\rR\x06idUser\x12\x1a\n" +
 	"\bnameUser\x18\x02 \x01(\tR\bnameUser\x12\x1c\n" +
