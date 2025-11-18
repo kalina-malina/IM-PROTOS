@@ -10,11 +10,11 @@ option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users_service/
   }
 
   message TestRequest {
-    uint64 idUser = 1;
+    uint32 idUser = 1;
   }
 
   message TestResponse {
-    uint64 idUser = 1;
+    uint32 idUser = 1;
     string nameUser = 2;
     string emailUser = 3;
   }
