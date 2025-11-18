@@ -53,6 +53,12 @@ generate:
 		--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
 		--proto_path=proto \
 		proto/users_service/v1/admin_service.proto
+
+	@echo "Генерация test service..."
+	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
+		--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
+		--proto_path=proto \
+		proto/users_service/v1/test.proto
 	
 	@echo "✅ Генерация завершена! Файлы в generated/"
 

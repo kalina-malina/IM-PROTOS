@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package users_service.v1;
+
+option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users_service/v1";
+
+
+   service TestService {
+
+    rpc Test(TestRequest) returns (TestResponse);
+  }
+
+  message TestRequest {
+    string idUser = 1;
+  }
+
+  message TestResponse {
+    string nameUser = 1;
+    string emailUser = 2;
+  }
