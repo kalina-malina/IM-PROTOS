@@ -236,10 +236,10 @@ const file_users_service_v1_test_proto_rawDesc = "" +
 	"\temailUser\x18\x02 \x01(\tR\temailUser\"C\n" +
 	"\rTest2Response\x12\x16\n" +
 	"\x06idUser\x18\x01 \x01(\rR\x06idUser\x12\x1a\n" +
-	"\bnameUser\x18\x02 \x01(\tR\bnameUser2\xa3\x01\n" +
+	"\bnameUser\x18\x02 \x01(\tR\bnameUser2\xa5\x01\n" +
 	"\vTestService\x12E\n" +
-	"\x04Test\x12\x1d.users_service.v1.TestRequest\x1a\x1e.users_service.v1.TestResponse\x12M\n" +
-	"\fGetemailUser\x12\x1d.users_service.v1.TestRequest\x1a\x1e.users_service.v1.TestResponseB?Z=github.com/kalina-malina/IM-PROTOS/generated/users_service/v1b\x06proto3"
+	"\x04Test\x12\x1d.users_service.v1.TestRequest\x1a\x1e.users_service.v1.TestResponse\x12O\n" +
+	"\fGetemailUser\x12\x1e.users_service.v1.Test2Request\x1a\x1f.users_service.v1.Test2ResponseB?Z=github.com/kalina-malina/IM-PROTOS/generated/users_service/v1b\x06proto3"
 
 var (
 	file_users_service_v1_test_proto_rawDescOnce sync.Once
@@ -262,9 +262,9 @@ var file_users_service_v1_test_proto_goTypes = []any{
 }
 var file_users_service_v1_test_proto_depIdxs = []int32{
 	0, // 0: users_service.v1.TestService.Test:input_type -> users_service.v1.TestRequest
-	0, // 1: users_service.v1.TestService.GetemailUser:input_type -> users_service.v1.TestRequest
+	2, // 1: users_service.v1.TestService.GetemailUser:input_type -> users_service.v1.Test2Request
 	1, // 2: users_service.v1.TestService.Test:output_type -> users_service.v1.TestResponse
-	1, // 3: users_service.v1.TestService.GetemailUser:output_type -> users_service.v1.TestResponse
+	3, // 3: users_service.v1.TestService.GetemailUser:output_type -> users_service.v1.Test2Response
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

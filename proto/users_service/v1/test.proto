@@ -7,7 +7,7 @@ option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users_service/
 
    service TestService {
     rpc Test(TestRequest) returns (TestResponse);
-    rpc GetemailUser(TestRequest) returns (TestResponse);
+    rpc GetemailUser(Test2Request) returns (Test2Response);
   }
 
   message TestRequest {
