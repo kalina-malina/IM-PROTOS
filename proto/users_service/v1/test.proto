@@ -6,15 +6,15 @@ option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users_service/
 
 
    service TestService {
-
     rpc Test(TestRequest) returns (TestResponse);
   }
 
   message TestRequest {
-    string idUser = 1;
+    uint64 idUser = 1;
   }
 
   message TestResponse {
-    string nameUser = 1;
-    string emailUser = 2;
+    uint64 idUser = 1;
+    string nameUser = 2;
+    string emailUser = 3;
   }

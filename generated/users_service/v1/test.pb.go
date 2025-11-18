@@ -23,7 +23,7 @@ const (
 
 type TestRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	IdUser        string                 `protobuf:"bytes,1,opt,name=idUser,proto3" json:"idUser,omitempty"`
+	IdUser        uint64                 `protobuf:"varint,1,opt,name=idUser,proto3" json:"idUser,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -58,17 +58,18 @@ func (*TestRequest) Descriptor() ([]byte, []int) {
 	return file_users_service_v1_test_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *TestRequest) GetIdUser() string {
+func (x *TestRequest) GetIdUser() uint64 {
 	if x != nil {
 		return x.IdUser
 	}
-	return ""
+	return 0
 }
 
 type TestResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	NameUser      string                 `protobuf:"bytes,1,opt,name=nameUser,proto3" json:"nameUser,omitempty"`
-	EmailUser     string                 `protobuf:"bytes,2,opt,name=emailUser,proto3" json:"emailUser,omitempty"`
+	IdUser        uint64                 `protobuf:"varint,1,opt,name=idUser,proto3" json:"idUser,omitempty"`
+	NameUser      string                 `protobuf:"bytes,2,opt,name=nameUser,proto3" json:"nameUser,omitempty"`
+	EmailUser     string                 `protobuf:"bytes,3,opt,name=emailUser,proto3" json:"emailUser,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -103,6 +104,13 @@ func (*TestResponse) Descriptor() ([]byte, []int) {
 	return file_users_service_v1_test_proto_rawDescGZIP(), []int{1}
 }
 
+func (x *TestResponse) GetIdUser() uint64 {
+	if x != nil {
+		return x.IdUser
+	}
+	return 0
+}
+
 func (x *TestResponse) GetNameUser() string {
 	if x != nil {
 		return x.NameUser
@@ -123,10 +131,11 @@ const file_users_service_v1_test_proto_rawDesc = "" +
 	"\n" +
 	"\x1busers_service/v1/test.proto\x12\x10users_service.v1\"%\n" +
 	"\vTestRequest\x12\x16\n" +
-	"\x06idUser\x18\x01 \x01(\tR\x06idUser\"H\n" +
-	"\fTestResponse\x12\x1a\n" +
-	"\bnameUser\x18\x01 \x01(\tR\bnameUser\x12\x1c\n" +
-	"\temailUser\x18\x02 \x01(\tR\temailUser2T\n" +
+	"\x06idUser\x18\x01 \x01(\x04R\x06idUser\"`\n" +
+	"\fTestResponse\x12\x16\n" +
+	"\x06idUser\x18\x01 \x01(\x04R\x06idUser\x12\x1a\n" +
+	"\bnameUser\x18\x02 \x01(\tR\bnameUser\x12\x1c\n" +
+	"\temailUser\x18\x03 \x01(\tR\temailUser2T\n" +
 	"\vTestService\x12E\n" +
 	"\x04Test\x12\x1d.users_service.v1.TestRequest\x1a\x1e.users_service.v1.TestResponseB?Z=github.com/kalina-malina/IM-PROTOS/generated/users_service/v1b\x06proto3"
 
