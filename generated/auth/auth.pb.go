@@ -79,7 +79,7 @@ func (Role) EnumDescriptor() ([]byte, []int) {
 
 type RegisterUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	PhoneNumber   string                 `protobuf:"bytes,1,opt,name=PhoneNumber,proto3" json:"PhoneNumber,omitempty"`
+	PhoneNumber   string                 `protobuf:"bytes,1,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -365,9 +365,9 @@ var File_auth_auth_proto protoreflect.FileDescriptor
 
 const file_auth_auth_proto_rawDesc = "" +
 	"\n" +
-	"\x0fauth/auth.proto\x12\aauth.v1\x1a\x18union/user_setting.proto\"7\n" +
-	"\x13RegisterUserRequest\x12 \n" +
-	"\vPhoneNumber\x18\x01 \x01(\tR\vPhoneNumber\"\x87\x01\n" +
+	"\x0fauth/auth.proto\x12\aauth.v1\x1a\x18union/user_setting.proto\"8\n" +
+	"\x13RegisterUserRequest\x12!\n" +
+	"\fphone_number\x18\x01 \x01(\tR\vphoneNumber\"\x87\x01\n" +
 	"\x14RegisterUserResponse\x12'\n" +
 	"\x0fverification_id\x18\x01 \x01(\tR\x0everificationId\x12&\n" +
 	"\x0fcode_expires_in\x18\x02 \x01(\tR\rcodeExpiresIn\x12\x1e\n" +
