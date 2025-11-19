@@ -19,7 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AuthOrRegistrationService_RegiterUser_FullMethodName   = "/auth.v1.AuthOrRegistrationService/RegiterUser"
+	AuthOrRegistrationService_RegiterClient_FullMethodName = "/auth.v1.AuthOrRegistrationService/RegiterClient"
 	AuthOrRegistrationService_VerifySmsCode_FullMethodName = "/auth.v1.AuthOrRegistrationService/VerifySmsCode"
 )
 
@@ -27,7 +27,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthOrRegistrationServiceClient interface {
-	RegiterUser(ctx context.Context, in *RegisterUserRequest, opts ...grpc.CallOption) (*RegisterUserResponse, error)
+	RegiterClient(ctx context.Context, in *RegisterClientRequest, opts ...grpc.CallOption) (*RegisterClientResponse, error)
 	VerifySmsCode(ctx context.Context, in *VerifySmsCodeRequest, opts ...grpc.CallOption) (*VerifySmsCodeResponse, error)
 }
 
@@ -39,10 +39,10 @@ func NewAuthOrRegistrationServiceClient(cc grpc.ClientConnInterface) AuthOrRegis
 	return &authOrRegistrationServiceClient{cc}
 }
 
-func (c *authOrRegistrationServiceClient) RegiterUser(ctx context.Context, in *RegisterUserRequest, opts ...grpc.CallOption) (*RegisterUserResponse, error) {
+func (c *authOrRegistrationServiceClient) RegiterClient(ctx context.Context, in *RegisterClientRequest, opts ...grpc.CallOption) (*RegisterClientResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RegisterUserResponse)
-	err := c.cc.Invoke(ctx, AuthOrRegistrationService_RegiterUser_FullMethodName, in, out, cOpts...)
+	out := new(RegisterClientResponse)
+	err := c.cc.Invoke(ctx, AuthOrRegistrationService_RegiterClient_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func (c *authOrRegistrationServiceClient) VerifySmsCode(ctx context.Context, in 
 // All implementations must embed UnimplementedAuthOrRegistrationServiceServer
 // for forward compatibility.
 type AuthOrRegistrationServiceServer interface {
-	RegiterUser(context.Context, *RegisterUserRequest) (*RegisterUserResponse, error)
+	RegiterClient(context.Context, *RegisterClientRequest) (*RegisterClientResponse, error)
 	VerifySmsCode(context.Context, *VerifySmsCodeRequest) (*VerifySmsCodeResponse, error)
 	mustEmbedUnimplementedAuthOrRegistrationServiceServer()
 }
@@ -75,8 +75,8 @@ type AuthOrRegistrationServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAuthOrRegistrationServiceServer struct{}
 
-func (UnimplementedAuthOrRegistrationServiceServer) RegiterUser(context.Context, *RegisterUserRequest) (*RegisterUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RegiterUser not implemented")
+func (UnimplementedAuthOrRegistrationServiceServer) RegiterClient(context.Context, *RegisterClientRequest) (*RegisterClientResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegiterClient not implemented")
 }
 func (UnimplementedAuthOrRegistrationServiceServer) VerifySmsCode(context.Context, *VerifySmsCodeRequest) (*VerifySmsCodeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifySmsCode not implemented")
@@ -103,20 +103,20 @@ func RegisterAuthOrRegistrationServiceServer(s grpc.ServiceRegistrar, srv AuthOr
 	s.RegisterService(&AuthOrRegistrationService_ServiceDesc, srv)
 }
 
-func _AuthOrRegistrationService_RegiterUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterUserRequest)
+func _AuthOrRegistrationService_RegiterClient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterClientRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthOrRegistrationServiceServer).RegiterUser(ctx, in)
+		return srv.(AuthOrRegistrationServiceServer).RegiterClient(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AuthOrRegistrationService_RegiterUser_FullMethodName,
+		FullMethod: AuthOrRegistrationService_RegiterClient_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthOrRegistrationServiceServer).RegiterUser(ctx, req.(*RegisterUserRequest))
+		return srv.(AuthOrRegistrationServiceServer).RegiterClient(ctx, req.(*RegisterClientRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -147,8 +147,8 @@ var AuthOrRegistrationService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*AuthOrRegistrationServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "RegiterUser",
-			Handler:    _AuthOrRegistrationService_RegiterUser_Handler,
+			MethodName: "RegiterClient",
+			Handler:    _AuthOrRegistrationService_RegiterClient_Handler,
 		},
 		{
 			MethodName: "VerifySmsCode",

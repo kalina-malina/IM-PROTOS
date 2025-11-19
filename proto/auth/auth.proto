@@ -6,18 +6,18 @@ option go_package = "github.com/kalina-malina/IM-PROTOS/generated/auth/v1";
 import "union/user_setting.proto"; 
 
 service AuthOrRegistrationService {
-  rpc RegiterUser(RegisterUserRequest) returns (RegisterUserResponse);
+  rpc RegiterClient(RegisterClientRequest) returns (RegisterClientResponse);
   rpc VerifySmsCode(VerifySmsCodeRequest) returns (VerifySmsCodeResponse);
 }
 
-message RegisterUserRequest {
+message RegisterClientRequest {
   string phone_number = 1;
 
 }
 
-message RegisterUserResponse {
+message RegisterClientResponse {
   bool satus = 1;
-  bool is_new_user = 2;
+  bool is_new_client = 2;
   optional string msg = 3;
   optional string verification_id  = 4;
   
@@ -39,6 +39,7 @@ message VerifySmsCodeResponse {
 
 message Client{
   uint32 id = 1;
-  optional uint32 lastSelectedStoreId = 2;
+  string card_number = 2;
+  optional uint32 lastSelectedStoreId = 3;
 }
 

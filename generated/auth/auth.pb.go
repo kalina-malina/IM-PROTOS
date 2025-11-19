@@ -22,27 +22,27 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type RegisterUserRequest struct {
+type RegisterClientRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PhoneNumber   string                 `protobuf:"bytes,1,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RegisterUserRequest) Reset() {
-	*x = RegisterUserRequest{}
+func (x *RegisterClientRequest) Reset() {
+	*x = RegisterClientRequest{}
 	mi := &file_auth_auth_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RegisterUserRequest) String() string {
+func (x *RegisterClientRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RegisterUserRequest) ProtoMessage() {}
+func (*RegisterClientRequest) ProtoMessage() {}
 
-func (x *RegisterUserRequest) ProtoReflect() protoreflect.Message {
+func (x *RegisterClientRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_auth_auth_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -54,42 +54,42 @@ func (x *RegisterUserRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RegisterUserRequest.ProtoReflect.Descriptor instead.
-func (*RegisterUserRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use RegisterClientRequest.ProtoReflect.Descriptor instead.
+func (*RegisterClientRequest) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *RegisterUserRequest) GetPhoneNumber() string {
+func (x *RegisterClientRequest) GetPhoneNumber() string {
 	if x != nil {
 		return x.PhoneNumber
 	}
 	return ""
 }
 
-type RegisterUserResponse struct {
+type RegisterClientResponse struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Satus          bool                   `protobuf:"varint,1,opt,name=satus,proto3" json:"satus,omitempty"`
-	IsNewUser      bool                   `protobuf:"varint,2,opt,name=is_new_user,json=isNewUser,proto3" json:"is_new_user,omitempty"`
+	IsNewClient    bool                   `protobuf:"varint,2,opt,name=is_new_client,json=isNewClient,proto3" json:"is_new_client,omitempty"`
 	Msg            *string                `protobuf:"bytes,3,opt,name=msg,proto3,oneof" json:"msg,omitempty"`
 	VerificationId *string                `protobuf:"bytes,4,opt,name=verification_id,json=verificationId,proto3,oneof" json:"verification_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
 
-func (x *RegisterUserResponse) Reset() {
-	*x = RegisterUserResponse{}
+func (x *RegisterClientResponse) Reset() {
+	*x = RegisterClientResponse{}
 	mi := &file_auth_auth_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RegisterUserResponse) String() string {
+func (x *RegisterClientResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RegisterUserResponse) ProtoMessage() {}
+func (*RegisterClientResponse) ProtoMessage() {}
 
-func (x *RegisterUserResponse) ProtoReflect() protoreflect.Message {
+func (x *RegisterClientResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_auth_auth_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -101,33 +101,33 @@ func (x *RegisterUserResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RegisterUserResponse.ProtoReflect.Descriptor instead.
-func (*RegisterUserResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use RegisterClientResponse.ProtoReflect.Descriptor instead.
+func (*RegisterClientResponse) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *RegisterUserResponse) GetSatus() bool {
+func (x *RegisterClientResponse) GetSatus() bool {
 	if x != nil {
 		return x.Satus
 	}
 	return false
 }
 
-func (x *RegisterUserResponse) GetIsNewUser() bool {
+func (x *RegisterClientResponse) GetIsNewClient() bool {
 	if x != nil {
-		return x.IsNewUser
+		return x.IsNewClient
 	}
 	return false
 }
 
-func (x *RegisterUserResponse) GetMsg() string {
+func (x *RegisterClientResponse) GetMsg() string {
 	if x != nil && x.Msg != nil {
 		return *x.Msg
 	}
 	return ""
 }
 
-func (x *RegisterUserResponse) GetVerificationId() string {
+func (x *RegisterClientResponse) GetVerificationId() string {
 	if x != nil && x.VerificationId != nil {
 		return *x.VerificationId
 	}
@@ -273,7 +273,8 @@ func (x *VerifySmsCodeResponse) GetUserSettings() *v1.UserSettings {
 type Client struct {
 	state               protoimpl.MessageState `protogen:"open.v1"`
 	Id                  uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	LastSelectedStoreId *uint32                `protobuf:"varint,2,opt,name=lastSelectedStoreId,proto3,oneof" json:"lastSelectedStoreId,omitempty"`
+	CardNumber          string                 `protobuf:"bytes,2,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
+	LastSelectedStoreId *uint32                `protobuf:"varint,3,opt,name=lastSelectedStoreId,proto3,oneof" json:"lastSelectedStoreId,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
 }
@@ -315,6 +316,13 @@ func (x *Client) GetId() uint32 {
 	return 0
 }
 
+func (x *Client) GetCardNumber() string {
+	if x != nil {
+		return x.CardNumber
+	}
+	return ""
+}
+
 func (x *Client) GetLastSelectedStoreId() uint32 {
 	if x != nil && x.LastSelectedStoreId != nil {
 		return *x.LastSelectedStoreId
@@ -326,12 +334,12 @@ var File_auth_auth_proto protoreflect.FileDescriptor
 
 const file_auth_auth_proto_rawDesc = "" +
 	"\n" +
-	"\x0fauth/auth.proto\x12\aauth.v1\x1a\x18union/user_setting.proto\"8\n" +
-	"\x13RegisterUserRequest\x12!\n" +
-	"\fphone_number\x18\x01 \x01(\tR\vphoneNumber\"\xad\x01\n" +
-	"\x14RegisterUserResponse\x12\x14\n" +
-	"\x05satus\x18\x01 \x01(\bR\x05satus\x12\x1e\n" +
-	"\vis_new_user\x18\x02 \x01(\bR\tisNewUser\x12\x15\n" +
+	"\x0fauth/auth.proto\x12\aauth.v1\x1a\x18union/user_setting.proto\":\n" +
+	"\x15RegisterClientRequest\x12!\n" +
+	"\fphone_number\x18\x01 \x01(\tR\vphoneNumber\"\xb3\x01\n" +
+	"\x16RegisterClientResponse\x12\x14\n" +
+	"\x05satus\x18\x01 \x01(\bR\x05satus\x12\"\n" +
+	"\ris_new_client\x18\x02 \x01(\bR\visNewClient\x12\x15\n" +
 	"\x03msg\x18\x03 \x01(\tH\x00R\x03msg\x88\x01\x01\x12,\n" +
 	"\x0fverification_id\x18\x04 \x01(\tH\x01R\x0everificationId\x88\x01\x01B\x06\n" +
 	"\x04_msgB\x12\n" +
@@ -348,13 +356,15 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\x12\x10\n" +
 	"\x03sid\x18\x04 \x01(\tR\x03sid\x12'\n" +
 	"\x06client\x18\x05 \x01(\v2\x0f.auth.v1.ClientR\x06client\x12:\n" +
-	"\fUserSettings\x18\x06 \x01(\v2\x16.union.v1.UserSettingsR\fUserSettings\"g\n" +
+	"\fUserSettings\x18\x06 \x01(\v2\x16.union.v1.UserSettingsR\fUserSettings\"\x88\x01\n" +
 	"\x06Client\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x125\n" +
-	"\x13lastSelectedStoreId\x18\x02 \x01(\rH\x00R\x13lastSelectedStoreId\x88\x01\x01B\x16\n" +
-	"\x14_lastSelectedStoreId2\xb7\x01\n" +
-	"\x19AuthOrRegistrationService\x12J\n" +
-	"\vRegiterUser\x12\x1c.auth.v1.RegisterUserRequest\x1a\x1d.auth.v1.RegisterUserResponse\x12N\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1f\n" +
+	"\vcard_number\x18\x02 \x01(\tR\n" +
+	"cardNumber\x125\n" +
+	"\x13lastSelectedStoreId\x18\x03 \x01(\rH\x00R\x13lastSelectedStoreId\x88\x01\x01B\x16\n" +
+	"\x14_lastSelectedStoreId2\xbd\x01\n" +
+	"\x19AuthOrRegistrationService\x12P\n" +
+	"\rRegiterClient\x12\x1e.auth.v1.RegisterClientRequest\x1a\x1f.auth.v1.RegisterClientResponse\x12N\n" +
 	"\rVerifySmsCode\x12\x1d.auth.v1.VerifySmsCodeRequest\x1a\x1e.auth.v1.VerifySmsCodeResponseB6Z4github.com/kalina-malina/IM-PROTOS/generated/auth/v1b\x06proto3"
 
 var (
@@ -371,19 +381,19 @@ func file_auth_auth_proto_rawDescGZIP() []byte {
 
 var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_auth_auth_proto_goTypes = []any{
-	(*RegisterUserRequest)(nil),   // 0: auth.v1.RegisterUserRequest
-	(*RegisterUserResponse)(nil),  // 1: auth.v1.RegisterUserResponse
-	(*VerifySmsCodeRequest)(nil),  // 2: auth.v1.VerifySmsCodeRequest
-	(*VerifySmsCodeResponse)(nil), // 3: auth.v1.VerifySmsCodeResponse
-	(*Client)(nil),                // 4: auth.v1.Client
-	(*v1.UserSettings)(nil),       // 5: union.v1.UserSettings
+	(*RegisterClientRequest)(nil),  // 0: auth.v1.RegisterClientRequest
+	(*RegisterClientResponse)(nil), // 1: auth.v1.RegisterClientResponse
+	(*VerifySmsCodeRequest)(nil),   // 2: auth.v1.VerifySmsCodeRequest
+	(*VerifySmsCodeResponse)(nil),  // 3: auth.v1.VerifySmsCodeResponse
+	(*Client)(nil),                 // 4: auth.v1.Client
+	(*v1.UserSettings)(nil),        // 5: union.v1.UserSettings
 }
 var file_auth_auth_proto_depIdxs = []int32{
 	4, // 0: auth.v1.VerifySmsCodeResponse.client:type_name -> auth.v1.Client
 	5, // 1: auth.v1.VerifySmsCodeResponse.UserSettings:type_name -> union.v1.UserSettings
-	0, // 2: auth.v1.AuthOrRegistrationService.RegiterUser:input_type -> auth.v1.RegisterUserRequest
+	0, // 2: auth.v1.AuthOrRegistrationService.RegiterClient:input_type -> auth.v1.RegisterClientRequest
 	2, // 3: auth.v1.AuthOrRegistrationService.VerifySmsCode:input_type -> auth.v1.VerifySmsCodeRequest
-	1, // 4: auth.v1.AuthOrRegistrationService.RegiterUser:output_type -> auth.v1.RegisterUserResponse
+	1, // 4: auth.v1.AuthOrRegistrationService.RegiterClient:output_type -> auth.v1.RegisterClientResponse
 	3, // 5: auth.v1.AuthOrRegistrationService.VerifySmsCode:output_type -> auth.v1.VerifySmsCodeResponse
 	4, // [4:6] is the sub-list for method output_type
 	2, // [2:4] is the sub-list for method input_type
