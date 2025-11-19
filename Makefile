@@ -41,34 +41,34 @@ generate:
 
 
 
-	@echo "Генерация user models..."
-	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
-		--proto_path=proto \
-		proto/users_service/v1/user.proto
+	# @echo "Генерация user models..."
+	# PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
+	# 	--proto_path=proto \
+	# 	proto/users_service/v1/user.proto
 	
-	@echo "Генерация auth service..."
-	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
-		--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
-		--proto_path=proto \
-		proto/users_service/v1/auth_service.proto
+	# @echo "Генерация auth service..."
+	# PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
+	# 	--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
+	# 	--proto_path=proto \
+	# 	proto/users_service/v1/auth_service.proto
 	
-	@echo "Генерация user service..."
-	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
-		--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
-		--proto_path=proto \
-		proto/users_service/v1/user_service.proto
+	# @echo "Генерация user service..."
+	# PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
+	# 	--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
+	# 	--proto_path=proto \
+	# 	proto/users_service/v1/user_service.proto
 	
-	@echo "Генерация admin service..."
-	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
-		--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
-		--proto_path=proto \
-		proto/users_service/v1/admin_service.proto
+	# @echo "Генерация admin service..."
+	# PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
+	# 	--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
+	# 	--proto_path=proto \
+	# 	proto/users_service/v1/admin_service.proto
 
-	@echo "Генерация test service..."
-	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
-		--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
-		--proto_path=proto \
-		proto/users_service/v1/test.proto
+	# @echo "Генерация test service..."
+	# PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
+	# 	--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
+	# 	--proto_path=proto \
+	# 	proto/users_service/v1/test.proto
 	
 	@echo "✅ Генерация завершена! Файлы в generated/"
 
