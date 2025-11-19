@@ -22,61 +22,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type Role int32
-
-const (
-	Role_ROLE_CLIENT   Role = 0
-	Role_ROLE_OPERATOR Role = 1
-	Role_ROLE_MANAGER  Role = 2
-	Role_ROLE_ADMIN    Role = 3
-	Role_ROLE_ANALYST  Role = 4
-)
-
-// Enum value maps for Role.
-var (
-	Role_name = map[int32]string{
-		0: "ROLE_CLIENT",
-		1: "ROLE_OPERATOR",
-		2: "ROLE_MANAGER",
-		3: "ROLE_ADMIN",
-		4: "ROLE_ANALYST",
-	}
-	Role_value = map[string]int32{
-		"ROLE_CLIENT":   0,
-		"ROLE_OPERATOR": 1,
-		"ROLE_MANAGER":  2,
-		"ROLE_ADMIN":    3,
-		"ROLE_ANALYST":  4,
-	}
-)
-
-func (x Role) Enum() *Role {
-	p := new(Role)
-	*p = x
-	return p
-}
-
-func (x Role) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (Role) Descriptor() protoreflect.EnumDescriptor {
-	return file_auth_auth_proto_enumTypes[0].Descriptor()
-}
-
-func (Role) Type() protoreflect.EnumType {
-	return &file_auth_auth_proto_enumTypes[0]
-}
-
-func (x Role) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use Role.Descriptor instead.
-func (Role) EnumDescriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{0}
-}
-
 type RegisterUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PhoneNumber   string                 `protobuf:"bytes,1,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
@@ -123,9 +68,10 @@ func (x *RegisterUserRequest) GetPhoneNumber() string {
 
 type RegisterUserResponse struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	VerificationId string                 `protobuf:"bytes,1,opt,name=verification_id,json=verificationId,proto3" json:"verification_id,omitempty"`
-	CodeExpiresIn  string                 `protobuf:"bytes,2,opt,name=code_expires_in,json=codeExpiresIn,proto3" json:"code_expires_in,omitempty"`
-	IsNewUser      bool                   `protobuf:"varint,3,opt,name=is_new_user,json=isNewUser,proto3" json:"is_new_user,omitempty"`
+	Satus          bool                   `protobuf:"varint,1,opt,name=satus,proto3" json:"satus,omitempty"`
+	IsNewUser      bool                   `protobuf:"varint,2,opt,name=is_new_user,json=isNewUser,proto3" json:"is_new_user,omitempty"`
+	Msg            *string                `protobuf:"bytes,3,opt,name=msg,proto3,oneof" json:"msg,omitempty"`
+	VerificationId *string                `protobuf:"bytes,4,opt,name=verification_id,json=verificationId,proto3,oneof" json:"verification_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -160,18 +106,11 @@ func (*RegisterUserResponse) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *RegisterUserResponse) GetVerificationId() string {
+func (x *RegisterUserResponse) GetSatus() bool {
 	if x != nil {
-		return x.VerificationId
+		return x.Satus
 	}
-	return ""
-}
-
-func (x *RegisterUserResponse) GetCodeExpiresIn() string {
-	if x != nil {
-		return x.CodeExpiresIn
-	}
-	return ""
+	return false
 }
 
 func (x *RegisterUserResponse) GetIsNewUser() bool {
@@ -181,10 +120,24 @@ func (x *RegisterUserResponse) GetIsNewUser() bool {
 	return false
 }
 
+func (x *RegisterUserResponse) GetMsg() string {
+	if x != nil && x.Msg != nil {
+		return *x.Msg
+	}
+	return ""
+}
+
+func (x *RegisterUserResponse) GetVerificationId() string {
+	if x != nil && x.VerificationId != nil {
+		return *x.VerificationId
+	}
+	return ""
+}
+
 type VerifySmsCodeRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	VerificationId string                 `protobuf:"bytes,1,opt,name=verification_id,json=verificationId,proto3" json:"verification_id,omitempty"`
-	Code           string                 `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
+	VerificationId *string                `protobuf:"bytes,1,opt,name=verification_id,json=verificationId,proto3,oneof" json:"verification_id,omitempty"`
+	Code           *string                `protobuf:"bytes,2,opt,name=code,proto3,oneof" json:"code,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -220,15 +173,15 @@ func (*VerifySmsCodeRequest) Descriptor() ([]byte, []int) {
 }
 
 func (x *VerifySmsCodeRequest) GetVerificationId() string {
-	if x != nil {
-		return x.VerificationId
+	if x != nil && x.VerificationId != nil {
+		return *x.VerificationId
 	}
 	return ""
 }
 
 func (x *VerifySmsCodeRequest) GetCode() string {
-	if x != nil {
-		return x.Code
+	if x != nil && x.Code != nil {
+		return *x.Code
 	}
 	return ""
 }
@@ -237,8 +190,10 @@ type VerifySmsCodeResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	IsVerified    bool                   `protobuf:"varint,1,opt,name=is_verified,json=isVerified,proto3" json:"is_verified,omitempty"`
 	IsNewUser     bool                   `protobuf:"varint,2,opt,name=is_new_user,json=isNewUser,proto3" json:"is_new_user,omitempty"`
-	UserInfo      *UserInfo              `protobuf:"bytes,3,opt,name=userInfo,proto3" json:"userInfo,omitempty"`
-	UserSettings  *v1.UserSettings       `protobuf:"bytes,4,opt,name=UserSettings,proto3,oneof" json:"UserSettings,omitempty"`
+	AccessToken   string                 `protobuf:"bytes,3,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	Sid           string                 `protobuf:"bytes,4,opt,name=sid,proto3" json:"sid,omitempty"`
+	Client        *Client                `protobuf:"bytes,5,opt,name=client,proto3" json:"client,omitempty"`
+	UserSettings  *v1.UserSettings       `protobuf:"bytes,6,opt,name=UserSettings,proto3" json:"UserSettings,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -287,9 +242,23 @@ func (x *VerifySmsCodeResponse) GetIsNewUser() bool {
 	return false
 }
 
-func (x *VerifySmsCodeResponse) GetUserInfo() *UserInfo {
+func (x *VerifySmsCodeResponse) GetAccessToken() string {
 	if x != nil {
-		return x.UserInfo
+		return x.AccessToken
+	}
+	return ""
+}
+
+func (x *VerifySmsCodeResponse) GetSid() string {
+	if x != nil {
+		return x.Sid
+	}
+	return ""
+}
+
+func (x *VerifySmsCodeResponse) GetClient() *Client {
+	if x != nil {
+		return x.Client
 	}
 	return nil
 }
@@ -301,29 +270,28 @@ func (x *VerifySmsCodeResponse) GetUserSettings() *v1.UserSettings {
 	return nil
 }
 
-type UserInfo struct {
+type Client struct {
 	state               protoimpl.MessageState `protogen:"open.v1"`
 	Id                  uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Role                Role                   `protobuf:"varint,2,opt,name=role,proto3,enum=auth.v1.Role" json:"role,omitempty"`
-	LastSelectedStoreId *uint32                `protobuf:"varint,3,opt,name=lastSelectedStoreId,proto3,oneof" json:"lastSelectedStoreId,omitempty"`
+	LastSelectedStoreId *uint32                `protobuf:"varint,2,opt,name=lastSelectedStoreId,proto3,oneof" json:"lastSelectedStoreId,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
 }
 
-func (x *UserInfo) Reset() {
-	*x = UserInfo{}
+func (x *Client) Reset() {
+	*x = Client{}
 	mi := &file_auth_auth_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UserInfo) String() string {
+func (x *Client) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UserInfo) ProtoMessage() {}
+func (*Client) ProtoMessage() {}
 
-func (x *UserInfo) ProtoReflect() protoreflect.Message {
+func (x *Client) ProtoReflect() protoreflect.Message {
 	mi := &file_auth_auth_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -335,26 +303,19 @@ func (x *UserInfo) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UserInfo.ProtoReflect.Descriptor instead.
-func (*UserInfo) Descriptor() ([]byte, []int) {
+// Deprecated: Use Client.ProtoReflect.Descriptor instead.
+func (*Client) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UserInfo) GetId() uint32 {
+func (x *Client) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
 }
 
-func (x *UserInfo) GetRole() Role {
-	if x != nil {
-		return x.Role
-	}
-	return Role_ROLE_CLIENT
-}
-
-func (x *UserInfo) GetLastSelectedStoreId() uint32 {
+func (x *Client) GetLastSelectedStoreId() uint32 {
 	if x != nil && x.LastSelectedStoreId != nil {
 		return *x.LastSelectedStoreId
 	}
@@ -367,33 +328,31 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\n" +
 	"\x0fauth/auth.proto\x12\aauth.v1\x1a\x18union/user_setting.proto\"8\n" +
 	"\x13RegisterUserRequest\x12!\n" +
-	"\fphone_number\x18\x01 \x01(\tR\vphoneNumber\"\x87\x01\n" +
-	"\x14RegisterUserResponse\x12'\n" +
-	"\x0fverification_id\x18\x01 \x01(\tR\x0everificationId\x12&\n" +
-	"\x0fcode_expires_in\x18\x02 \x01(\tR\rcodeExpiresIn\x12\x1e\n" +
-	"\vis_new_user\x18\x03 \x01(\bR\tisNewUser\"S\n" +
-	"\x14VerifySmsCodeRequest\x12'\n" +
-	"\x0fverification_id\x18\x01 \x01(\tR\x0everificationId\x12\x12\n" +
-	"\x04code\x18\x02 \x01(\tR\x04code\"\xd9\x01\n" +
+	"\fphone_number\x18\x01 \x01(\tR\vphoneNumber\"\xad\x01\n" +
+	"\x14RegisterUserResponse\x12\x14\n" +
+	"\x05satus\x18\x01 \x01(\bR\x05satus\x12\x1e\n" +
+	"\vis_new_user\x18\x02 \x01(\bR\tisNewUser\x12\x15\n" +
+	"\x03msg\x18\x03 \x01(\tH\x00R\x03msg\x88\x01\x01\x12,\n" +
+	"\x0fverification_id\x18\x04 \x01(\tH\x01R\x0everificationId\x88\x01\x01B\x06\n" +
+	"\x04_msgB\x12\n" +
+	"\x10_verification_id\"z\n" +
+	"\x14VerifySmsCodeRequest\x12,\n" +
+	"\x0fverification_id\x18\x01 \x01(\tH\x00R\x0everificationId\x88\x01\x01\x12\x17\n" +
+	"\x04code\x18\x02 \x01(\tH\x01R\x04code\x88\x01\x01B\x12\n" +
+	"\x10_verification_idB\a\n" +
+	"\x05_code\"\xf2\x01\n" +
 	"\x15VerifySmsCodeResponse\x12\x1f\n" +
 	"\vis_verified\x18\x01 \x01(\bR\n" +
 	"isVerified\x12\x1e\n" +
-	"\vis_new_user\x18\x02 \x01(\bR\tisNewUser\x12-\n" +
-	"\buserInfo\x18\x03 \x01(\v2\x11.auth.v1.UserInfoR\buserInfo\x12?\n" +
-	"\fUserSettings\x18\x04 \x01(\v2\x16.union.v1.UserSettingsH\x00R\fUserSettings\x88\x01\x01B\x0f\n" +
-	"\r_UserSettings\"\x8c\x01\n" +
-	"\bUserInfo\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12!\n" +
-	"\x04role\x18\x02 \x01(\x0e2\r.auth.v1.RoleR\x04role\x125\n" +
-	"\x13lastSelectedStoreId\x18\x03 \x01(\rH\x00R\x13lastSelectedStoreId\x88\x01\x01B\x16\n" +
-	"\x14_lastSelectedStoreId*^\n" +
-	"\x04Role\x12\x0f\n" +
-	"\vROLE_CLIENT\x10\x00\x12\x11\n" +
-	"\rROLE_OPERATOR\x10\x01\x12\x10\n" +
-	"\fROLE_MANAGER\x10\x02\x12\x0e\n" +
-	"\n" +
-	"ROLE_ADMIN\x10\x03\x12\x10\n" +
-	"\fROLE_ANALYST\x10\x042\xb7\x01\n" +
+	"\vis_new_user\x18\x02 \x01(\bR\tisNewUser\x12!\n" +
+	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\x12\x10\n" +
+	"\x03sid\x18\x04 \x01(\tR\x03sid\x12'\n" +
+	"\x06client\x18\x05 \x01(\v2\x0f.auth.v1.ClientR\x06client\x12:\n" +
+	"\fUserSettings\x18\x06 \x01(\v2\x16.union.v1.UserSettingsR\fUserSettings\"g\n" +
+	"\x06Client\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x125\n" +
+	"\x13lastSelectedStoreId\x18\x02 \x01(\rH\x00R\x13lastSelectedStoreId\x88\x01\x01B\x16\n" +
+	"\x14_lastSelectedStoreId2\xb7\x01\n" +
 	"\x19AuthOrRegistrationService\x12J\n" +
 	"\vRegiterUser\x12\x1c.auth.v1.RegisterUserRequest\x1a\x1d.auth.v1.RegisterUserResponse\x12N\n" +
 	"\rVerifySmsCode\x12\x1d.auth.v1.VerifySmsCodeRequest\x1a\x1e.auth.v1.VerifySmsCodeResponseB6Z4github.com/kalina-malina/IM-PROTOS/generated/auth/v1b\x06proto3"
@@ -410,30 +369,27 @@ func file_auth_auth_proto_rawDescGZIP() []byte {
 	return file_auth_auth_proto_rawDescData
 }
 
-var file_auth_auth_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_auth_auth_proto_goTypes = []any{
-	(Role)(0),                     // 0: auth.v1.Role
-	(*RegisterUserRequest)(nil),   // 1: auth.v1.RegisterUserRequest
-	(*RegisterUserResponse)(nil),  // 2: auth.v1.RegisterUserResponse
-	(*VerifySmsCodeRequest)(nil),  // 3: auth.v1.VerifySmsCodeRequest
-	(*VerifySmsCodeResponse)(nil), // 4: auth.v1.VerifySmsCodeResponse
-	(*UserInfo)(nil),              // 5: auth.v1.UserInfo
-	(*v1.UserSettings)(nil),       // 6: union.v1.UserSettings
+	(*RegisterUserRequest)(nil),   // 0: auth.v1.RegisterUserRequest
+	(*RegisterUserResponse)(nil),  // 1: auth.v1.RegisterUserResponse
+	(*VerifySmsCodeRequest)(nil),  // 2: auth.v1.VerifySmsCodeRequest
+	(*VerifySmsCodeResponse)(nil), // 3: auth.v1.VerifySmsCodeResponse
+	(*Client)(nil),                // 4: auth.v1.Client
+	(*v1.UserSettings)(nil),       // 5: union.v1.UserSettings
 }
 var file_auth_auth_proto_depIdxs = []int32{
-	5, // 0: auth.v1.VerifySmsCodeResponse.userInfo:type_name -> auth.v1.UserInfo
-	6, // 1: auth.v1.VerifySmsCodeResponse.UserSettings:type_name -> union.v1.UserSettings
-	0, // 2: auth.v1.UserInfo.role:type_name -> auth.v1.Role
-	1, // 3: auth.v1.AuthOrRegistrationService.RegiterUser:input_type -> auth.v1.RegisterUserRequest
-	3, // 4: auth.v1.AuthOrRegistrationService.VerifySmsCode:input_type -> auth.v1.VerifySmsCodeRequest
-	2, // 5: auth.v1.AuthOrRegistrationService.RegiterUser:output_type -> auth.v1.RegisterUserResponse
-	4, // 6: auth.v1.AuthOrRegistrationService.VerifySmsCode:output_type -> auth.v1.VerifySmsCodeResponse
-	5, // [5:7] is the sub-list for method output_type
-	3, // [3:5] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	4, // 0: auth.v1.VerifySmsCodeResponse.client:type_name -> auth.v1.Client
+	5, // 1: auth.v1.VerifySmsCodeResponse.UserSettings:type_name -> union.v1.UserSettings
+	0, // 2: auth.v1.AuthOrRegistrationService.RegiterUser:input_type -> auth.v1.RegisterUserRequest
+	2, // 3: auth.v1.AuthOrRegistrationService.VerifySmsCode:input_type -> auth.v1.VerifySmsCodeRequest
+	1, // 4: auth.v1.AuthOrRegistrationService.RegiterUser:output_type -> auth.v1.RegisterUserResponse
+	3, // 5: auth.v1.AuthOrRegistrationService.VerifySmsCode:output_type -> auth.v1.VerifySmsCodeResponse
+	4, // [4:6] is the sub-list for method output_type
+	2, // [2:4] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_auth_auth_proto_init() }
@@ -441,21 +397,21 @@ func file_auth_auth_proto_init() {
 	if File_auth_auth_proto != nil {
 		return
 	}
-	file_auth_auth_proto_msgTypes[3].OneofWrappers = []any{}
+	file_auth_auth_proto_msgTypes[1].OneofWrappers = []any{}
+	file_auth_auth_proto_msgTypes[2].OneofWrappers = []any{}
 	file_auth_auth_proto_msgTypes[4].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_auth_proto_rawDesc), len(file_auth_auth_proto_rawDesc)),
-			NumEnums:      1,
+			NumEnums:      0,
 			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_auth_auth_proto_goTypes,
 		DependencyIndexes: file_auth_auth_proto_depIdxs,
-		EnumInfos:         file_auth_auth_proto_enumTypes,
 		MessageInfos:      file_auth_auth_proto_msgTypes,
 	}.Build()
 	File_auth_auth_proto = out.File

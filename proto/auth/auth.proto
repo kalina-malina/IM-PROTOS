@@ -12,36 +12,33 @@ service AuthOrRegistrationService {
 
 message RegisterUserRequest {
   string phone_number = 1;
+
 }
 
 message RegisterUserResponse {
-  string verification_id  = 1;
-  string code_expires_in = 2;
-  bool is_new_user = 3;
+  bool satus = 1;
+  bool is_new_user = 2;
+  optional string msg = 3;
+  optional string verification_id  = 4;
+  
 }
 
 message VerifySmsCodeRequest {
-  string verification_id = 1;
-  string code = 2;
+  optional string verification_id = 1;
+  optional string code = 2;
 }
 
 message VerifySmsCodeResponse {
   bool is_verified = 1;
   bool is_new_user = 2;
-  UserInfo userInfo = 3;
-  optional union.v1.UserSettings UserSettings = 4;
+  string access_token = 3;
+  string sid = 4;
+  Client client = 5;
+  union.v1.UserSettings UserSettings = 6;
 }
 
-message UserInfo {
-    uint32 id = 1;
-  Role role = 2;
-  optional uint32 lastSelectedStoreId = 3;
+message Client{
+  uint32 id = 1;
+  optional uint32 lastSelectedStoreId = 2;
 }
 
-enum Role {
-  ROLE_CLIENT = 0;
-  ROLE_OPERATOR = 1;
-  ROLE_MANAGER = 2;
-  ROLE_ADMIN = 3;
-  ROLE_ANALYST = 4;
-}
