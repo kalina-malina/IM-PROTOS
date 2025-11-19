@@ -7,7 +7,7 @@
 package v1
 
 import (
-	v1 "github.com/kalina-malina/IM-PROTOS/generated/union/v1"
+	v1 "github.com/kalina-malina/IM-PROTOS/generated/user/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -187,15 +187,15 @@ func (x *VerifySmsCodeRequest) GetCode() string {
 }
 
 type VerifySmsCodeResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	IsVerified    bool                   `protobuf:"varint,1,opt,name=is_verified,json=isVerified,proto3" json:"is_verified,omitempty"`
-	IsNewUser     bool                   `protobuf:"varint,2,opt,name=is_new_user,json=isNewUser,proto3" json:"is_new_user,omitempty"`
-	AccessToken   string                 `protobuf:"bytes,3,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	Sid           string                 `protobuf:"bytes,4,opt,name=sid,proto3" json:"sid,omitempty"`
-	Client        *Client                `protobuf:"bytes,5,opt,name=client,proto3" json:"client,omitempty"`
-	UserSettings  *v1.UserSettings       `protobuf:"bytes,6,opt,name=UserSettings,proto3" json:"UserSettings,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	IsVerified     bool                   `protobuf:"varint,1,opt,name=is_verified,json=isVerified,proto3" json:"is_verified,omitempty"`
+	IsNewUser      bool                   `protobuf:"varint,2,opt,name=is_new_user,json=isNewUser,proto3" json:"is_new_user,omitempty"`
+	AccessToken    string                 `protobuf:"bytes,3,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	Sid            string                 `protobuf:"bytes,4,opt,name=sid,proto3" json:"sid,omitempty"`
+	Client         *v1.Client             `protobuf:"bytes,5,opt,name=Client,proto3" json:"Client,omitempty"`
+	ClientSettings *v1.ClientSettings     `protobuf:"bytes,6,opt,name=ClientSettings,proto3" json:"ClientSettings,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *VerifySmsCodeResponse) Reset() {
@@ -256,85 +256,25 @@ func (x *VerifySmsCodeResponse) GetSid() string {
 	return ""
 }
 
-func (x *VerifySmsCodeResponse) GetClient() *Client {
+func (x *VerifySmsCodeResponse) GetClient() *v1.Client {
 	if x != nil {
 		return x.Client
 	}
 	return nil
 }
 
-func (x *VerifySmsCodeResponse) GetUserSettings() *v1.UserSettings {
+func (x *VerifySmsCodeResponse) GetClientSettings() *v1.ClientSettings {
 	if x != nil {
-		return x.UserSettings
+		return x.ClientSettings
 	}
 	return nil
-}
-
-type Client struct {
-	state               protoimpl.MessageState `protogen:"open.v1"`
-	Id                  uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CardNumber          string                 `protobuf:"bytes,2,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
-	LastSelectedStoreId *uint32                `protobuf:"varint,3,opt,name=lastSelectedStoreId,proto3,oneof" json:"lastSelectedStoreId,omitempty"`
-	unknownFields       protoimpl.UnknownFields
-	sizeCache           protoimpl.SizeCache
-}
-
-func (x *Client) Reset() {
-	*x = Client{}
-	mi := &file_auth_v1_auth_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Client) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Client) ProtoMessage() {}
-
-func (x *Client) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_v1_auth_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Client.ProtoReflect.Descriptor instead.
-func (*Client) Descriptor() ([]byte, []int) {
-	return file_auth_v1_auth_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *Client) GetId() uint32 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *Client) GetCardNumber() string {
-	if x != nil {
-		return x.CardNumber
-	}
-	return ""
-}
-
-func (x *Client) GetLastSelectedStoreId() uint32 {
-	if x != nil && x.LastSelectedStoreId != nil {
-		return *x.LastSelectedStoreId
-	}
-	return 0
 }
 
 var File_auth_v1_auth_proto protoreflect.FileDescriptor
 
 const file_auth_v1_auth_proto_rawDesc = "" +
 	"\n" +
-	"\x12auth/v1/auth.proto\x12\aauth.v1\x1a\x12user/v1/user.proto\":\n" +
+	"\x12auth/v1/auth.proto\x12\aauth.v1\x1a\x16client/v1/client.proto\":\n" +
 	"\x15RegisterClientRequest\x12!\n" +
 	"\fphone_number\x18\x01 \x01(\tR\vphoneNumber\"\xb3\x01\n" +
 	"\x16RegisterClientResponse\x12\x14\n" +
@@ -348,21 +288,15 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\x0fverification_id\x18\x01 \x01(\tH\x00R\x0everificationId\x88\x01\x01\x12\x17\n" +
 	"\x04code\x18\x02 \x01(\tH\x01R\x04code\x88\x01\x01B\x12\n" +
 	"\x10_verification_idB\a\n" +
-	"\x05_code\"\xf2\x01\n" +
+	"\x05_code\"\xfb\x01\n" +
 	"\x15VerifySmsCodeResponse\x12\x1f\n" +
 	"\vis_verified\x18\x01 \x01(\bR\n" +
 	"isVerified\x12\x1e\n" +
 	"\vis_new_user\x18\x02 \x01(\bR\tisNewUser\x12!\n" +
 	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\x12\x10\n" +
-	"\x03sid\x18\x04 \x01(\tR\x03sid\x12'\n" +
-	"\x06client\x18\x05 \x01(\v2\x0f.auth.v1.ClientR\x06client\x12:\n" +
-	"\fUserSettings\x18\x06 \x01(\v2\x16.union.v1.UserSettingsR\fUserSettings\"\x88\x01\n" +
-	"\x06Client\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1f\n" +
-	"\vcard_number\x18\x02 \x01(\tR\n" +
-	"cardNumber\x125\n" +
-	"\x13lastSelectedStoreId\x18\x03 \x01(\rH\x00R\x13lastSelectedStoreId\x88\x01\x01B\x16\n" +
-	"\x14_lastSelectedStoreId2\xbd\x01\n" +
+	"\x03sid\x18\x04 \x01(\tR\x03sid\x12)\n" +
+	"\x06Client\x18\x05 \x01(\v2\x11.client.v1.ClientR\x06Client\x12A\n" +
+	"\x0eClientSettings\x18\x06 \x01(\v2\x19.client.v1.ClientSettingsR\x0eClientSettings2\xbd\x01\n" +
 	"\x19AuthOrRegistrationService\x12P\n" +
 	"\rRegiterClient\x12\x1e.auth.v1.RegisterClientRequest\x1a\x1f.auth.v1.RegisterClientResponse\x12N\n" +
 	"\rVerifySmsCode\x12\x1d.auth.v1.VerifySmsCodeRequest\x1a\x1e.auth.v1.VerifySmsCodeResponseB6Z4github.com/kalina-malina/IM-PROTOS/generated/auth/v1b\x06proto3"
@@ -379,18 +313,18 @@ func file_auth_v1_auth_proto_rawDescGZIP() []byte {
 	return file_auth_v1_auth_proto_rawDescData
 }
 
-var file_auth_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_auth_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_auth_v1_auth_proto_goTypes = []any{
 	(*RegisterClientRequest)(nil),  // 0: auth.v1.RegisterClientRequest
 	(*RegisterClientResponse)(nil), // 1: auth.v1.RegisterClientResponse
 	(*VerifySmsCodeRequest)(nil),   // 2: auth.v1.VerifySmsCodeRequest
 	(*VerifySmsCodeResponse)(nil),  // 3: auth.v1.VerifySmsCodeResponse
-	(*Client)(nil),                 // 4: auth.v1.Client
-	(*v1.UserSettings)(nil),        // 5: union.v1.UserSettings
+	(*v1.Client)(nil),              // 4: client.v1.Client
+	(*v1.ClientSettings)(nil),      // 5: client.v1.ClientSettings
 }
 var file_auth_v1_auth_proto_depIdxs = []int32{
-	4, // 0: auth.v1.VerifySmsCodeResponse.client:type_name -> auth.v1.Client
-	5, // 1: auth.v1.VerifySmsCodeResponse.UserSettings:type_name -> union.v1.UserSettings
+	4, // 0: auth.v1.VerifySmsCodeResponse.Client:type_name -> client.v1.Client
+	5, // 1: auth.v1.VerifySmsCodeResponse.ClientSettings:type_name -> client.v1.ClientSettings
 	0, // 2: auth.v1.AuthOrRegistrationService.RegiterClient:input_type -> auth.v1.RegisterClientRequest
 	2, // 3: auth.v1.AuthOrRegistrationService.VerifySmsCode:input_type -> auth.v1.VerifySmsCodeRequest
 	1, // 4: auth.v1.AuthOrRegistrationService.RegiterClient:output_type -> auth.v1.RegisterClientResponse
@@ -409,14 +343,13 @@ func file_auth_v1_auth_proto_init() {
 	}
 	file_auth_v1_auth_proto_msgTypes[1].OneofWrappers = []any{}
 	file_auth_v1_auth_proto_msgTypes[2].OneofWrappers = []any{}
-	file_auth_v1_auth_proto_msgTypes[4].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_v1_auth_proto_rawDesc), len(file_auth_v1_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

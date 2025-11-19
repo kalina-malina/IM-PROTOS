@@ -3,7 +3,7 @@ syntax = "proto3";
 package auth.v1;
 
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/auth/v1";
-import "user/v1/user.proto"; 
+import "client/v1/client.proto"; 
 
 service AuthOrRegistrationService {
   rpc RegiterClient(RegisterClientRequest) returns (RegisterClientResponse);
@@ -33,13 +33,9 @@ message VerifySmsCodeResponse {
   bool is_new_user = 2;
   string access_token = 3;
   string sid = 4;
-  Client client = 5;
-  union.v1.UserSettings UserSettings = 6;
+  client.v1.Client Client = 5;
+  client.v1.ClientSettings ClientSettings = 6;
 }
 
-message Client{
-  uint32 id = 1;
-  string card_number = 2;
-  optional uint32 lastSelectedStoreId = 3;
-}
+
 
