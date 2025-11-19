@@ -3,7 +3,7 @@ syntax = "proto3";
 package auth.v1;
 
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/auth/v1";
-import "union/v1/user_setting.proto"; 
+import "user/v1/user.proto"; 
 
 service AuthOrRegistrationService {
   rpc RegiterClient(RegisterClientRequest) returns (RegisterClientResponse);

@@ -31,7 +31,14 @@ generate:
 		--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
 		--proto_path=proto \
 		proto/auth/v1/auth.proto
+
 		
+	@echo "Генерация user service..."
+	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
+		--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
+		--proto_path=proto \
+		proto/user/v1/user.proto
+
 
 
 	@echo "Генерация user models..."

@@ -334,7 +334,7 @@ var File_auth_v1_auth_proto protoreflect.FileDescriptor
 
 const file_auth_v1_auth_proto_rawDesc = "" +
 	"\n" +
-	"\x12auth/v1/auth.proto\x12\aauth.v1\x1a\x1bunion/v1/user_setting.proto\":\n" +
+	"\x12auth/v1/auth.proto\x12\aauth.v1\x1a\x12user/v1/user.proto\":\n" +
 	"\x15RegisterClientRequest\x12!\n" +
 	"\fphone_number\x18\x01 \x01(\tR\vphoneNumber\"\xb3\x01\n" +
 	"\x16RegisterClientResponse\x12\x14\n" +
