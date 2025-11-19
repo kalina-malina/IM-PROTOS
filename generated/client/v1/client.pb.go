@@ -209,7 +209,7 @@ const file_client_v1_client_proto_rawDesc = "" +
 	"\rorder_updates\x18\x06 \x01(\bR\forderUpdates\x12-\n" +
 	"\x12promotional_offers\x18\a \x01(\bR\x11promotionalOffers\x12\x1a\n" +
 	"\blanguage\x18\b \x01(\tR\blanguage\x12\x1a\n" +
-	"\btimezone\x18\t \x01(\tR\btimezoneB6Z4github.com/kalina-malina/IM-PROTOS/generated/user/v1b\x06proto3"
+	"\btimezone\x18\t \x01(\tR\btimezoneB8Z6github.com/kalina-malina/IM-PROTOS/generated/client/v1b\x06proto3"
 
 var (
 	file_client_v1_client_proto_rawDescOnce sync.Once

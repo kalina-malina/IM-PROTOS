@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package client.v1;
 
-option go_package = "github.com/kalina-malina/IM-PROTOS/generated/user/v1";
+option go_package = "github.com/kalina-malina/IM-PROTOS/generated/client/v1";
 
 
 

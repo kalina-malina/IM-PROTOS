@@ -7,7 +7,7 @@
 package v1
 
 import (
-	v1 "github.com/kalina-malina/IM-PROTOS/generated/user/v1"
+	v1 "github.com/kalina-malina/IM-PROTOS/generated/client/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
