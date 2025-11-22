@@ -19,6 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	AuthOrRegistrationService_SheashClient_FullMethodName  = "/auth.v1.AuthOrRegistrationService/SheashClient"
 	AuthOrRegistrationService_RegiterClient_FullMethodName = "/auth.v1.AuthOrRegistrationService/RegiterClient"
 	AuthOrRegistrationService_VerifySmsCode_FullMethodName = "/auth.v1.AuthOrRegistrationService/VerifySmsCode"
 )
@@ -27,6 +28,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthOrRegistrationServiceClient interface {
+	SheashClient(ctx context.Context, in *SheashClientRequest, opts ...grpc.CallOption) (*SheashClientResponse, error)
 	RegiterClient(ctx context.Context, in *RegisterClientRequest, opts ...grpc.CallOption) (*RegisterClientResponse, error)
 	VerifySmsCode(ctx context.Context, in *VerifySmsCodeRequest, opts ...grpc.CallOption) (*VerifySmsCodeResponse, error)
 }
@@ -37,6 +39,16 @@ type authOrRegistrationServiceClient struct {
 
 func NewAuthOrRegistrationServiceClient(cc grpc.ClientConnInterface) AuthOrRegistrationServiceClient {
 	return &authOrRegistrationServiceClient{cc}
+}
+
+func (c *authOrRegistrationServiceClient) SheashClient(ctx context.Context, in *SheashClientRequest, opts ...grpc.CallOption) (*SheashClientResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SheashClientResponse)
+	err := c.cc.Invoke(ctx, AuthOrRegistrationService_SheashClient_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *authOrRegistrationServiceClient) RegiterClient(ctx context.Context, in *RegisterClientRequest, opts ...grpc.CallOption) (*RegisterClientResponse, error) {
@@ -63,6 +75,7 @@ func (c *authOrRegistrationServiceClient) VerifySmsCode(ctx context.Context, in 
 // All implementations must embed UnimplementedAuthOrRegistrationServiceServer
 // for forward compatibility.
 type AuthOrRegistrationServiceServer interface {
+	SheashClient(context.Context, *SheashClientRequest) (*SheashClientResponse, error)
 	RegiterClient(context.Context, *RegisterClientRequest) (*RegisterClientResponse, error)
 	VerifySmsCode(context.Context, *VerifySmsCodeRequest) (*VerifySmsCodeResponse, error)
 	mustEmbedUnimplementedAuthOrRegistrationServiceServer()
@@ -75,6 +88,9 @@ type AuthOrRegistrationServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAuthOrRegistrationServiceServer struct{}
 
+func (UnimplementedAuthOrRegistrationServiceServer) SheashClient(context.Context, *SheashClientRequest) (*SheashClientResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SheashClient not implemented")
+}
 func (UnimplementedAuthOrRegistrationServiceServer) RegiterClient(context.Context, *RegisterClientRequest) (*RegisterClientResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RegiterClient not implemented")
 }
@@ -101,6 +117,24 @@ func RegisterAuthOrRegistrationServiceServer(s grpc.ServiceRegistrar, srv AuthOr
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&AuthOrRegistrationService_ServiceDesc, srv)
+}
+
+func _AuthOrRegistrationService_SheashClient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SheashClientRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthOrRegistrationServiceServer).SheashClient(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthOrRegistrationService_SheashClient_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthOrRegistrationServiceServer).SheashClient(ctx, req.(*SheashClientRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _AuthOrRegistrationService_RegiterClient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -146,6 +180,10 @@ var AuthOrRegistrationService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "auth.v1.AuthOrRegistrationService",
 	HandlerType: (*AuthOrRegistrationServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "SheashClient",
+			Handler:    _AuthOrRegistrationService_SheashClient_Handler,
+		},
 		{
 			MethodName: "RegiterClient",
 			Handler:    _AuthOrRegistrationService_RegiterClient_Handler,

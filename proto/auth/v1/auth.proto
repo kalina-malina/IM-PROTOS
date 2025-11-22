@@ -6,9 +6,23 @@ option go_package = "github.com/kalina-malina/IM-PROTOS/generated/auth/v1";
 import "client/v1/client.proto"; 
 
 service AuthOrRegistrationService {
+  rpc SheashClient(SheashClientRequest) returns (SheashClientResponse);
   rpc RegiterClient(RegisterClientRequest) returns (RegisterClientResponse);
   rpc VerifySmsCode(VerifySmsCodeRequest) returns (VerifySmsCodeResponse);
 }
+
+
+message SheashClientRequest {
+  string phone_number = 1;
+}
+
+
+message SheashClientResponse {
+  client.v1.Client Client = 1;
+  client.v1.ClientSettings ClientSettings = 2;
+}
+
+
 
 message RegisterClientRequest {
   string phone_number = 1;
@@ -33,9 +47,10 @@ message VerifySmsCodeResponse {
   bool is_new_user = 2;
   string access_token = 3;
   string sid = 4;
-  client.v1.Client Client = 5;
-  client.v1.ClientSettings ClientSettings = 6;
+  
 }
+
+
 
 
 

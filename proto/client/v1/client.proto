@@ -9,8 +9,8 @@ option go_package = "github.com/kalina-malina/IM-PROTOS/generated/client/v1";
 
 message Client{
   uint32 id = 1;
-  string card_number = 2;
-  optional uint32 lastSelectedStoreId = 3;
+  string name = 2;
+  string card_number = 3;
 }
 
 
@@ -22,6 +22,6 @@ message ClientSettings {
   bool marketing_sms = 5;             // Маркетинговые SMS
   bool order_updates = 6;             // Уведомления о заказах
   bool promotional_offers = 7;        // Промо-акции
-  string language = 8;                // Язык (ru/en/kk)
-  string timezone = 9;                // Часовой пояс
+  optional uint32 last_selected_store_id = 8; // Последний выбранный магазин
 }
+

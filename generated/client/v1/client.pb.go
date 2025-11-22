@@ -22,12 +22,12 @@ const (
 )
 
 type Client struct {
-	state               protoimpl.MessageState `protogen:"open.v1"`
-	Id                  uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CardNumber          string                 `protobuf:"bytes,2,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
-	LastSelectedStoreId *uint32                `protobuf:"varint,3,opt,name=lastSelectedStoreId,proto3,oneof" json:"lastSelectedStoreId,omitempty"`
-	unknownFields       protoimpl.UnknownFields
-	sizeCache           protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	CardNumber    string                 `protobuf:"bytes,3,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Client) Reset() {
@@ -67,6 +67,13 @@ func (x *Client) GetId() uint32 {
 	return 0
 }
 
+func (x *Client) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
 func (x *Client) GetCardNumber() string {
 	if x != nil {
 		return x.CardNumber
@@ -74,26 +81,18 @@ func (x *Client) GetCardNumber() string {
 	return ""
 }
 
-func (x *Client) GetLastSelectedStoreId() uint32 {
-	if x != nil && x.LastSelectedStoreId != nil {
-		return *x.LastSelectedStoreId
-	}
-	return 0
-}
-
 type ClientSettings struct {
-	state              protoimpl.MessageState `protogen:"open.v1"`
-	PushNotifications  bool                   `protobuf:"varint,1,opt,name=push_notifications,json=pushNotifications,proto3" json:"push_notifications,omitempty"`    // Push уведомления
-	EmailNotifications bool                   `protobuf:"varint,2,opt,name=email_notifications,json=emailNotifications,proto3" json:"email_notifications,omitempty"` // Email уведомления
-	SmsNotifications   bool                   `protobuf:"varint,3,opt,name=sms_notifications,json=smsNotifications,proto3" json:"sms_notifications,omitempty"`       // SMS уведомления
-	MarketingEmails    bool                   `protobuf:"varint,4,opt,name=marketing_emails,json=marketingEmails,proto3" json:"marketing_emails,omitempty"`          // Маркетинговые рассылки
-	MarketingSms       bool                   `protobuf:"varint,5,opt,name=marketing_sms,json=marketingSms,proto3" json:"marketing_sms,omitempty"`                   // Маркетинговые SMS
-	OrderUpdates       bool                   `protobuf:"varint,6,opt,name=order_updates,json=orderUpdates,proto3" json:"order_updates,omitempty"`                   // Уведомления о заказах
-	PromotionalOffers  bool                   `protobuf:"varint,7,opt,name=promotional_offers,json=promotionalOffers,proto3" json:"promotional_offers,omitempty"`    // Промо-акции
-	Language           string                 `protobuf:"bytes,8,opt,name=language,proto3" json:"language,omitempty"`                                                // Язык (ru/en/kk)
-	Timezone           string                 `protobuf:"bytes,9,opt,name=timezone,proto3" json:"timezone,omitempty"`                                                // Часовой пояс
-	unknownFields      protoimpl.UnknownFields
-	sizeCache          protoimpl.SizeCache
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	PushNotifications   bool                   `protobuf:"varint,1,opt,name=push_notifications,json=pushNotifications,proto3" json:"push_notifications,omitempty"`                 // Push уведомления
+	EmailNotifications  bool                   `protobuf:"varint,2,opt,name=email_notifications,json=emailNotifications,proto3" json:"email_notifications,omitempty"`              // Email уведомления
+	SmsNotifications    bool                   `protobuf:"varint,3,opt,name=sms_notifications,json=smsNotifications,proto3" json:"sms_notifications,omitempty"`                    // SMS уведомления
+	MarketingEmails     bool                   `protobuf:"varint,4,opt,name=marketing_emails,json=marketingEmails,proto3" json:"marketing_emails,omitempty"`                       // Маркетинговые рассылки
+	MarketingSms        bool                   `protobuf:"varint,5,opt,name=marketing_sms,json=marketingSms,proto3" json:"marketing_sms,omitempty"`                                // Маркетинговые SMS
+	OrderUpdates        bool                   `protobuf:"varint,6,opt,name=order_updates,json=orderUpdates,proto3" json:"order_updates,omitempty"`                                // Уведомления о заказах
+	PromotionalOffers   bool                   `protobuf:"varint,7,opt,name=promotional_offers,json=promotionalOffers,proto3" json:"promotional_offers,omitempty"`                 // Промо-акции
+	LastSelectedStoreId *uint32                `protobuf:"varint,8,opt,name=last_selected_store_id,json=lastSelectedStoreId,proto3,oneof" json:"last_selected_store_id,omitempty"` // Последний выбранный магазин
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
 }
 
 func (x *ClientSettings) Reset() {
@@ -175,31 +174,23 @@ func (x *ClientSettings) GetPromotionalOffers() bool {
 	return false
 }
 
-func (x *ClientSettings) GetLanguage() string {
-	if x != nil {
-		return x.Language
+func (x *ClientSettings) GetLastSelectedStoreId() uint32 {
+	if x != nil && x.LastSelectedStoreId != nil {
+		return *x.LastSelectedStoreId
 	}
-	return ""
-}
-
-func (x *ClientSettings) GetTimezone() string {
-	if x != nil {
-		return x.Timezone
-	}
-	return ""
+	return 0
 }
 
 var File_client_v1_client_proto protoreflect.FileDescriptor
 
 const file_client_v1_client_proto_rawDesc = "" +
 	"\n" +
-	"\x16client/v1/client.proto\x12\tclient.v1\"\x88\x01\n" +
+	"\x16client/v1/client.proto\x12\tclient.v1\"M\n" +
 	"\x06Client\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1f\n" +
-	"\vcard_number\x18\x02 \x01(\tR\n" +
-	"cardNumber\x125\n" +
-	"\x13lastSelectedStoreId\x18\x03 \x01(\rH\x00R\x13lastSelectedStoreId\x88\x01\x01B\x16\n" +
-	"\x14_lastSelectedStoreId\"\xf9\x02\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1f\n" +
+	"\vcard_number\x18\x03 \x01(\tR\n" +
+	"cardNumber\"\x96\x03\n" +
 	"\x0eClientSettings\x12-\n" +
 	"\x12push_notifications\x18\x01 \x01(\bR\x11pushNotifications\x12/\n" +
 	"\x13email_notifications\x18\x02 \x01(\bR\x12emailNotifications\x12+\n" +
@@ -207,9 +198,9 @@ const file_client_v1_client_proto_rawDesc = "" +
 	"\x10marketing_emails\x18\x04 \x01(\bR\x0fmarketingEmails\x12#\n" +
 	"\rmarketing_sms\x18\x05 \x01(\bR\fmarketingSms\x12#\n" +
 	"\rorder_updates\x18\x06 \x01(\bR\forderUpdates\x12-\n" +
-	"\x12promotional_offers\x18\a \x01(\bR\x11promotionalOffers\x12\x1a\n" +
-	"\blanguage\x18\b \x01(\tR\blanguage\x12\x1a\n" +
-	"\btimezone\x18\t \x01(\tR\btimezoneB8Z6github.com/kalina-malina/IM-PROTOS/generated/client/v1b\x06proto3"
+	"\x12promotional_offers\x18\a \x01(\bR\x11promotionalOffers\x128\n" +
+	"\x16last_selected_store_id\x18\b \x01(\rH\x00R\x13lastSelectedStoreId\x88\x01\x01B\x19\n" +
+	"\x17_last_selected_store_idB8Z6github.com/kalina-malina/IM-PROTOS/generated/client/v1b\x06proto3"
 
 var (
 	file_client_v1_client_proto_rawDescOnce sync.Once
@@ -241,7 +232,7 @@ func file_client_v1_client_proto_init() {
 	if File_client_v1_client_proto != nil {
 		return
 	}
-	file_client_v1_client_proto_msgTypes[0].OneofWrappers = []any{}
+	file_client_v1_client_proto_msgTypes[1].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
