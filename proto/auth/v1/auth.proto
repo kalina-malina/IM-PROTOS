@@ -19,12 +19,14 @@ message LoginUsersRequest {
 }
 
 message LoginUsersResponse {
-  bool is_new_user = 1;
-  bool blocked = 2;
-  optional string msg = 3;
-  optional string verification_id  = 4;
+  bool securety = 1;
+  optional bool is_new_user = 2;
+  optional bool blocked = 3;
+  optional string msg = 4;
+  optional string verification_id  = 5;
   
 }
+
 
 enum TypeLogin {
   TYPE_LOGIN_SMS = 0;

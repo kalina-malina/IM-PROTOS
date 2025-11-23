@@ -130,10 +130,11 @@ func (x *LoginUsersRequest) GetVerificationId() string {
 
 type LoginUsersResponse struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	IsNewUser      bool                   `protobuf:"varint,1,opt,name=is_new_user,json=isNewUser,proto3" json:"is_new_user,omitempty"`
-	Blocked        bool                   `protobuf:"varint,2,opt,name=blocked,proto3" json:"blocked,omitempty"`
-	Msg            *string                `protobuf:"bytes,3,opt,name=msg,proto3,oneof" json:"msg,omitempty"`
-	VerificationId *string                `protobuf:"bytes,4,opt,name=verification_id,json=verificationId,proto3,oneof" json:"verification_id,omitempty"`
+	Securety       bool                   `protobuf:"varint,1,opt,name=securety,proto3" json:"securety,omitempty"`
+	IsNewUser      *bool                  `protobuf:"varint,2,opt,name=is_new_user,json=isNewUser,proto3,oneof" json:"is_new_user,omitempty"`
+	Blocked        *bool                  `protobuf:"varint,3,opt,name=blocked,proto3,oneof" json:"blocked,omitempty"`
+	Msg            *string                `protobuf:"bytes,4,opt,name=msg,proto3,oneof" json:"msg,omitempty"`
+	VerificationId *string                `protobuf:"bytes,5,opt,name=verification_id,json=verificationId,proto3,oneof" json:"verification_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -168,16 +169,23 @@ func (*LoginUsersResponse) Descriptor() ([]byte, []int) {
 	return file_auth_v1_auth_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *LoginUsersResponse) GetIsNewUser() bool {
+func (x *LoginUsersResponse) GetSecurety() bool {
 	if x != nil {
-		return x.IsNewUser
+		return x.Securety
+	}
+	return false
+}
+
+func (x *LoginUsersResponse) GetIsNewUser() bool {
+	if x != nil && x.IsNewUser != nil {
+		return *x.IsNewUser
 	}
 	return false
 }
 
 func (x *LoginUsersResponse) GetBlocked() bool {
-	if x != nil {
-		return x.Blocked
+	if x != nil && x.Blocked != nil {
+		return *x.Blocked
 	}
 	return false
 }
@@ -342,12 +350,16 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\n" +
 	"type_login\x18\x02 \x01(\x0e2\x12.auth.v1.TypeLoginR\ttypeLogin\x12,\n" +
 	"\x0fverification_id\x18\x03 \x01(\tH\x00R\x0everificationId\x88\x01\x01B\x12\n" +
-	"\x10_verification_id\"\xaf\x01\n" +
-	"\x12LoginUsersResponse\x12\x1e\n" +
-	"\vis_new_user\x18\x01 \x01(\bR\tisNewUser\x12\x18\n" +
-	"\ablocked\x18\x02 \x01(\bR\ablocked\x12\x15\n" +
-	"\x03msg\x18\x03 \x01(\tH\x00R\x03msg\x88\x01\x01\x12,\n" +
-	"\x0fverification_id\x18\x04 \x01(\tH\x01R\x0everificationId\x88\x01\x01B\x06\n" +
+	"\x10_verification_id\"\xf1\x01\n" +
+	"\x12LoginUsersResponse\x12\x1a\n" +
+	"\bsecurety\x18\x01 \x01(\bR\bsecurety\x12#\n" +
+	"\vis_new_user\x18\x02 \x01(\bH\x00R\tisNewUser\x88\x01\x01\x12\x1d\n" +
+	"\ablocked\x18\x03 \x01(\bH\x01R\ablocked\x88\x01\x01\x12\x15\n" +
+	"\x03msg\x18\x04 \x01(\tH\x02R\x03msg\x88\x01\x01\x12,\n" +
+	"\x0fverification_id\x18\x05 \x01(\tH\x03R\x0everificationId\x88\x01\x01B\x0e\n" +
+	"\f_is_new_userB\n" +
+	"\n" +
+	"\b_blockedB\x06\n" +
 	"\x04_msgB\x12\n" +
 	"\x10_verification_id\"z\n" +
 	"\x14VerifySmsCodeRequest\x12,\n" +
