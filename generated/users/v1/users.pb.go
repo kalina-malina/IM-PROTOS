@@ -26,7 +26,8 @@ type User struct {
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	CardNumber    uint64                 `protobuf:"varint,3,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
-	Role          string                 `protobuf:"bytes,4,opt,name=role,proto3" json:"role,omitempty"`
+	Phone         string                 `protobuf:"bytes,4,opt,name=phone,proto3" json:"phone,omitempty"`
+	Role          string                 `protobuf:"bytes,5,opt,name=role,proto3" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -80,6 +81,13 @@ func (x *User) GetCardNumber() uint64 {
 		return x.CardNumber
 	}
 	return 0
+}
+
+func (x *User) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
 }
 
 func (x *User) GetRole() string {
@@ -193,13 +201,14 @@ var File_users_v1_users_proto protoreflect.FileDescriptor
 
 const file_users_v1_users_proto_rawDesc = "" +
 	"\n" +
-	"\x14users/v1/users.proto\x12\busers.v1\"_\n" +
+	"\x14users/v1/users.proto\x12\busers.v1\"u\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1f\n" +
 	"\vcard_number\x18\x03 \x01(\x04R\n" +
-	"cardNumber\x12\x12\n" +
-	"\x04role\x18\x04 \x01(\tR\x04role\"\x94\x03\n" +
+	"cardNumber\x12\x14\n" +
+	"\x05phone\x18\x04 \x01(\tR\x05phone\x12\x12\n" +
+	"\x04role\x18\x05 \x01(\tR\x04role\"\x94\x03\n" +
 	"\fUserSettings\x12-\n" +
 	"\x12push_notifications\x18\x01 \x01(\bR\x11pushNotifications\x12/\n" +
 	"\x13email_notifications\x18\x02 \x01(\bR\x12emailNotifications\x12+\n" +
