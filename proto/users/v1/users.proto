@@ -1,20 +1,20 @@
 syntax = "proto3";
 
-package client.v1;
+package users.v1;
 
-option go_package = "github.com/kalina-malina/IM-PROTOS/generated/client/v1";
-
-
+option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
 
 
-message Client{
+
+
+message User{
   uint32 id = 1;
   string name = 2;
   string card_number = 3;
 }
 
 
-message ClientSettings {
+message UserSettings {
   bool push_notifications = 1;        // Push уведомления
   bool email_notifications = 2;       // Email уведомления
   bool sms_notifications = 3;         // SMS уведомления

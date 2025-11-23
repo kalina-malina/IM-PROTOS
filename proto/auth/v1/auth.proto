@@ -3,39 +3,34 @@ syntax = "proto3";
 package auth.v1;
 
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/auth/v1";
-import "client/v1/client.proto"; 
+import "users/v1/users.proto"; 
 
 service AuthOrRegistrationService {
-  rpc SheashClient(SheashClientRequest) returns (SheashClientResponse);
-  rpc RegiterClient(RegisterClientRequest) returns (RegisterClientResponse);
+  rpc LoginUsers(LoginUsersRequest) returns (LoginUsersResponse);
   rpc VerifySmsCode(VerifySmsCodeRequest) returns (VerifySmsCodeResponse);
 }
 
 
-message SheashClientRequest {
+message LoginUsersRequest {
   string phone_number = 1;
-}
-
-
-message SheashClientResponse {
-  client.v1.Client Client = 1;
-  client.v1.ClientSettings ClientSettings = 2;
-}
-
-
-
-message RegisterClientRequest {
-  string phone_number = 1;
+  TypeLogin type_login = 2;
+  optional string verification_id  = 3;
 
 }
 
-message RegisterClientResponse {
-  bool satus = 1;
-  bool is_new_client = 2;
+message LoginUsersResponse {
+  bool is_new_user = 1;
+  bool blocked = 2;
   optional string msg = 3;
   optional string verification_id  = 4;
   
 }
+
+enum TypeLogin {
+  TYPE_LOGIN_SMS = 0;
+  TYPE_LOGIN_YANDEX = 1;
+}
+
 
 message VerifySmsCodeRequest {
   optional string verification_id = 1;
@@ -45,9 +40,10 @@ message VerifySmsCodeRequest {
 message VerifySmsCodeResponse {
   bool is_verified = 1;
   bool is_new_user = 2;
-  string access_token = 3;
-  string sid = 4;
-  
+  bool is_anketa_filled = 3;
+  string access_token = 4;
+  string sid = 5;
+  optional users.v1.User user = 6;
 }
 
 

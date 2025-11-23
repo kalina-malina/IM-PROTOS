@@ -37,7 +37,7 @@ generate:
 	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
 		--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
 		--proto_path=proto \
-		proto/client/v1/client.proto
+		proto/users/v1/users.proto
 
 
 
