@@ -25,7 +25,7 @@ type User struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	CardNumber    string                 `protobuf:"bytes,3,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
+	CardNumber    uint64                 `protobuf:"varint,3,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -74,11 +74,11 @@ func (x *User) GetName() string {
 	return ""
 }
 
-func (x *User) GetCardNumber() string {
+func (x *User) GetCardNumber() uint64 {
 	if x != nil {
 		return x.CardNumber
 	}
-	return ""
+	return 0
 }
 
 type UserSettings struct {
@@ -189,7 +189,7 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1f\n" +
-	"\vcard_number\x18\x03 \x01(\tR\n" +
+	"\vcard_number\x18\x03 \x01(\x04R\n" +
 	"cardNumber\"\x94\x03\n" +
 	"\fUserSettings\x12-\n" +
 	"\x12push_notifications\x18\x01 \x01(\bR\x11pushNotifications\x12/\n" +
