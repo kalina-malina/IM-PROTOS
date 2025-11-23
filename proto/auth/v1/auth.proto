@@ -36,7 +36,7 @@ enum TypeLogin {
 
 message VerifySmsCodeRequest {
   optional string verification_id = 1;
-  optional string code = 2;
+  optional uint32 code = 2;
 }
 
 message VerifySmsCodeResponse {

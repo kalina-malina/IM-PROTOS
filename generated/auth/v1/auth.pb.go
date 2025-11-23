@@ -207,7 +207,7 @@ func (x *LoginUsersResponse) GetVerificationId() string {
 type VerifySmsCodeRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	VerificationId *string                `protobuf:"bytes,1,opt,name=verification_id,json=verificationId,proto3,oneof" json:"verification_id,omitempty"`
-	Code           *string                `protobuf:"bytes,2,opt,name=code,proto3,oneof" json:"code,omitempty"`
+	Code           *uint32                `protobuf:"varint,2,opt,name=code,proto3,oneof" json:"code,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -249,11 +249,11 @@ func (x *VerifySmsCodeRequest) GetVerificationId() string {
 	return ""
 }
 
-func (x *VerifySmsCodeRequest) GetCode() string {
+func (x *VerifySmsCodeRequest) GetCode() uint32 {
 	if x != nil && x.Code != nil {
 		return *x.Code
 	}
-	return ""
+	return 0
 }
 
 type VerifySmsCodeResponse struct {
@@ -364,7 +364,7 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\x10_verification_id\"z\n" +
 	"\x14VerifySmsCodeRequest\x12,\n" +
 	"\x0fverification_id\x18\x01 \x01(\tH\x00R\x0everificationId\x88\x01\x01\x12\x17\n" +
-	"\x04code\x18\x02 \x01(\tH\x01R\x04code\x88\x01\x01B\x12\n" +
+	"\x04code\x18\x02 \x01(\rH\x01R\x04code\x88\x01\x01B\x12\n" +
 	"\x10_verification_idB\a\n" +
 	"\x05_code\"\xe9\x01\n" +
 	"\x15VerifySmsCodeResponse\x12\x1f\n" +
