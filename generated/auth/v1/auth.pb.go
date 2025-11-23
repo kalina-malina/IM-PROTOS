@@ -257,15 +257,14 @@ func (x *VerifySmsCodeRequest) GetCode() uint32 {
 }
 
 type VerifySmsCodeResponse struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	IsVerified     bool                   `protobuf:"varint,1,opt,name=is_verified,json=isVerified,proto3" json:"is_verified,omitempty"`
-	IsNewUser      bool                   `protobuf:"varint,2,opt,name=is_new_user,json=isNewUser,proto3" json:"is_new_user,omitempty"`
-	IsAnketaFilled bool                   `protobuf:"varint,3,opt,name=is_anketa_filled,json=isAnketaFilled,proto3" json:"is_anketa_filled,omitempty"`
-	AccessToken    string                 `protobuf:"bytes,4,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	Sid            string                 `protobuf:"bytes,5,opt,name=sid,proto3" json:"sid,omitempty"`
-	User           *v1.User               `protobuf:"bytes,6,opt,name=user,proto3,oneof" json:"user,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	IsVerified    bool                   `protobuf:"varint,1,opt,name=is_verified,json=isVerified,proto3" json:"is_verified,omitempty"`
+	IsNewUser     bool                   `protobuf:"varint,2,opt,name=is_new_user,json=isNewUser,proto3" json:"is_new_user,omitempty"`
+	AccessToken   string                 `protobuf:"bytes,3,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	Sid           string                 `protobuf:"bytes,4,opt,name=sid,proto3" json:"sid,omitempty"`
+	User          *v1.User               `protobuf:"bytes,5,opt,name=user,proto3,oneof" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *VerifySmsCodeResponse) Reset() {
@@ -308,13 +307,6 @@ func (x *VerifySmsCodeResponse) GetIsVerified() bool {
 func (x *VerifySmsCodeResponse) GetIsNewUser() bool {
 	if x != nil {
 		return x.IsNewUser
-	}
-	return false
-}
-
-func (x *VerifySmsCodeResponse) GetIsAnketaFilled() bool {
-	if x != nil {
-		return x.IsAnketaFilled
 	}
 	return false
 }
@@ -366,15 +358,14 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\x0fverification_id\x18\x01 \x01(\tH\x00R\x0everificationId\x88\x01\x01\x12\x17\n" +
 	"\x04code\x18\x02 \x01(\rH\x01R\x04code\x88\x01\x01B\x12\n" +
 	"\x10_verification_idB\a\n" +
-	"\x05_code\"\xe9\x01\n" +
+	"\x05_code\"\xbf\x01\n" +
 	"\x15VerifySmsCodeResponse\x12\x1f\n" +
 	"\vis_verified\x18\x01 \x01(\bR\n" +
 	"isVerified\x12\x1e\n" +
-	"\vis_new_user\x18\x02 \x01(\bR\tisNewUser\x12(\n" +
-	"\x10is_anketa_filled\x18\x03 \x01(\bR\x0eisAnketaFilled\x12!\n" +
-	"\faccess_token\x18\x04 \x01(\tR\vaccessToken\x12\x10\n" +
-	"\x03sid\x18\x05 \x01(\tR\x03sid\x12'\n" +
-	"\x04user\x18\x06 \x01(\v2\x0e.users.v1.UserH\x00R\x04user\x88\x01\x01B\a\n" +
+	"\vis_new_user\x18\x02 \x01(\bR\tisNewUser\x12!\n" +
+	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\x12\x10\n" +
+	"\x03sid\x18\x04 \x01(\tR\x03sid\x12'\n" +
+	"\x04user\x18\x05 \x01(\v2\x0e.users.v1.UserH\x00R\x04user\x88\x01\x01B\a\n" +
 	"\x05_user*6\n" +
 	"\tTypeLogin\x12\x12\n" +
 	"\x0eTYPE_LOGIN_SMS\x10\x00\x12\x15\n" +

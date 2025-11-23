@@ -42,10 +42,9 @@ message VerifySmsCodeRequest {
 message VerifySmsCodeResponse {
   bool is_verified = 1;
   bool is_new_user = 2;
-  bool is_anketa_filled = 3;
-  string access_token = 4;
-  string sid = 5;
-  optional users.v1.User user = 6;
+  string access_token = 3;
+  string sid = 4;
+  optional users.v1.User user = 5;
 }
 
 
