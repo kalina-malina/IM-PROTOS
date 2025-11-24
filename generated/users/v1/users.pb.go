@@ -21,13 +21,71 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type Role int32
+
+const (
+	Role_ROLE_CLIENT     Role = 0
+	Role_ROLE_ADMIN      Role = 1
+	Role_ROLE_OPERATOR   Role = 2
+	Role_ROLE_MARKETING  Role = 3
+	Role_ROLE_SUPPORT    Role = 4
+	Role_ROLE_MANAGEMENT Role = 5
+)
+
+// Enum value maps for Role.
+var (
+	Role_name = map[int32]string{
+		0: "ROLE_CLIENT",
+		1: "ROLE_ADMIN",
+		2: "ROLE_OPERATOR",
+		3: "ROLE_MARKETING",
+		4: "ROLE_SUPPORT",
+		5: "ROLE_MANAGEMENT",
+	}
+	Role_value = map[string]int32{
+		"ROLE_CLIENT":     0,
+		"ROLE_ADMIN":      1,
+		"ROLE_OPERATOR":   2,
+		"ROLE_MARKETING":  3,
+		"ROLE_SUPPORT":    4,
+		"ROLE_MANAGEMENT": 5,
+	}
+)
+
+func (x Role) Enum() *Role {
+	p := new(Role)
+	*p = x
+	return p
+}
+
+func (x Role) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (Role) Descriptor() protoreflect.EnumDescriptor {
+	return file_users_v1_users_proto_enumTypes[0].Descriptor()
+}
+
+func (Role) Type() protoreflect.EnumType {
+	return &file_users_v1_users_proto_enumTypes[0]
+}
+
+func (x Role) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use Role.Descriptor instead.
+func (Role) EnumDescriptor() ([]byte, []int) {
+	return file_users_v1_users_proto_rawDescGZIP(), []int{0}
+}
+
 type User struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	CardNumber    uint64                 `protobuf:"varint,3,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
 	Phone         string                 `protobuf:"bytes,4,opt,name=phone,proto3" json:"phone,omitempty"`
-	Role          string                 `protobuf:"bytes,5,opt,name=role,proto3" json:"role,omitempty"`
+	Role          Role                   `protobuf:"varint,5,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -90,11 +148,11 @@ func (x *User) GetPhone() string {
 	return ""
 }
 
-func (x *User) GetRole() string {
+func (x *User) GetRole() Role {
 	if x != nil {
 		return x.Role
 	}
-	return ""
+	return Role_ROLE_CLIENT
 }
 
 type UserSettings struct {
@@ -201,14 +259,14 @@ var File_users_v1_users_proto protoreflect.FileDescriptor
 
 const file_users_v1_users_proto_rawDesc = "" +
 	"\n" +
-	"\x14users/v1/users.proto\x12\busers.v1\"u\n" +
+	"\x14users/v1/users.proto\x12\busers.v1\"\x85\x01\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1f\n" +
 	"\vcard_number\x18\x03 \x01(\x04R\n" +
 	"cardNumber\x12\x14\n" +
-	"\x05phone\x18\x04 \x01(\tR\x05phone\x12\x12\n" +
-	"\x04role\x18\x05 \x01(\tR\x04role\"\x94\x03\n" +
+	"\x05phone\x18\x04 \x01(\tR\x05phone\x12\"\n" +
+	"\x04role\x18\x05 \x01(\x0e2\x0e.users.v1.RoleR\x04role\"\x94\x03\n" +
 	"\fUserSettings\x12-\n" +
 	"\x12push_notifications\x18\x01 \x01(\bR\x11pushNotifications\x12/\n" +
 	"\x13email_notifications\x18\x02 \x01(\bR\x12emailNotifications\x12+\n" +
@@ -218,7 +276,15 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\rorder_updates\x18\x06 \x01(\bR\forderUpdates\x12-\n" +
 	"\x12promotional_offers\x18\a \x01(\bR\x11promotionalOffers\x128\n" +
 	"\x16last_selected_store_id\x18\b \x01(\rH\x00R\x13lastSelectedStoreId\x88\x01\x01B\x19\n" +
-	"\x17_last_selected_store_idB7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
+	"\x17_last_selected_store_id*u\n" +
+	"\x04Role\x12\x0f\n" +
+	"\vROLE_CLIENT\x10\x00\x12\x0e\n" +
+	"\n" +
+	"ROLE_ADMIN\x10\x01\x12\x11\n" +
+	"\rROLE_OPERATOR\x10\x02\x12\x12\n" +
+	"\x0eROLE_MARKETING\x10\x03\x12\x10\n" +
+	"\fROLE_SUPPORT\x10\x04\x12\x13\n" +
+	"\x0fROLE_MANAGEMENT\x10\x05B7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
 
 var (
 	file_users_v1_users_proto_rawDescOnce sync.Once
@@ -232,17 +298,20 @@ func file_users_v1_users_proto_rawDescGZIP() []byte {
 	return file_users_v1_users_proto_rawDescData
 }
 
+var file_users_v1_users_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_users_v1_users_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_users_v1_users_proto_goTypes = []any{
-	(*User)(nil),         // 0: users.v1.User
-	(*UserSettings)(nil), // 1: users.v1.UserSettings
+	(Role)(0),            // 0: users.v1.Role
+	(*User)(nil),         // 1: users.v1.User
+	(*UserSettings)(nil), // 2: users.v1.UserSettings
 }
 var file_users_v1_users_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0, // 0: users.v1.User.role:type_name -> users.v1.Role
+	1, // [1:1] is the sub-list for method output_type
+	1, // [1:1] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_users_v1_users_proto_init() }
@@ -256,13 +325,14 @@ func file_users_v1_users_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_users_proto_rawDesc), len(file_users_v1_users_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_users_v1_users_proto_goTypes,
 		DependencyIndexes: file_users_v1_users_proto_depIdxs,
+		EnumInfos:         file_users_v1_users_proto_enumTypes,
 		MessageInfos:      file_users_v1_users_proto_msgTypes,
 	}.Build()
 	File_users_v1_users_proto = out.File

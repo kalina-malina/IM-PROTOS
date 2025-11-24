@@ -12,7 +12,7 @@ message User{
   string name = 2;
   uint64 card_number = 3;
   string phone = 4;
-  string role = 5;
+  Role role = 5;
 }
 
 
@@ -27,3 +27,11 @@ message UserSettings {
   optional uint32 last_selected_store_id = 8; // Последний выбранный магазин
 }
 
+enum Role {
+  ROLE_CLIENT = 0;
+  ROLE_ADMIN = 1;
+  ROLE_OPERATOR = 2;
+  ROLE_MARKETING = 3;
+  ROLE_SUPPORT = 4;
+  ROLE_MANAGEMENT = 5;
+}
