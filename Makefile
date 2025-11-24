@@ -137,9 +137,14 @@ do-release:
 	@echo "1. Генерация кода..."
 	@$(MAKE) generate
 	@echo "2. Проверка изменений..."
-	@if git diff --quiet 2>/dev/null && git diff --cached --quiet 2>/dev/null; then \
+	@HAS_CHANGES=$$(git diff --name-only HEAD | grep -E '(\.proto$$|^pkg/|^generated/)' || true); \
+	if [ -z "$$HAS_CHANGES" ] && git diff --quiet 2>/dev/null && git diff --cached --quiet 2>/dev/null; then \
 		echo "   ⚠️  Нет изменений для коммита"; \
 	else \
+		if [ -n "$$HAS_CHANGES" ]; then \
+			echo "   📝 Обнаружены изменения:"; \
+			git diff --name-only HEAD | grep -E '(\.proto$$|^pkg/|^generated/)' | sed 's/^/      - /' || true; \
+		fi; \
 		echo "3. Добавление файлов в git..."; \
 		git add .; \
 		echo "4. Создание коммита..."; \
