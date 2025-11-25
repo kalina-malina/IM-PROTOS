@@ -262,7 +262,7 @@ type VerifySmsCodeResponse struct {
 	IsVerified    bool                   `protobuf:"varint,1,opt,name=is_verified,json=isVerified,proto3" json:"is_verified,omitempty"`
 	IsNewUser     bool                   `protobuf:"varint,2,opt,name=is_new_user,json=isNewUser,proto3" json:"is_new_user,omitempty"`
 	AccessToken   string                 `protobuf:"bytes,3,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	Sid           string                 `protobuf:"bytes,4,opt,name=sid,proto3" json:"sid,omitempty"`
+	SessionId     string                 `protobuf:"bytes,4,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	User          *v1.User               `protobuf:"bytes,5,opt,name=user,proto3,oneof" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -319,9 +319,9 @@ func (x *VerifySmsCodeResponse) GetAccessToken() string {
 	return ""
 }
 
-func (x *VerifySmsCodeResponse) GetSid() string {
+func (x *VerifySmsCodeResponse) GetSessionId() string {
 	if x != nil {
-		return x.Sid
+		return x.SessionId
 	}
 	return ""
 }
@@ -335,7 +335,7 @@ func (x *VerifySmsCodeResponse) GetUser() *v1.User {
 
 type RefreshTokenRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Sid           string                 `protobuf:"bytes,2,opt,name=sid,proto3" json:"sid,omitempty"`
+	SessionId     string                 `protobuf:"bytes,2,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -370,9 +370,9 @@ func (*RefreshTokenRequest) Descriptor() ([]byte, []int) {
 	return file_auth_v1_auth_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *RefreshTokenRequest) GetSid() string {
+func (x *RefreshTokenRequest) GetSessionId() string {
 	if x != nil {
-		return x.Sid
+		return x.SessionId
 	}
 	return ""
 }
@@ -380,7 +380,7 @@ func (x *RefreshTokenRequest) GetSid() string {
 type RefreshTokenResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	Sid           string                 `protobuf:"bytes,2,opt,name=sid,proto3" json:"sid,omitempty"`
+	SessionId     string                 `protobuf:"bytes,2,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -422,9 +422,9 @@ func (x *RefreshTokenResponse) GetAccessToken() string {
 	return ""
 }
 
-func (x *RefreshTokenResponse) GetSid() string {
+func (x *RefreshTokenResponse) GetSessionId() string {
 	if x != nil {
-		return x.Sid
+		return x.SessionId
 	}
 	return ""
 }
@@ -499,20 +499,23 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\x0fverification_id\x18\x01 \x01(\tH\x00R\x0everificationId\x88\x01\x01\x12\x17\n" +
 	"\x04code\x18\x02 \x01(\rH\x01R\x04code\x88\x01\x01B\x12\n" +
 	"\x10_verification_idB\a\n" +
-	"\x05_code\"\xbf\x01\n" +
+	"\x05_code\"\xcc\x01\n" +
 	"\x15VerifySmsCodeResponse\x12\x1f\n" +
 	"\vis_verified\x18\x01 \x01(\bR\n" +
 	"isVerified\x12\x1e\n" +
 	"\vis_new_user\x18\x02 \x01(\bR\tisNewUser\x12!\n" +
-	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\x12\x10\n" +
-	"\x03sid\x18\x04 \x01(\tR\x03sid\x12'\n" +
+	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\x12\x1d\n" +
+	"\n" +
+	"session_id\x18\x04 \x01(\tR\tsessionId\x12'\n" +
 	"\x04user\x18\x05 \x01(\v2\x0e.users.v1.UserH\x00R\x04user\x88\x01\x01B\a\n" +
-	"\x05_user\"'\n" +
-	"\x13RefreshTokenRequest\x12\x10\n" +
-	"\x03sid\x18\x02 \x01(\tR\x03sid\"K\n" +
+	"\x05_user\"4\n" +
+	"\x13RefreshTokenRequest\x12\x1d\n" +
+	"\n" +
+	"session_id\x18\x02 \x01(\tR\tsessionId\"X\n" +
 	"\x14RefreshTokenResponse\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12\x10\n" +
-	"\x03sid\x18\x02 \x01(\tR\x03sid\",\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12\x1d\n" +
+	"\n" +
+	"session_id\x18\x02 \x01(\tR\tsessionId\",\n" +
 	"\x0eLogoutResponse\x12\x1a\n" +
 	"\bsecurety\x18\x01 \x01(\bR\bsecurety*6\n" +
 	"\tTypeLogin\x12\x12\n" +
