@@ -9,7 +9,7 @@ import "google/protobuf/empty.proto";
 service AuthOrRegistrationService {
   rpc LoginUsers(LoginUsersRequest) returns (LoginUsersResponse);
   rpc VerifySmsCode(VerifySmsCodeRequest) returns (VerifySmsCodeResponse);
-  rpc RefreshToken(google.protobuf.Empty) returns (RefreshTokenResponse);
+  rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
   rpc Logout(google.protobuf.Empty) returns (LogoutResponse);
 }
 
@@ -46,6 +46,10 @@ message VerifySmsCodeResponse {
   string access_token = 3;
   string sid = 4;
   optional users.v1.User user = 5;
+}
+
+message RefreshTokenRequest {
+  string sid = 2;
 }
 
 message RefreshTokenResponse {

@@ -32,7 +32,7 @@ const (
 type AuthOrRegistrationServiceClient interface {
 	LoginUsers(ctx context.Context, in *LoginUsersRequest, opts ...grpc.CallOption) (*LoginUsersResponse, error)
 	VerifySmsCode(ctx context.Context, in *VerifySmsCodeRequest, opts ...grpc.CallOption) (*VerifySmsCodeResponse, error)
-	RefreshToken(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*RefreshTokenResponse, error)
+	RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*RefreshTokenResponse, error)
 	Logout(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*LogoutResponse, error)
 }
 
@@ -64,7 +64,7 @@ func (c *authOrRegistrationServiceClient) VerifySmsCode(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *authOrRegistrationServiceClient) RefreshToken(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*RefreshTokenResponse, error) {
+func (c *authOrRegistrationServiceClient) RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*RefreshTokenResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RefreshTokenResponse)
 	err := c.cc.Invoke(ctx, AuthOrRegistrationService_RefreshToken_FullMethodName, in, out, cOpts...)
@@ -90,7 +90,7 @@ func (c *authOrRegistrationServiceClient) Logout(ctx context.Context, in *emptyp
 type AuthOrRegistrationServiceServer interface {
 	LoginUsers(context.Context, *LoginUsersRequest) (*LoginUsersResponse, error)
 	VerifySmsCode(context.Context, *VerifySmsCodeRequest) (*VerifySmsCodeResponse, error)
-	RefreshToken(context.Context, *emptypb.Empty) (*RefreshTokenResponse, error)
+	RefreshToken(context.Context, *RefreshTokenRequest) (*RefreshTokenResponse, error)
 	Logout(context.Context, *emptypb.Empty) (*LogoutResponse, error)
 	mustEmbedUnimplementedAuthOrRegistrationServiceServer()
 }
@@ -108,7 +108,7 @@ func (UnimplementedAuthOrRegistrationServiceServer) LoginUsers(context.Context, 
 func (UnimplementedAuthOrRegistrationServiceServer) VerifySmsCode(context.Context, *VerifySmsCodeRequest) (*VerifySmsCodeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifySmsCode not implemented")
 }
-func (UnimplementedAuthOrRegistrationServiceServer) RefreshToken(context.Context, *emptypb.Empty) (*RefreshTokenResponse, error) {
+func (UnimplementedAuthOrRegistrationServiceServer) RefreshToken(context.Context, *RefreshTokenRequest) (*RefreshTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RefreshToken not implemented")
 }
 func (UnimplementedAuthOrRegistrationServiceServer) Logout(context.Context, *emptypb.Empty) (*LogoutResponse, error) {
@@ -173,7 +173,7 @@ func _AuthOrRegistrationService_VerifySmsCode_Handler(srv interface{}, ctx conte
 }
 
 func _AuthOrRegistrationService_RefreshToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
+	in := new(RefreshTokenRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -185,7 +185,7 @@ func _AuthOrRegistrationService_RefreshToken_Handler(srv interface{}, ctx contex
 		FullMethod: AuthOrRegistrationService_RefreshToken_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthOrRegistrationServiceServer).RefreshToken(ctx, req.(*emptypb.Empty))
+		return srv.(AuthOrRegistrationServiceServer).RefreshToken(ctx, req.(*RefreshTokenRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
