@@ -4,10 +4,13 @@ package auth.v1;
 
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/auth/v1";
 import "users/v1/users.proto"; 
+import "google/protobuf/empty.proto";
 
 service AuthOrRegistrationService {
   rpc LoginUsers(LoginUsersRequest) returns (LoginUsersResponse);
   rpc VerifySmsCode(VerifySmsCodeRequest) returns (VerifySmsCodeResponse);
+  rpc RefreshToken(google.protobuf.Empty) returns (RefreshTokenResponse);
+  rpc Logout(google.protobuf.Empty) returns (LogoutResponse);
 }
 
 
@@ -27,12 +30,10 @@ message LoginUsersResponse {
   
 }
 
-
 enum TypeLogin {
   TYPE_LOGIN_SMS = 0;
   TYPE_LOGIN_YANDEX = 1;
 }
-
 
 message VerifySmsCodeRequest {
   optional string verification_id = 1;
@@ -47,7 +48,13 @@ message VerifySmsCodeResponse {
   optional users.v1.User user = 5;
 }
 
+message RefreshTokenResponse {
+  string access_token = 1;
+  string sid = 2;
+}
 
-
+message LogoutResponse {
+  bool securety = 1;
+}
 
 

@@ -10,6 +10,7 @@ import (
 	v1 "github.com/kalina-malina/IM-PROTOS/generated/users/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -332,11 +333,107 @@ func (x *VerifySmsCodeResponse) GetUser() *v1.User {
 	return nil
 }
 
+type RefreshTokenResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	Sid           string                 `protobuf:"bytes,2,opt,name=sid,proto3" json:"sid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RefreshTokenResponse) Reset() {
+	*x = RefreshTokenResponse{}
+	mi := &file_auth_v1_auth_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RefreshTokenResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RefreshTokenResponse) ProtoMessage() {}
+
+func (x *RefreshTokenResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_v1_auth_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RefreshTokenResponse.ProtoReflect.Descriptor instead.
+func (*RefreshTokenResponse) Descriptor() ([]byte, []int) {
+	return file_auth_v1_auth_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *RefreshTokenResponse) GetAccessToken() string {
+	if x != nil {
+		return x.AccessToken
+	}
+	return ""
+}
+
+func (x *RefreshTokenResponse) GetSid() string {
+	if x != nil {
+		return x.Sid
+	}
+	return ""
+}
+
+type LogoutResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Securety      bool                   `protobuf:"varint,1,opt,name=securety,proto3" json:"securety,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LogoutResponse) Reset() {
+	*x = LogoutResponse{}
+	mi := &file_auth_v1_auth_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LogoutResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LogoutResponse) ProtoMessage() {}
+
+func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_v1_auth_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LogoutResponse.ProtoReflect.Descriptor instead.
+func (*LogoutResponse) Descriptor() ([]byte, []int) {
+	return file_auth_v1_auth_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *LogoutResponse) GetSecurety() bool {
+	if x != nil {
+		return x.Securety
+	}
+	return false
+}
+
 var File_auth_v1_auth_proto protoreflect.FileDescriptor
 
 const file_auth_v1_auth_proto_rawDesc = "" +
 	"\n" +
-	"\x12auth/v1/auth.proto\x12\aauth.v1\x1a\x14users/v1/users.proto\"\xab\x01\n" +
+	"\x12auth/v1/auth.proto\x12\aauth.v1\x1a\x14users/v1/users.proto\x1a\x1bgoogle/protobuf/empty.proto\"\xab\x01\n" +
 	"\x11LoginUsersRequest\x12!\n" +
 	"\fphone_number\x18\x01 \x01(\tR\vphoneNumber\x121\n" +
 	"\n" +
@@ -366,14 +463,21 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\x12\x10\n" +
 	"\x03sid\x18\x04 \x01(\tR\x03sid\x12'\n" +
 	"\x04user\x18\x05 \x01(\v2\x0e.users.v1.UserH\x00R\x04user\x88\x01\x01B\a\n" +
-	"\x05_user*6\n" +
+	"\x05_user\"K\n" +
+	"\x14RefreshTokenResponse\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12\x10\n" +
+	"\x03sid\x18\x02 \x01(\tR\x03sid\",\n" +
+	"\x0eLogoutResponse\x12\x1a\n" +
+	"\bsecurety\x18\x01 \x01(\bR\bsecurety*6\n" +
 	"\tTypeLogin\x12\x12\n" +
 	"\x0eTYPE_LOGIN_SMS\x10\x00\x12\x15\n" +
-	"\x11TYPE_LOGIN_YANDEX\x10\x012\xb2\x01\n" +
+	"\x11TYPE_LOGIN_YANDEX\x10\x012\xb4\x02\n" +
 	"\x19AuthOrRegistrationService\x12E\n" +
 	"\n" +
 	"LoginUsers\x12\x1a.auth.v1.LoginUsersRequest\x1a\x1b.auth.v1.LoginUsersResponse\x12N\n" +
-	"\rVerifySmsCode\x12\x1d.auth.v1.VerifySmsCodeRequest\x1a\x1e.auth.v1.VerifySmsCodeResponseB6Z4github.com/kalina-malina/IM-PROTOS/generated/auth/v1b\x06proto3"
+	"\rVerifySmsCode\x12\x1d.auth.v1.VerifySmsCodeRequest\x1a\x1e.auth.v1.VerifySmsCodeResponse\x12E\n" +
+	"\fRefreshToken\x12\x16.google.protobuf.Empty\x1a\x1d.auth.v1.RefreshTokenResponse\x129\n" +
+	"\x06Logout\x12\x16.google.protobuf.Empty\x1a\x17.auth.v1.LogoutResponseB6Z4github.com/kalina-malina/IM-PROTOS/generated/auth/v1b\x06proto3"
 
 var (
 	file_auth_v1_auth_proto_rawDescOnce sync.Once
@@ -388,24 +492,31 @@ func file_auth_v1_auth_proto_rawDescGZIP() []byte {
 }
 
 var file_auth_v1_auth_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_auth_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_auth_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_auth_v1_auth_proto_goTypes = []any{
 	(TypeLogin)(0),                // 0: auth.v1.TypeLogin
 	(*LoginUsersRequest)(nil),     // 1: auth.v1.LoginUsersRequest
 	(*LoginUsersResponse)(nil),    // 2: auth.v1.LoginUsersResponse
 	(*VerifySmsCodeRequest)(nil),  // 3: auth.v1.VerifySmsCodeRequest
 	(*VerifySmsCodeResponse)(nil), // 4: auth.v1.VerifySmsCodeResponse
-	(*v1.User)(nil),               // 5: users.v1.User
+	(*RefreshTokenResponse)(nil),  // 5: auth.v1.RefreshTokenResponse
+	(*LogoutResponse)(nil),        // 6: auth.v1.LogoutResponse
+	(*v1.User)(nil),               // 7: users.v1.User
+	(*emptypb.Empty)(nil),         // 8: google.protobuf.Empty
 }
 var file_auth_v1_auth_proto_depIdxs = []int32{
 	0, // 0: auth.v1.LoginUsersRequest.type_login:type_name -> auth.v1.TypeLogin
-	5, // 1: auth.v1.VerifySmsCodeResponse.user:type_name -> users.v1.User
+	7, // 1: auth.v1.VerifySmsCodeResponse.user:type_name -> users.v1.User
 	1, // 2: auth.v1.AuthOrRegistrationService.LoginUsers:input_type -> auth.v1.LoginUsersRequest
 	3, // 3: auth.v1.AuthOrRegistrationService.VerifySmsCode:input_type -> auth.v1.VerifySmsCodeRequest
-	2, // 4: auth.v1.AuthOrRegistrationService.LoginUsers:output_type -> auth.v1.LoginUsersResponse
-	4, // 5: auth.v1.AuthOrRegistrationService.VerifySmsCode:output_type -> auth.v1.VerifySmsCodeResponse
-	4, // [4:6] is the sub-list for method output_type
-	2, // [2:4] is the sub-list for method input_type
+	8, // 4: auth.v1.AuthOrRegistrationService.RefreshToken:input_type -> google.protobuf.Empty
+	8, // 5: auth.v1.AuthOrRegistrationService.Logout:input_type -> google.protobuf.Empty
+	2, // 6: auth.v1.AuthOrRegistrationService.LoginUsers:output_type -> auth.v1.LoginUsersResponse
+	4, // 7: auth.v1.AuthOrRegistrationService.VerifySmsCode:output_type -> auth.v1.VerifySmsCodeResponse
+	5, // 8: auth.v1.AuthOrRegistrationService.RefreshToken:output_type -> auth.v1.RefreshTokenResponse
+	6, // 9: auth.v1.AuthOrRegistrationService.Logout:output_type -> auth.v1.LogoutResponse
+	6, // [6:10] is the sub-list for method output_type
+	2, // [2:6] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
 	2, // [2:2] is the sub-list for extension extendee
 	0, // [0:2] is the sub-list for field type_name
@@ -426,7 +537,7 @@ func file_auth_v1_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_v1_auth_proto_rawDesc), len(file_auth_v1_auth_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
