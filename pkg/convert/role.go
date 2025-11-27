@@ -29,7 +29,7 @@ func StringToTypeRole(r string) (userspb.Role, error) {
 	case management:
 		return userspb.Role_ROLE_MANAGEMENT, nil
 	default:
-		return 0, fmt.Errorf("неизвестная роль: %s", r)
+		return 0, fmt.Errorf("неизвестная роль в StringToTypeRole: %s", r)
 	}
 }
 
@@ -48,7 +48,7 @@ func RoleToString(r userspb.Role) (string, error) {
 	case userspb.Role_ROLE_MANAGEMENT:
 		return management, nil
 	default:
-		return "", fmt.Errorf("неизвестная роль: %s", r)
+		return "", fmt.Errorf("неизвестная роль в RoleToString: %s", r)
 
 	}
 }
