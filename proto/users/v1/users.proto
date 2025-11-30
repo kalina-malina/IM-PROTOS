@@ -16,11 +16,13 @@ service UsersService {
 
 message NewUserInfoRequest {
   uint64 id = 1;
-  string name = 2;
-  uint64 card_number = 3;
-  string phone = 4;
-  string email = 5;
-  repeated Child children = 7;
+  string first_name = 2;
+  string last_name = 3;
+  string middle_name = 4;
+  string date_of_birth = 5;
+  string phone = 6;
+  string email = 7;
+  repeated Childrens childrens = 8;
 }
 
 message NewUserInfoResponse {
@@ -29,20 +31,28 @@ message NewUserInfoResponse {
 
 message User{
   uint64 id = 1;
-  string name = 2;
-  uint64 card_number = 3;
-  string phone = 4;
-  string email = 5;
-  Role role = 7;
-  repeated Child children = 6;
+  Role role = 9;
+  string first_name = 2;
+  string last_name = 3;
+  string middle_name = 4;
+  string date_of_birth = 5;
+  uint64 card_number = 6;
+  string phone = 7;
+  string email = 8;
+  string last_coment_delivery = 10;
+  string selected_store = 11;
+  repeated Childrens children = 12;
+  ABTestGroup ab_test_group = 13;
 }
 
 
-message Child {
+message Childrens {
   string name = 1;
-  uint64 age = 2;
-  string mail = 3;
-  optional uint64 card_number = 4;
+  string first_name = 2;
+  string last_name = 3;
+  string middle_name = 4;
+  string date_of_birth = 5;
+  string mail = 6;
 }
 
 message UserSettings {
@@ -64,3 +74,11 @@ enum Role {
   ROLE_SUPPORT = 4;
   ROLE_MANAGEMENT = 5;
 }
+
+enum ABTestGroup {
+  AB_TEST_GROUP_A = 0;
+  AB_TEST_GROUP_B = 1;
+  AB_TEST_GROUP_C = 2;
+  AB_TEST_GROUP_D = 3;
+}
+

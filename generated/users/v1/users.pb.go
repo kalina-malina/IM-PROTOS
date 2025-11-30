@@ -79,14 +79,68 @@ func (Role) EnumDescriptor() ([]byte, []int) {
 	return file_users_v1_users_proto_rawDescGZIP(), []int{0}
 }
 
+type ABTestGroup int32
+
+const (
+	ABTestGroup_AB_TEST_GROUP_A ABTestGroup = 0
+	ABTestGroup_AB_TEST_GROUP_B ABTestGroup = 1
+	ABTestGroup_AB_TEST_GROUP_C ABTestGroup = 2
+	ABTestGroup_AB_TEST_GROUP_D ABTestGroup = 3
+)
+
+// Enum value maps for ABTestGroup.
+var (
+	ABTestGroup_name = map[int32]string{
+		0: "AB_TEST_GROUP_A",
+		1: "AB_TEST_GROUP_B",
+		2: "AB_TEST_GROUP_C",
+		3: "AB_TEST_GROUP_D",
+	}
+	ABTestGroup_value = map[string]int32{
+		"AB_TEST_GROUP_A": 0,
+		"AB_TEST_GROUP_B": 1,
+		"AB_TEST_GROUP_C": 2,
+		"AB_TEST_GROUP_D": 3,
+	}
+)
+
+func (x ABTestGroup) Enum() *ABTestGroup {
+	p := new(ABTestGroup)
+	*p = x
+	return p
+}
+
+func (x ABTestGroup) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ABTestGroup) Descriptor() protoreflect.EnumDescriptor {
+	return file_users_v1_users_proto_enumTypes[1].Descriptor()
+}
+
+func (ABTestGroup) Type() protoreflect.EnumType {
+	return &file_users_v1_users_proto_enumTypes[1]
+}
+
+func (x ABTestGroup) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ABTestGroup.Descriptor instead.
+func (ABTestGroup) EnumDescriptor() ([]byte, []int) {
+	return file_users_v1_users_proto_rawDescGZIP(), []int{1}
+}
+
 type NewUserInfoRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	CardNumber    uint64                 `protobuf:"varint,3,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
-	Phone         string                 `protobuf:"bytes,4,opt,name=phone,proto3" json:"phone,omitempty"`
-	Email         string                 `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
-	Children      []*Child               `protobuf:"bytes,7,rep,name=children,proto3" json:"children,omitempty"`
+	FirstName     string                 `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      string                 `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	MiddleName    string                 `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
+	DateOfBirth   string                 `protobuf:"bytes,5,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
+	Phone         string                 `protobuf:"bytes,6,opt,name=phone,proto3" json:"phone,omitempty"`
+	Email         string                 `protobuf:"bytes,7,opt,name=email,proto3" json:"email,omitempty"`
+	Childrens     []*Childrens           `protobuf:"bytes,8,rep,name=childrens,proto3" json:"childrens,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -128,18 +182,32 @@ func (x *NewUserInfoRequest) GetId() uint64 {
 	return 0
 }
 
-func (x *NewUserInfoRequest) GetName() string {
+func (x *NewUserInfoRequest) GetFirstName() string {
 	if x != nil {
-		return x.Name
+		return x.FirstName
 	}
 	return ""
 }
 
-func (x *NewUserInfoRequest) GetCardNumber() uint64 {
+func (x *NewUserInfoRequest) GetLastName() string {
 	if x != nil {
-		return x.CardNumber
+		return x.LastName
 	}
-	return 0
+	return ""
+}
+
+func (x *NewUserInfoRequest) GetMiddleName() string {
+	if x != nil {
+		return x.MiddleName
+	}
+	return ""
+}
+
+func (x *NewUserInfoRequest) GetDateOfBirth() string {
+	if x != nil {
+		return x.DateOfBirth
+	}
+	return ""
 }
 
 func (x *NewUserInfoRequest) GetPhone() string {
@@ -156,9 +224,9 @@ func (x *NewUserInfoRequest) GetEmail() string {
 	return ""
 }
 
-func (x *NewUserInfoRequest) GetChildren() []*Child {
+func (x *NewUserInfoRequest) GetChildrens() []*Childrens {
 	if x != nil {
-		return x.Children
+		return x.Childrens
 	}
 	return nil
 }
@@ -208,16 +276,22 @@ func (x *NewUserInfoResponse) GetUser() *User {
 }
 
 type User struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	CardNumber    uint64                 `protobuf:"varint,3,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
-	Phone         string                 `protobuf:"bytes,4,opt,name=phone,proto3" json:"phone,omitempty"`
-	Email         string                 `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
-	Role          Role                   `protobuf:"varint,7,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
-	Children      []*Child               `protobuf:"bytes,6,rep,name=children,proto3" json:"children,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	Id                 uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Role               Role                   `protobuf:"varint,9,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
+	FirstName          string                 `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName           string                 `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	MiddleName         string                 `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
+	DateOfBirth        string                 `protobuf:"bytes,5,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
+	CardNumber         uint64                 `protobuf:"varint,6,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
+	Phone              string                 `protobuf:"bytes,7,opt,name=phone,proto3" json:"phone,omitempty"`
+	Email              string                 `protobuf:"bytes,8,opt,name=email,proto3" json:"email,omitempty"`
+	LastComentDelivery string                 `protobuf:"bytes,10,opt,name=last_coment_delivery,json=lastComentDelivery,proto3" json:"last_coment_delivery,omitempty"`
+	SelectedStore      string                 `protobuf:"bytes,11,opt,name=selected_store,json=selectedStore,proto3" json:"selected_store,omitempty"`
+	Children           []*Childrens           `protobuf:"bytes,12,rep,name=children,proto3" json:"children,omitempty"`
+	AbTestGroup        ABTestGroup            `protobuf:"varint,13,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
 }
 
 func (x *User) Reset() {
@@ -257,9 +331,37 @@ func (x *User) GetId() uint64 {
 	return 0
 }
 
-func (x *User) GetName() string {
+func (x *User) GetRole() Role {
 	if x != nil {
-		return x.Name
+		return x.Role
+	}
+	return Role_ROLE_CLIENT
+}
+
+func (x *User) GetFirstName() string {
+	if x != nil {
+		return x.FirstName
+	}
+	return ""
+}
+
+func (x *User) GetLastName() string {
+	if x != nil {
+		return x.LastName
+	}
+	return ""
+}
+
+func (x *User) GetMiddleName() string {
+	if x != nil {
+		return x.MiddleName
+	}
+	return ""
+}
+
+func (x *User) GetDateOfBirth() string {
+	if x != nil {
+		return x.DateOfBirth
 	}
 	return ""
 }
@@ -285,44 +387,60 @@ func (x *User) GetEmail() string {
 	return ""
 }
 
-func (x *User) GetRole() Role {
+func (x *User) GetLastComentDelivery() string {
 	if x != nil {
-		return x.Role
+		return x.LastComentDelivery
 	}
-	return Role_ROLE_CLIENT
+	return ""
 }
 
-func (x *User) GetChildren() []*Child {
+func (x *User) GetSelectedStore() string {
+	if x != nil {
+		return x.SelectedStore
+	}
+	return ""
+}
+
+func (x *User) GetChildren() []*Childrens {
 	if x != nil {
 		return x.Children
 	}
 	return nil
 }
 
-type Child struct {
+func (x *User) GetAbTestGroup() ABTestGroup {
+	if x != nil {
+		return x.AbTestGroup
+	}
+	return ABTestGroup_AB_TEST_GROUP_A
+}
+
+type Childrens struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Age           uint64                 `protobuf:"varint,2,opt,name=age,proto3" json:"age,omitempty"`
-	Mail          string                 `protobuf:"bytes,3,opt,name=mail,proto3" json:"mail,omitempty"`
-	CardNumber    *uint64                `protobuf:"varint,4,opt,name=card_number,json=cardNumber,proto3,oneof" json:"card_number,omitempty"`
+	FirstName     string                 `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      string                 `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	MiddleName    string                 `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
+	DateOfBirth   string                 `protobuf:"bytes,5,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
+	Mail          string                 `protobuf:"bytes,6,opt,name=mail,proto3" json:"mail,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Child) Reset() {
-	*x = Child{}
+func (x *Childrens) Reset() {
+	*x = Childrens{}
 	mi := &file_users_v1_users_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Child) String() string {
+func (x *Childrens) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Child) ProtoMessage() {}
+func (*Childrens) ProtoMessage() {}
 
-func (x *Child) ProtoReflect() protoreflect.Message {
+func (x *Childrens) ProtoReflect() protoreflect.Message {
 	mi := &file_users_v1_users_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -334,37 +452,51 @@ func (x *Child) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Child.ProtoReflect.Descriptor instead.
-func (*Child) Descriptor() ([]byte, []int) {
+// Deprecated: Use Childrens.ProtoReflect.Descriptor instead.
+func (*Childrens) Descriptor() ([]byte, []int) {
 	return file_users_v1_users_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *Child) GetName() string {
+func (x *Childrens) GetName() string {
 	if x != nil {
 		return x.Name
 	}
 	return ""
 }
 
-func (x *Child) GetAge() uint64 {
+func (x *Childrens) GetFirstName() string {
 	if x != nil {
-		return x.Age
-	}
-	return 0
-}
-
-func (x *Child) GetMail() string {
-	if x != nil {
-		return x.Mail
+		return x.FirstName
 	}
 	return ""
 }
 
-func (x *Child) GetCardNumber() uint64 {
-	if x != nil && x.CardNumber != nil {
-		return *x.CardNumber
+func (x *Childrens) GetLastName() string {
+	if x != nil {
+		return x.LastName
 	}
-	return 0
+	return ""
+}
+
+func (x *Childrens) GetMiddleName() string {
+	if x != nil {
+		return x.MiddleName
+	}
+	return ""
+}
+
+func (x *Childrens) GetDateOfBirth() string {
+	if x != nil {
+		return x.DateOfBirth
+	}
+	return ""
+}
+
+func (x *Childrens) GetMail() string {
+	if x != nil {
+		return x.Mail
+	}
+	return ""
 }
 
 type UserSettings struct {
@@ -471,33 +603,47 @@ var File_users_v1_users_proto protoreflect.FileDescriptor
 
 const file_users_v1_users_proto_rawDesc = "" +
 	"\n" +
-	"\x14users/v1/users.proto\x12\busers.v1\"\xb2\x01\n" +
+	"\x14users/v1/users.proto\x12\busers.v1\"\x84\x02\n" +
 	"\x12NewUserInfoRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1f\n" +
-	"\vcard_number\x18\x03 \x01(\x04R\n" +
-	"cardNumber\x12\x14\n" +
-	"\x05phone\x18\x04 \x01(\tR\x05phone\x12\x14\n" +
-	"\x05email\x18\x05 \x01(\tR\x05email\x12+\n" +
-	"\bchildren\x18\a \x03(\v2\x0f.users.v1.ChildR\bchildren\"9\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n" +
+	"\n" +
+	"first_name\x18\x02 \x01(\tR\tfirstName\x12\x1b\n" +
+	"\tlast_name\x18\x03 \x01(\tR\blastName\x12\x1f\n" +
+	"\vmiddle_name\x18\x04 \x01(\tR\n" +
+	"middleName\x12\"\n" +
+	"\rdate_of_birth\x18\x05 \x01(\tR\vdateOfBirth\x12\x14\n" +
+	"\x05phone\x18\x06 \x01(\tR\x05phone\x12\x14\n" +
+	"\x05email\x18\a \x01(\tR\x05email\x121\n" +
+	"\tchildrens\x18\b \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"9\n" +
 	"\x13NewUserInfoResponse\x12\"\n" +
-	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\xc8\x01\n" +
+	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\xcd\x03\n" +
 	"\x04User\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1f\n" +
-	"\vcard_number\x18\x03 \x01(\x04R\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\"\n" +
+	"\x04role\x18\t \x01(\x0e2\x0e.users.v1.RoleR\x04role\x12\x1d\n" +
+	"\n" +
+	"first_name\x18\x02 \x01(\tR\tfirstName\x12\x1b\n" +
+	"\tlast_name\x18\x03 \x01(\tR\blastName\x12\x1f\n" +
+	"\vmiddle_name\x18\x04 \x01(\tR\n" +
+	"middleName\x12\"\n" +
+	"\rdate_of_birth\x18\x05 \x01(\tR\vdateOfBirth\x12\x1f\n" +
+	"\vcard_number\x18\x06 \x01(\x04R\n" +
 	"cardNumber\x12\x14\n" +
-	"\x05phone\x18\x04 \x01(\tR\x05phone\x12\x14\n" +
-	"\x05email\x18\x05 \x01(\tR\x05email\x12\"\n" +
-	"\x04role\x18\a \x01(\x0e2\x0e.users.v1.RoleR\x04role\x12+\n" +
-	"\bchildren\x18\x06 \x03(\v2\x0f.users.v1.ChildR\bchildren\"w\n" +
-	"\x05Child\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\x12\x10\n" +
-	"\x03age\x18\x02 \x01(\x04R\x03age\x12\x12\n" +
-	"\x04mail\x18\x03 \x01(\tR\x04mail\x12$\n" +
-	"\vcard_number\x18\x04 \x01(\x04H\x00R\n" +
-	"cardNumber\x88\x01\x01B\x0e\n" +
-	"\f_card_number\"\x94\x03\n" +
+	"\x05phone\x18\a \x01(\tR\x05phone\x12\x14\n" +
+	"\x05email\x18\b \x01(\tR\x05email\x120\n" +
+	"\x14last_coment_delivery\x18\n" +
+	" \x01(\tR\x12lastComentDelivery\x12%\n" +
+	"\x0eselected_store\x18\v \x01(\tR\rselectedStore\x12/\n" +
+	"\bchildren\x18\f \x03(\v2\x13.users.v1.ChildrensR\bchildren\x129\n" +
+	"\rab_test_group\x18\r \x01(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup\"\xb4\x01\n" +
+	"\tChildrens\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x1d\n" +
+	"\n" +
+	"first_name\x18\x02 \x01(\tR\tfirstName\x12\x1b\n" +
+	"\tlast_name\x18\x03 \x01(\tR\blastName\x12\x1f\n" +
+	"\vmiddle_name\x18\x04 \x01(\tR\n" +
+	"middleName\x12\"\n" +
+	"\rdate_of_birth\x18\x05 \x01(\tR\vdateOfBirth\x12\x12\n" +
+	"\x04mail\x18\x06 \x01(\tR\x04mail\"\x94\x03\n" +
 	"\fUserSettings\x12-\n" +
 	"\x12push_notifications\x18\x01 \x01(\bR\x11pushNotifications\x12/\n" +
 	"\x13email_notifications\x18\x02 \x01(\bR\x12emailNotifications\x12+\n" +
@@ -515,7 +661,12 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\rROLE_OPERATOR\x10\x02\x12\x12\n" +
 	"\x0eROLE_MARKETING\x10\x03\x12\x10\n" +
 	"\fROLE_SUPPORT\x10\x04\x12\x13\n" +
-	"\x0fROLE_MANAGEMENT\x10\x052Z\n" +
+	"\x0fROLE_MANAGEMENT\x10\x05*a\n" +
+	"\vABTestGroup\x12\x13\n" +
+	"\x0fAB_TEST_GROUP_A\x10\x00\x12\x13\n" +
+	"\x0fAB_TEST_GROUP_B\x10\x01\x12\x13\n" +
+	"\x0fAB_TEST_GROUP_C\x10\x02\x12\x13\n" +
+	"\x0fAB_TEST_GROUP_D\x10\x032Z\n" +
 	"\fUsersService\x12J\n" +
 	"\vNewUserInfo\x12\x1c.users.v1.NewUserInfoRequest\x1a\x1d.users.v1.NewUserInfoResponseB7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
 
@@ -531,28 +682,30 @@ func file_users_v1_users_proto_rawDescGZIP() []byte {
 	return file_users_v1_users_proto_rawDescData
 }
 
-var file_users_v1_users_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_users_v1_users_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_users_v1_users_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_users_v1_users_proto_goTypes = []any{
 	(Role)(0),                   // 0: users.v1.Role
-	(*NewUserInfoRequest)(nil),  // 1: users.v1.NewUserInfoRequest
-	(*NewUserInfoResponse)(nil), // 2: users.v1.NewUserInfoResponse
-	(*User)(nil),                // 3: users.v1.User
-	(*Child)(nil),               // 4: users.v1.Child
-	(*UserSettings)(nil),        // 5: users.v1.UserSettings
+	(ABTestGroup)(0),            // 1: users.v1.ABTestGroup
+	(*NewUserInfoRequest)(nil),  // 2: users.v1.NewUserInfoRequest
+	(*NewUserInfoResponse)(nil), // 3: users.v1.NewUserInfoResponse
+	(*User)(nil),                // 4: users.v1.User
+	(*Childrens)(nil),           // 5: users.v1.Childrens
+	(*UserSettings)(nil),        // 6: users.v1.UserSettings
 }
 var file_users_v1_users_proto_depIdxs = []int32{
-	4, // 0: users.v1.NewUserInfoRequest.children:type_name -> users.v1.Child
-	3, // 1: users.v1.NewUserInfoResponse.user:type_name -> users.v1.User
+	5, // 0: users.v1.NewUserInfoRequest.childrens:type_name -> users.v1.Childrens
+	4, // 1: users.v1.NewUserInfoResponse.user:type_name -> users.v1.User
 	0, // 2: users.v1.User.role:type_name -> users.v1.Role
-	4, // 3: users.v1.User.children:type_name -> users.v1.Child
-	1, // 4: users.v1.UsersService.NewUserInfo:input_type -> users.v1.NewUserInfoRequest
-	2, // 5: users.v1.UsersService.NewUserInfo:output_type -> users.v1.NewUserInfoResponse
-	5, // [5:6] is the sub-list for method output_type
-	4, // [4:5] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	5, // 3: users.v1.User.children:type_name -> users.v1.Childrens
+	1, // 4: users.v1.User.ab_test_group:type_name -> users.v1.ABTestGroup
+	2, // 5: users.v1.UsersService.NewUserInfo:input_type -> users.v1.NewUserInfoRequest
+	3, // 6: users.v1.UsersService.NewUserInfo:output_type -> users.v1.NewUserInfoResponse
+	6, // [6:7] is the sub-list for method output_type
+	5, // [5:6] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_users_v1_users_proto_init() }
@@ -560,14 +713,13 @@ func file_users_v1_users_proto_init() {
 	if File_users_v1_users_proto != nil {
 		return
 	}
-	file_users_v1_users_proto_msgTypes[3].OneofWrappers = []any{}
 	file_users_v1_users_proto_msgTypes[4].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_users_proto_rawDesc), len(file_users_v1_users_proto_rawDesc)),
-			NumEnums:      1,
+			NumEnums:      2,
 			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
