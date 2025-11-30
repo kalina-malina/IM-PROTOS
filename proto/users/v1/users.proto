@@ -5,16 +5,54 @@ package users.v1;
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
 
 
+service UsersService {
+  rpc UpdateInfoUser(AncetaUserRequest) returns (AncetaUserResponse);
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  //rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
+  //rpc LockUser(LockUserRequest) returns (LockUserResponse);
+  //
+  //rpc UpdateUserSettings(UpdateUserSettingsRequest) returns (UpdateUserSettingsResponse);
+  
+}
 
+message GetUserRequest {
+  uint64 id = 1;
+}
+
+message GetUserResponse {
+  User user = 1;
+}
+
+message AncetaUserRequest {
+  uint64 id = 1;
+  string name = 2;
+  uint64 card_number = 3;
+  string phone = 4;
+  string email = 5;
+  repeated Child children = 7;
+}
+
+message AncetaUserResponse {
+  User user = 1;
+}
 
 message User{
   uint64 id = 1;
   string name = 2;
   uint64 card_number = 3;
   string phone = 4;
-  Role role = 5;
+  string email = 5;
+  Role role = 7;
+  repeated Child children = 6;
 }
 
+
+message Child {
+  string name = 1;
+  uint64 age = 2;
+  string mail = 3;
+  optional uint64 card_number = 4;
+}
 
 message UserSettings {
   bool push_notifications = 1;        // Push уведомления

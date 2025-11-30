@@ -79,20 +79,238 @@ func (Role) EnumDescriptor() ([]byte, []int) {
 	return file_users_v1_users_proto_rawDescGZIP(), []int{0}
 }
 
+type GetUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserRequest) Reset() {
+	*x = GetUserRequest{}
+	mi := &file_users_v1_users_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserRequest) ProtoMessage() {}
+
+func (x *GetUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_users_v1_users_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserRequest.ProtoReflect.Descriptor instead.
+func (*GetUserRequest) Descriptor() ([]byte, []int) {
+	return file_users_v1_users_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *GetUserRequest) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type GetUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserResponse) Reset() {
+	*x = GetUserResponse{}
+	mi := &file_users_v1_users_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserResponse) ProtoMessage() {}
+
+func (x *GetUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_users_v1_users_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserResponse.ProtoReflect.Descriptor instead.
+func (*GetUserResponse) Descriptor() ([]byte, []int) {
+	return file_users_v1_users_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *GetUserResponse) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+type AncetaUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	CardNumber    uint64                 `protobuf:"varint,3,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
+	Phone         string                 `protobuf:"bytes,4,opt,name=phone,proto3" json:"phone,omitempty"`
+	Email         string                 `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
+	Children      []*Child               `protobuf:"bytes,7,rep,name=children,proto3" json:"children,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AncetaUserRequest) Reset() {
+	*x = AncetaUserRequest{}
+	mi := &file_users_v1_users_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AncetaUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AncetaUserRequest) ProtoMessage() {}
+
+func (x *AncetaUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_users_v1_users_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AncetaUserRequest.ProtoReflect.Descriptor instead.
+func (*AncetaUserRequest) Descriptor() ([]byte, []int) {
+	return file_users_v1_users_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *AncetaUserRequest) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *AncetaUserRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *AncetaUserRequest) GetCardNumber() uint64 {
+	if x != nil {
+		return x.CardNumber
+	}
+	return 0
+}
+
+func (x *AncetaUserRequest) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+func (x *AncetaUserRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *AncetaUserRequest) GetChildren() []*Child {
+	if x != nil {
+		return x.Children
+	}
+	return nil
+}
+
+type AncetaUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AncetaUserResponse) Reset() {
+	*x = AncetaUserResponse{}
+	mi := &file_users_v1_users_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AncetaUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AncetaUserResponse) ProtoMessage() {}
+
+func (x *AncetaUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_users_v1_users_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AncetaUserResponse.ProtoReflect.Descriptor instead.
+func (*AncetaUserResponse) Descriptor() ([]byte, []int) {
+	return file_users_v1_users_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *AncetaUserResponse) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
 type User struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	CardNumber    uint64                 `protobuf:"varint,3,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
 	Phone         string                 `protobuf:"bytes,4,opt,name=phone,proto3" json:"phone,omitempty"`
-	Role          Role                   `protobuf:"varint,5,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
+	Email         string                 `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
+	Role          Role                   `protobuf:"varint,7,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
+	Children      []*Child               `protobuf:"bytes,6,rep,name=children,proto3" json:"children,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *User) Reset() {
 	*x = User{}
-	mi := &file_users_v1_users_proto_msgTypes[0]
+	mi := &file_users_v1_users_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -104,7 +322,7 @@ func (x *User) String() string {
 func (*User) ProtoMessage() {}
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_users_proto_msgTypes[0]
+	mi := &file_users_v1_users_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -117,7 +335,7 @@ func (x *User) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
 func (*User) Descriptor() ([]byte, []int) {
-	return file_users_v1_users_proto_rawDescGZIP(), []int{0}
+	return file_users_v1_users_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *User) GetId() uint64 {
@@ -148,11 +366,93 @@ func (x *User) GetPhone() string {
 	return ""
 }
 
+func (x *User) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
 func (x *User) GetRole() Role {
 	if x != nil {
 		return x.Role
 	}
 	return Role_ROLE_CLIENT
+}
+
+func (x *User) GetChildren() []*Child {
+	if x != nil {
+		return x.Children
+	}
+	return nil
+}
+
+type Child struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Age           uint64                 `protobuf:"varint,2,opt,name=age,proto3" json:"age,omitempty"`
+	Mail          string                 `protobuf:"bytes,3,opt,name=mail,proto3" json:"mail,omitempty"`
+	CardNumber    *uint64                `protobuf:"varint,4,opt,name=card_number,json=cardNumber,proto3,oneof" json:"card_number,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Child) Reset() {
+	*x = Child{}
+	mi := &file_users_v1_users_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Child) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Child) ProtoMessage() {}
+
+func (x *Child) ProtoReflect() protoreflect.Message {
+	mi := &file_users_v1_users_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Child.ProtoReflect.Descriptor instead.
+func (*Child) Descriptor() ([]byte, []int) {
+	return file_users_v1_users_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *Child) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Child) GetAge() uint64 {
+	if x != nil {
+		return x.Age
+	}
+	return 0
+}
+
+func (x *Child) GetMail() string {
+	if x != nil {
+		return x.Mail
+	}
+	return ""
+}
+
+func (x *Child) GetCardNumber() uint64 {
+	if x != nil && x.CardNumber != nil {
+		return *x.CardNumber
+	}
+	return 0
 }
 
 type UserSettings struct {
@@ -171,7 +471,7 @@ type UserSettings struct {
 
 func (x *UserSettings) Reset() {
 	*x = UserSettings{}
-	mi := &file_users_v1_users_proto_msgTypes[1]
+	mi := &file_users_v1_users_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -183,7 +483,7 @@ func (x *UserSettings) String() string {
 func (*UserSettings) ProtoMessage() {}
 
 func (x *UserSettings) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_users_proto_msgTypes[1]
+	mi := &file_users_v1_users_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -196,7 +496,7 @@ func (x *UserSettings) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserSettings.ProtoReflect.Descriptor instead.
 func (*UserSettings) Descriptor() ([]byte, []int) {
-	return file_users_v1_users_proto_rawDescGZIP(), []int{1}
+	return file_users_v1_users_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *UserSettings) GetPushNotifications() bool {
@@ -259,14 +559,37 @@ var File_users_v1_users_proto protoreflect.FileDescriptor
 
 const file_users_v1_users_proto_rawDesc = "" +
 	"\n" +
-	"\x14users/v1/users.proto\x12\busers.v1\"\x85\x01\n" +
+	"\x14users/v1/users.proto\x12\busers.v1\" \n" +
+	"\x0eGetUserRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\"5\n" +
+	"\x0fGetUserResponse\x12\"\n" +
+	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\xb1\x01\n" +
+	"\x11AncetaUserRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1f\n" +
+	"\vcard_number\x18\x03 \x01(\x04R\n" +
+	"cardNumber\x12\x14\n" +
+	"\x05phone\x18\x04 \x01(\tR\x05phone\x12\x14\n" +
+	"\x05email\x18\x05 \x01(\tR\x05email\x12+\n" +
+	"\bchildren\x18\a \x03(\v2\x0f.users.v1.ChildR\bchildren\"8\n" +
+	"\x12AncetaUserResponse\x12\"\n" +
+	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\xc8\x01\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1f\n" +
 	"\vcard_number\x18\x03 \x01(\x04R\n" +
 	"cardNumber\x12\x14\n" +
-	"\x05phone\x18\x04 \x01(\tR\x05phone\x12\"\n" +
-	"\x04role\x18\x05 \x01(\x0e2\x0e.users.v1.RoleR\x04role\"\x94\x03\n" +
+	"\x05phone\x18\x04 \x01(\tR\x05phone\x12\x14\n" +
+	"\x05email\x18\x05 \x01(\tR\x05email\x12\"\n" +
+	"\x04role\x18\a \x01(\x0e2\x0e.users.v1.RoleR\x04role\x12+\n" +
+	"\bchildren\x18\x06 \x03(\v2\x0f.users.v1.ChildR\bchildren\"w\n" +
+	"\x05Child\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x10\n" +
+	"\x03age\x18\x02 \x01(\x04R\x03age\x12\x12\n" +
+	"\x04mail\x18\x03 \x01(\tR\x04mail\x12$\n" +
+	"\vcard_number\x18\x04 \x01(\x04H\x00R\n" +
+	"cardNumber\x88\x01\x01B\x0e\n" +
+	"\f_card_number\"\x94\x03\n" +
 	"\fUserSettings\x12-\n" +
 	"\x12push_notifications\x18\x01 \x01(\bR\x11pushNotifications\x12/\n" +
 	"\x13email_notifications\x18\x02 \x01(\bR\x12emailNotifications\x12+\n" +
@@ -284,7 +607,10 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\rROLE_OPERATOR\x10\x02\x12\x12\n" +
 	"\x0eROLE_MARKETING\x10\x03\x12\x10\n" +
 	"\fROLE_SUPPORT\x10\x04\x12\x13\n" +
-	"\x0fROLE_MANAGEMENT\x10\x05B7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
+	"\x0fROLE_MANAGEMENT\x10\x052\x9b\x01\n" +
+	"\fUsersService\x12K\n" +
+	"\x0eUpdateInfoUser\x12\x1b.users.v1.AncetaUserRequest\x1a\x1c.users.v1.AncetaUserResponse\x12>\n" +
+	"\aGetUser\x12\x18.users.v1.GetUserRequest\x1a\x19.users.v1.GetUserResponseB7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
 
 var (
 	file_users_v1_users_proto_rawDescOnce sync.Once
@@ -299,19 +625,32 @@ func file_users_v1_users_proto_rawDescGZIP() []byte {
 }
 
 var file_users_v1_users_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_users_v1_users_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_users_v1_users_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_users_v1_users_proto_goTypes = []any{
-	(Role)(0),            // 0: users.v1.Role
-	(*User)(nil),         // 1: users.v1.User
-	(*UserSettings)(nil), // 2: users.v1.UserSettings
+	(Role)(0),                  // 0: users.v1.Role
+	(*GetUserRequest)(nil),     // 1: users.v1.GetUserRequest
+	(*GetUserResponse)(nil),    // 2: users.v1.GetUserResponse
+	(*AncetaUserRequest)(nil),  // 3: users.v1.AncetaUserRequest
+	(*AncetaUserResponse)(nil), // 4: users.v1.AncetaUserResponse
+	(*User)(nil),               // 5: users.v1.User
+	(*Child)(nil),              // 6: users.v1.Child
+	(*UserSettings)(nil),       // 7: users.v1.UserSettings
 }
 var file_users_v1_users_proto_depIdxs = []int32{
-	0, // 0: users.v1.User.role:type_name -> users.v1.Role
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	5, // 0: users.v1.GetUserResponse.user:type_name -> users.v1.User
+	6, // 1: users.v1.AncetaUserRequest.children:type_name -> users.v1.Child
+	5, // 2: users.v1.AncetaUserResponse.user:type_name -> users.v1.User
+	0, // 3: users.v1.User.role:type_name -> users.v1.Role
+	6, // 4: users.v1.User.children:type_name -> users.v1.Child
+	3, // 5: users.v1.UsersService.UpdateInfoUser:input_type -> users.v1.AncetaUserRequest
+	1, // 6: users.v1.UsersService.GetUser:input_type -> users.v1.GetUserRequest
+	4, // 7: users.v1.UsersService.UpdateInfoUser:output_type -> users.v1.AncetaUserResponse
+	2, // 8: users.v1.UsersService.GetUser:output_type -> users.v1.GetUserResponse
+	7, // [7:9] is the sub-list for method output_type
+	5, // [5:7] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_users_v1_users_proto_init() }
@@ -319,16 +658,17 @@ func file_users_v1_users_proto_init() {
 	if File_users_v1_users_proto != nil {
 		return
 	}
-	file_users_v1_users_proto_msgTypes[1].OneofWrappers = []any{}
+	file_users_v1_users_proto_msgTypes[5].OneofWrappers = []any{}
+	file_users_v1_users_proto_msgTypes[6].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_users_proto_rawDesc), len(file_users_v1_users_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   2,
+			NumMessages:   7,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
 		GoTypes:           file_users_v1_users_proto_goTypes,
 		DependencyIndexes: file_users_v1_users_proto_depIdxs,
