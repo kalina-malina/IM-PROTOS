@@ -3,12 +3,6 @@ package convert
 import (
 	userspb "github.com/kalina-malina/IM-PROTOS/generated/users/v1"
 )
-enum ABTestGroup {
-  AB_TEST_GROUP_A = 0;
-  AB_TEST_GROUP_B = 1;
-  AB_TEST_GROUP_C = 2;
-  AB_TEST_GROUP_D = 3;
-}
 
 const (
 	ab_test_group_a = "group_a"
