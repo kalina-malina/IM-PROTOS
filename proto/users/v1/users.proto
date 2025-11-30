@@ -6,8 +6,7 @@ option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
 
 
 service UsersService {
-  rpc UpdateInfoUser(AncetaUserRequest) returns (AncetaUserResponse);
-  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  rpc NewUserInfo(NewUserInfoRequest) returns (NewUserInfoResponse);
   //rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
   //rpc LockUser(LockUserRequest) returns (LockUserResponse);
   //
@@ -15,15 +14,7 @@ service UsersService {
   
 }
 
-message GetUserRequest {
-  uint64 id = 1;
-}
-
-message GetUserResponse {
-  User user = 1;
-}
-
-message AncetaUserRequest {
+message NewUserInfoRequest {
   uint64 id = 1;
   string name = 2;
   uint64 card_number = 3;
@@ -32,7 +23,7 @@ message AncetaUserRequest {
   repeated Child children = 7;
 }
 
-message AncetaUserResponse {
+message NewUserInfoResponse {
   User user = 1;
 }
 

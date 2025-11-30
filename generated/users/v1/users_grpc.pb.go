@@ -19,16 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UsersService_UpdateInfoUser_FullMethodName = "/users.v1.UsersService/UpdateInfoUser"
-	UsersService_GetUser_FullMethodName        = "/users.v1.UsersService/GetUser"
+	UsersService_NewUserInfo_FullMethodName = "/users.v1.UsersService/NewUserInfo"
 )
 
 // UsersServiceClient is the client API for UsersService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UsersServiceClient interface {
-	UpdateInfoUser(ctx context.Context, in *AncetaUserRequest, opts ...grpc.CallOption) (*AncetaUserResponse, error)
-	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
+	NewUserInfo(ctx context.Context, in *NewUserInfoRequest, opts ...grpc.CallOption) (*NewUserInfoResponse, error)
 }
 
 type usersServiceClient struct {
@@ -39,20 +37,10 @@ func NewUsersServiceClient(cc grpc.ClientConnInterface) UsersServiceClient {
 	return &usersServiceClient{cc}
 }
 
-func (c *usersServiceClient) UpdateInfoUser(ctx context.Context, in *AncetaUserRequest, opts ...grpc.CallOption) (*AncetaUserResponse, error) {
+func (c *usersServiceClient) NewUserInfo(ctx context.Context, in *NewUserInfoRequest, opts ...grpc.CallOption) (*NewUserInfoResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AncetaUserResponse)
-	err := c.cc.Invoke(ctx, UsersService_UpdateInfoUser_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *usersServiceClient) GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetUserResponse)
-	err := c.cc.Invoke(ctx, UsersService_GetUser_FullMethodName, in, out, cOpts...)
+	out := new(NewUserInfoResponse)
+	err := c.cc.Invoke(ctx, UsersService_NewUserInfo_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,8 +51,7 @@ func (c *usersServiceClient) GetUser(ctx context.Context, in *GetUserRequest, op
 // All implementations must embed UnimplementedUsersServiceServer
 // for forward compatibility.
 type UsersServiceServer interface {
-	UpdateInfoUser(context.Context, *AncetaUserRequest) (*AncetaUserResponse, error)
-	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
+	NewUserInfo(context.Context, *NewUserInfoRequest) (*NewUserInfoResponse, error)
 	mustEmbedUnimplementedUsersServiceServer()
 }
 
@@ -75,11 +62,8 @@ type UsersServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedUsersServiceServer struct{}
 
-func (UnimplementedUsersServiceServer) UpdateInfoUser(context.Context, *AncetaUserRequest) (*AncetaUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateInfoUser not implemented")
-}
-func (UnimplementedUsersServiceServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+func (UnimplementedUsersServiceServer) NewUserInfo(context.Context, *NewUserInfoRequest) (*NewUserInfoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method NewUserInfo not implemented")
 }
 func (UnimplementedUsersServiceServer) mustEmbedUnimplementedUsersServiceServer() {}
 func (UnimplementedUsersServiceServer) testEmbeddedByValue()                      {}
@@ -102,38 +86,20 @@ func RegisterUsersServiceServer(s grpc.ServiceRegistrar, srv UsersServiceServer)
 	s.RegisterService(&UsersService_ServiceDesc, srv)
 }
 
-func _UsersService_UpdateInfoUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AncetaUserRequest)
+func _UsersService_NewUserInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NewUserInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UsersServiceServer).UpdateInfoUser(ctx, in)
+		return srv.(UsersServiceServer).NewUserInfo(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UsersService_UpdateInfoUser_FullMethodName,
+		FullMethod: UsersService_NewUserInfo_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsersServiceServer).UpdateInfoUser(ctx, req.(*AncetaUserRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _UsersService_GetUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetUserRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UsersServiceServer).GetUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UsersService_GetUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsersServiceServer).GetUser(ctx, req.(*GetUserRequest))
+		return srv.(UsersServiceServer).NewUserInfo(ctx, req.(*NewUserInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -146,12 +112,8 @@ var UsersService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*UsersServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "UpdateInfoUser",
-			Handler:    _UsersService_UpdateInfoUser_Handler,
-		},
-		{
-			MethodName: "GetUser",
-			Handler:    _UsersService_GetUser_Handler,
+			MethodName: "NewUserInfo",
+			Handler:    _UsersService_NewUserInfo_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
