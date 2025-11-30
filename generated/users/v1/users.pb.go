@@ -287,7 +287,7 @@ type User struct {
 	Phone              string                 `protobuf:"bytes,7,opt,name=phone,proto3" json:"phone,omitempty"`
 	Email              string                 `protobuf:"bytes,8,opt,name=email,proto3" json:"email,omitempty"`
 	LastComentDelivery string                 `protobuf:"bytes,10,opt,name=last_coment_delivery,json=lastComentDelivery,proto3" json:"last_coment_delivery,omitempty"`
-	SelectedStore      string                 `protobuf:"bytes,11,opt,name=selected_store,json=selectedStore,proto3" json:"selected_store,omitempty"`
+	SelectedStoreId    uint32                 `protobuf:"varint,11,opt,name=selected_store_id,json=selectedStoreId,proto3" json:"selected_store_id,omitempty"`
 	Children           []*Childrens           `protobuf:"bytes,12,rep,name=children,proto3" json:"children,omitempty"`
 	AbTestGroup        ABTestGroup            `protobuf:"varint,13,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
 	unknownFields      protoimpl.UnknownFields
@@ -394,11 +394,11 @@ func (x *User) GetLastComentDelivery() string {
 	return ""
 }
 
-func (x *User) GetSelectedStore() string {
+func (x *User) GetSelectedStoreId() uint32 {
 	if x != nil {
-		return x.SelectedStore
+		return x.SelectedStoreId
 	}
-	return ""
+	return 0
 }
 
 func (x *User) GetChildren() []*Childrens {
@@ -616,7 +616,7 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\x05email\x18\a \x01(\tR\x05email\x121\n" +
 	"\tchildrens\x18\b \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"9\n" +
 	"\x13NewUserInfoResponse\x12\"\n" +
-	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\xcd\x03\n" +
+	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\xd2\x03\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\"\n" +
 	"\x04role\x18\t \x01(\x0e2\x0e.users.v1.RoleR\x04role\x12\x1d\n" +
@@ -631,8 +631,8 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\x05phone\x18\a \x01(\tR\x05phone\x12\x14\n" +
 	"\x05email\x18\b \x01(\tR\x05email\x120\n" +
 	"\x14last_coment_delivery\x18\n" +
-	" \x01(\tR\x12lastComentDelivery\x12%\n" +
-	"\x0eselected_store\x18\v \x01(\tR\rselectedStore\x12/\n" +
+	" \x01(\tR\x12lastComentDelivery\x12*\n" +
+	"\x11selected_store_id\x18\v \x01(\rR\x0fselectedStoreId\x12/\n" +
 	"\bchildren\x18\f \x03(\v2\x13.users.v1.ChildrensR\bchildren\x129\n" +
 	"\rab_test_group\x18\r \x01(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup\"\xb4\x01\n" +
 	"\tChildrens\x12\x12\n" +
