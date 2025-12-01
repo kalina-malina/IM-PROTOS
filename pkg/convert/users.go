@@ -1,6 +1,7 @@
 package convert
 
 import (
+	"fmt"
 	userspb "github.com/kalina-malina/IM-PROTOS/generated/users/v1"
 )
 
