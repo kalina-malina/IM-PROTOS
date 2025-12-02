@@ -138,7 +138,7 @@ type NewUserInfoRequest struct {
 	LastName      string                 `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 	MiddleName    string                 `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
 	DateOfBirth   string                 `protobuf:"bytes,5,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
-	Phone         string                 `protobuf:"bytes,6,opt,name=phone,proto3" json:"phone,omitempty"`
+	Phone         uint64                 `protobuf:"varint,6,opt,name=phone,proto3" json:"phone,omitempty"`
 	Email         string                 `protobuf:"bytes,7,opt,name=email,proto3" json:"email,omitempty"`
 	Childrens     []*Childrens           `protobuf:"bytes,8,rep,name=childrens,proto3" json:"childrens,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -210,11 +210,11 @@ func (x *NewUserInfoRequest) GetDateOfBirth() string {
 	return ""
 }
 
-func (x *NewUserInfoRequest) GetPhone() string {
+func (x *NewUserInfoRequest) GetPhone() uint64 {
 	if x != nil {
 		return x.Phone
 	}
-	return ""
+	return 0
 }
 
 func (x *NewUserInfoRequest) GetEmail() string {
@@ -284,7 +284,7 @@ type User struct {
 	MiddleName         string                 `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
 	DateOfBirth        string                 `protobuf:"bytes,5,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
 	CardNumber         uint64                 `protobuf:"varint,6,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
-	Phone              string                 `protobuf:"bytes,7,opt,name=phone,proto3" json:"phone,omitempty"`
+	Phone              uint64                 `protobuf:"varint,7,opt,name=phone,proto3" json:"phone,omitempty"`
 	Email              string                 `protobuf:"bytes,8,opt,name=email,proto3" json:"email,omitempty"`
 	LastComentDelivery string                 `protobuf:"bytes,10,opt,name=last_coment_delivery,json=lastComentDelivery,proto3" json:"last_coment_delivery,omitempty"`
 	SelectedStoreId    uint32                 `protobuf:"varint,11,opt,name=selected_store_id,json=selectedStoreId,proto3" json:"selected_store_id,omitempty"`
@@ -373,11 +373,11 @@ func (x *User) GetCardNumber() uint64 {
 	return 0
 }
 
-func (x *User) GetPhone() string {
+func (x *User) GetPhone() uint64 {
 	if x != nil {
 		return x.Phone
 	}
-	return ""
+	return 0
 }
 
 func (x *User) GetEmail() string {
@@ -612,7 +612,7 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\vmiddle_name\x18\x04 \x01(\tR\n" +
 	"middleName\x12\"\n" +
 	"\rdate_of_birth\x18\x05 \x01(\tR\vdateOfBirth\x12\x14\n" +
-	"\x05phone\x18\x06 \x01(\tR\x05phone\x12\x14\n" +
+	"\x05phone\x18\x06 \x01(\x04R\x05phone\x12\x14\n" +
 	"\x05email\x18\a \x01(\tR\x05email\x121\n" +
 	"\tchildrens\x18\b \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"9\n" +
 	"\x13NewUserInfoResponse\x12\"\n" +
@@ -628,7 +628,7 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\rdate_of_birth\x18\x05 \x01(\tR\vdateOfBirth\x12\x1f\n" +
 	"\vcard_number\x18\x06 \x01(\x04R\n" +
 	"cardNumber\x12\x14\n" +
-	"\x05phone\x18\a \x01(\tR\x05phone\x12\x14\n" +
+	"\x05phone\x18\a \x01(\x04R\x05phone\x12\x14\n" +
 	"\x05email\x18\b \x01(\tR\x05email\x120\n" +
 	"\x14last_coment_delivery\x18\n" +
 	" \x01(\tR\x12lastComentDelivery\x12*\n" +

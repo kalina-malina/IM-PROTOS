@@ -15,7 +15,7 @@ service AuthOrRegistrationService {
 
 
 message LoginUsersRequest {
-  string phone_number = 1;
+  uint64 phone_number = 1;
   TypeLogin type_login = 2;
 }
 

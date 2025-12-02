@@ -71,7 +71,7 @@ func (TypeLogin) EnumDescriptor() ([]byte, []int) {
 
 type LoginUsersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	PhoneNumber   string                 `protobuf:"bytes,1,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
+	PhoneNumber   uint64                 `protobuf:"varint,1,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
 	TypeLogin     TypeLogin              `protobuf:"varint,2,opt,name=type_login,json=typeLogin,proto3,enum=auth.v1.TypeLogin" json:"type_login,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -107,11 +107,11 @@ func (*LoginUsersRequest) Descriptor() ([]byte, []int) {
 	return file_auth_v1_auth_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *LoginUsersRequest) GetPhoneNumber() string {
+func (x *LoginUsersRequest) GetPhoneNumber() uint64 {
 	if x != nil {
 		return x.PhoneNumber
 	}
-	return ""
+	return 0
 }
 
 func (x *LoginUsersRequest) GetTypeLogin() TypeLogin {
@@ -471,7 +471,7 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\n" +
 	"\x12auth/v1/auth.proto\x12\aauth.v1\x1a\x14users/v1/users.proto\x1a\x1bgoogle/protobuf/empty.proto\"i\n" +
 	"\x11LoginUsersRequest\x12!\n" +
-	"\fphone_number\x18\x01 \x01(\tR\vphoneNumber\x121\n" +
+	"\fphone_number\x18\x01 \x01(\x04R\vphoneNumber\x121\n" +
 	"\n" +
 	"type_login\x18\x02 \x01(\x0e2\x12.auth.v1.TypeLoginR\ttypeLogin\"\xf1\x01\n" +
 	"\x12LoginUsersResponse\x12\x1a\n" +
