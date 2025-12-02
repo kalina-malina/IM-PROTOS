@@ -17,8 +17,6 @@ service AuthOrRegistrationService {
 message LoginUsersRequest {
   string phone_number = 1;
   TypeLogin type_login = 2;
-  optional string verification_id  = 3;
-
 }
 
 message LoginUsersResponse {
@@ -30,10 +28,6 @@ message LoginUsersResponse {
   
 }
 
-enum TypeLogin {
-  TYPE_LOGIN_SMS = 0;
-  TYPE_LOGIN_YANDEX = 1;
-}
 
 message VerifySmsCodeRequest {
   optional string verification_id = 1;
@@ -62,3 +56,7 @@ message LogoutResponse {
 }
 
 
+enum TypeLogin {
+  TYPE_LOGIN_SMS = 0;
+  TYPE_LOGIN_YANDEX = 1;
+}
