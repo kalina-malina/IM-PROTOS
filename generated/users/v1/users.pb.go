@@ -131,7 +131,7 @@ func (ABTestGroup) EnumDescriptor() ([]byte, []int) {
 	return file_users_v1_users_proto_rawDescGZIP(), []int{1}
 }
 
-type NewUserInfoRequest struct {
+type UpdateUserProfileRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	FirstName     string                 `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
@@ -145,20 +145,20 @@ type NewUserInfoRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *NewUserInfoRequest) Reset() {
-	*x = NewUserInfoRequest{}
+func (x *UpdateUserProfileRequest) Reset() {
+	*x = UpdateUserProfileRequest{}
 	mi := &file_users_v1_users_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *NewUserInfoRequest) String() string {
+func (x *UpdateUserProfileRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*NewUserInfoRequest) ProtoMessage() {}
+func (*UpdateUserProfileRequest) ProtoMessage() {}
 
-func (x *NewUserInfoRequest) ProtoReflect() protoreflect.Message {
+func (x *UpdateUserProfileRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_users_v1_users_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -170,88 +170,88 @@ func (x *NewUserInfoRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use NewUserInfoRequest.ProtoReflect.Descriptor instead.
-func (*NewUserInfoRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateUserProfileRequest.ProtoReflect.Descriptor instead.
+func (*UpdateUserProfileRequest) Descriptor() ([]byte, []int) {
 	return file_users_v1_users_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *NewUserInfoRequest) GetId() uint64 {
+func (x *UpdateUserProfileRequest) GetId() uint64 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
 }
 
-func (x *NewUserInfoRequest) GetFirstName() string {
+func (x *UpdateUserProfileRequest) GetFirstName() string {
 	if x != nil {
 		return x.FirstName
 	}
 	return ""
 }
 
-func (x *NewUserInfoRequest) GetLastName() string {
+func (x *UpdateUserProfileRequest) GetLastName() string {
 	if x != nil {
 		return x.LastName
 	}
 	return ""
 }
 
-func (x *NewUserInfoRequest) GetMiddleName() string {
+func (x *UpdateUserProfileRequest) GetMiddleName() string {
 	if x != nil {
 		return x.MiddleName
 	}
 	return ""
 }
 
-func (x *NewUserInfoRequest) GetDateOfBirth() string {
+func (x *UpdateUserProfileRequest) GetDateOfBirth() string {
 	if x != nil {
 		return x.DateOfBirth
 	}
 	return ""
 }
 
-func (x *NewUserInfoRequest) GetPhone() uint64 {
+func (x *UpdateUserProfileRequest) GetPhone() uint64 {
 	if x != nil {
 		return x.Phone
 	}
 	return 0
 }
 
-func (x *NewUserInfoRequest) GetEmail() string {
+func (x *UpdateUserProfileRequest) GetEmail() string {
 	if x != nil {
 		return x.Email
 	}
 	return ""
 }
 
-func (x *NewUserInfoRequest) GetChildrens() []*Childrens {
+func (x *UpdateUserProfileRequest) GetChildrens() []*Childrens {
 	if x != nil {
 		return x.Childrens
 	}
 	return nil
 }
 
-type NewUserInfoResponse struct {
+type UpdateUserProfileResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *NewUserInfoResponse) Reset() {
-	*x = NewUserInfoResponse{}
+func (x *UpdateUserProfileResponse) Reset() {
+	*x = UpdateUserProfileResponse{}
 	mi := &file_users_v1_users_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *NewUserInfoResponse) String() string {
+func (x *UpdateUserProfileResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*NewUserInfoResponse) ProtoMessage() {}
+func (*UpdateUserProfileResponse) ProtoMessage() {}
 
-func (x *NewUserInfoResponse) ProtoReflect() protoreflect.Message {
+func (x *UpdateUserProfileResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_users_v1_users_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -263,12 +263,12 @@ func (x *NewUserInfoResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use NewUserInfoResponse.ProtoReflect.Descriptor instead.
-func (*NewUserInfoResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateUserProfileResponse.ProtoReflect.Descriptor instead.
+func (*UpdateUserProfileResponse) Descriptor() ([]byte, []int) {
 	return file_users_v1_users_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *NewUserInfoResponse) GetUser() *User {
+func (x *UpdateUserProfileResponse) GetUser() *User {
 	if x != nil {
 		return x.User
 	}
@@ -603,8 +603,8 @@ var File_users_v1_users_proto protoreflect.FileDescriptor
 
 const file_users_v1_users_proto_rawDesc = "" +
 	"\n" +
-	"\x14users/v1/users.proto\x12\busers.v1\"\x84\x02\n" +
-	"\x12NewUserInfoRequest\x12\x0e\n" +
+	"\x14users/v1/users.proto\x12\busers.v1\"\x8a\x02\n" +
+	"\x18UpdateUserProfileRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x02 \x01(\tR\tfirstName\x12\x1b\n" +
@@ -614,8 +614,8 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\rdate_of_birth\x18\x05 \x01(\tR\vdateOfBirth\x12\x14\n" +
 	"\x05phone\x18\x06 \x01(\x04R\x05phone\x12\x14\n" +
 	"\x05email\x18\a \x01(\tR\x05email\x121\n" +
-	"\tchildrens\x18\b \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"9\n" +
-	"\x13NewUserInfoResponse\x12\"\n" +
+	"\tchildrens\x18\b \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"?\n" +
+	"\x19UpdateUserProfileResponse\x12\"\n" +
 	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\xd2\x03\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\"\n" +
@@ -666,9 +666,9 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\x0fAB_TEST_GROUP_A\x10\x00\x12\x13\n" +
 	"\x0fAB_TEST_GROUP_B\x10\x01\x12\x13\n" +
 	"\x0fAB_TEST_GROUP_C\x10\x02\x12\x13\n" +
-	"\x0fAB_TEST_GROUP_D\x10\x032Z\n" +
-	"\fUsersService\x12J\n" +
-	"\vNewUserInfo\x12\x1c.users.v1.NewUserInfoRequest\x1a\x1d.users.v1.NewUserInfoResponseB7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
+	"\x0fAB_TEST_GROUP_D\x10\x032l\n" +
+	"\fUsersService\x12\\\n" +
+	"\x11UpdateUserProfile\x12\".users.v1.UpdateUserProfileRequest\x1a#.users.v1.UpdateUserProfileResponseB7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
 
 var (
 	file_users_v1_users_proto_rawDescOnce sync.Once
@@ -685,22 +685,22 @@ func file_users_v1_users_proto_rawDescGZIP() []byte {
 var file_users_v1_users_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_users_v1_users_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_users_v1_users_proto_goTypes = []any{
-	(Role)(0),                   // 0: users.v1.Role
-	(ABTestGroup)(0),            // 1: users.v1.ABTestGroup
-	(*NewUserInfoRequest)(nil),  // 2: users.v1.NewUserInfoRequest
-	(*NewUserInfoResponse)(nil), // 3: users.v1.NewUserInfoResponse
-	(*User)(nil),                // 4: users.v1.User
-	(*Childrens)(nil),           // 5: users.v1.Childrens
-	(*UserSettings)(nil),        // 6: users.v1.UserSettings
+	(Role)(0),                         // 0: users.v1.Role
+	(ABTestGroup)(0),                  // 1: users.v1.ABTestGroup
+	(*UpdateUserProfileRequest)(nil),  // 2: users.v1.UpdateUserProfileRequest
+	(*UpdateUserProfileResponse)(nil), // 3: users.v1.UpdateUserProfileResponse
+	(*User)(nil),                      // 4: users.v1.User
+	(*Childrens)(nil),                 // 5: users.v1.Childrens
+	(*UserSettings)(nil),              // 6: users.v1.UserSettings
 }
 var file_users_v1_users_proto_depIdxs = []int32{
-	5, // 0: users.v1.NewUserInfoRequest.childrens:type_name -> users.v1.Childrens
-	4, // 1: users.v1.NewUserInfoResponse.user:type_name -> users.v1.User
+	5, // 0: users.v1.UpdateUserProfileRequest.childrens:type_name -> users.v1.Childrens
+	4, // 1: users.v1.UpdateUserProfileResponse.user:type_name -> users.v1.User
 	0, // 2: users.v1.User.role:type_name -> users.v1.Role
 	5, // 3: users.v1.User.children:type_name -> users.v1.Childrens
 	1, // 4: users.v1.User.ab_test_group:type_name -> users.v1.ABTestGroup
-	2, // 5: users.v1.UsersService.NewUserInfo:input_type -> users.v1.NewUserInfoRequest
-	3, // 6: users.v1.UsersService.NewUserInfo:output_type -> users.v1.NewUserInfoResponse
+	2, // 5: users.v1.UsersService.UpdateUserProfile:input_type -> users.v1.UpdateUserProfileRequest
+	3, // 6: users.v1.UsersService.UpdateUserProfile:output_type -> users.v1.UpdateUserProfileResponse
 	6, // [6:7] is the sub-list for method output_type
 	5, // [5:6] is the sub-list for method input_type
 	5, // [5:5] is the sub-list for extension type_name

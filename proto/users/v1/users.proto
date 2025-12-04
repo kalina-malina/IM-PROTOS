@@ -6,7 +6,7 @@ option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
 
 
 service UsersService {
-  rpc NewUserInfo(NewUserInfoRequest) returns (NewUserInfoResponse);
+  rpc UpdateUserProfile(UpdateUserProfileRequest) returns (UpdateUserProfileResponse);
   //rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
   //rpc LockUser(LockUserRequest) returns (LockUserResponse);
   //
@@ -14,7 +14,7 @@ service UsersService {
   
 }
 
-message NewUserInfoRequest {
+message UpdateUserProfileRequest {
   uint64 id = 1;
   string first_name = 2;
   string last_name = 3;
@@ -25,7 +25,7 @@ message NewUserInfoRequest {
   repeated Childrens childrens = 8;
 }
 
-message NewUserInfoResponse {
+message UpdateUserProfileResponse {
   User user = 1;
 }
 

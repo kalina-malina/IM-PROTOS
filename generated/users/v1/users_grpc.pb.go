@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UsersService_NewUserInfo_FullMethodName = "/users.v1.UsersService/NewUserInfo"
+	UsersService_UpdateUserProfile_FullMethodName = "/users.v1.UsersService/UpdateUserProfile"
 )
 
 // UsersServiceClient is the client API for UsersService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UsersServiceClient interface {
-	NewUserInfo(ctx context.Context, in *NewUserInfoRequest, opts ...grpc.CallOption) (*NewUserInfoResponse, error)
+	UpdateUserProfile(ctx context.Context, in *UpdateUserProfileRequest, opts ...grpc.CallOption) (*UpdateUserProfileResponse, error)
 }
 
 type usersServiceClient struct {
@@ -37,10 +37,10 @@ func NewUsersServiceClient(cc grpc.ClientConnInterface) UsersServiceClient {
 	return &usersServiceClient{cc}
 }
 
-func (c *usersServiceClient) NewUserInfo(ctx context.Context, in *NewUserInfoRequest, opts ...grpc.CallOption) (*NewUserInfoResponse, error) {
+func (c *usersServiceClient) UpdateUserProfile(ctx context.Context, in *UpdateUserProfileRequest, opts ...grpc.CallOption) (*UpdateUserProfileResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(NewUserInfoResponse)
-	err := c.cc.Invoke(ctx, UsersService_NewUserInfo_FullMethodName, in, out, cOpts...)
+	out := new(UpdateUserProfileResponse)
+	err := c.cc.Invoke(ctx, UsersService_UpdateUserProfile_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func (c *usersServiceClient) NewUserInfo(ctx context.Context, in *NewUserInfoReq
 // All implementations must embed UnimplementedUsersServiceServer
 // for forward compatibility.
 type UsersServiceServer interface {
-	NewUserInfo(context.Context, *NewUserInfoRequest) (*NewUserInfoResponse, error)
+	UpdateUserProfile(context.Context, *UpdateUserProfileRequest) (*UpdateUserProfileResponse, error)
 	mustEmbedUnimplementedUsersServiceServer()
 }
 
@@ -62,8 +62,8 @@ type UsersServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedUsersServiceServer struct{}
 
-func (UnimplementedUsersServiceServer) NewUserInfo(context.Context, *NewUserInfoRequest) (*NewUserInfoResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method NewUserInfo not implemented")
+func (UnimplementedUsersServiceServer) UpdateUserProfile(context.Context, *UpdateUserProfileRequest) (*UpdateUserProfileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserProfile not implemented")
 }
 func (UnimplementedUsersServiceServer) mustEmbedUnimplementedUsersServiceServer() {}
 func (UnimplementedUsersServiceServer) testEmbeddedByValue()                      {}
@@ -86,20 +86,20 @@ func RegisterUsersServiceServer(s grpc.ServiceRegistrar, srv UsersServiceServer)
 	s.RegisterService(&UsersService_ServiceDesc, srv)
 }
 
-func _UsersService_NewUserInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(NewUserInfoRequest)
+func _UsersService_UpdateUserProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUserProfileRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UsersServiceServer).NewUserInfo(ctx, in)
+		return srv.(UsersServiceServer).UpdateUserProfile(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UsersService_NewUserInfo_FullMethodName,
+		FullMethod: UsersService_UpdateUserProfile_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsersServiceServer).NewUserInfo(ctx, req.(*NewUserInfoRequest))
+		return srv.(UsersServiceServer).UpdateUserProfile(ctx, req.(*UpdateUserProfileRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -112,8 +112,8 @@ var UsersService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*UsersServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "NewUserInfo",
-			Handler:    _UsersService_NewUserInfo_Handler,
+			MethodName: "UpdateUserProfile",
+			Handler:    _UsersService_UpdateUserProfile_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
