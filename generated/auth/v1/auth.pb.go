@@ -423,7 +423,7 @@ func (x *RefreshTokenResponse) GetSessionId() string {
 
 type LogoutRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	IdUser        uint64                 `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
+	SessionId     string                 `protobuf:"bytes,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -458,11 +458,11 @@ func (*LogoutRequest) Descriptor() ([]byte, []int) {
 	return file_auth_v1_auth_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *LogoutRequest) GetIdUser() uint64 {
+func (x *LogoutRequest) GetSessionId() string {
 	if x != nil {
-		return x.IdUser
+		return x.SessionId
 	}
-	return 0
+	return ""
 }
 
 type LogoutResponse struct {
@@ -549,9 +549,10 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\x14RefreshTokenResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12\x1d\n" +
 	"\n" +
-	"session_id\x18\x02 \x01(\tR\tsessionId\"(\n" +
-	"\rLogoutRequest\x12\x17\n" +
-	"\aid_user\x18\x01 \x01(\x04R\x06idUser\",\n" +
+	"session_id\x18\x02 \x01(\tR\tsessionId\".\n" +
+	"\rLogoutRequest\x12\x1d\n" +
+	"\n" +
+	"session_id\x18\x01 \x01(\tR\tsessionId\",\n" +
 	"\x0eLogoutResponse\x12\x1a\n" +
 	"\bsecurety\x18\x01 \x01(\bR\bsecurety*6\n" +
 	"\tTypeLogin\x12\x12\n" +
