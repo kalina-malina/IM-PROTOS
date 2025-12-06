@@ -10,7 +10,7 @@ service AuthOrRegistrationService {
   rpc LoginUsers(LoginUsersRequest) returns (LoginUsersResponse);
   rpc VerifySmsCode(VerifySmsCodeRequest) returns (VerifySmsCodeResponse);
   rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
-  rpc Logout(google.protobuf.Empty) returns (LogoutResponse);
+  rpc Logout(LogoutRequest) returns (LogoutResponse);
 }
 
 
@@ -49,6 +49,10 @@ message RefreshTokenRequest {
 message RefreshTokenResponse {
   string access_token = 1;
   string session_id = 2;
+}
+
+message LogoutRequest {
+  uint64 id_user = 1;
 }
 
 message LogoutResponse {

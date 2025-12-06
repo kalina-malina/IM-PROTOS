@@ -20,6 +20,8 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	UsersService_UpdateUserProfile_FullMethodName = "/users.v1.UsersService/UpdateUserProfile"
+	UsersService_LockUser_FullMethodName          = "/users.v1.UsersService/LockUser"
+	UsersService_UnlockUser_FullMethodName        = "/users.v1.UsersService/UnlockUser"
 )
 
 // UsersServiceClient is the client API for UsersService service.
@@ -27,6 +29,8 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UsersServiceClient interface {
 	UpdateUserProfile(ctx context.Context, in *UpdateUserProfileRequest, opts ...grpc.CallOption) (*UpdateUserProfileResponse, error)
+	LockUser(ctx context.Context, in *LockUserRequest, opts ...grpc.CallOption) (*LockUserResponse, error)
+	UnlockUser(ctx context.Context, in *UnlockUserRequest, opts ...grpc.CallOption) (*UnlockUserResponse, error)
 }
 
 type usersServiceClient struct {
@@ -47,11 +51,33 @@ func (c *usersServiceClient) UpdateUserProfile(ctx context.Context, in *UpdateUs
 	return out, nil
 }
 
+func (c *usersServiceClient) LockUser(ctx context.Context, in *LockUserRequest, opts ...grpc.CallOption) (*LockUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(LockUserResponse)
+	err := c.cc.Invoke(ctx, UsersService_LockUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *usersServiceClient) UnlockUser(ctx context.Context, in *UnlockUserRequest, opts ...grpc.CallOption) (*UnlockUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UnlockUserResponse)
+	err := c.cc.Invoke(ctx, UsersService_UnlockUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UsersServiceServer is the server API for UsersService service.
 // All implementations must embed UnimplementedUsersServiceServer
 // for forward compatibility.
 type UsersServiceServer interface {
 	UpdateUserProfile(context.Context, *UpdateUserProfileRequest) (*UpdateUserProfileResponse, error)
+	LockUser(context.Context, *LockUserRequest) (*LockUserResponse, error)
+	UnlockUser(context.Context, *UnlockUserRequest) (*UnlockUserResponse, error)
 	mustEmbedUnimplementedUsersServiceServer()
 }
 
@@ -64,6 +90,12 @@ type UnimplementedUsersServiceServer struct{}
 
 func (UnimplementedUsersServiceServer) UpdateUserProfile(context.Context, *UpdateUserProfileRequest) (*UpdateUserProfileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserProfile not implemented")
+}
+func (UnimplementedUsersServiceServer) LockUser(context.Context, *LockUserRequest) (*LockUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LockUser not implemented")
+}
+func (UnimplementedUsersServiceServer) UnlockUser(context.Context, *UnlockUserRequest) (*UnlockUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UnlockUser not implemented")
 }
 func (UnimplementedUsersServiceServer) mustEmbedUnimplementedUsersServiceServer() {}
 func (UnimplementedUsersServiceServer) testEmbeddedByValue()                      {}
@@ -104,6 +136,42 @@ func _UsersService_UpdateUserProfile_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UsersService_LockUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LockUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsersServiceServer).LockUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UsersService_LockUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsersServiceServer).LockUser(ctx, req.(*LockUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UsersService_UnlockUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UnlockUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsersServiceServer).UnlockUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UsersService_UnlockUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsersServiceServer).UnlockUser(ctx, req.(*UnlockUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UsersService_ServiceDesc is the grpc.ServiceDesc for UsersService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +182,14 @@ var UsersService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateUserProfile",
 			Handler:    _UsersService_UpdateUserProfile_Handler,
+		},
+		{
+			MethodName: "LockUser",
+			Handler:    _UsersService_LockUser_Handler,
+		},
+		{
+			MethodName: "UnlockUser",
+			Handler:    _UsersService_UnlockUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

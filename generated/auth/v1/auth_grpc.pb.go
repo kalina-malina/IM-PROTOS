@@ -11,7 +11,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -33,7 +32,7 @@ type AuthOrRegistrationServiceClient interface {
 	LoginUsers(ctx context.Context, in *LoginUsersRequest, opts ...grpc.CallOption) (*LoginUsersResponse, error)
 	VerifySmsCode(ctx context.Context, in *VerifySmsCodeRequest, opts ...grpc.CallOption) (*VerifySmsCodeResponse, error)
 	RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*RefreshTokenResponse, error)
-	Logout(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*LogoutResponse, error)
+	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
 }
 
 type authOrRegistrationServiceClient struct {
@@ -74,7 +73,7 @@ func (c *authOrRegistrationServiceClient) RefreshToken(ctx context.Context, in *
 	return out, nil
 }
 
-func (c *authOrRegistrationServiceClient) Logout(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*LogoutResponse, error) {
+func (c *authOrRegistrationServiceClient) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(LogoutResponse)
 	err := c.cc.Invoke(ctx, AuthOrRegistrationService_Logout_FullMethodName, in, out, cOpts...)
@@ -91,7 +90,7 @@ type AuthOrRegistrationServiceServer interface {
 	LoginUsers(context.Context, *LoginUsersRequest) (*LoginUsersResponse, error)
 	VerifySmsCode(context.Context, *VerifySmsCodeRequest) (*VerifySmsCodeResponse, error)
 	RefreshToken(context.Context, *RefreshTokenRequest) (*RefreshTokenResponse, error)
-	Logout(context.Context, *emptypb.Empty) (*LogoutResponse, error)
+	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
 	mustEmbedUnimplementedAuthOrRegistrationServiceServer()
 }
 
@@ -111,7 +110,7 @@ func (UnimplementedAuthOrRegistrationServiceServer) VerifySmsCode(context.Contex
 func (UnimplementedAuthOrRegistrationServiceServer) RefreshToken(context.Context, *RefreshTokenRequest) (*RefreshTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RefreshToken not implemented")
 }
-func (UnimplementedAuthOrRegistrationServiceServer) Logout(context.Context, *emptypb.Empty) (*LogoutResponse, error) {
+func (UnimplementedAuthOrRegistrationServiceServer) Logout(context.Context, *LogoutRequest) (*LogoutResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Logout not implemented")
 }
 func (UnimplementedAuthOrRegistrationServiceServer) mustEmbedUnimplementedAuthOrRegistrationServiceServer() {
@@ -191,7 +190,7 @@ func _AuthOrRegistrationService_RefreshToken_Handler(srv interface{}, ctx contex
 }
 
 func _AuthOrRegistrationService_Logout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
+	in := new(LogoutRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -203,7 +202,7 @@ func _AuthOrRegistrationService_Logout_Handler(srv interface{}, ctx context.Cont
 		FullMethod: AuthOrRegistrationService_Logout_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthOrRegistrationServiceServer).Logout(ctx, req.(*emptypb.Empty))
+		return srv.(AuthOrRegistrationServiceServer).Logout(ctx, req.(*LogoutRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

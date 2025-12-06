@@ -7,6 +7,9 @@ option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
 
 service UsersService {
   rpc UpdateUserProfile(UpdateUserProfileRequest) returns (UpdateUserProfileResponse);
+  rpc LockUser(LockUserRequest) returns (LockUserResponse);
+  rpc UnlockUser(UnlockUserRequest) returns (UnlockUserResponse);
+  
   //rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
   //rpc LockUser(LockUserRequest) returns (LockUserResponse);
   //
@@ -26,6 +29,21 @@ message UpdateUserProfileRequest {
 
 message UpdateUserProfileResponse {
   User user = 1;
+}
+
+message LockUserRequest {
+  uint64 id = 1;
+}
+
+message LockUserResponse {
+  string success = 1;
+}
+message UnlockUserRequest {
+  uint64 id = 1;
+}
+
+message UnlockUserResponse {
+  string success = 1;
 }
 
 message User{
@@ -64,6 +82,8 @@ message UserSettings {
   bool promotional_offers = 7;        // Промо-акции
   optional uint32 last_selected_store_id = 8; // Последний выбранный магазин
 }
+
+
 
 enum Role {
   ROLE_CLIENT = 0;
