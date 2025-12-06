@@ -20,9 +20,8 @@ message UpdateUserProfileRequest {
   string last_name = 3;
   string middle_name = 4;
   string date_of_birth = 5;
-  uint64 phone = 6;
-  string email = 7;
-  repeated Childrens childrens = 8;
+  string email = 6;
+  repeated Childrens childrens = 7;
 }
 
 message UpdateUserProfileResponse {

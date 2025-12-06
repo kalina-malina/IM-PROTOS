@@ -138,9 +138,8 @@ type UpdateUserProfileRequest struct {
 	LastName      string                 `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 	MiddleName    string                 `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
 	DateOfBirth   string                 `protobuf:"bytes,5,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
-	Phone         uint64                 `protobuf:"varint,6,opt,name=phone,proto3" json:"phone,omitempty"`
-	Email         string                 `protobuf:"bytes,7,opt,name=email,proto3" json:"email,omitempty"`
-	Childrens     []*Childrens           `protobuf:"bytes,8,rep,name=childrens,proto3" json:"childrens,omitempty"`
+	Email         string                 `protobuf:"bytes,6,opt,name=email,proto3" json:"email,omitempty"`
+	Childrens     []*Childrens           `protobuf:"bytes,7,rep,name=childrens,proto3" json:"childrens,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -208,13 +207,6 @@ func (x *UpdateUserProfileRequest) GetDateOfBirth() string {
 		return x.DateOfBirth
 	}
 	return ""
-}
-
-func (x *UpdateUserProfileRequest) GetPhone() uint64 {
-	if x != nil {
-		return x.Phone
-	}
-	return 0
 }
 
 func (x *UpdateUserProfileRequest) GetEmail() string {
@@ -603,7 +595,7 @@ var File_users_v1_users_proto protoreflect.FileDescriptor
 
 const file_users_v1_users_proto_rawDesc = "" +
 	"\n" +
-	"\x14users/v1/users.proto\x12\busers.v1\"\x8a\x02\n" +
+	"\x14users/v1/users.proto\x12\busers.v1\"\xf4\x01\n" +
 	"\x18UpdateUserProfileRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n" +
 	"\n" +
@@ -612,9 +604,8 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\vmiddle_name\x18\x04 \x01(\tR\n" +
 	"middleName\x12\"\n" +
 	"\rdate_of_birth\x18\x05 \x01(\tR\vdateOfBirth\x12\x14\n" +
-	"\x05phone\x18\x06 \x01(\x04R\x05phone\x12\x14\n" +
-	"\x05email\x18\a \x01(\tR\x05email\x121\n" +
-	"\tchildrens\x18\b \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"?\n" +
+	"\x05email\x18\x06 \x01(\tR\x05email\x121\n" +
+	"\tchildrens\x18\a \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"?\n" +
 	"\x19UpdateUserProfileResponse\x12\"\n" +
 	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\xd2\x03\n" +
 	"\x04User\x12\x0e\n" +
