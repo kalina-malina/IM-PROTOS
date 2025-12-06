@@ -3,7 +3,6 @@ package interceptor
 import (
 	"context"
 	"strconv"
-
 	"strings"
 
 	"github.com/google/uuid"
