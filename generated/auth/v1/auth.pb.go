@@ -123,7 +123,7 @@ func (x *LoginUsersRequest) GetTypeLogin() TypeLogin {
 
 type LoginUsersResponse struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	Securety       bool                   `protobuf:"varint,1,opt,name=securety,proto3" json:"securety,omitempty"`
+	Security       bool                   `protobuf:"varint,1,opt,name=security,proto3" json:"security,omitempty"`
 	IsNewUser      *bool                  `protobuf:"varint,2,opt,name=is_new_user,json=isNewUser,proto3,oneof" json:"is_new_user,omitempty"`
 	Blocked        *bool                  `protobuf:"varint,3,opt,name=blocked,proto3,oneof" json:"blocked,omitempty"`
 	Msg            *string                `protobuf:"bytes,4,opt,name=msg,proto3,oneof" json:"msg,omitempty"`
@@ -162,9 +162,9 @@ func (*LoginUsersResponse) Descriptor() ([]byte, []int) {
 	return file_auth_v1_auth_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *LoginUsersResponse) GetSecurety() bool {
+func (x *LoginUsersResponse) GetSecurity() bool {
 	if x != nil {
-		return x.Securety
+		return x.Security
 	}
 	return false
 }
@@ -467,7 +467,7 @@ func (x *LogoutRequest) GetSessionId() string {
 
 type LogoutResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Securety      bool                   `protobuf:"varint,1,opt,name=securety,proto3" json:"securety,omitempty"`
+	Security      bool                   `protobuf:"varint,1,opt,name=security,proto3" json:"security,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -502,9 +502,9 @@ func (*LogoutResponse) Descriptor() ([]byte, []int) {
 	return file_auth_v1_auth_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *LogoutResponse) GetSecurety() bool {
+func (x *LogoutResponse) GetSecurity() bool {
 	if x != nil {
-		return x.Securety
+		return x.Security
 	}
 	return false
 }
@@ -519,7 +519,7 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\n" +
 	"type_login\x18\x02 \x01(\x0e2\x12.auth.v1.TypeLoginR\ttypeLogin\"\xf1\x01\n" +
 	"\x12LoginUsersResponse\x12\x1a\n" +
-	"\bsecurety\x18\x01 \x01(\bR\bsecurety\x12#\n" +
+	"\bsecurity\x18\x01 \x01(\bR\bsecurity\x12#\n" +
 	"\vis_new_user\x18\x02 \x01(\bH\x00R\tisNewUser\x88\x01\x01\x12\x1d\n" +
 	"\ablocked\x18\x03 \x01(\bH\x01R\ablocked\x88\x01\x01\x12\x15\n" +
 	"\x03msg\x18\x04 \x01(\tH\x02R\x03msg\x88\x01\x01\x12,\n" +
@@ -554,7 +554,7 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\n" +
 	"session_id\x18\x01 \x01(\tR\tsessionId\",\n" +
 	"\x0eLogoutResponse\x12\x1a\n" +
-	"\bsecurety\x18\x01 \x01(\bR\bsecurety*6\n" +
+	"\bsecurity\x18\x01 \x01(\bR\bsecurity*6\n" +
 	"\tTypeLogin\x12\x12\n" +
 	"\x0eTYPE_LOGIN_SMS\x10\x00\x12\x15\n" +
 	"\x11TYPE_LOGIN_YANDEX\x10\x012\xba\x02\n" +

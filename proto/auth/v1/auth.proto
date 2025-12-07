@@ -20,7 +20,7 @@ message LoginUsersRequest {
 }
 
 message LoginUsersResponse {
-  bool securety = 1;
+  bool security = 1;
   optional bool is_new_user = 2;
   optional bool blocked = 3;
   optional string msg = 4;
@@ -56,7 +56,7 @@ message LogoutRequest {
 }
 
 message LogoutResponse {
-  bool securety = 1;
+  bool security = 1;
 }
 
 
