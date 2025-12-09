@@ -131,6 +131,8 @@ func (ABTestGroup) EnumDescriptor() ([]byte, []int) {
 	return file_users_v1_users_proto_rawDescGZIP(), []int{1}
 }
 
+// //////////////////////////////////////////////////////////
+// доступно пользователям всем
 type UpdateUserProfileRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -355,6 +357,8 @@ func (x *LockUserResponse) GetSuccess() string {
 	return ""
 }
 
+// //////////////////////////////////////////////////////////
+// доступно только администратору
 type UnlockUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -443,6 +447,192 @@ func (x *UnlockUserResponse) GetSuccess() string {
 	return ""
 }
 
+type GetAllUsersRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Guid          []uint64               `protobuf:"varint,1,rep,packed,name=guid,proto3" json:"guid,omitempty"`
+	CardNumber    []uint64               `protobuf:"varint,2,rep,packed,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
+	Email         []string               `protobuf:"bytes,3,rep,name=email,proto3" json:"email,omitempty"`
+	FirstName     []string               `protobuf:"bytes,4,rep,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      []string               `protobuf:"bytes,5,rep,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	MiddleName    []string               `protobuf:"bytes,6,rep,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
+	DateOfBirth   []string               `protobuf:"bytes,7,rep,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
+	Role          []Role                 `protobuf:"varint,8,rep,packed,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
+	AbTestGroup   []ABTestGroup          `protobuf:"varint,9,rep,packed,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
+	LastLogin     string                 `protobuf:"bytes,10,opt,name=last_login,json=lastLogin,proto3" json:"last_login,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Page          uint64                 `protobuf:"varint,12,opt,name=page,proto3" json:"page,omitempty"`
+	Limit         uint64                 `protobuf:"varint,13,opt,name=limit,proto3" json:"limit,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllUsersRequest) Reset() {
+	*x = GetAllUsersRequest{}
+	mi := &file_users_v1_users_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllUsersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllUsersRequest) ProtoMessage() {}
+
+func (x *GetAllUsersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_users_v1_users_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllUsersRequest.ProtoReflect.Descriptor instead.
+func (*GetAllUsersRequest) Descriptor() ([]byte, []int) {
+	return file_users_v1_users_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GetAllUsersRequest) GetGuid() []uint64 {
+	if x != nil {
+		return x.Guid
+	}
+	return nil
+}
+
+func (x *GetAllUsersRequest) GetCardNumber() []uint64 {
+	if x != nil {
+		return x.CardNumber
+	}
+	return nil
+}
+
+func (x *GetAllUsersRequest) GetEmail() []string {
+	if x != nil {
+		return x.Email
+	}
+	return nil
+}
+
+func (x *GetAllUsersRequest) GetFirstName() []string {
+	if x != nil {
+		return x.FirstName
+	}
+	return nil
+}
+
+func (x *GetAllUsersRequest) GetLastName() []string {
+	if x != nil {
+		return x.LastName
+	}
+	return nil
+}
+
+func (x *GetAllUsersRequest) GetMiddleName() []string {
+	if x != nil {
+		return x.MiddleName
+	}
+	return nil
+}
+
+func (x *GetAllUsersRequest) GetDateOfBirth() []string {
+	if x != nil {
+		return x.DateOfBirth
+	}
+	return nil
+}
+
+func (x *GetAllUsersRequest) GetRole() []Role {
+	if x != nil {
+		return x.Role
+	}
+	return nil
+}
+
+func (x *GetAllUsersRequest) GetAbTestGroup() []ABTestGroup {
+	if x != nil {
+		return x.AbTestGroup
+	}
+	return nil
+}
+
+func (x *GetAllUsersRequest) GetLastLogin() string {
+	if x != nil {
+		return x.LastLogin
+	}
+	return ""
+}
+
+func (x *GetAllUsersRequest) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+func (x *GetAllUsersRequest) GetPage() uint64 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *GetAllUsersRequest) GetLimit() uint64 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+type GetAllUsersResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Users         []*User                `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllUsersResponse) Reset() {
+	*x = GetAllUsersResponse{}
+	mi := &file_users_v1_users_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllUsersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllUsersResponse) ProtoMessage() {}
+
+func (x *GetAllUsersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_users_v1_users_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllUsersResponse.ProtoReflect.Descriptor instead.
+func (*GetAllUsersResponse) Descriptor() ([]byte, []int) {
+	return file_users_v1_users_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetAllUsersResponse) GetUsers() []*User {
+	if x != nil {
+		return x.Users
+	}
+	return nil
+}
+
+// //////////////////////////////////////////////////////////
+// общее
 type User struct {
 	state              protoimpl.MessageState `protogen:"open.v1"`
 	Id                 uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -464,7 +654,7 @@ type User struct {
 
 func (x *User) Reset() {
 	*x = User{}
-	mi := &file_users_v1_users_proto_msgTypes[6]
+	mi := &file_users_v1_users_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -476,7 +666,7 @@ func (x *User) String() string {
 func (*User) ProtoMessage() {}
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_users_proto_msgTypes[6]
+	mi := &file_users_v1_users_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -489,7 +679,7 @@ func (x *User) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
 func (*User) Descriptor() ([]byte, []int) {
-	return file_users_v1_users_proto_rawDescGZIP(), []int{6}
+	return file_users_v1_users_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *User) GetId() uint64 {
@@ -597,7 +787,7 @@ type Childrens struct {
 
 func (x *Childrens) Reset() {
 	*x = Childrens{}
-	mi := &file_users_v1_users_proto_msgTypes[7]
+	mi := &file_users_v1_users_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -609,7 +799,7 @@ func (x *Childrens) String() string {
 func (*Childrens) ProtoMessage() {}
 
 func (x *Childrens) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_users_proto_msgTypes[7]
+	mi := &file_users_v1_users_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -622,7 +812,7 @@ func (x *Childrens) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Childrens.ProtoReflect.Descriptor instead.
 func (*Childrens) Descriptor() ([]byte, []int) {
-	return file_users_v1_users_proto_rawDescGZIP(), []int{7}
+	return file_users_v1_users_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *Childrens) GetName() string {
@@ -683,7 +873,7 @@ type UserSettings struct {
 
 func (x *UserSettings) Reset() {
 	*x = UserSettings{}
-	mi := &file_users_v1_users_proto_msgTypes[8]
+	mi := &file_users_v1_users_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -695,7 +885,7 @@ func (x *UserSettings) String() string {
 func (*UserSettings) ProtoMessage() {}
 
 func (x *UserSettings) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_users_proto_msgTypes[8]
+	mi := &file_users_v1_users_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -708,7 +898,7 @@ func (x *UserSettings) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserSettings.ProtoReflect.Descriptor instead.
 func (*UserSettings) Descriptor() ([]byte, []int) {
-	return file_users_v1_users_proto_rawDescGZIP(), []int{8}
+	return file_users_v1_users_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *UserSettings) GetPushNotifications() bool {
@@ -791,7 +981,29 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\x11UnlockUserRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\".\n" +
 	"\x12UnlockUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\tR\asuccess\"\xd2\x03\n" +
+	"\asuccess\x18\x01 \x01(\tR\asuccess\"\xa7\x03\n" +
+	"\x12GetAllUsersRequest\x12\x12\n" +
+	"\x04guid\x18\x01 \x03(\x04R\x04guid\x12\x1f\n" +
+	"\vcard_number\x18\x02 \x03(\x04R\n" +
+	"cardNumber\x12\x14\n" +
+	"\x05email\x18\x03 \x03(\tR\x05email\x12\x1d\n" +
+	"\n" +
+	"first_name\x18\x04 \x03(\tR\tfirstName\x12\x1b\n" +
+	"\tlast_name\x18\x05 \x03(\tR\blastName\x12\x1f\n" +
+	"\vmiddle_name\x18\x06 \x03(\tR\n" +
+	"middleName\x12\"\n" +
+	"\rdate_of_birth\x18\a \x03(\tR\vdateOfBirth\x12\"\n" +
+	"\x04role\x18\b \x03(\x0e2\x0e.users.v1.RoleR\x04role\x129\n" +
+	"\rab_test_group\x18\t \x03(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup\x12\x1d\n" +
+	"\n" +
+	"last_login\x18\n" +
+	" \x01(\tR\tlastLogin\x12\x1d\n" +
+	"\n" +
+	"created_at\x18\v \x01(\tR\tcreatedAt\x12\x12\n" +
+	"\x04page\x18\f \x01(\x04R\x04page\x12\x14\n" +
+	"\x05limit\x18\r \x01(\x04R\x05limit\";\n" +
+	"\x13GetAllUsersResponse\x12$\n" +
+	"\x05users\x18\x01 \x03(\v2\x0e.users.v1.UserR\x05users\"\xd2\x03\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\"\n" +
 	"\x04role\x18\t \x01(\x0e2\x0e.users.v1.RoleR\x04role\x12\x1d\n" +
@@ -841,12 +1053,13 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\x0fAB_TEST_GROUP_A\x10\x00\x12\x13\n" +
 	"\x0fAB_TEST_GROUP_B\x10\x01\x12\x13\n" +
 	"\x0fAB_TEST_GROUP_C\x10\x02\x12\x13\n" +
-	"\x0fAB_TEST_GROUP_D\x10\x032\xf8\x01\n" +
+	"\x0fAB_TEST_GROUP_D\x10\x032\xc4\x02\n" +
 	"\fUsersService\x12\\\n" +
 	"\x11UpdateUserProfile\x12\".users.v1.UpdateUserProfileRequest\x1a#.users.v1.UpdateUserProfileResponse\x12A\n" +
 	"\bLockUser\x12\x19.users.v1.LockUserRequest\x1a\x1a.users.v1.LockUserResponse\x12G\n" +
 	"\n" +
-	"UnlockUser\x12\x1b.users.v1.UnlockUserRequest\x1a\x1c.users.v1.UnlockUserResponseB7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
+	"UnlockUser\x12\x1b.users.v1.UnlockUserRequest\x1a\x1c.users.v1.UnlockUserResponse\x12J\n" +
+	"\vGetAllUsers\x12\x1c.users.v1.GetAllUsersRequest\x1a\x1d.users.v1.GetAllUsersResponseB7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
 
 var (
 	file_users_v1_users_proto_rawDescOnce sync.Once
@@ -861,7 +1074,7 @@ func file_users_v1_users_proto_rawDescGZIP() []byte {
 }
 
 var file_users_v1_users_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_users_v1_users_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_users_v1_users_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_users_v1_users_proto_goTypes = []any{
 	(Role)(0),                         // 0: users.v1.Role
 	(ABTestGroup)(0),                  // 1: users.v1.ABTestGroup
@@ -871,27 +1084,34 @@ var file_users_v1_users_proto_goTypes = []any{
 	(*LockUserResponse)(nil),          // 5: users.v1.LockUserResponse
 	(*UnlockUserRequest)(nil),         // 6: users.v1.UnlockUserRequest
 	(*UnlockUserResponse)(nil),        // 7: users.v1.UnlockUserResponse
-	(*User)(nil),                      // 8: users.v1.User
-	(*Childrens)(nil),                 // 9: users.v1.Childrens
-	(*UserSettings)(nil),              // 10: users.v1.UserSettings
+	(*GetAllUsersRequest)(nil),        // 8: users.v1.GetAllUsersRequest
+	(*GetAllUsersResponse)(nil),       // 9: users.v1.GetAllUsersResponse
+	(*User)(nil),                      // 10: users.v1.User
+	(*Childrens)(nil),                 // 11: users.v1.Childrens
+	(*UserSettings)(nil),              // 12: users.v1.UserSettings
 }
 var file_users_v1_users_proto_depIdxs = []int32{
-	9, // 0: users.v1.UpdateUserProfileRequest.childrens:type_name -> users.v1.Childrens
-	8, // 1: users.v1.UpdateUserProfileResponse.user:type_name -> users.v1.User
-	0, // 2: users.v1.User.role:type_name -> users.v1.Role
-	9, // 3: users.v1.User.children:type_name -> users.v1.Childrens
-	1, // 4: users.v1.User.ab_test_group:type_name -> users.v1.ABTestGroup
-	2, // 5: users.v1.UsersService.UpdateUserProfile:input_type -> users.v1.UpdateUserProfileRequest
-	4, // 6: users.v1.UsersService.LockUser:input_type -> users.v1.LockUserRequest
-	6, // 7: users.v1.UsersService.UnlockUser:input_type -> users.v1.UnlockUserRequest
-	3, // 8: users.v1.UsersService.UpdateUserProfile:output_type -> users.v1.UpdateUserProfileResponse
-	5, // 9: users.v1.UsersService.LockUser:output_type -> users.v1.LockUserResponse
-	7, // 10: users.v1.UsersService.UnlockUser:output_type -> users.v1.UnlockUserResponse
-	8, // [8:11] is the sub-list for method output_type
-	5, // [5:8] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	11, // 0: users.v1.UpdateUserProfileRequest.childrens:type_name -> users.v1.Childrens
+	10, // 1: users.v1.UpdateUserProfileResponse.user:type_name -> users.v1.User
+	0,  // 2: users.v1.GetAllUsersRequest.role:type_name -> users.v1.Role
+	1,  // 3: users.v1.GetAllUsersRequest.ab_test_group:type_name -> users.v1.ABTestGroup
+	10, // 4: users.v1.GetAllUsersResponse.users:type_name -> users.v1.User
+	0,  // 5: users.v1.User.role:type_name -> users.v1.Role
+	11, // 6: users.v1.User.children:type_name -> users.v1.Childrens
+	1,  // 7: users.v1.User.ab_test_group:type_name -> users.v1.ABTestGroup
+	2,  // 8: users.v1.UsersService.UpdateUserProfile:input_type -> users.v1.UpdateUserProfileRequest
+	4,  // 9: users.v1.UsersService.LockUser:input_type -> users.v1.LockUserRequest
+	6,  // 10: users.v1.UsersService.UnlockUser:input_type -> users.v1.UnlockUserRequest
+	8,  // 11: users.v1.UsersService.GetAllUsers:input_type -> users.v1.GetAllUsersRequest
+	3,  // 12: users.v1.UsersService.UpdateUserProfile:output_type -> users.v1.UpdateUserProfileResponse
+	5,  // 13: users.v1.UsersService.LockUser:output_type -> users.v1.LockUserResponse
+	7,  // 14: users.v1.UsersService.UnlockUser:output_type -> users.v1.UnlockUserResponse
+	9,  // 15: users.v1.UsersService.GetAllUsers:output_type -> users.v1.GetAllUsersResponse
+	12, // [12:16] is the sub-list for method output_type
+	8,  // [8:12] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_users_v1_users_proto_init() }
@@ -899,14 +1119,14 @@ func file_users_v1_users_proto_init() {
 	if File_users_v1_users_proto != nil {
 		return
 	}
-	file_users_v1_users_proto_msgTypes[8].OneofWrappers = []any{}
+	file_users_v1_users_proto_msgTypes[10].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_users_proto_rawDesc), len(file_users_v1_users_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   9,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

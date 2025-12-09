@@ -6,9 +6,12 @@ option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
 
 
 service UsersService {
+  // доступно пользователям всем
   rpc UpdateUserProfile(UpdateUserProfileRequest) returns (UpdateUserProfileResponse);
   rpc LockUser(LockUserRequest) returns (LockUserResponse);
+  // доступно только администратору
   rpc UnlockUser(UnlockUserRequest) returns (UnlockUserResponse);
+  rpc GetAllUsers(GetAllUsersRequest) returns (GetAllUsersResponse);
   
   //rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
   //rpc LockUser(LockUserRequest) returns (LockUserResponse);
@@ -17,6 +20,8 @@ service UsersService {
   
 }
 
+////////////////////////////////////////////////////////////
+//доступно пользователям всем
 message UpdateUserProfileRequest {
   uint64 id = 1;
   string first_name = 2;
@@ -38,6 +43,10 @@ message LockUserRequest {
 message LockUserResponse {
   string success = 1;
 }
+
+
+////////////////////////////////////////////////////////////
+//доступно только администратору
 message UnlockUserRequest {
   uint64 id = 1;
 }
@@ -46,6 +55,30 @@ message UnlockUserResponse {
   string success = 1;
 }
 
+
+message GetAllUsersRequest {
+  repeated uint64 guid = 1;
+  repeated uint64 card_number = 2;
+  repeated string email = 3;
+  repeated string first_name = 4;
+  repeated string last_name = 5;
+  repeated string middle_name = 6;
+  repeated string date_of_birth = 7;
+  repeated Role role = 8;
+  repeated ABTestGroup ab_test_group = 9;
+  string last_login = 10;
+  string created_at = 11;
+  uint64 page = 12;
+  uint64 limit = 13;
+}
+
+message GetAllUsersResponse {
+  repeated User users = 1;
+}
+
+
+////////////////////////////////////////////////////////////
+//общее
 message User{
   uint64 id = 1;
   Role role = 9;
