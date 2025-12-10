@@ -124,8 +124,8 @@ func (x *LoginUsersRequest) GetTypeLogin() TypeLogin {
 type LoginUsersResponse struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Security       bool                   `protobuf:"varint,1,opt,name=security,proto3" json:"security,omitempty"`
-	IsNewUser      *bool                  `protobuf:"varint,2,opt,name=is_new_user,json=isNewUser,proto3,oneof" json:"is_new_user,omitempty"`
-	VerificationId *string                `protobuf:"bytes,3,opt,name=verification_id,json=verificationId,proto3,oneof" json:"verification_id,omitempty"`
+	IsNewUser      bool                   `protobuf:"varint,2,opt,name=is_new_user,json=isNewUser,proto3" json:"is_new_user,omitempty"`
+	VerificationId string                 `protobuf:"bytes,3,opt,name=verification_id,json=verificationId,proto3" json:"verification_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -168,15 +168,15 @@ func (x *LoginUsersResponse) GetSecurity() bool {
 }
 
 func (x *LoginUsersResponse) GetIsNewUser() bool {
-	if x != nil && x.IsNewUser != nil {
-		return *x.IsNewUser
+	if x != nil {
+		return x.IsNewUser
 	}
 	return false
 }
 
 func (x *LoginUsersResponse) GetVerificationId() string {
-	if x != nil && x.VerificationId != nil {
-		return *x.VerificationId
+	if x != nil {
+		return x.VerificationId
 	}
 	return ""
 }
@@ -501,13 +501,11 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\x11LoginUsersRequest\x12!\n" +
 	"\fphone_number\x18\x01 \x01(\x04R\vphoneNumber\x121\n" +
 	"\n" +
-	"type_login\x18\x02 \x01(\x0e2\x12.auth.v1.TypeLoginR\ttypeLogin\"\xa7\x01\n" +
+	"type_login\x18\x02 \x01(\x0e2\x12.auth.v1.TypeLoginR\ttypeLogin\"y\n" +
 	"\x12LoginUsersResponse\x12\x1a\n" +
-	"\bsecurity\x18\x01 \x01(\bR\bsecurity\x12#\n" +
-	"\vis_new_user\x18\x02 \x01(\bH\x00R\tisNewUser\x88\x01\x01\x12,\n" +
-	"\x0fverification_id\x18\x03 \x01(\tH\x01R\x0everificationId\x88\x01\x01B\x0e\n" +
-	"\f_is_new_userB\x12\n" +
-	"\x10_verification_id\"z\n" +
+	"\bsecurity\x18\x01 \x01(\bR\bsecurity\x12\x1e\n" +
+	"\vis_new_user\x18\x02 \x01(\bR\tisNewUser\x12'\n" +
+	"\x0fverification_id\x18\x03 \x01(\tR\x0everificationId\"z\n" +
 	"\x14VerifySmsCodeRequest\x12,\n" +
 	"\x0fverification_id\x18\x01 \x01(\tH\x00R\x0everificationId\x88\x01\x01\x12\x17\n" +
 	"\x04code\x18\x02 \x01(\rH\x01R\x04code\x88\x01\x01B\x12\n" +
@@ -593,7 +591,6 @@ func file_auth_v1_auth_proto_init() {
 	if File_auth_v1_auth_proto != nil {
 		return
 	}
-	file_auth_v1_auth_proto_msgTypes[1].OneofWrappers = []any{}
 	file_auth_v1_auth_proto_msgTypes[2].OneofWrappers = []any{}
 	file_auth_v1_auth_proto_msgTypes[3].OneofWrappers = []any{}
 	type x struct{}
