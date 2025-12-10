@@ -8,12 +8,12 @@ option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
 service UsersService {
   // доступно пользователям всем
   rpc UpdateUserProfile(UpdateUserProfileRequest) returns (UpdateUserProfileResponse);
-  rpc LockUser(LockUserRequest) returns (LockUserResponse);
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
   // доступно только администратору
-  rpc UnlockUser(UnlockUserRequest) returns (UnlockUserResponse);
   rpc GetAllUsers(GetAllUsersRequest) returns (GetAllUsersResponse);
   rpc ChangeUserRole(ChangeUserRoleRequest) returns (ChangeUserRoleResponse);
-
+  rpc BanUser(BanUserRequest) returns (BanUserResponse);
+  rpc UnbanUser(UnbanUserRequest) returns (UnbanUserResponse);
   
   //rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
   //rpc LockUser(LockUserRequest) returns (LockUserResponse);
@@ -38,25 +38,19 @@ message UpdateUserProfileResponse {
   User user = 1;
 }
 
-message LockUserRequest {
-  uint64 id = 1;
+message DeleteUserRequest {
+  uint64 id_user = 1;
+  ReasonType reason = 2;
+  optional string reason_description = 3;
 }
 
-message LockUserResponse {
+message DeleteUserResponse {
   string success = 1;
 }
 
 
 ////////////////////////////////////////////////////////////
 //доступно только администратору
-message UnlockUserRequest {
-  uint64 id = 1;
-}
-  
-message UnlockUserResponse {
-  string success = 1;
-}
-
 
 message GetAllUsersRequest {
   repeated uint64 guid = 1;
@@ -84,6 +78,25 @@ message ChangeUserRoleRequest {
 }
 
 message ChangeUserRoleResponse {
+  string success = 1;
+}
+
+message BanUserRequest {
+  uint64 id_user = 1;
+  BanReasonType reason = 2;
+  optional string reason_description = 3;
+}
+
+message BanUserResponse {
+  string success = 1;
+}
+
+message UnbanUserRequest {
+  uint64 id_user = 1;
+  string reason = 2;
+}
+
+message UnbanUserResponse {
   string success = 1;
 }
 
@@ -128,6 +141,39 @@ message UserSettings {
   optional uint32 last_selected_store_id = 8; // Последний выбранный магазин
 }
 
+
+
+enum ReasonType {
+  // не понравился продукт и услуга
+  REASON_NOT_LIKED_PRODUCT = 0;
+  // не понравился сервис и обслуживание
+  REASON_NOT_LIKED_SERVICE = 1;
+  // долгая доставка
+  REASON_LONG_DELIVERY = 2;
+  // не понравился качество и обслуживание
+  REASON_NOT_LIKED_QUALITY_AND_SERVICE = 3;
+  // не понравился персонал  
+  REASON_NOT_LIKED_PERSONAL = 4;
+  // не понравился местоположение
+  REASON_NOT_LIKED_LOCATION = 5;
+  // не понравился время работы
+  REASON_NOT_LIKED_TIME = 6;
+  // не понравился цена
+  REASON_NOT_LIKED_PRICE = 7;
+  // другое
+  REASON_OTHER = 8;
+}
+
+enum BanReasonType {
+  //не пристойное поведение
+  BAN_REASON_UNPROPER_BEHAVIOR = 0;
+  //спам
+  BAN_REASON_SPAM = 1;
+  //нарушение правил
+  BAN_REASON_VIOLATION_OF_RULES = 2;
+  //другое
+  BAN_REASON_OTHER = 3;
+}
 
 
 enum Role {
