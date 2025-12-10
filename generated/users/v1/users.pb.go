@@ -463,7 +463,7 @@ func (x *DeleteUserRequest) GetReasonDescription() string {
 
 type DeleteUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       string                 `protobuf:"bytes,1,opt,name=success,proto3" json:"success,omitempty"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -498,11 +498,11 @@ func (*DeleteUserResponse) Descriptor() ([]byte, []int) {
 	return file_users_v1_users_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *DeleteUserResponse) GetSuccess() string {
+func (x *DeleteUserResponse) GetSuccess() bool {
 	if x != nil {
 		return x.Success
 	}
-	return ""
+	return false
 }
 
 type GetAllUsersRequest struct {
@@ -847,7 +847,7 @@ func (x *BanUserRequest) GetReasonDescription() string {
 
 type BanUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       string                 `protobuf:"bytes,1,opt,name=success,proto3" json:"success,omitempty"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -882,11 +882,11 @@ func (*BanUserResponse) Descriptor() ([]byte, []int) {
 	return file_users_v1_users_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *BanUserResponse) GetSuccess() string {
+func (x *BanUserResponse) GetSuccess() bool {
 	if x != nil {
 		return x.Success
 	}
-	return ""
+	return false
 }
 
 type UnbanUserRequest struct {
@@ -943,7 +943,7 @@ func (x *UnbanUserRequest) GetReason() string {
 
 type UnbanUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       string                 `protobuf:"bytes,1,opt,name=success,proto3" json:"success,omitempty"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -978,11 +978,11 @@ func (*UnbanUserResponse) Descriptor() ([]byte, []int) {
 	return file_users_v1_users_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *UnbanUserResponse) GetSuccess() string {
+func (x *UnbanUserResponse) GetSuccess() bool {
 	if x != nil {
 		return x.Success
 	}
-	return ""
+	return false
 }
 
 // //////////////////////////////////////////////////////////
@@ -1350,7 +1350,7 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\x12reason_description\x18\x03 \x01(\tH\x00R\x11reasonDescription\x88\x01\x01B\x15\n" +
 	"\x13_reason_description\".\n" +
 	"\x12DeleteUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\tR\asuccess\"\xa7\x03\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xa7\x03\n" +
 	"\x12GetAllUsersRequest\x12\x12\n" +
 	"\x04guid\x18\x01 \x03(\x04R\x04guid\x12\x1f\n" +
 	"\vcard_number\x18\x02 \x03(\x04R\n" +
@@ -1384,12 +1384,12 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\x12reason_description\x18\x03 \x01(\tH\x00R\x11reasonDescription\x88\x01\x01B\x15\n" +
 	"\x13_reason_description\"+\n" +
 	"\x0fBanUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\tR\asuccess\"C\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"C\n" +
 	"\x10UnbanUserRequest\x12\x17\n" +
 	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12\x16\n" +
 	"\x06reason\x18\x02 \x01(\tR\x06reason\"-\n" +
 	"\x11UnbanUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\tR\asuccess\"\x8f\x04\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x8f\x04\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x18\n" +
 	"\adeleted\x18\x02 \x01(\bR\adeleted\x12\"\n" +

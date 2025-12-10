@@ -45,7 +45,7 @@ message DeleteUserRequest {
 }
 
 message DeleteUserResponse {
-  string success = 1;
+  bool success = 1;
 }
 
 
@@ -88,7 +88,7 @@ message BanUserRequest {
 }
 
 message BanUserResponse {
-  string success = 1;
+  bool success = 1;
 }
 
 message UnbanUserRequest {
@@ -97,7 +97,7 @@ message UnbanUserRequest {
 }
 
 message UnbanUserResponse {
-  string success = 1;
+  bool success = 1;
 }
 
 ////////////////////////////////////////////////////////////
