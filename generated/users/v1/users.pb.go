@@ -788,7 +788,7 @@ func (x *ChangeUserRoleResponse) GetSuccess() string {
 type BanUserRequest struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	IdUser            uint64                 `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
-	Reason            ReasonTypeEnum         `protobuf:"varint,2,opt,name=reason,proto3,enum=users.v1.ReasonTypeEnum" json:"reason,omitempty"`
+	Reason            BanReasonTypeEnum      `protobuf:"varint,2,opt,name=reason,proto3,enum=users.v1.BanReasonTypeEnum" json:"reason,omitempty"`
 	ReasonDescription *string                `protobuf:"bytes,3,opt,name=reason_description,json=reasonDescription,proto3,oneof" json:"reason_description,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
@@ -831,11 +831,11 @@ func (x *BanUserRequest) GetIdUser() uint64 {
 	return 0
 }
 
-func (x *BanUserRequest) GetReason() ReasonTypeEnum {
+func (x *BanUserRequest) GetReason() BanReasonTypeEnum {
 	if x != nil {
 		return x.Reason
 	}
-	return ReasonTypeEnum_REASON_NOT_LIKED_PRODUCT
+	return BanReasonTypeEnum_BAN_REASON_UNPROPER_BEHAVIOR
 }
 
 func (x *BanUserRequest) GetReasonDescription() string {
@@ -1377,10 +1377,10 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12\"\n" +
 	"\x04role\x18\x02 \x01(\x0e2\x0e.users.v1.RoleR\x04role\"2\n" +
 	"\x16ChangeUserRoleResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\tR\asuccess\"\xa6\x01\n" +
+	"\asuccess\x18\x01 \x01(\tR\asuccess\"\xa9\x01\n" +
 	"\x0eBanUserRequest\x12\x17\n" +
-	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x120\n" +
-	"\x06reason\x18\x02 \x01(\x0e2\x18.users.v1.ReasonTypeEnumR\x06reason\x122\n" +
+	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x123\n" +
+	"\x06reason\x18\x02 \x01(\x0e2\x1b.users.v1.BanReasonTypeEnumR\x06reason\x122\n" +
 	"\x12reason_description\x18\x03 \x01(\tH\x00R\x11reasonDescription\x88\x01\x01B\x15\n" +
 	"\x13_reason_description\"+\n" +
 	"\x0fBanUserResponse\x12\x18\n" +
@@ -1509,7 +1509,7 @@ var file_users_v1_users_proto_depIdxs = []int32{
 	3,  // 4: users.v1.GetAllUsersRequest.ab_test_group:type_name -> users.v1.ABTestGroup
 	16, // 5: users.v1.GetAllUsersResponse.users:type_name -> users.v1.User
 	2,  // 6: users.v1.ChangeUserRoleRequest.role:type_name -> users.v1.Role
-	0,  // 7: users.v1.BanUserRequest.reason:type_name -> users.v1.ReasonTypeEnum
+	1,  // 7: users.v1.BanUserRequest.reason:type_name -> users.v1.BanReasonTypeEnum
 	2,  // 8: users.v1.User.role:type_name -> users.v1.Role
 	17, // 9: users.v1.User.children:type_name -> users.v1.Childrens
 	3,  // 10: users.v1.User.ab_test_group:type_name -> users.v1.ABTestGroup

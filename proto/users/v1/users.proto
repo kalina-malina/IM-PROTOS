@@ -83,7 +83,7 @@ message ChangeUserRoleResponse {
 
 message BanUserRequest {
   uint64 id_user = 1;
-  ReasonTypeEnum reason = 2;
+  BanReasonTypeEnum reason = 2;
   optional string reason_description = 3;
 }
 
