@@ -23,6 +23,7 @@ const (
 	UsersService_LockUser_FullMethodName          = "/users.v1.UsersService/LockUser"
 	UsersService_UnlockUser_FullMethodName        = "/users.v1.UsersService/UnlockUser"
 	UsersService_GetAllUsers_FullMethodName       = "/users.v1.UsersService/GetAllUsers"
+	UsersService_ChangeUserRole_FullMethodName    = "/users.v1.UsersService/ChangeUserRole"
 )
 
 // UsersServiceClient is the client API for UsersService service.
@@ -35,6 +36,7 @@ type UsersServiceClient interface {
 	// доступно только администратору
 	UnlockUser(ctx context.Context, in *UnlockUserRequest, opts ...grpc.CallOption) (*UnlockUserResponse, error)
 	GetAllUsers(ctx context.Context, in *GetAllUsersRequest, opts ...grpc.CallOption) (*GetAllUsersResponse, error)
+	ChangeUserRole(ctx context.Context, in *ChangeUserRoleRequest, opts ...grpc.CallOption) (*ChangeUserRoleResponse, error)
 }
 
 type usersServiceClient struct {
@@ -85,6 +87,16 @@ func (c *usersServiceClient) GetAllUsers(ctx context.Context, in *GetAllUsersReq
 	return out, nil
 }
 
+func (c *usersServiceClient) ChangeUserRole(ctx context.Context, in *ChangeUserRoleRequest, opts ...grpc.CallOption) (*ChangeUserRoleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ChangeUserRoleResponse)
+	err := c.cc.Invoke(ctx, UsersService_ChangeUserRole_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UsersServiceServer is the server API for UsersService service.
 // All implementations must embed UnimplementedUsersServiceServer
 // for forward compatibility.
@@ -95,6 +107,7 @@ type UsersServiceServer interface {
 	// доступно только администратору
 	UnlockUser(context.Context, *UnlockUserRequest) (*UnlockUserResponse, error)
 	GetAllUsers(context.Context, *GetAllUsersRequest) (*GetAllUsersResponse, error)
+	ChangeUserRole(context.Context, *ChangeUserRoleRequest) (*ChangeUserRoleResponse, error)
 	mustEmbedUnimplementedUsersServiceServer()
 }
 
@@ -116,6 +129,9 @@ func (UnimplementedUsersServiceServer) UnlockUser(context.Context, *UnlockUserRe
 }
 func (UnimplementedUsersServiceServer) GetAllUsers(context.Context, *GetAllUsersRequest) (*GetAllUsersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllUsers not implemented")
+}
+func (UnimplementedUsersServiceServer) ChangeUserRole(context.Context, *ChangeUserRoleRequest) (*ChangeUserRoleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangeUserRole not implemented")
 }
 func (UnimplementedUsersServiceServer) mustEmbedUnimplementedUsersServiceServer() {}
 func (UnimplementedUsersServiceServer) testEmbeddedByValue()                      {}
@@ -210,6 +226,24 @@ func _UsersService_GetAllUsers_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UsersService_ChangeUserRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeUserRoleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsersServiceServer).ChangeUserRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UsersService_ChangeUserRole_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsersServiceServer).ChangeUserRole(ctx, req.(*ChangeUserRoleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UsersService_ServiceDesc is the grpc.ServiceDesc for UsersService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -232,6 +266,10 @@ var UsersService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAllUsers",
 			Handler:    _UsersService_GetAllUsers_Handler,
+		},
+		{
+			MethodName: "ChangeUserRole",
+			Handler:    _UsersService_ChangeUserRole_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
