@@ -7,56 +7,55 @@ import (
 
 const (
 	//не понравился продукт
-	reason_not_liked_product = "liked_product"
+	not_liked_product = "not_liked_product"
 	//не понравился сервис
-	reason_not_liked_service = "liked_service"
+	not_liked_service = "not_liked_service"
 	//не понравился качество и обслуживание
-	liked_quality_and_service = "liked_quality_and_service"
+	liked_quality_and_service = "not_liked_quality_and_service"
 	//не понравился персонал
-	liked_personal = "liked_personal"
+	not_liked_personal = "not_liked_personal"
 	//не понравился местоположение
-	liked_location = "liked_location"
+	not_liked_location = "not_liked_location"
 	//не понравился время работы
-	liked_time = "liked_time"
+	not_liked_time = "not_liked_time"
 	//долгая доставка
-	liked_delivery = "liked_delivery"
+	not_liked_delivery = "not_liked_delivery"
 	//не понравился цена
-	liked_price = "liked_price"
+	not_liked_price = "not_liked_price"
 	//другое
-	liked_other = "liked_other"
-	//другое
+	not_liked_other = "not_liked_other"
 )
 
 const (
 	//не пристойное поведение
-	ban_reason_unproper_behavior = "ban_reason_unproper_behavior"
+	unproper_behavior = "unproper_behavior"
 	//спам
-	ban_reason_spam = "ban_reason_spam"
+	spam = "spam"
 	//нарушение правил
-	ban_reason_violation_of_rules = "ban_reason_violation_of_rules"
+	violation_of_rules = "violation_of_rules"
 	//другое
-	ban_reason_other = "ban_reason_other"
+	other = "other"
 )
 
 func StringToTypeReasonType(r string) (userspb.ReasonTypeEnum, error) {
 	switch r {
-	case reason_not_liked_product:
+	case not_liked_product:
 		return userspb.ReasonTypeEnum_REASON_NOT_LIKED_PRODUCT, nil
-	case reason_not_liked_service:
+	case not_liked_service:
 		return userspb.ReasonTypeEnum_REASON_NOT_LIKED_SERVICE, nil
-	case liked_delivery:
+	case not_liked_delivery:
 		return userspb.ReasonTypeEnum_REASON_LONG_DELIVERY, nil
 	case liked_quality_and_service:
 		return userspb.ReasonTypeEnum_REASON_NOT_LIKED_QUALITY_AND_SERVICE, nil
-	case liked_personal:
+	case not_liked_personal:
 		return userspb.ReasonTypeEnum_REASON_NOT_LIKED_PERSONAL, nil
-	case liked_location:
+	case not_liked_location:
 		return userspb.ReasonTypeEnum_REASON_NOT_LIKED_LOCATION, nil
-	case liked_time:
+	case not_liked_time:
 		return userspb.ReasonTypeEnum_REASON_NOT_LIKED_TIME, nil
-	case liked_price:
+	case not_liked_price:
 		return userspb.ReasonTypeEnum_REASON_NOT_LIKED_PRICE, nil
-	case liked_other:
+	case not_liked_other:
 		return userspb.ReasonTypeEnum_REASON_OTHER, nil
 	default:
 		return 0, fmt.Errorf("неизвестная причина при удалении пользователя: %s", r)
@@ -66,23 +65,23 @@ func StringToTypeReasonType(r string) (userspb.ReasonTypeEnum, error) {
 func ReasonTypeToString(r userspb.ReasonTypeEnum) (string, error) {
 	switch r {
 	case userspb.ReasonTypeEnum_REASON_NOT_LIKED_PRODUCT:
-		return reason_not_liked_product, nil
+		return not_liked_product, nil
 	case userspb.ReasonTypeEnum_REASON_NOT_LIKED_SERVICE:
-		return reason_not_liked_service, nil
+		return not_liked_service, nil
 	case userspb.ReasonTypeEnum_REASON_LONG_DELIVERY:
-		return liked_delivery, nil
+		return not_liked_delivery, nil
 	case userspb.ReasonTypeEnum_REASON_NOT_LIKED_QUALITY_AND_SERVICE:
 		return liked_quality_and_service, nil
 	case userspb.ReasonTypeEnum_REASON_NOT_LIKED_PERSONAL:
-		return liked_personal, nil
+		return not_liked_personal, nil
 	case userspb.ReasonTypeEnum_REASON_NOT_LIKED_LOCATION:
-		return liked_location, nil
+		return not_liked_location, nil
 	case userspb.ReasonTypeEnum_REASON_NOT_LIKED_TIME:
-		return liked_time, nil
+		return not_liked_time, nil
 	case userspb.ReasonTypeEnum_REASON_NOT_LIKED_PRICE:
-		return liked_price, nil
+		return not_liked_price, nil
 	case userspb.ReasonTypeEnum_REASON_OTHER:
-		return liked_other, nil
+		return not_liked_other, nil
 	default:
 		return "", fmt.Errorf("неизвестная причина при удалении пользователя: %s", r)
 
@@ -91,13 +90,13 @@ func ReasonTypeToString(r userspb.ReasonTypeEnum) (string, error) {
 
 func StringToTypeBanReasonType(r string) (userspb.BanReasonTypeEnum, error) {
 	switch r {
-	case ban_reason_unproper_behavior:
+	case unproper_behavior:
 		return userspb.BanReasonTypeEnum_BAN_REASON_UNPROPER_BEHAVIOR, nil
-	case ban_reason_spam:
+	case spam:
 		return userspb.BanReasonTypeEnum_BAN_REASON_SPAM, nil
-	case ban_reason_violation_of_rules:
+	case violation_of_rules:
 		return userspb.BanReasonTypeEnum_BAN_REASON_VIOLATION_OF_RULES, nil
-	case ban_reason_other:
+	case other:
 		return userspb.BanReasonTypeEnum_BAN_REASON_OTHER, nil
 	default:
 		return 0, fmt.Errorf("неизвестная причина при бане пользователя: %s", r)
@@ -107,13 +106,13 @@ func StringToTypeBanReasonType(r string) (userspb.BanReasonTypeEnum, error) {
 func BanReasonTypeToString(r userspb.BanReasonTypeEnum) (string, error) {
 	switch r {
 	case userspb.BanReasonTypeEnum_BAN_REASON_UNPROPER_BEHAVIOR:
-		return ban_reason_unproper_behavior, nil
+		return unproper_behavior, nil
 	case userspb.BanReasonTypeEnum_BAN_REASON_SPAM:
-		return ban_reason_spam, nil
+		return spam, nil
 	case userspb.BanReasonTypeEnum_BAN_REASON_VIOLATION_OF_RULES:
-		return ban_reason_violation_of_rules, nil
+		return violation_of_rules, nil
 	case userspb.BanReasonTypeEnum_BAN_REASON_OTHER:
-		return ban_reason_other, nil
+		return other, nil
 	default:
 		return "", fmt.Errorf("неизвестная причина при бане пользователя: %s", r)
 	}
