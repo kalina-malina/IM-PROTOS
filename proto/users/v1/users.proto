@@ -91,18 +91,20 @@ message ChangeUserRoleResponse {
 //общее
 message User{
   uint64 id = 1;
-  Role role = 9;
-  string first_name = 2;
-  string last_name = 3;
-  string middle_name = 4;
-  string date_of_birth = 5;
-  uint64 card_number = 6;
-  uint64 phone = 7;
-  string email = 8;
-  string last_coment_delivery = 10;
-  uint32 selected_store_id = 11;
-  repeated Childrens children = 12;
-  ABTestGroup ab_test_group = 13;
+  bool deleted = 2;
+  Role role = 3;
+  string first_name = 4;
+  string last_name = 5;
+  string middle_name = 6;
+  string date_of_birth = 7;
+  uint64 card_number = 8;
+  uint64 phone = 9;
+  string email = 10;
+  string last_coment_delivery = 11;
+  bool  full_blocked = 12;
+  uint32 selected_store_id = 13;
+  repeated Childrens children = 14;
+  ABTestGroup ab_test_group = 15;
 }
 
 
