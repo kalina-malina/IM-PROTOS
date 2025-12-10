@@ -21,32 +21,32 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type ReasonType int32
+type ReasonTypeEnum int32
 
 const (
 	// не понравился продукт и услуга
-	ReasonType_REASON_NOT_LIKED_PRODUCT ReasonType = 0
+	ReasonTypeEnum_REASON_NOT_LIKED_PRODUCT ReasonTypeEnum = 0
 	// не понравился сервис и обслуживание
-	ReasonType_REASON_NOT_LIKED_SERVICE ReasonType = 1
+	ReasonTypeEnum_REASON_NOT_LIKED_SERVICE ReasonTypeEnum = 1
 	// долгая доставка
-	ReasonType_REASON_LONG_DELIVERY ReasonType = 2
+	ReasonTypeEnum_REASON_LONG_DELIVERY ReasonTypeEnum = 2
 	// не понравился качество и обслуживание
-	ReasonType_REASON_NOT_LIKED_QUALITY_AND_SERVICE ReasonType = 3
+	ReasonTypeEnum_REASON_NOT_LIKED_QUALITY_AND_SERVICE ReasonTypeEnum = 3
 	// не понравился персонал
-	ReasonType_REASON_NOT_LIKED_PERSONAL ReasonType = 4
+	ReasonTypeEnum_REASON_NOT_LIKED_PERSONAL ReasonTypeEnum = 4
 	// не понравился местоположение
-	ReasonType_REASON_NOT_LIKED_LOCATION ReasonType = 5
+	ReasonTypeEnum_REASON_NOT_LIKED_LOCATION ReasonTypeEnum = 5
 	// не понравился время работы
-	ReasonType_REASON_NOT_LIKED_TIME ReasonType = 6
+	ReasonTypeEnum_REASON_NOT_LIKED_TIME ReasonTypeEnum = 6
 	// не понравился цена
-	ReasonType_REASON_NOT_LIKED_PRICE ReasonType = 7
+	ReasonTypeEnum_REASON_NOT_LIKED_PRICE ReasonTypeEnum = 7
 	// другое
-	ReasonType_REASON_OTHER ReasonType = 8
+	ReasonTypeEnum_REASON_OTHER ReasonTypeEnum = 8
 )
 
-// Enum value maps for ReasonType.
+// Enum value maps for ReasonTypeEnum.
 var (
-	ReasonType_name = map[int32]string{
+	ReasonTypeEnum_name = map[int32]string{
 		0: "REASON_NOT_LIKED_PRODUCT",
 		1: "REASON_NOT_LIKED_SERVICE",
 		2: "REASON_LONG_DELIVERY",
@@ -57,7 +57,7 @@ var (
 		7: "REASON_NOT_LIKED_PRICE",
 		8: "REASON_OTHER",
 	}
-	ReasonType_value = map[string]int32{
+	ReasonTypeEnum_value = map[string]int32{
 		"REASON_NOT_LIKED_PRODUCT":             0,
 		"REASON_NOT_LIKED_SERVICE":             1,
 		"REASON_LONG_DELIVERY":                 2,
@@ -70,55 +70,55 @@ var (
 	}
 )
 
-func (x ReasonType) Enum() *ReasonType {
-	p := new(ReasonType)
+func (x ReasonTypeEnum) Enum() *ReasonTypeEnum {
+	p := new(ReasonTypeEnum)
 	*p = x
 	return p
 }
 
-func (x ReasonType) String() string {
+func (x ReasonTypeEnum) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (ReasonType) Descriptor() protoreflect.EnumDescriptor {
+func (ReasonTypeEnum) Descriptor() protoreflect.EnumDescriptor {
 	return file_users_v1_users_proto_enumTypes[0].Descriptor()
 }
 
-func (ReasonType) Type() protoreflect.EnumType {
+func (ReasonTypeEnum) Type() protoreflect.EnumType {
 	return &file_users_v1_users_proto_enumTypes[0]
 }
 
-func (x ReasonType) Number() protoreflect.EnumNumber {
+func (x ReasonTypeEnum) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use ReasonType.Descriptor instead.
-func (ReasonType) EnumDescriptor() ([]byte, []int) {
+// Deprecated: Use ReasonTypeEnum.Descriptor instead.
+func (ReasonTypeEnum) EnumDescriptor() ([]byte, []int) {
 	return file_users_v1_users_proto_rawDescGZIP(), []int{0}
 }
 
-type BanReasonType int32
+type BanReasonTypeEnum int32
 
 const (
 	// не пристойное поведение
-	BanReasonType_BAN_REASON_UNPROPER_BEHAVIOR BanReasonType = 0
+	BanReasonTypeEnum_BAN_REASON_UNPROPER_BEHAVIOR BanReasonTypeEnum = 0
 	// спам
-	BanReasonType_BAN_REASON_SPAM BanReasonType = 1
+	BanReasonTypeEnum_BAN_REASON_SPAM BanReasonTypeEnum = 1
 	// нарушение правил
-	BanReasonType_BAN_REASON_VIOLATION_OF_RULES BanReasonType = 2
+	BanReasonTypeEnum_BAN_REASON_VIOLATION_OF_RULES BanReasonTypeEnum = 2
 	// другое
-	BanReasonType_BAN_REASON_OTHER BanReasonType = 3
+	BanReasonTypeEnum_BAN_REASON_OTHER BanReasonTypeEnum = 3
 )
 
-// Enum value maps for BanReasonType.
+// Enum value maps for BanReasonTypeEnum.
 var (
-	BanReasonType_name = map[int32]string{
+	BanReasonTypeEnum_name = map[int32]string{
 		0: "BAN_REASON_UNPROPER_BEHAVIOR",
 		1: "BAN_REASON_SPAM",
 		2: "BAN_REASON_VIOLATION_OF_RULES",
 		3: "BAN_REASON_OTHER",
 	}
-	BanReasonType_value = map[string]int32{
+	BanReasonTypeEnum_value = map[string]int32{
 		"BAN_REASON_UNPROPER_BEHAVIOR":  0,
 		"BAN_REASON_SPAM":               1,
 		"BAN_REASON_VIOLATION_OF_RULES": 2,
@@ -126,30 +126,30 @@ var (
 	}
 )
 
-func (x BanReasonType) Enum() *BanReasonType {
-	p := new(BanReasonType)
+func (x BanReasonTypeEnum) Enum() *BanReasonTypeEnum {
+	p := new(BanReasonTypeEnum)
 	*p = x
 	return p
 }
 
-func (x BanReasonType) String() string {
+func (x BanReasonTypeEnum) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (BanReasonType) Descriptor() protoreflect.EnumDescriptor {
+func (BanReasonTypeEnum) Descriptor() protoreflect.EnumDescriptor {
 	return file_users_v1_users_proto_enumTypes[1].Descriptor()
 }
 
-func (BanReasonType) Type() protoreflect.EnumType {
+func (BanReasonTypeEnum) Type() protoreflect.EnumType {
 	return &file_users_v1_users_proto_enumTypes[1]
 }
 
-func (x BanReasonType) Number() protoreflect.EnumNumber {
+func (x BanReasonTypeEnum) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use BanReasonType.Descriptor instead.
-func (BanReasonType) EnumDescriptor() ([]byte, []int) {
+// Deprecated: Use BanReasonTypeEnum.Descriptor instead.
+func (BanReasonTypeEnum) EnumDescriptor() ([]byte, []int) {
 	return file_users_v1_users_proto_rawDescGZIP(), []int{1}
 }
 
@@ -404,7 +404,7 @@ func (x *UpdateUserProfileResponse) GetUser() *User {
 type DeleteUserRequest struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	IdUser            uint64                 `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
-	Reason            ReasonType             `protobuf:"varint,2,opt,name=reason,proto3,enum=users.v1.ReasonType" json:"reason,omitempty"`
+	Reason            ReasonTypeEnum         `protobuf:"varint,2,opt,name=reason,proto3,enum=users.v1.ReasonTypeEnum" json:"reason,omitempty"`
 	ReasonDescription *string                `protobuf:"bytes,3,opt,name=reason_description,json=reasonDescription,proto3,oneof" json:"reason_description,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
@@ -447,11 +447,11 @@ func (x *DeleteUserRequest) GetIdUser() uint64 {
 	return 0
 }
 
-func (x *DeleteUserRequest) GetReason() ReasonType {
+func (x *DeleteUserRequest) GetReason() ReasonTypeEnum {
 	if x != nil {
 		return x.Reason
 	}
-	return ReasonType_REASON_NOT_LIKED_PRODUCT
+	return ReasonTypeEnum_REASON_NOT_LIKED_PRODUCT
 }
 
 func (x *DeleteUserRequest) GetReasonDescription() string {
@@ -788,7 +788,7 @@ func (x *ChangeUserRoleResponse) GetSuccess() string {
 type BanUserRequest struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	IdUser            uint64                 `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
-	Reason            BanReasonType          `protobuf:"varint,2,opt,name=reason,proto3,enum=users.v1.BanReasonType" json:"reason,omitempty"`
+	Reason            ReasonTypeEnum         `protobuf:"varint,2,opt,name=reason,proto3,enum=users.v1.ReasonTypeEnum" json:"reason,omitempty"`
 	ReasonDescription *string                `protobuf:"bytes,3,opt,name=reason_description,json=reasonDescription,proto3,oneof" json:"reason_description,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
@@ -831,11 +831,11 @@ func (x *BanUserRequest) GetIdUser() uint64 {
 	return 0
 }
 
-func (x *BanUserRequest) GetReason() BanReasonType {
+func (x *BanUserRequest) GetReason() ReasonTypeEnum {
 	if x != nil {
 		return x.Reason
 	}
-	return BanReasonType_BAN_REASON_UNPROPER_BEHAVIOR
+	return ReasonTypeEnum_REASON_NOT_LIKED_PRODUCT
 }
 
 func (x *BanUserRequest) GetReasonDescription() string {
@@ -1343,10 +1343,10 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\x05email\x18\x06 \x01(\tR\x05email\x121\n" +
 	"\tchildrens\x18\a \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"?\n" +
 	"\x19UpdateUserProfileResponse\x12\"\n" +
-	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\xa5\x01\n" +
+	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\xa9\x01\n" +
 	"\x11DeleteUserRequest\x12\x17\n" +
-	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12,\n" +
-	"\x06reason\x18\x02 \x01(\x0e2\x14.users.v1.ReasonTypeR\x06reason\x122\n" +
+	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x120\n" +
+	"\x06reason\x18\x02 \x01(\x0e2\x18.users.v1.ReasonTypeEnumR\x06reason\x122\n" +
 	"\x12reason_description\x18\x03 \x01(\tH\x00R\x11reasonDescription\x88\x01\x01B\x15\n" +
 	"\x13_reason_description\".\n" +
 	"\x12DeleteUserResponse\x12\x18\n" +
@@ -1377,10 +1377,10 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12\"\n" +
 	"\x04role\x18\x02 \x01(\x0e2\x0e.users.v1.RoleR\x04role\"2\n" +
 	"\x16ChangeUserRoleResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\tR\asuccess\"\xa5\x01\n" +
+	"\asuccess\x18\x01 \x01(\tR\asuccess\"\xa6\x01\n" +
 	"\x0eBanUserRequest\x12\x17\n" +
-	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12/\n" +
-	"\x06reason\x18\x02 \x01(\x0e2\x17.users.v1.BanReasonTypeR\x06reason\x122\n" +
+	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x120\n" +
+	"\x06reason\x18\x02 \x01(\x0e2\x18.users.v1.ReasonTypeEnumR\x06reason\x122\n" +
 	"\x12reason_description\x18\x03 \x01(\tH\x00R\x11reasonDescription\x88\x01\x01B\x15\n" +
 	"\x13_reason_description\"+\n" +
 	"\x0fBanUserResponse\x12\x18\n" +
@@ -1428,9 +1428,8 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\rorder_updates\x18\x06 \x01(\bR\forderUpdates\x12-\n" +
 	"\x12promotional_offers\x18\a \x01(\bR\x11promotionalOffers\x128\n" +
 	"\x16last_selected_store_id\x18\b \x01(\rH\x00R\x13lastSelectedStoreId\x88\x01\x01B\x19\n" +
-	"\x17_last_selected_store_id*\x93\x02\n" +
-	"\n" +
-	"ReasonType\x12\x1c\n" +
+	"\x17_last_selected_store_id*\x97\x02\n" +
+	"\x0eReasonTypeEnum\x12\x1c\n" +
 	"\x18REASON_NOT_LIKED_PRODUCT\x10\x00\x12\x1c\n" +
 	"\x18REASON_NOT_LIKED_SERVICE\x10\x01\x12\x18\n" +
 	"\x14REASON_LONG_DELIVERY\x10\x02\x12(\n" +
@@ -1439,8 +1438,8 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\x19REASON_NOT_LIKED_LOCATION\x10\x05\x12\x19\n" +
 	"\x15REASON_NOT_LIKED_TIME\x10\x06\x12\x1a\n" +
 	"\x16REASON_NOT_LIKED_PRICE\x10\a\x12\x10\n" +
-	"\fREASON_OTHER\x10\b*\x7f\n" +
-	"\rBanReasonType\x12 \n" +
+	"\fREASON_OTHER\x10\b*\x83\x01\n" +
+	"\x11BanReasonTypeEnum\x12 \n" +
 	"\x1cBAN_REASON_UNPROPER_BEHAVIOR\x10\x00\x12\x13\n" +
 	"\x0fBAN_REASON_SPAM\x10\x01\x12!\n" +
 	"\x1dBAN_REASON_VIOLATION_OF_RULES\x10\x02\x12\x14\n" +
@@ -1482,8 +1481,8 @@ func file_users_v1_users_proto_rawDescGZIP() []byte {
 var file_users_v1_users_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
 var file_users_v1_users_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_users_v1_users_proto_goTypes = []any{
-	(ReasonType)(0),                   // 0: users.v1.ReasonType
-	(BanReasonType)(0),                // 1: users.v1.BanReasonType
+	(ReasonTypeEnum)(0),               // 0: users.v1.ReasonTypeEnum
+	(BanReasonTypeEnum)(0),            // 1: users.v1.BanReasonTypeEnum
 	(Role)(0),                         // 2: users.v1.Role
 	(ABTestGroup)(0),                  // 3: users.v1.ABTestGroup
 	(*UpdateUserProfileRequest)(nil),  // 4: users.v1.UpdateUserProfileRequest
@@ -1505,12 +1504,12 @@ var file_users_v1_users_proto_goTypes = []any{
 var file_users_v1_users_proto_depIdxs = []int32{
 	17, // 0: users.v1.UpdateUserProfileRequest.childrens:type_name -> users.v1.Childrens
 	16, // 1: users.v1.UpdateUserProfileResponse.user:type_name -> users.v1.User
-	0,  // 2: users.v1.DeleteUserRequest.reason:type_name -> users.v1.ReasonType
+	0,  // 2: users.v1.DeleteUserRequest.reason:type_name -> users.v1.ReasonTypeEnum
 	2,  // 3: users.v1.GetAllUsersRequest.role:type_name -> users.v1.Role
 	3,  // 4: users.v1.GetAllUsersRequest.ab_test_group:type_name -> users.v1.ABTestGroup
 	16, // 5: users.v1.GetAllUsersResponse.users:type_name -> users.v1.User
 	2,  // 6: users.v1.ChangeUserRoleRequest.role:type_name -> users.v1.Role
-	1,  // 7: users.v1.BanUserRequest.reason:type_name -> users.v1.BanReasonType
+	0,  // 7: users.v1.BanUserRequest.reason:type_name -> users.v1.ReasonTypeEnum
 	2,  // 8: users.v1.User.role:type_name -> users.v1.Role
 	17, // 9: users.v1.User.children:type_name -> users.v1.Childrens
 	3,  // 10: users.v1.User.ab_test_group:type_name -> users.v1.ABTestGroup
