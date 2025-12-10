@@ -52,7 +52,7 @@ message LockUserResponse {
 message UnlockUserRequest {
   uint64 id = 1;
 }
-
+  
 message UnlockUserResponse {
   string success = 1;
 }
