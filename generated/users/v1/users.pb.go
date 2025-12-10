@@ -633,7 +633,7 @@ func (x *GetAllUsersResponse) GetUsers() []*User {
 
 type ChangeUserRoleRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	IdUser        uint64                 `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
 	Role          Role                   `protobuf:"varint,2,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -669,9 +669,9 @@ func (*ChangeUserRoleRequest) Descriptor() ([]byte, []int) {
 	return file_users_v1_users_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *ChangeUserRoleRequest) GetId() uint64 {
+func (x *ChangeUserRoleRequest) GetIdUser() uint64 {
 	if x != nil {
-		return x.Id
+		return x.IdUser
 	}
 	return 0
 }
@@ -1099,9 +1099,9 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\x04page\x18\f \x01(\x04R\x04page\x12\x14\n" +
 	"\x05limit\x18\r \x01(\x04R\x05limit\";\n" +
 	"\x13GetAllUsersResponse\x12$\n" +
-	"\x05users\x18\x01 \x03(\v2\x0e.users.v1.UserR\x05users\"K\n" +
-	"\x15ChangeUserRoleRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x04R\x02id\x12\"\n" +
+	"\x05users\x18\x01 \x03(\v2\x0e.users.v1.UserR\x05users\"T\n" +
+	"\x15ChangeUserRoleRequest\x12\x17\n" +
+	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12\"\n" +
 	"\x04role\x18\x02 \x01(\x0e2\x0e.users.v1.RoleR\x04role\"2\n" +
 	"\x16ChangeUserRoleResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\tR\asuccess\"\xd2\x03\n" +

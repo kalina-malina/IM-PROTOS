@@ -79,7 +79,7 @@ message GetAllUsersResponse {
 }
 
 message ChangeUserRoleRequest {
-  uint64 id = 1;
+  uint64 id_user = 1;
   Role role = 2;
 }
 
