@@ -360,12 +360,12 @@ func (x *UpdateUserProfileRequest) GetChildrens() []*Childrens {
 
 type UpdateUserProfileResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FirstName     string                 `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName      string                 `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	MiddleName    string                 `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
-	DateOfBirth   string                 `protobuf:"bytes,5,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
-	Email         string                 `protobuf:"bytes,6,opt,name=email,proto3" json:"email,omitempty"`
-	Childrens     []*Childrens           `protobuf:"bytes,7,rep,name=childrens,proto3" json:"childrens,omitempty"`
+	FirstName     string                 `protobuf:"bytes,1,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      string                 `protobuf:"bytes,2,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	MiddleName    string                 `protobuf:"bytes,3,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
+	DateOfBirth   string                 `protobuf:"bytes,4,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
+	Email         string                 `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
+	Childrens     []*Childrens           `protobuf:"bytes,6,rep,name=childrens,proto3" json:"childrens,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1281,13 +1281,13 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\tchildrens\x18\a \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"\xe5\x01\n" +
 	"\x19UpdateUserProfileResponse\x12\x1d\n" +
 	"\n" +
-	"first_name\x18\x02 \x01(\tR\tfirstName\x12\x1b\n" +
-	"\tlast_name\x18\x03 \x01(\tR\blastName\x12\x1f\n" +
-	"\vmiddle_name\x18\x04 \x01(\tR\n" +
+	"first_name\x18\x01 \x01(\tR\tfirstName\x12\x1b\n" +
+	"\tlast_name\x18\x02 \x01(\tR\blastName\x12\x1f\n" +
+	"\vmiddle_name\x18\x03 \x01(\tR\n" +
 	"middleName\x12\"\n" +
-	"\rdate_of_birth\x18\x05 \x01(\tR\vdateOfBirth\x12\x14\n" +
-	"\x05email\x18\x06 \x01(\tR\x05email\x121\n" +
-	"\tchildrens\x18\a \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"\xa7\x03\n" +
+	"\rdate_of_birth\x18\x04 \x01(\tR\vdateOfBirth\x12\x14\n" +
+	"\x05email\x18\x05 \x01(\tR\x05email\x121\n" +
+	"\tchildrens\x18\x06 \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"\xa7\x03\n" +
 	"\x12GetAllUsersRequest\x12\x12\n" +
 	"\x04guid\x18\x01 \x03(\x04R\x04guid\x12\x1f\n" +
 	"\vcard_number\x18\x02 \x03(\x04R\n" +
