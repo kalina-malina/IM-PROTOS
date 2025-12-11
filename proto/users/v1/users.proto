@@ -14,7 +14,6 @@ service UsersService {
   rpc ChangeUserRole(ChangeUserRoleRequest) returns (ChangeUserRoleResponse);
   rpc BanUser(BanUserRequest) returns (BanUserResponse);
   rpc UnbanUser(UnbanUserRequest) returns (UnbanUserResponse);
-  
   //rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
   //rpc LockUser(LockUserRequest) returns (LockUserResponse);
   //
