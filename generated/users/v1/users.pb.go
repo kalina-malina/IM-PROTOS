@@ -360,7 +360,12 @@ func (x *UpdateUserProfileRequest) GetChildrens() []*Childrens {
 
 type UpdateUserProfileResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	FirstName     string                 `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      string                 `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	MiddleName    string                 `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
+	DateOfBirth   string                 `protobuf:"bytes,5,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
+	Email         string                 `protobuf:"bytes,6,opt,name=email,proto3" json:"email,omitempty"`
+	Childrens     []*Childrens           `protobuf:"bytes,7,rep,name=childrens,proto3" json:"childrens,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -395,9 +400,44 @@ func (*UpdateUserProfileResponse) Descriptor() ([]byte, []int) {
 	return file_users_v1_users_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *UpdateUserProfileResponse) GetUser() *User {
+func (x *UpdateUserProfileResponse) GetFirstName() string {
 	if x != nil {
-		return x.User
+		return x.FirstName
+	}
+	return ""
+}
+
+func (x *UpdateUserProfileResponse) GetLastName() string {
+	if x != nil {
+		return x.LastName
+	}
+	return ""
+}
+
+func (x *UpdateUserProfileResponse) GetMiddleName() string {
+	if x != nil {
+		return x.MiddleName
+	}
+	return ""
+}
+
+func (x *UpdateUserProfileResponse) GetDateOfBirth() string {
+	if x != nil {
+		return x.DateOfBirth
+	}
+	return ""
+}
+
+func (x *UpdateUserProfileResponse) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *UpdateUserProfileResponse) GetChildrens() []*Childrens {
+	if x != nil {
+		return x.Childrens
 	}
 	return nil
 }
@@ -1238,9 +1278,16 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"middleName\x12\"\n" +
 	"\rdate_of_birth\x18\x05 \x01(\tR\vdateOfBirth\x12\x14\n" +
 	"\x05email\x18\x06 \x01(\tR\x05email\x121\n" +
-	"\tchildrens\x18\a \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"?\n" +
-	"\x19UpdateUserProfileResponse\x12\"\n" +
-	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\xa7\x03\n" +
+	"\tchildrens\x18\a \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"\xe5\x01\n" +
+	"\x19UpdateUserProfileResponse\x12\x1d\n" +
+	"\n" +
+	"first_name\x18\x02 \x01(\tR\tfirstName\x12\x1b\n" +
+	"\tlast_name\x18\x03 \x01(\tR\blastName\x12\x1f\n" +
+	"\vmiddle_name\x18\x04 \x01(\tR\n" +
+	"middleName\x12\"\n" +
+	"\rdate_of_birth\x18\x05 \x01(\tR\vdateOfBirth\x12\x14\n" +
+	"\x05email\x18\x06 \x01(\tR\x05email\x121\n" +
+	"\tchildrens\x18\a \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"\xa7\x03\n" +
 	"\x12GetAllUsersRequest\x12\x12\n" +
 	"\x04guid\x18\x01 \x03(\x04R\x04guid\x12\x1f\n" +
 	"\vcard_number\x18\x02 \x03(\x04R\n" +
@@ -1389,7 +1436,7 @@ var file_users_v1_users_proto_goTypes = []any{
 }
 var file_users_v1_users_proto_depIdxs = []int32{
 	15, // 0: users.v1.UpdateUserProfileRequest.childrens:type_name -> users.v1.Childrens
-	14, // 1: users.v1.UpdateUserProfileResponse.user:type_name -> users.v1.User
+	15, // 1: users.v1.UpdateUserProfileResponse.childrens:type_name -> users.v1.Childrens
 	2,  // 2: users.v1.GetAllUsersRequest.role:type_name -> users.v1.Role
 	3,  // 3: users.v1.GetAllUsersRequest.ab_test_group:type_name -> users.v1.ABTestGroup
 	14, // 4: users.v1.GetAllUsersResponse.users:type_name -> users.v1.User

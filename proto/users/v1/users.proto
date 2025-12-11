@@ -35,12 +35,13 @@ message UpdateUserProfileRequest {
 }
 
 message UpdateUserProfileResponse {
-  User user = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string middle_name = 4;
+  string date_of_birth = 5;
+  string email = 6;
+  repeated Childrens childrens = 7;
 }
-
-
-
-
 
 ////////////////////////////////////////////////////////////
 //доступно только администратору
