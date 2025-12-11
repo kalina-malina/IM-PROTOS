@@ -449,6 +449,50 @@ func (x *LogoutResponse) GetSecurity() bool {
 	return false
 }
 
+type SelfLockingResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SelfLockingResponse) Reset() {
+	*x = SelfLockingResponse{}
+	mi := &file_auth_v1_auth_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SelfLockingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SelfLockingResponse) ProtoMessage() {}
+
+func (x *SelfLockingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_v1_auth_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SelfLockingResponse.ProtoReflect.Descriptor instead.
+func (*SelfLockingResponse) Descriptor() ([]byte, []int) {
+	return file_auth_v1_auth_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *SelfLockingResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 var File_auth_v1_auth_proto protoreflect.FileDescriptor
 
 const file_auth_v1_auth_proto_rawDesc = "" +
@@ -484,16 +528,19 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\n" +
 	"session_id\x18\x02 \x01(\tR\tsessionId\",\n" +
 	"\x0eLogoutResponse\x12\x1a\n" +
-	"\bsecurity\x18\x01 \x01(\bR\bsecurity*6\n" +
+	"\bsecurity\x18\x01 \x01(\bR\bsecurity\"/\n" +
+	"\x13SelfLockingResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess*6\n" +
 	"\tTypeLogin\x12\x12\n" +
 	"\x0eTYPE_LOGIN_SMS\x10\x00\x12\x15\n" +
-	"\x11TYPE_LOGIN_YANDEX\x10\x012\xba\x02\n" +
+	"\x11TYPE_LOGIN_YANDEX\x10\x012\xff\x02\n" +
 	"\x19AuthOrRegistrationService\x12E\n" +
 	"\n" +
 	"LoginUsers\x12\x1a.auth.v1.LoginUsersRequest\x1a\x1b.auth.v1.LoginUsersResponse\x12N\n" +
 	"\rVerifySmsCode\x12\x1d.auth.v1.VerifySmsCodeRequest\x1a\x1e.auth.v1.VerifySmsCodeResponse\x12K\n" +
 	"\fRefreshToken\x12\x1c.auth.v1.RefreshTokenRequest\x1a\x1d.auth.v1.RefreshTokenResponse\x129\n" +
-	"\x06Logout\x12\x16.google.protobuf.Empty\x1a\x17.auth.v1.LogoutResponseB6Z4github.com/kalina-malina/IM-PROTOS/generated/auth/v1b\x06proto3"
+	"\x06Logout\x12\x16.google.protobuf.Empty\x1a\x17.auth.v1.LogoutResponse\x12C\n" +
+	"\vSelfLocking\x12\x16.google.protobuf.Empty\x1a\x1c.auth.v1.SelfLockingResponseB6Z4github.com/kalina-malina/IM-PROTOS/generated/auth/v1b\x06proto3"
 
 var (
 	file_auth_v1_auth_proto_rawDescOnce sync.Once
@@ -508,7 +555,7 @@ func file_auth_v1_auth_proto_rawDescGZIP() []byte {
 }
 
 var file_auth_v1_auth_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_auth_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_auth_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_auth_v1_auth_proto_goTypes = []any{
 	(TypeLogin)(0),                // 0: auth.v1.TypeLogin
 	(*LoginUsersRequest)(nil),     // 1: auth.v1.LoginUsersRequest
@@ -518,25 +565,28 @@ var file_auth_v1_auth_proto_goTypes = []any{
 	(*RefreshTokenRequest)(nil),   // 5: auth.v1.RefreshTokenRequest
 	(*RefreshTokenResponse)(nil),  // 6: auth.v1.RefreshTokenResponse
 	(*LogoutResponse)(nil),        // 7: auth.v1.LogoutResponse
-	(*v1.User)(nil),               // 8: users.v1.User
-	(*emptypb.Empty)(nil),         // 9: google.protobuf.Empty
+	(*SelfLockingResponse)(nil),   // 8: auth.v1.SelfLockingResponse
+	(*v1.User)(nil),               // 9: users.v1.User
+	(*emptypb.Empty)(nil),         // 10: google.protobuf.Empty
 }
 var file_auth_v1_auth_proto_depIdxs = []int32{
-	0, // 0: auth.v1.LoginUsersRequest.type_login:type_name -> auth.v1.TypeLogin
-	8, // 1: auth.v1.VerifySmsCodeResponse.user:type_name -> users.v1.User
-	1, // 2: auth.v1.AuthOrRegistrationService.LoginUsers:input_type -> auth.v1.LoginUsersRequest
-	3, // 3: auth.v1.AuthOrRegistrationService.VerifySmsCode:input_type -> auth.v1.VerifySmsCodeRequest
-	5, // 4: auth.v1.AuthOrRegistrationService.RefreshToken:input_type -> auth.v1.RefreshTokenRequest
-	9, // 5: auth.v1.AuthOrRegistrationService.Logout:input_type -> google.protobuf.Empty
-	2, // 6: auth.v1.AuthOrRegistrationService.LoginUsers:output_type -> auth.v1.LoginUsersResponse
-	4, // 7: auth.v1.AuthOrRegistrationService.VerifySmsCode:output_type -> auth.v1.VerifySmsCodeResponse
-	6, // 8: auth.v1.AuthOrRegistrationService.RefreshToken:output_type -> auth.v1.RefreshTokenResponse
-	7, // 9: auth.v1.AuthOrRegistrationService.Logout:output_type -> auth.v1.LogoutResponse
-	6, // [6:10] is the sub-list for method output_type
-	2, // [2:6] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	0,  // 0: auth.v1.LoginUsersRequest.type_login:type_name -> auth.v1.TypeLogin
+	9,  // 1: auth.v1.VerifySmsCodeResponse.user:type_name -> users.v1.User
+	1,  // 2: auth.v1.AuthOrRegistrationService.LoginUsers:input_type -> auth.v1.LoginUsersRequest
+	3,  // 3: auth.v1.AuthOrRegistrationService.VerifySmsCode:input_type -> auth.v1.VerifySmsCodeRequest
+	5,  // 4: auth.v1.AuthOrRegistrationService.RefreshToken:input_type -> auth.v1.RefreshTokenRequest
+	10, // 5: auth.v1.AuthOrRegistrationService.Logout:input_type -> google.protobuf.Empty
+	10, // 6: auth.v1.AuthOrRegistrationService.SelfLocking:input_type -> google.protobuf.Empty
+	2,  // 7: auth.v1.AuthOrRegistrationService.LoginUsers:output_type -> auth.v1.LoginUsersResponse
+	4,  // 8: auth.v1.AuthOrRegistrationService.VerifySmsCode:output_type -> auth.v1.VerifySmsCodeResponse
+	6,  // 9: auth.v1.AuthOrRegistrationService.RefreshToken:output_type -> auth.v1.RefreshTokenResponse
+	7,  // 10: auth.v1.AuthOrRegistrationService.Logout:output_type -> auth.v1.LogoutResponse
+	8,  // 11: auth.v1.AuthOrRegistrationService.SelfLocking:output_type -> auth.v1.SelfLockingResponse
+	7,  // [7:12] is the sub-list for method output_type
+	2,  // [2:7] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_auth_v1_auth_proto_init() }
@@ -552,7 +602,7 @@ func file_auth_v1_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_v1_auth_proto_rawDesc), len(file_auth_v1_auth_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   7,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

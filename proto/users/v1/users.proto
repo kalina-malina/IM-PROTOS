@@ -9,7 +9,7 @@ import "google/protobuf/empty.proto";
 service UsersService {
   // доступно пользователям всем
   rpc UpdateUserProfile(UpdateUserProfileRequest) returns (UpdateUserProfileResponse);
-  rpc DeleteUser(google.protobuf.Empty) returns (DeleteUserResponse);
+ 
   // доступно только администратору
   rpc GetAllUsers(GetAllUsersRequest) returns (GetAllUsersResponse);
   rpc ChangeUserRole(ChangeUserRoleRequest) returns (ChangeUserRoleResponse);
@@ -39,9 +39,7 @@ message UpdateUserProfileResponse {
 }
 
 
-message DeleteUserResponse {
-  bool success = 1;
-}
+
 
 
 ////////////////////////////////////////////////////////////

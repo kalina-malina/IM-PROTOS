@@ -11,7 +11,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -21,7 +20,6 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	UsersService_UpdateUserProfile_FullMethodName = "/users.v1.UsersService/UpdateUserProfile"
-	UsersService_DeleteUser_FullMethodName        = "/users.v1.UsersService/DeleteUser"
 	UsersService_GetAllUsers_FullMethodName       = "/users.v1.UsersService/GetAllUsers"
 	UsersService_ChangeUserRole_FullMethodName    = "/users.v1.UsersService/ChangeUserRole"
 	UsersService_BanUser_FullMethodName           = "/users.v1.UsersService/BanUser"
@@ -34,7 +32,6 @@ const (
 type UsersServiceClient interface {
 	// доступно пользователям всем
 	UpdateUserProfile(ctx context.Context, in *UpdateUserProfileRequest, opts ...grpc.CallOption) (*UpdateUserProfileResponse, error)
-	DeleteUser(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*DeleteUserResponse, error)
 	// доступно только администратору
 	GetAllUsers(ctx context.Context, in *GetAllUsersRequest, opts ...grpc.CallOption) (*GetAllUsersResponse, error)
 	ChangeUserRole(ctx context.Context, in *ChangeUserRoleRequest, opts ...grpc.CallOption) (*ChangeUserRoleResponse, error)
@@ -54,16 +51,6 @@ func (c *usersServiceClient) UpdateUserProfile(ctx context.Context, in *UpdateUs
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UpdateUserProfileResponse)
 	err := c.cc.Invoke(ctx, UsersService_UpdateUserProfile_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *usersServiceClient) DeleteUser(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*DeleteUserResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteUserResponse)
-	err := c.cc.Invoke(ctx, UsersService_DeleteUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -116,7 +103,6 @@ func (c *usersServiceClient) UnbanUser(ctx context.Context, in *UnbanUserRequest
 type UsersServiceServer interface {
 	// доступно пользователям всем
 	UpdateUserProfile(context.Context, *UpdateUserProfileRequest) (*UpdateUserProfileResponse, error)
-	DeleteUser(context.Context, *emptypb.Empty) (*DeleteUserResponse, error)
 	// доступно только администратору
 	GetAllUsers(context.Context, *GetAllUsersRequest) (*GetAllUsersResponse, error)
 	ChangeUserRole(context.Context, *ChangeUserRoleRequest) (*ChangeUserRoleResponse, error)
@@ -134,9 +120,6 @@ type UnimplementedUsersServiceServer struct{}
 
 func (UnimplementedUsersServiceServer) UpdateUserProfile(context.Context, *UpdateUserProfileRequest) (*UpdateUserProfileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserProfile not implemented")
-}
-func (UnimplementedUsersServiceServer) DeleteUser(context.Context, *emptypb.Empty) (*DeleteUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
 }
 func (UnimplementedUsersServiceServer) GetAllUsers(context.Context, *GetAllUsersRequest) (*GetAllUsersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllUsers not implemented")
@@ -185,24 +168,6 @@ func _UsersService_UpdateUserProfile_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UsersServiceServer).UpdateUserProfile(ctx, req.(*UpdateUserProfileRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _UsersService_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UsersServiceServer).DeleteUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UsersService_DeleteUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsersServiceServer).DeleteUser(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -289,10 +254,6 @@ var UsersService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateUserProfile",
 			Handler:    _UsersService_UpdateUserProfile_Handler,
-		},
-		{
-			MethodName: "DeleteUser",
-			Handler:    _UsersService_DeleteUser_Handler,
 		},
 		{
 			MethodName: "GetAllUsers",

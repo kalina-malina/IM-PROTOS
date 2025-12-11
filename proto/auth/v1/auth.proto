@@ -11,6 +11,7 @@ service AuthOrRegistrationService {
   rpc VerifySmsCode(VerifySmsCodeRequest) returns (VerifySmsCodeResponse);
   rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
   rpc Logout(google.protobuf.Empty) returns (LogoutResponse);
+  rpc SelfLocking(google.protobuf.Empty) returns (SelfLockingResponse);
 }
 
 
@@ -51,6 +52,9 @@ message RefreshTokenResponse {
 
 message LogoutResponse {
   bool security = 1;
+}
+message SelfLockingResponse {
+  bool success = 1;
 }
 
 
