@@ -3,12 +3,13 @@ syntax = "proto3";
 package users.v1;
 
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
+import "google/protobuf/empty.proto";
 
 
 service UsersService {
   // доступно пользователям всем
   rpc UpdateUserProfile(UpdateUserProfileRequest) returns (UpdateUserProfileResponse);
-  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+  rpc DeleteUser(google.protobuf.Empty) returns (DeleteUserResponse);
   // доступно только администратору
   rpc GetAllUsers(GetAllUsersRequest) returns (GetAllUsersResponse);
   rpc ChangeUserRole(ChangeUserRoleRequest) returns (ChangeUserRoleResponse);
@@ -37,11 +38,6 @@ message UpdateUserProfileResponse {
   User user = 1;
 }
 
-message DeleteUserRequest {
-  uint64 id_user = 1;
-  ReasonTypeEnum reason = 2;
-  optional string reason_description = 3;
-}
 
 message DeleteUserResponse {
   bool success = 1;
