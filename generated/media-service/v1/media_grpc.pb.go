@@ -30,10 +30,8 @@ const (
 // MediaServiceClient is the client API for MediaService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-//
-// сервис работы с медиа
 type MediaServiceClient interface {
-	// загрузка одного изображения
+	// №№№№№загрузка одного изображения без прьевью
 	UploadImage(ctx context.Context, in *UploadImageRequest, opts ...grpc.CallOption) (*UploadImageResponse, error)
 	// пакетная загрузка изображений
 	UploadImages(ctx context.Context, in *UploadImagesRequest, opts ...grpc.CallOption) (*UploadImagesResponse, error)
@@ -118,10 +116,8 @@ func (c *mediaServiceClient) GetMediaByEntity(ctx context.Context, in *GetMediaB
 // MediaServiceServer is the server API for MediaService service.
 // All implementations must embed UnimplementedMediaServiceServer
 // for forward compatibility.
-//
-// сервис работы с медиа
 type MediaServiceServer interface {
-	// загрузка одного изображения
+	// №№№№№загрузка одного изображения без прьевью
 	UploadImage(context.Context, *UploadImageRequest) (*UploadImageResponse, error)
 	// пакетная загрузка изображений
 	UploadImages(context.Context, *UploadImagesRequest) (*UploadImagesResponse, error)
