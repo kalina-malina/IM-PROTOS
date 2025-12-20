@@ -154,10 +154,10 @@ func (x *UploadImageRequest) GetData() []byte {
 }
 
 type UploadImageResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Media         *MediaResult           `protobuf:"bytes,1,opt,name=media,proto3" json:"media,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	UrlsImagesResult *UrlsImagesResult      `protobuf:"bytes,1,opt,name=urls_images_result,json=urlsImagesResult,proto3" json:"urls_images_result,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
 }
 
 func (x *UploadImageResponse) Reset() {
@@ -190,9 +190,9 @@ func (*UploadImageResponse) Descriptor() ([]byte, []int) {
 	return file_media_service_v1_media_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *UploadImageResponse) GetMedia() *MediaResult {
+func (x *UploadImageResponse) GetUrlsImagesResult() *UrlsImagesResult {
 	if x != nil {
-		return x.Media
+		return x.UrlsImagesResult
 	}
 	return nil
 }
@@ -260,7 +260,7 @@ func (x *UploadImagesRequest) GetData() [][]byte {
 type UploadImagesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Media         []*MediaResult         `protobuf:"bytes,2,rep,name=media,proto3" json:"media,omitempty"`
+	Media         []*UrlsImagesResult    `protobuf:"bytes,2,rep,name=media,proto3" json:"media,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -302,7 +302,7 @@ func (x *UploadImagesResponse) GetSuccess() bool {
 	return false
 }
 
-func (x *UploadImagesResponse) GetMedia() []*MediaResult {
+func (x *UploadImagesResponse) GetMedia() []*UrlsImagesResult {
 	if x != nil {
 		return x.Media
 	}
@@ -495,28 +495,28 @@ func (x *DeleteMediaBatchResponse) GetFailedIds() []string {
 	return nil
 }
 
-// получение медиа по id
-type GetMediaRequest struct {
+// информация о загруженном изображении
+type UrlsImagesResult struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MediaId       string                 `protobuf:"bytes,1,opt,name=media_id,json=mediaId,proto3" json:"media_id,omitempty"`
+	Urls          string                 `protobuf:"bytes,1,opt,name=urls,proto3" json:"urls,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetMediaRequest) Reset() {
-	*x = GetMediaRequest{}
+func (x *UrlsImagesResult) Reset() {
+	*x = UrlsImagesResult{}
 	mi := &file_media_service_v1_media_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetMediaRequest) String() string {
+func (x *UrlsImagesResult) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetMediaRequest) ProtoMessage() {}
+func (*UrlsImagesResult) ProtoMessage() {}
 
-func (x *GetMediaRequest) ProtoReflect() protoreflect.Message {
+func (x *UrlsImagesResult) ProtoReflect() protoreflect.Message {
 	mi := &file_media_service_v1_media_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -528,285 +528,14 @@ func (x *GetMediaRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetMediaRequest.ProtoReflect.Descriptor instead.
-func (*GetMediaRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UrlsImagesResult.ProtoReflect.Descriptor instead.
+func (*UrlsImagesResult) Descriptor() ([]byte, []int) {
 	return file_media_service_v1_media_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *GetMediaRequest) GetMediaId() string {
+func (x *UrlsImagesResult) GetUrls() string {
 	if x != nil {
-		return x.MediaId
-	}
-	return ""
-}
-
-type GetMediaResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Media         *MediaResult           `protobuf:"bytes,1,opt,name=media,proto3" json:"media,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetMediaResponse) Reset() {
-	*x = GetMediaResponse{}
-	mi := &file_media_service_v1_media_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetMediaResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetMediaResponse) ProtoMessage() {}
-
-func (x *GetMediaResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_media_service_v1_media_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetMediaResponse.ProtoReflect.Descriptor instead.
-func (*GetMediaResponse) Descriptor() ([]byte, []int) {
-	return file_media_service_v1_media_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *GetMediaResponse) GetMedia() *MediaResult {
-	if x != nil {
-		return x.Media
-	}
-	return nil
-}
-
-// получение медиа по entity_id (например все фото товара)
-type GetMediaByEntityRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Type          MediaType              `protobuf:"varint,1,opt,name=type,proto3,enum=media.v1.MediaType" json:"type,omitempty"`
-	EntityId      string                 `protobuf:"bytes,2,opt,name=entity_id,json=entityId,proto3" json:"entity_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetMediaByEntityRequest) Reset() {
-	*x = GetMediaByEntityRequest{}
-	mi := &file_media_service_v1_media_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetMediaByEntityRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetMediaByEntityRequest) ProtoMessage() {}
-
-func (x *GetMediaByEntityRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_media_service_v1_media_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetMediaByEntityRequest.ProtoReflect.Descriptor instead.
-func (*GetMediaByEntityRequest) Descriptor() ([]byte, []int) {
-	return file_media_service_v1_media_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *GetMediaByEntityRequest) GetType() MediaType {
-	if x != nil {
-		return x.Type
-	}
-	return MediaType_MEDIA_TYPE_UNSPECIFIED
-}
-
-func (x *GetMediaByEntityRequest) GetEntityId() string {
-	if x != nil {
-		return x.EntityId
-	}
-	return ""
-}
-
-type GetMediaByEntityResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Media         []*MediaResult         `protobuf:"bytes,1,rep,name=media,proto3" json:"media,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetMediaByEntityResponse) Reset() {
-	*x = GetMediaByEntityResponse{}
-	mi := &file_media_service_v1_media_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetMediaByEntityResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetMediaByEntityResponse) ProtoMessage() {}
-
-func (x *GetMediaByEntityResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_media_service_v1_media_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetMediaByEntityResponse.ProtoReflect.Descriptor instead.
-func (*GetMediaByEntityResponse) Descriptor() ([]byte, []int) {
-	return file_media_service_v1_media_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *GetMediaByEntityResponse) GetMedia() []*MediaResult {
-	if x != nil {
-		return x.Media
-	}
-	return nil
-}
-
-// результат загрузки медиа
-type MediaResult struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                // уникальный id медиа
-	Type          MediaType              `protobuf:"varint,2,opt,name=type,proto3,enum=media.v1.MediaType" json:"type,omitempty"`   // тип медиа
-	Thumbnail     *ImageInfo             `protobuf:"bytes,3,opt,name=thumbnail,proto3" json:"thumbnail,omitempty"`                  // превью
-	Original      *ImageInfo             `protobuf:"bytes,4,opt,name=original,proto3" json:"original,omitempty"`                    // оригинал
-	CreatedAt     string                 `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // время создания
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MediaResult) Reset() {
-	*x = MediaResult{}
-	mi := &file_media_service_v1_media_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MediaResult) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MediaResult) ProtoMessage() {}
-
-func (x *MediaResult) ProtoReflect() protoreflect.Message {
-	mi := &file_media_service_v1_media_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MediaResult.ProtoReflect.Descriptor instead.
-func (*MediaResult) Descriptor() ([]byte, []int) {
-	return file_media_service_v1_media_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *MediaResult) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *MediaResult) GetType() MediaType {
-	if x != nil {
-		return x.Type
-	}
-	return MediaType_MEDIA_TYPE_UNSPECIFIED
-}
-
-func (x *MediaResult) GetThumbnail() *ImageInfo {
-	if x != nil {
-		return x.Thumbnail
-	}
-	return nil
-}
-
-func (x *MediaResult) GetOriginal() *ImageInfo {
-	if x != nil {
-		return x.Original
-	}
-	return nil
-}
-
-func (x *MediaResult) GetCreatedAt() string {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return ""
-}
-
-// информация о загруженном изображении
-type ImageInfo struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Url           string                 `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"` // публичный url
-	Key           string                 `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"` // ключ в s3
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ImageInfo) Reset() {
-	*x = ImageInfo{}
-	mi := &file_media_service_v1_media_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ImageInfo) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ImageInfo) ProtoMessage() {}
-
-func (x *ImageInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_media_service_v1_media_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ImageInfo.ProtoReflect.Descriptor instead.
-func (*ImageInfo) Descriptor() ([]byte, []int) {
-	return file_media_service_v1_media_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *ImageInfo) GetUrl() string {
-	if x != nil {
-		return x.Url
-	}
-	return ""
-}
-
-func (x *ImageInfo) GetKey() string {
-	if x != nil {
-		return x.Key
+		return x.Urls
 	}
 	return ""
 }
@@ -820,16 +549,16 @@ const file_media_service_v1_media_proto_rawDesc = "" +
 	"\x04type\x18\x01 \x01(\x0e2\x13.media.v1.MediaTypeR\x04type\x12\x1b\n" +
 	"\tentity_id\x18\x02 \x01(\tR\bentityId\x12!\n" +
 	"\fis_thumbnail\x18\x03 \x01(\bR\visThumbnail\x12\x12\n" +
-	"\x04data\x18\x04 \x01(\fR\x04data\"B\n" +
-	"\x13UploadImageResponse\x12+\n" +
-	"\x05media\x18\x01 \x01(\v2\x15.media.v1.MediaResultR\x05media\"o\n" +
+	"\x04data\x18\x04 \x01(\fR\x04data\"_\n" +
+	"\x13UploadImageResponse\x12H\n" +
+	"\x12urls_images_result\x18\x01 \x01(\v2\x1a.media.v1.UrlsImagesResultR\x10urlsImagesResult\"o\n" +
 	"\x13UploadImagesRequest\x12'\n" +
 	"\x04type\x18\x01 \x01(\x0e2\x13.media.v1.MediaTypeR\x04type\x12\x1b\n" +
 	"\tentity_id\x18\x02 \x01(\tR\bentityId\x12\x12\n" +
-	"\x04data\x18\x03 \x03(\fR\x04data\"]\n" +
+	"\x04data\x18\x03 \x03(\fR\x04data\"b\n" +
 	"\x14UploadImagesResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12+\n" +
-	"\x05media\x18\x02 \x03(\v2\x15.media.v1.MediaResultR\x05media\"/\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\x120\n" +
+	"\x05media\x18\x02 \x03(\v2\x1a.media.v1.UrlsImagesResultR\x05media\"/\n" +
 	"\x12DeleteMediaRequest\x12\x19\n" +
 	"\bmedia_id\x18\x01 \x01(\tR\amediaId\"/\n" +
 	"\x13DeleteMediaResponse\x12\x18\n" +
@@ -839,40 +568,21 @@ const file_media_service_v1_media_proto_rawDesc = "" +
 	"\x18DeleteMediaBatchResponse\x12#\n" +
 	"\rdeleted_count\x18\x01 \x01(\x05R\fdeletedCount\x12\x1d\n" +
 	"\n" +
-	"failed_ids\x18\x02 \x03(\tR\tfailedIds\",\n" +
-	"\x0fGetMediaRequest\x12\x19\n" +
-	"\bmedia_id\x18\x01 \x01(\tR\amediaId\"?\n" +
-	"\x10GetMediaResponse\x12+\n" +
-	"\x05media\x18\x01 \x01(\v2\x15.media.v1.MediaResultR\x05media\"_\n" +
-	"\x17GetMediaByEntityRequest\x12'\n" +
-	"\x04type\x18\x01 \x01(\x0e2\x13.media.v1.MediaTypeR\x04type\x12\x1b\n" +
-	"\tentity_id\x18\x02 \x01(\tR\bentityId\"G\n" +
-	"\x18GetMediaByEntityResponse\x12+\n" +
-	"\x05media\x18\x01 \x03(\v2\x15.media.v1.MediaResultR\x05media\"\xc9\x01\n" +
-	"\vMediaResult\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12'\n" +
-	"\x04type\x18\x02 \x01(\x0e2\x13.media.v1.MediaTypeR\x04type\x121\n" +
-	"\tthumbnail\x18\x03 \x01(\v2\x13.media.v1.ImageInfoR\tthumbnail\x12/\n" +
-	"\boriginal\x18\x04 \x01(\v2\x13.media.v1.ImageInfoR\boriginal\x12\x1d\n" +
-	"\n" +
-	"created_at\x18\x05 \x01(\tR\tcreatedAt\"/\n" +
-	"\tImageInfo\x12\x10\n" +
-	"\x03url\x18\x01 \x01(\tR\x03url\x12\x10\n" +
-	"\x03key\x18\x02 \x01(\tR\x03key*\xa4\x01\n" +
+	"failed_ids\x18\x02 \x03(\tR\tfailedIds\"&\n" +
+	"\x10UrlsImagesResult\x12\x12\n" +
+	"\x04urls\x18\x01 \x01(\tR\x04urls*\xa4\x01\n" +
 	"\tMediaType\x12\x1a\n" +
 	"\x16MEDIA_TYPE_UNSPECIFIED\x10\x00\x12 \n" +
 	"\x1cMEDIA_TYPE_PRODUCT_ONE_IMAGE\x10\x01\x12\x16\n" +
 	"\x12MEDIA_TYPE_PRODUCT\x10\x02\x12\x14\n" +
 	"\x10MEDIA_TYPE_GROUP\x10\x03\x12\x14\n" +
 	"\x10MEDIA_TYPE_STORY\x10\x04\x12\x15\n" +
-	"\x11MEDIA_TYPE_BANNER\x10\x052\xee\x03\n" +
+	"\x11MEDIA_TYPE_BANNER\x10\x052\xd0\x02\n" +
 	"\fMediaService\x12J\n" +
 	"\vUploadImage\x12\x1c.media.v1.UploadImageRequest\x1a\x1d.media.v1.UploadImageResponse\x12M\n" +
 	"\fUploadImages\x12\x1d.media.v1.UploadImagesRequest\x1a\x1e.media.v1.UploadImagesResponse\x12J\n" +
 	"\vDeleteMedia\x12\x1c.media.v1.DeleteMediaRequest\x1a\x1d.media.v1.DeleteMediaResponse\x12Y\n" +
-	"\x10DeleteMediaBatch\x12!.media.v1.DeleteMediaBatchRequest\x1a\".media.v1.DeleteMediaBatchResponse\x12A\n" +
-	"\bGetMedia\x12\x19.media.v1.GetMediaRequest\x1a\x1a.media.v1.GetMediaResponse\x12Y\n" +
-	"\x10GetMediaByEntity\x12!.media.v1.GetMediaByEntityRequest\x1a\".media.v1.GetMediaByEntityResponseBFZDgitlab.kalina-tech.ru/backend/media-service/api/gen/media/v1;mediav1b\x06proto3"
+	"\x10DeleteMediaBatch\x12!.media.v1.DeleteMediaBatchRequest\x1a\".media.v1.DeleteMediaBatchResponseBFZDgitlab.kalina-tech.ru/backend/media-service/api/gen/media/v1;mediav1b\x06proto3"
 
 var (
 	file_media_service_v1_media_proto_rawDescOnce sync.Once
@@ -887,7 +597,7 @@ func file_media_service_v1_media_proto_rawDescGZIP() []byte {
 }
 
 var file_media_service_v1_media_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_media_service_v1_media_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_media_service_v1_media_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_media_service_v1_media_proto_goTypes = []any{
 	(MediaType)(0),                   // 0: media.v1.MediaType
 	(*UploadImageRequest)(nil),       // 1: media.v1.UploadImageRequest
@@ -898,41 +608,26 @@ var file_media_service_v1_media_proto_goTypes = []any{
 	(*DeleteMediaResponse)(nil),      // 6: media.v1.DeleteMediaResponse
 	(*DeleteMediaBatchRequest)(nil),  // 7: media.v1.DeleteMediaBatchRequest
 	(*DeleteMediaBatchResponse)(nil), // 8: media.v1.DeleteMediaBatchResponse
-	(*GetMediaRequest)(nil),          // 9: media.v1.GetMediaRequest
-	(*GetMediaResponse)(nil),         // 10: media.v1.GetMediaResponse
-	(*GetMediaByEntityRequest)(nil),  // 11: media.v1.GetMediaByEntityRequest
-	(*GetMediaByEntityResponse)(nil), // 12: media.v1.GetMediaByEntityResponse
-	(*MediaResult)(nil),              // 13: media.v1.MediaResult
-	(*ImageInfo)(nil),                // 14: media.v1.ImageInfo
+	(*UrlsImagesResult)(nil),         // 9: media.v1.UrlsImagesResult
 }
 var file_media_service_v1_media_proto_depIdxs = []int32{
-	0,  // 0: media.v1.UploadImageRequest.type:type_name -> media.v1.MediaType
-	13, // 1: media.v1.UploadImageResponse.media:type_name -> media.v1.MediaResult
-	0,  // 2: media.v1.UploadImagesRequest.type:type_name -> media.v1.MediaType
-	13, // 3: media.v1.UploadImagesResponse.media:type_name -> media.v1.MediaResult
-	13, // 4: media.v1.GetMediaResponse.media:type_name -> media.v1.MediaResult
-	0,  // 5: media.v1.GetMediaByEntityRequest.type:type_name -> media.v1.MediaType
-	13, // 6: media.v1.GetMediaByEntityResponse.media:type_name -> media.v1.MediaResult
-	0,  // 7: media.v1.MediaResult.type:type_name -> media.v1.MediaType
-	14, // 8: media.v1.MediaResult.thumbnail:type_name -> media.v1.ImageInfo
-	14, // 9: media.v1.MediaResult.original:type_name -> media.v1.ImageInfo
-	1,  // 10: media.v1.MediaService.UploadImage:input_type -> media.v1.UploadImageRequest
-	3,  // 11: media.v1.MediaService.UploadImages:input_type -> media.v1.UploadImagesRequest
-	5,  // 12: media.v1.MediaService.DeleteMedia:input_type -> media.v1.DeleteMediaRequest
-	7,  // 13: media.v1.MediaService.DeleteMediaBatch:input_type -> media.v1.DeleteMediaBatchRequest
-	9,  // 14: media.v1.MediaService.GetMedia:input_type -> media.v1.GetMediaRequest
-	11, // 15: media.v1.MediaService.GetMediaByEntity:input_type -> media.v1.GetMediaByEntityRequest
-	2,  // 16: media.v1.MediaService.UploadImage:output_type -> media.v1.UploadImageResponse
-	4,  // 17: media.v1.MediaService.UploadImages:output_type -> media.v1.UploadImagesResponse
-	6,  // 18: media.v1.MediaService.DeleteMedia:output_type -> media.v1.DeleteMediaResponse
-	8,  // 19: media.v1.MediaService.DeleteMediaBatch:output_type -> media.v1.DeleteMediaBatchResponse
-	10, // 20: media.v1.MediaService.GetMedia:output_type -> media.v1.GetMediaResponse
-	12, // 21: media.v1.MediaService.GetMediaByEntity:output_type -> media.v1.GetMediaByEntityResponse
-	16, // [16:22] is the sub-list for method output_type
-	10, // [10:16] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	0, // 0: media.v1.UploadImageRequest.type:type_name -> media.v1.MediaType
+	9, // 1: media.v1.UploadImageResponse.urls_images_result:type_name -> media.v1.UrlsImagesResult
+	0, // 2: media.v1.UploadImagesRequest.type:type_name -> media.v1.MediaType
+	9, // 3: media.v1.UploadImagesResponse.media:type_name -> media.v1.UrlsImagesResult
+	1, // 4: media.v1.MediaService.UploadImage:input_type -> media.v1.UploadImageRequest
+	3, // 5: media.v1.MediaService.UploadImages:input_type -> media.v1.UploadImagesRequest
+	5, // 6: media.v1.MediaService.DeleteMedia:input_type -> media.v1.DeleteMediaRequest
+	7, // 7: media.v1.MediaService.DeleteMediaBatch:input_type -> media.v1.DeleteMediaBatchRequest
+	2, // 8: media.v1.MediaService.UploadImage:output_type -> media.v1.UploadImageResponse
+	4, // 9: media.v1.MediaService.UploadImages:output_type -> media.v1.UploadImagesResponse
+	6, // 10: media.v1.MediaService.DeleteMedia:output_type -> media.v1.DeleteMediaResponse
+	8, // 11: media.v1.MediaService.DeleteMediaBatch:output_type -> media.v1.DeleteMediaBatchResponse
+	8, // [8:12] is the sub-list for method output_type
+	4, // [4:8] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_media_service_v1_media_proto_init() }
@@ -946,7 +641,7 @@ func file_media_service_v1_media_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_media_service_v1_media_proto_rawDesc), len(file_media_service_v1_media_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   14,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

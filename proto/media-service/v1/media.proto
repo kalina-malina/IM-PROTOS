@@ -19,11 +19,6 @@ service MediaService {
   // пакетное удаление
   rpc DeleteMediaBatch(DeleteMediaBatchRequest) returns (DeleteMediaBatchResponse);
   
-  // получение медиа по id
-  rpc GetMedia(GetMediaRequest) returns (GetMediaResponse);
-  
-  // получение медиа по entity
-  rpc GetMediaByEntity(GetMediaByEntityRequest) returns (GetMediaByEntityResponse);
 }
 
 
@@ -35,7 +30,7 @@ message UploadImageRequest {
 }
 
 message UploadImageResponse {
-  MediaResult media = 1;
+  UrlsImagesResult urls_images_result = 1;
 }
 
 message UploadImagesRequest {
@@ -46,7 +41,7 @@ message UploadImagesRequest {
 
 message UploadImagesResponse {
   bool success = 1;
-  repeated MediaResult media = 2;
+  repeated UrlsImagesResult media = 2;
 }
 
 // запрос на удаление медиа
@@ -68,46 +63,18 @@ message DeleteMediaBatchResponse {
   repeated string failed_ids = 2;
 }
 
-// получение медиа по id
-message GetMediaRequest {
-  string media_id = 1;
-}
-
-message GetMediaResponse {
-  MediaResult media = 1;
-}
-
-// получение медиа по entity_id (например все фото товара)
-message GetMediaByEntityRequest {
-  MediaType type = 1;
-  string entity_id = 2;
-}
-
-message GetMediaByEntityResponse {
-  repeated MediaResult media = 1;
-}
-
-
-// результат загрузки медиа
-message MediaResult {
-  string id = 1;               // уникальный id медиа
-  MediaType type = 2;          // тип медиа
-  ImageInfo thumbnail = 3;     // превью
-  ImageInfo original = 4;      // оригинал
-  string created_at = 5;       // время создания
-}
 
 
 // типы медиа контента
 enum MediaType {
-  MEDIA_TYPE_UNSPECIFIED = 0;
+  MEDIA_TYPE_UNSPECIFIED = 0;    
   //первое изображение товара
   MEDIA_TYPE_PRODUCT_ONE_IMAGE= 1;      
   //фото товара
   MEDIA_TYPE_PRODUCT = 2;      
   //фото категории/группы
   MEDIA_TYPE_GROUP = 3;   
-  //сторис
+  //сторис  
   MEDIA_TYPE_STORY = 4;      
   //рекламный баннер
   MEDIA_TYPE_BANNER = 5;   
@@ -115,7 +82,6 @@ enum MediaType {
 
 
 // информация о загруженном изображении
-message ImageInfo {
-  string url = 1;              // публичный url
-  string key = 2;              // ключ в s3
+message UrlsImagesResult {
+  string urls = 1; 
 }
