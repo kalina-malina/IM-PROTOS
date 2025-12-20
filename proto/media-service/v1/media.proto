@@ -67,11 +67,9 @@ message DeleteMediaBatchResponse {
 
 // типы медиа контента
 enum MediaType {
-  MEDIA_TYPE_UNSPECIFIED = 0;    
-  //первое изображение товара
-  MEDIA_TYPE_PRODUCT_ONE_IMAGE= 1;      
+  MEDIA_TYPE_UNSPECIFIED = 0;      
   //фото товара
-  MEDIA_TYPE_PRODUCT = 2;      
+  MEDIA_TYPE_PRODUCT = 1;      
   //фото категории/группы
   MEDIA_TYPE_GROUP = 3;   
   //сторис  

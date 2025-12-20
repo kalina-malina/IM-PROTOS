@@ -26,10 +26,8 @@ type MediaType int32
 
 const (
 	MediaType_MEDIA_TYPE_UNSPECIFIED MediaType = 0
-	// первое изображение товара
-	MediaType_MEDIA_TYPE_PRODUCT_ONE_IMAGE MediaType = 1
 	// фото товара
-	MediaType_MEDIA_TYPE_PRODUCT MediaType = 2
+	MediaType_MEDIA_TYPE_PRODUCT MediaType = 1
 	// фото категории/группы
 	MediaType_MEDIA_TYPE_GROUP MediaType = 3
 	// сторис
@@ -42,19 +40,17 @@ const (
 var (
 	MediaType_name = map[int32]string{
 		0: "MEDIA_TYPE_UNSPECIFIED",
-		1: "MEDIA_TYPE_PRODUCT_ONE_IMAGE",
-		2: "MEDIA_TYPE_PRODUCT",
+		1: "MEDIA_TYPE_PRODUCT",
 		3: "MEDIA_TYPE_GROUP",
 		4: "MEDIA_TYPE_STORY",
 		5: "MEDIA_TYPE_BANNER",
 	}
 	MediaType_value = map[string]int32{
-		"MEDIA_TYPE_UNSPECIFIED":       0,
-		"MEDIA_TYPE_PRODUCT_ONE_IMAGE": 1,
-		"MEDIA_TYPE_PRODUCT":           2,
-		"MEDIA_TYPE_GROUP":             3,
-		"MEDIA_TYPE_STORY":             4,
-		"MEDIA_TYPE_BANNER":            5,
+		"MEDIA_TYPE_UNSPECIFIED": 0,
+		"MEDIA_TYPE_PRODUCT":     1,
+		"MEDIA_TYPE_GROUP":       3,
+		"MEDIA_TYPE_STORY":       4,
+		"MEDIA_TYPE_BANNER":      5,
 	}
 )
 
@@ -570,11 +566,10 @@ const file_media_service_v1_media_proto_rawDesc = "" +
 	"\n" +
 	"failed_ids\x18\x02 \x03(\tR\tfailedIds\"&\n" +
 	"\x10UrlsImagesResult\x12\x12\n" +
-	"\x04urls\x18\x01 \x01(\tR\x04urls*\xa4\x01\n" +
+	"\x04urls\x18\x01 \x01(\tR\x04urls*\x82\x01\n" +
 	"\tMediaType\x12\x1a\n" +
-	"\x16MEDIA_TYPE_UNSPECIFIED\x10\x00\x12 \n" +
-	"\x1cMEDIA_TYPE_PRODUCT_ONE_IMAGE\x10\x01\x12\x16\n" +
-	"\x12MEDIA_TYPE_PRODUCT\x10\x02\x12\x14\n" +
+	"\x16MEDIA_TYPE_UNSPECIFIED\x10\x00\x12\x16\n" +
+	"\x12MEDIA_TYPE_PRODUCT\x10\x01\x12\x14\n" +
 	"\x10MEDIA_TYPE_GROUP\x10\x03\x12\x14\n" +
 	"\x10MEDIA_TYPE_STORY\x10\x04\x12\x15\n" +
 	"\x11MEDIA_TYPE_BANNER\x10\x052\xd0\x02\n" +
