@@ -155,7 +155,8 @@ func (x *UploadImageRequest) GetData() []byte {
 
 type UploadImageResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Media         *MediaResult           `protobuf:"bytes,1,opt,name=media,proto3" json:"media,omitempty"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	Media         *MediaResult           `protobuf:"bytes,2,opt,name=media,proto3" json:"media,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -188,6 +189,13 @@ func (x *UploadImageResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UploadImageResponse.ProtoReflect.Descriptor instead.
 func (*UploadImageResponse) Descriptor() ([]byte, []int) {
 	return file_media_service_v1_media_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *UploadImageResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
 }
 
 func (x *UploadImageResponse) GetMedia() *MediaResult {
@@ -260,7 +268,7 @@ func (x *UploadImagesRequest) GetData() [][]byte {
 type UploadImagesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Errors        []string               `protobuf:"bytes,2,rep,name=errors,proto3" json:"errors,omitempty"` // ошибки для отдельных изображений
+	Media         *MediaResult           `protobuf:"bytes,2,opt,name=media,proto3" json:"media,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -302,9 +310,9 @@ func (x *UploadImagesResponse) GetSuccess() bool {
 	return false
 }
 
-func (x *UploadImagesResponse) GetErrors() []string {
+func (x *UploadImagesResponse) GetMedia() *MediaResult {
 	if x != nil {
-		return x.Errors
+		return x.Media
 	}
 	return nil
 }
@@ -820,16 +828,17 @@ const file_media_service_v1_media_proto_rawDesc = "" +
 	"\x04type\x18\x01 \x01(\x0e2\x13.media.v1.MediaTypeR\x04type\x12\x1b\n" +
 	"\tentity_id\x18\x02 \x01(\tR\bentityId\x12!\n" +
 	"\fis_thumbnail\x18\x03 \x01(\bR\visThumbnail\x12\x12\n" +
-	"\x04data\x18\x04 \x01(\fR\x04data\"B\n" +
-	"\x13UploadImageResponse\x12+\n" +
-	"\x05media\x18\x01 \x01(\v2\x15.media.v1.MediaResultR\x05media\"o\n" +
+	"\x04data\x18\x04 \x01(\fR\x04data\"\\\n" +
+	"\x13UploadImageResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\x12+\n" +
+	"\x05media\x18\x02 \x01(\v2\x15.media.v1.MediaResultR\x05media\"o\n" +
 	"\x13UploadImagesRequest\x12'\n" +
 	"\x04type\x18\x01 \x01(\x0e2\x13.media.v1.MediaTypeR\x04type\x12\x1b\n" +
 	"\tentity_id\x18\x02 \x01(\tR\bentityId\x12\x12\n" +
-	"\x04data\x18\x03 \x03(\fR\x04data\"H\n" +
+	"\x04data\x18\x03 \x03(\fR\x04data\"]\n" +
 	"\x14UploadImagesResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x16\n" +
-	"\x06errors\x18\x02 \x03(\tR\x06errors\"/\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\x12+\n" +
+	"\x05media\x18\x02 \x01(\v2\x15.media.v1.MediaResultR\x05media\"/\n" +
 	"\x12DeleteMediaRequest\x12\x19\n" +
 	"\bmedia_id\x18\x01 \x01(\tR\amediaId\"/\n" +
 	"\x13DeleteMediaResponse\x12\x18\n" +
@@ -909,29 +918,30 @@ var file_media_service_v1_media_proto_depIdxs = []int32{
 	0,  // 0: media.v1.UploadImageRequest.type:type_name -> media.v1.MediaType
 	13, // 1: media.v1.UploadImageResponse.media:type_name -> media.v1.MediaResult
 	0,  // 2: media.v1.UploadImagesRequest.type:type_name -> media.v1.MediaType
-	13, // 3: media.v1.GetMediaResponse.media:type_name -> media.v1.MediaResult
-	0,  // 4: media.v1.GetMediaByEntityRequest.type:type_name -> media.v1.MediaType
-	13, // 5: media.v1.GetMediaByEntityResponse.media:type_name -> media.v1.MediaResult
-	0,  // 6: media.v1.MediaResult.type:type_name -> media.v1.MediaType
-	14, // 7: media.v1.MediaResult.thumbnail:type_name -> media.v1.ImageInfo
-	14, // 8: media.v1.MediaResult.original:type_name -> media.v1.ImageInfo
-	1,  // 9: media.v1.MediaService.UploadImage:input_type -> media.v1.UploadImageRequest
-	3,  // 10: media.v1.MediaService.UploadImages:input_type -> media.v1.UploadImagesRequest
-	5,  // 11: media.v1.MediaService.DeleteMedia:input_type -> media.v1.DeleteMediaRequest
-	7,  // 12: media.v1.MediaService.DeleteMediaBatch:input_type -> media.v1.DeleteMediaBatchRequest
-	9,  // 13: media.v1.MediaService.GetMedia:input_type -> media.v1.GetMediaRequest
-	11, // 14: media.v1.MediaService.GetMediaByEntity:input_type -> media.v1.GetMediaByEntityRequest
-	2,  // 15: media.v1.MediaService.UploadImage:output_type -> media.v1.UploadImageResponse
-	4,  // 16: media.v1.MediaService.UploadImages:output_type -> media.v1.UploadImagesResponse
-	6,  // 17: media.v1.MediaService.DeleteMedia:output_type -> media.v1.DeleteMediaResponse
-	8,  // 18: media.v1.MediaService.DeleteMediaBatch:output_type -> media.v1.DeleteMediaBatchResponse
-	10, // 19: media.v1.MediaService.GetMedia:output_type -> media.v1.GetMediaResponse
-	12, // 20: media.v1.MediaService.GetMediaByEntity:output_type -> media.v1.GetMediaByEntityResponse
-	15, // [15:21] is the sub-list for method output_type
-	9,  // [9:15] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	13, // 3: media.v1.UploadImagesResponse.media:type_name -> media.v1.MediaResult
+	13, // 4: media.v1.GetMediaResponse.media:type_name -> media.v1.MediaResult
+	0,  // 5: media.v1.GetMediaByEntityRequest.type:type_name -> media.v1.MediaType
+	13, // 6: media.v1.GetMediaByEntityResponse.media:type_name -> media.v1.MediaResult
+	0,  // 7: media.v1.MediaResult.type:type_name -> media.v1.MediaType
+	14, // 8: media.v1.MediaResult.thumbnail:type_name -> media.v1.ImageInfo
+	14, // 9: media.v1.MediaResult.original:type_name -> media.v1.ImageInfo
+	1,  // 10: media.v1.MediaService.UploadImage:input_type -> media.v1.UploadImageRequest
+	3,  // 11: media.v1.MediaService.UploadImages:input_type -> media.v1.UploadImagesRequest
+	5,  // 12: media.v1.MediaService.DeleteMedia:input_type -> media.v1.DeleteMediaRequest
+	7,  // 13: media.v1.MediaService.DeleteMediaBatch:input_type -> media.v1.DeleteMediaBatchRequest
+	9,  // 14: media.v1.MediaService.GetMedia:input_type -> media.v1.GetMediaRequest
+	11, // 15: media.v1.MediaService.GetMediaByEntity:input_type -> media.v1.GetMediaByEntityRequest
+	2,  // 16: media.v1.MediaService.UploadImage:output_type -> media.v1.UploadImageResponse
+	4,  // 17: media.v1.MediaService.UploadImages:output_type -> media.v1.UploadImagesResponse
+	6,  // 18: media.v1.MediaService.DeleteMedia:output_type -> media.v1.DeleteMediaResponse
+	8,  // 19: media.v1.MediaService.DeleteMediaBatch:output_type -> media.v1.DeleteMediaBatchResponse
+	10, // 20: media.v1.MediaService.GetMedia:output_type -> media.v1.GetMediaResponse
+	12, // 21: media.v1.MediaService.GetMediaByEntity:output_type -> media.v1.GetMediaByEntityResponse
+	16, // [16:22] is the sub-list for method output_type
+	10, // [10:16] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_media_service_v1_media_proto_init() }

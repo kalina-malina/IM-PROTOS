@@ -35,7 +35,8 @@ message UploadImageRequest {
 }
 
 message UploadImageResponse {
-  MediaResult media = 1;
+  bool success = 1;
+  MediaResult media = 2;
 }
 
 message UploadImagesRequest {
@@ -46,7 +47,7 @@ message UploadImagesRequest {
 
 message UploadImagesResponse {
   bool success = 1;
-  repeated string errors = 2;  // ошибки для отдельных изображений
+  MediaResult media = 2;
 }
 
 // запрос на удаление медиа
