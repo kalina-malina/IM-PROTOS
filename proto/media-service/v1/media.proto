@@ -1,0 +1,123 @@
+syntax = "proto3";
+
+package media.v1;
+
+option go_package = "gitlab.kalina-tech.ru/backend/media-service/api/gen/media/v1;mediav1";
+
+// типы медиа контента
+enum MediaType {
+  MEDIA_TYPE_UNSPECIFIED = 0;
+  MEDIA_TYPE_PRODUCT = 1;      // фото товара
+  MEDIA_TYPE_GROUP = 2;        // фото категории/группы
+  MEDIA_TYPE_STORY = 3;        // сторис
+  MEDIA_TYPE_BANNER = 4;       // рекламный баннер
+}
+
+// размеры изображений
+enum ImageSize {
+  IMAGE_SIZE_UNSPECIFIED = 0;
+  IMAGE_SIZE_THUMBNAIL = 1;    // превью (400px)
+  IMAGE_SIZE_ORIGINAL = 2;     // оригинал (до 1920px)
+}
+
+// информация о загруженном изображении
+message ImageInfo {
+  string url = 1;              // публичный url
+  string key = 2;              // ключ в s3
+  ImageSize size = 3;          // размер
+  int32 width = 4;             // ширина в пикселях
+  int32 height = 5;            // высота в пикселях
+  int64 file_size = 6;         // размер файла в байтах
+}
+
+// результат загрузки медиа
+message MediaResult {
+  string id = 1;               // уникальный id медиа
+  MediaType type = 2;          // тип медиа
+  ImageInfo thumbnail = 3;     // превью
+  ImageInfo original = 4;      // оригинал
+  string created_at = 5;       // время создания
+}
+
+// запрос на загрузку изображения
+message UploadImageRequest {
+  bytes data = 1;              // данные изображения
+  string filename = 2;         // оригинальное имя файла
+  MediaType type = 3;          // тип медиа
+  string entity_id = 4;        // id сущности (product_id, group_id и т.д.)
+}
+
+// ответ на загрузку изображения
+message UploadImageResponse {
+  MediaResult media = 1;
+}
+
+// пакетная загрузка изображений
+message UploadImagesRequest {
+  repeated UploadImageRequest images = 1;
+}
+
+message UploadImagesResponse {
+  repeated MediaResult media = 1;
+  repeated string errors = 2;  // ошибки для отдельных изображений
+}
+
+// запрос на удаление медиа
+message DeleteMediaRequest {
+  string media_id = 1;         // id медиа для удаления
+}
+
+message DeleteMediaResponse {
+  bool success = 1;
+}
+
+// пакетное удаление
+message DeleteMediaBatchRequest {
+  repeated string media_ids = 1;
+}
+
+message DeleteMediaBatchResponse {
+  int32 deleted_count = 1;
+  repeated string failed_ids = 2;
+}
+
+// получение медиа по id
+message GetMediaRequest {
+  string media_id = 1;
+}
+
+message GetMediaResponse {
+  MediaResult media = 1;
+}
+
+// получение медиа по entity_id (например все фото товара)
+message GetMediaByEntityRequest {
+  MediaType type = 1;
+  string entity_id = 2;
+}
+
+message GetMediaByEntityResponse {
+  repeated MediaResult media = 1;
+}
+
+// сервис работы с медиа
+service MediaService {
+  // загрузка одного изображения
+  rpc UploadImage(UploadImageRequest) returns (UploadImageResponse);
+  
+  // пакетная загрузка изображений
+  rpc UploadImages(UploadImagesRequest) returns (UploadImagesResponse);
+  
+  // удаление медиа
+  rpc DeleteMedia(DeleteMediaRequest) returns (DeleteMediaResponse);
+  
+  // пакетное удаление
+  rpc DeleteMediaBatch(DeleteMediaBatchRequest) returns (DeleteMediaBatchResponse);
+  
+  // получение медиа по id
+  rpc GetMedia(GetMediaRequest) returns (GetMediaResponse);
+  
+  // получение медиа по entity
+  rpc GetMediaByEntity(GetMediaByEntityRequest) returns (GetMediaByEntityResponse);
+}
+

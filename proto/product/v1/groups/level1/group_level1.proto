@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package product.v1.groups.level1;
+
+import "google/protobuf/empty.proto";
+
+
+service GroupLevel1Service {
+	rpc GetGroupLevel1(google.protobuf.Empty) returns (GetGroupLevel1Response);
+	rpc CreateGroupLevel1(CreateGroupLevel1Request) returns (CreateGroupLevel1Response);
+	rpc UpdateGroupLevel1(UpdateGroupLevel1Request) returns (UpdateGroupLevel1Response);
+	rpc DeleteGroupLevel1(DeleteGroupLevel1Request) returns (DeleteGroupLevel1Response);
+}
+
+
+message GetGroupLevel1Response {
+	GroupLevel1[] group_level1 = 1;
+ }
+
+ message CreateGroupLevel1Request {
+	GroupLevel1[] group_level1 = 1;
+ }
+
+ message CreateGroupLevel1Response {
+	bool success = 1;
+ }
+
+ message UpdateGroupLevel1Request {
+	GroupLevel1 group_level1 = 1;
+ }
+
+ message UpdateGroupLevel1Response {
+	bool success = 1;
+ }
+
+ message DeleteGroupLevel1Request {
+	uint64 id_category = 1;
+ }
+
+ message DeleteGroupLevel1Response {
+	bool success = 1;
+	
+ }
+
+ message GroupLevel1 {
+	uint64 id_category = 1;
+	string active = 2;
+	string name = 3;
+	bytes image = 4;
+	string created_at = 5;
+	string updated_at = 6;
+ }

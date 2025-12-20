@@ -9,7 +9,6 @@ import "google/protobuf/empty.proto";
 service UsersService {
   // доступно пользователям всем
   rpc UpdateUserProfile(UpdateUserProfileRequest) returns (UpdateUserProfileResponse);
- 
   // доступно только администратору
   rpc GetAllUsers(GetAllUsersRequest) returns (GetAllUsersResponse);
   rpc ChangeUserRole(ChangeUserRoleRequest) returns (ChangeUserRoleResponse);
@@ -46,6 +45,7 @@ message UpdateUserProfileResponse {
 ////////////////////////////////////////////////////////////
 //доступно только администратору
 
+//получение всех пользователей
 message GetAllUsersRequest {
   repeated uint64 guid = 1;
   repeated uint64 card_number = 2;
@@ -66,6 +66,7 @@ message GetAllUsersResponse {
   repeated User users = 1;
 }
 
+//изменение роли пользователя
 message ChangeUserRoleRequest {
   uint64 id_user = 1;
   Role role = 2;
@@ -75,6 +76,7 @@ message ChangeUserRoleResponse {
   string success = 1;
 }
 
+//Блокировка пользователя
 message BanUserRequest {
   uint64 id_user = 1;
   BanReasonTypeEnum reason = 2;
@@ -84,7 +86,7 @@ message BanUserRequest {
 message BanUserResponse {
   bool success = 1;
 }
-
+//разблокирока пользовательй
 message UnbanUserRequest {
   uint64 id_user = 1;
   string reason = 2;

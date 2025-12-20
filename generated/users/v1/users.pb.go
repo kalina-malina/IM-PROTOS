@@ -442,6 +442,7 @@ func (x *UpdateUserProfileResponse) GetChildrens() []*Childrens {
 	return nil
 }
 
+// получение всех пользователей
 type GetAllUsersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Guid          []uint64               `protobuf:"varint,1,rep,packed,name=guid,proto3" json:"guid,omitempty"`
@@ -626,6 +627,7 @@ func (x *GetAllUsersResponse) GetUsers() []*User {
 	return nil
 }
 
+// изменение роли пользователя
 type ChangeUserRoleRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	IdUser        uint64                 `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
@@ -722,6 +724,7 @@ func (x *ChangeUserRoleResponse) GetSuccess() string {
 	return ""
 }
 
+// Блокировка пользователя
 type BanUserRequest struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	IdUser            uint64                 `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
@@ -826,6 +829,7 @@ func (x *BanUserResponse) GetSuccess() bool {
 	return false
 }
 
+// разблокирока пользовательй
 type UnbanUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	IdUser        uint64                 `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
