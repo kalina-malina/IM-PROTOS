@@ -155,8 +155,7 @@ func (x *UploadImageRequest) GetData() []byte {
 
 type UploadImageResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Media         *MediaResult           `protobuf:"bytes,2,opt,name=media,proto3" json:"media,omitempty"`
+	Media         *MediaResult           `protobuf:"bytes,1,opt,name=media,proto3" json:"media,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -189,13 +188,6 @@ func (x *UploadImageResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UploadImageResponse.ProtoReflect.Descriptor instead.
 func (*UploadImageResponse) Descriptor() ([]byte, []int) {
 	return file_media_service_v1_media_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *UploadImageResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
 }
 
 func (x *UploadImageResponse) GetMedia() *MediaResult {
@@ -268,7 +260,7 @@ func (x *UploadImagesRequest) GetData() [][]byte {
 type UploadImagesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Media         *MediaResult           `protobuf:"bytes,2,opt,name=media,proto3" json:"media,omitempty"`
+	Media         []*MediaResult         `protobuf:"bytes,2,rep,name=media,proto3" json:"media,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -310,7 +302,7 @@ func (x *UploadImagesResponse) GetSuccess() bool {
 	return false
 }
 
-func (x *UploadImagesResponse) GetMedia() *MediaResult {
+func (x *UploadImagesResponse) GetMedia() []*MediaResult {
 	if x != nil {
 		return x.Media
 	}
@@ -828,17 +820,16 @@ const file_media_service_v1_media_proto_rawDesc = "" +
 	"\x04type\x18\x01 \x01(\x0e2\x13.media.v1.MediaTypeR\x04type\x12\x1b\n" +
 	"\tentity_id\x18\x02 \x01(\tR\bentityId\x12!\n" +
 	"\fis_thumbnail\x18\x03 \x01(\bR\visThumbnail\x12\x12\n" +
-	"\x04data\x18\x04 \x01(\fR\x04data\"\\\n" +
-	"\x13UploadImageResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12+\n" +
-	"\x05media\x18\x02 \x01(\v2\x15.media.v1.MediaResultR\x05media\"o\n" +
+	"\x04data\x18\x04 \x01(\fR\x04data\"B\n" +
+	"\x13UploadImageResponse\x12+\n" +
+	"\x05media\x18\x01 \x01(\v2\x15.media.v1.MediaResultR\x05media\"o\n" +
 	"\x13UploadImagesRequest\x12'\n" +
 	"\x04type\x18\x01 \x01(\x0e2\x13.media.v1.MediaTypeR\x04type\x12\x1b\n" +
 	"\tentity_id\x18\x02 \x01(\tR\bentityId\x12\x12\n" +
 	"\x04data\x18\x03 \x03(\fR\x04data\"]\n" +
 	"\x14UploadImagesResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12+\n" +
-	"\x05media\x18\x02 \x01(\v2\x15.media.v1.MediaResultR\x05media\"/\n" +
+	"\x05media\x18\x02 \x03(\v2\x15.media.v1.MediaResultR\x05media\"/\n" +
 	"\x12DeleteMediaRequest\x12\x19\n" +
 	"\bmedia_id\x18\x01 \x01(\tR\amediaId\"/\n" +
 	"\x13DeleteMediaResponse\x12\x18\n" +
