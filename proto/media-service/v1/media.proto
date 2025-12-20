@@ -28,9 +28,10 @@ service MediaService {
 
 
 message UploadImageRequest {
-  MediaType type = 1;          // тип медиа
-  string entity_id = 2;        // id сущности (product_id, group_id и т.д.)
-  bytes data = 3;  
+  MediaType type = 1;          
+  string entity_id = 2; 
+  bool is_thumbnail = 3; // делать ли превью      
+  bytes data = 4;  
 }
 
 message UploadImageResponse {

@@ -87,9 +87,10 @@ func (MediaType) EnumDescriptor() ([]byte, []int) {
 
 type UploadImageRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Type          MediaType              `protobuf:"varint,1,opt,name=type,proto3,enum=media.v1.MediaType" json:"type,omitempty"` // тип медиа
-	EntityId      string                 `protobuf:"bytes,2,opt,name=entity_id,json=entityId,proto3" json:"entity_id,omitempty"`  // id сущности (product_id, group_id и т.д.)
-	Data          []byte                 `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
+	Type          MediaType              `protobuf:"varint,1,opt,name=type,proto3,enum=media.v1.MediaType" json:"type,omitempty"`
+	EntityId      string                 `protobuf:"bytes,2,opt,name=entity_id,json=entityId,proto3" json:"entity_id,omitempty"`
+	IsThumbnail   bool                   `protobuf:"varint,3,opt,name=is_thumbnail,json=isThumbnail,proto3" json:"is_thumbnail,omitempty"` // делать ли превью
+	Data          []byte                 `protobuf:"bytes,4,opt,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -136,6 +137,13 @@ func (x *UploadImageRequest) GetEntityId() string {
 		return x.EntityId
 	}
 	return ""
+}
+
+func (x *UploadImageRequest) GetIsThumbnail() bool {
+	if x != nil {
+		return x.IsThumbnail
+	}
+	return false
 }
 
 func (x *UploadImageRequest) GetData() []byte {
@@ -807,11 +815,12 @@ var File_media_service_v1_media_proto protoreflect.FileDescriptor
 
 const file_media_service_v1_media_proto_rawDesc = "" +
 	"\n" +
-	"\x1cmedia-service/v1/media.proto\x12\bmedia.v1\"n\n" +
+	"\x1cmedia-service/v1/media.proto\x12\bmedia.v1\"\x91\x01\n" +
 	"\x12UploadImageRequest\x12'\n" +
 	"\x04type\x18\x01 \x01(\x0e2\x13.media.v1.MediaTypeR\x04type\x12\x1b\n" +
-	"\tentity_id\x18\x02 \x01(\tR\bentityId\x12\x12\n" +
-	"\x04data\x18\x03 \x01(\fR\x04data\"B\n" +
+	"\tentity_id\x18\x02 \x01(\tR\bentityId\x12!\n" +
+	"\fis_thumbnail\x18\x03 \x01(\bR\visThumbnail\x12\x12\n" +
+	"\x04data\x18\x04 \x01(\fR\x04data\"B\n" +
 	"\x13UploadImageResponse\x12+\n" +
 	"\x05media\x18\x01 \x01(\v2\x15.media.v1.MediaResultR\x05media\"o\n" +
 	"\x13UploadImagesRequest\x12'\n" +
