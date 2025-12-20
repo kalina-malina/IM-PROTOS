@@ -45,7 +45,12 @@ generate:
 		--proto_path=proto \
 		proto/media-service/v1/media.proto
 
-
+	@echo "Генерация product service..."
+	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
+		--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
+		--proto_path=proto \
+		proto/product-service/v1/groups/groups.proto
+    
 
 	# @echo "Генерация user models..."
 	# PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \

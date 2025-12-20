@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package product.v1.groups;
+
+option go_package = "github.com/kalina-malina/IM-PROTOS/generated/product-service/v1/groups";
+import "google/protobuf/empty.proto";
+
+
+service GroupService {
+	rpc GetGroup(google.protobuf.Empty) returns (GetGroupResponse);
+	rpc CreateGroup(CreateGroupRequest) returns (CreateGroupResponse);
+	rpc UpdateGroup(UpdateGroupRequest) returns (UpdateGroupResponse);
+	rpc DeleteGroup(DeleteGroupRequest) returns (DeleteGroupResponse);
+}
+
+ message CreateGroupRequest {
+	string name = 2;
+	bytes image = 3;
+	string sort = 4;
+ }
+
+ message CreateGroupResponse {
+	bool success = 1;
+ }
+
+
+message GetGroupResponse {
+	repeated Group group_level1 = 1;
+ }
+
+
+
+ message UpdateGroupRequest {
+	Group group = 1;
+ }
+
+ message UpdateGroupResponse {
+	bool success = 1;
+ }
+
+ message DeleteGroupRequest {
+	uint64 id_category = 1;
+ }
+
+ message DeleteGroupResponse {
+	bool success = 1;
+	
+ }
+
+ message Group {
+	uint64 id_group = 1;
+	string active = 2;
+	string name = 3;
+	string image = 4;
+	string sort = 5;
+ }
