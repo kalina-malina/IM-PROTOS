@@ -16,7 +16,7 @@ service GroupService {
  message CreateGroupRequest {
 	string name = 2;
 	bytes image = 3;
-	string sort = 4;
+	uint64 sort = 4;
 	GroupType group_type = 5;
  }
 

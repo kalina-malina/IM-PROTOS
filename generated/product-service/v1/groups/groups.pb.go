@@ -75,7 +75,7 @@ type CreateGroupRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Image         []byte                 `protobuf:"bytes,3,opt,name=image,proto3" json:"image,omitempty"`
-	Sort          string                 `protobuf:"bytes,4,opt,name=sort,proto3" json:"sort,omitempty"`
+	Sort          uint64                 `protobuf:"varint,4,opt,name=sort,proto3" json:"sort,omitempty"`
 	GroupType     GroupType              `protobuf:"varint,5,opt,name=group_type,json=groupType,proto3,enum=product.v1.groups.GroupType" json:"group_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -125,11 +125,11 @@ func (x *CreateGroupRequest) GetImage() []byte {
 	return nil
 }
 
-func (x *CreateGroupRequest) GetSort() string {
+func (x *CreateGroupRequest) GetSort() uint64 {
 	if x != nil {
 		return x.Sort
 	}
-	return ""
+	return 0
 }
 
 func (x *CreateGroupRequest) GetGroupType() GroupType {
@@ -487,7 +487,7 @@ const file_product_service_v1_groups_groups_proto_rawDesc = "" +
 	"\x12CreateGroupRequest\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05image\x18\x03 \x01(\fR\x05image\x12\x12\n" +
-	"\x04sort\x18\x04 \x01(\tR\x04sort\x12;\n" +
+	"\x04sort\x18\x04 \x01(\x04R\x04sort\x12;\n" +
 	"\n" +
 	"group_type\x18\x05 \x01(\x0e2\x1c.product.v1.groups.GroupTypeR\tgroupType\"/\n" +
 	"\x13CreateGroupResponse\x12\x18\n" +
