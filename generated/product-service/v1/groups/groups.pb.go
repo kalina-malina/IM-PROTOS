@@ -22,11 +22,61 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type GroupType int32
+
+const (
+	GroupType_GROUP_TYPE_LEVEL1 GroupType = 0
+	GroupType_GROUP_TYPE_LEVEL2 GroupType = 1
+	GroupType_GROUP_TYPE_LEVEL3 GroupType = 2
+)
+
+// Enum value maps for GroupType.
+var (
+	GroupType_name = map[int32]string{
+		0: "GROUP_TYPE_LEVEL1",
+		1: "GROUP_TYPE_LEVEL2",
+		2: "GROUP_TYPE_LEVEL3",
+	}
+	GroupType_value = map[string]int32{
+		"GROUP_TYPE_LEVEL1": 0,
+		"GROUP_TYPE_LEVEL2": 1,
+		"GROUP_TYPE_LEVEL3": 2,
+	}
+)
+
+func (x GroupType) Enum() *GroupType {
+	p := new(GroupType)
+	*p = x
+	return p
+}
+
+func (x GroupType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (GroupType) Descriptor() protoreflect.EnumDescriptor {
+	return file_product_service_v1_groups_groups_proto_enumTypes[0].Descriptor()
+}
+
+func (GroupType) Type() protoreflect.EnumType {
+	return &file_product_service_v1_groups_groups_proto_enumTypes[0]
+}
+
+func (x GroupType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use GroupType.Descriptor instead.
+func (GroupType) EnumDescriptor() ([]byte, []int) {
+	return file_product_service_v1_groups_groups_proto_rawDescGZIP(), []int{0}
+}
+
 type CreateGroupRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Image         []byte                 `protobuf:"bytes,3,opt,name=image,proto3" json:"image,omitempty"`
 	Sort          string                 `protobuf:"bytes,4,opt,name=sort,proto3" json:"sort,omitempty"`
+	GroupType     GroupType              `protobuf:"varint,5,opt,name=group_type,json=groupType,proto3,enum=product.v1.groups.GroupType" json:"group_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -80,6 +130,13 @@ func (x *CreateGroupRequest) GetSort() string {
 		return x.Sort
 	}
 	return ""
+}
+
+func (x *CreateGroupRequest) GetGroupType() GroupType {
+	if x != nil {
+		return x.GroupType
+	}
+	return GroupType_GROUP_TYPE_LEVEL1
 }
 
 type CreateGroupResponse struct {
@@ -426,11 +483,13 @@ var File_product_service_v1_groups_groups_proto protoreflect.FileDescriptor
 
 const file_product_service_v1_groups_groups_proto_rawDesc = "" +
 	"\n" +
-	"&product-service/v1/groups/groups.proto\x12\x11product.v1.groups\x1a\x1bgoogle/protobuf/empty.proto\"R\n" +
+	"&product-service/v1/groups/groups.proto\x12\x11product.v1.groups\x1a\x1bgoogle/protobuf/empty.proto\"\x8f\x01\n" +
 	"\x12CreateGroupRequest\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05image\x18\x03 \x01(\fR\x05image\x12\x12\n" +
-	"\x04sort\x18\x04 \x01(\tR\x04sort\"/\n" +
+	"\x04sort\x18\x04 \x01(\tR\x04sort\x12;\n" +
+	"\n" +
+	"group_type\x18\x05 \x01(\x0e2\x1c.product.v1.groups.GroupTypeR\tgroupType\"/\n" +
 	"\x13CreateGroupResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"O\n" +
 	"\x10GetGroupResponse\x12;\n" +
@@ -449,7 +508,11 @@ const file_product_service_v1_groups_groups_proto_rawDesc = "" +
 	"\x06active\x18\x02 \x01(\tR\x06active\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\x14\n" +
 	"\x05image\x18\x04 \x01(\tR\x05image\x12\x12\n" +
-	"\x04sort\x18\x05 \x01(\tR\x04sort2\xf1\x02\n" +
+	"\x04sort\x18\x05 \x01(\tR\x04sort*P\n" +
+	"\tGroupType\x12\x15\n" +
+	"\x11GROUP_TYPE_LEVEL1\x10\x00\x12\x15\n" +
+	"\x11GROUP_TYPE_LEVEL2\x10\x01\x12\x15\n" +
+	"\x11GROUP_TYPE_LEVEL3\x10\x022\xf1\x02\n" +
 	"\fGroupService\x12G\n" +
 	"\bGetGroup\x12\x16.google.protobuf.Empty\x1a#.product.v1.groups.GetGroupResponse\x12\\\n" +
 	"\vCreateGroup\x12%.product.v1.groups.CreateGroupRequest\x1a&.product.v1.groups.CreateGroupResponse\x12\\\n" +
@@ -468,34 +531,37 @@ func file_product_service_v1_groups_groups_proto_rawDescGZIP() []byte {
 	return file_product_service_v1_groups_groups_proto_rawDescData
 }
 
+var file_product_service_v1_groups_groups_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_product_service_v1_groups_groups_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_product_service_v1_groups_groups_proto_goTypes = []any{
-	(*CreateGroupRequest)(nil),  // 0: product.v1.groups.CreateGroupRequest
-	(*CreateGroupResponse)(nil), // 1: product.v1.groups.CreateGroupResponse
-	(*GetGroupResponse)(nil),    // 2: product.v1.groups.GetGroupResponse
-	(*UpdateGroupRequest)(nil),  // 3: product.v1.groups.UpdateGroupRequest
-	(*UpdateGroupResponse)(nil), // 4: product.v1.groups.UpdateGroupResponse
-	(*DeleteGroupRequest)(nil),  // 5: product.v1.groups.DeleteGroupRequest
-	(*DeleteGroupResponse)(nil), // 6: product.v1.groups.DeleteGroupResponse
-	(*Group)(nil),               // 7: product.v1.groups.Group
-	(*emptypb.Empty)(nil),       // 8: google.protobuf.Empty
+	(GroupType)(0),              // 0: product.v1.groups.GroupType
+	(*CreateGroupRequest)(nil),  // 1: product.v1.groups.CreateGroupRequest
+	(*CreateGroupResponse)(nil), // 2: product.v1.groups.CreateGroupResponse
+	(*GetGroupResponse)(nil),    // 3: product.v1.groups.GetGroupResponse
+	(*UpdateGroupRequest)(nil),  // 4: product.v1.groups.UpdateGroupRequest
+	(*UpdateGroupResponse)(nil), // 5: product.v1.groups.UpdateGroupResponse
+	(*DeleteGroupRequest)(nil),  // 6: product.v1.groups.DeleteGroupRequest
+	(*DeleteGroupResponse)(nil), // 7: product.v1.groups.DeleteGroupResponse
+	(*Group)(nil),               // 8: product.v1.groups.Group
+	(*emptypb.Empty)(nil),       // 9: google.protobuf.Empty
 }
 var file_product_service_v1_groups_groups_proto_depIdxs = []int32{
-	7, // 0: product.v1.groups.GetGroupResponse.group_level1:type_name -> product.v1.groups.Group
-	7, // 1: product.v1.groups.UpdateGroupRequest.group:type_name -> product.v1.groups.Group
-	8, // 2: product.v1.groups.GroupService.GetGroup:input_type -> google.protobuf.Empty
-	0, // 3: product.v1.groups.GroupService.CreateGroup:input_type -> product.v1.groups.CreateGroupRequest
-	3, // 4: product.v1.groups.GroupService.UpdateGroup:input_type -> product.v1.groups.UpdateGroupRequest
-	5, // 5: product.v1.groups.GroupService.DeleteGroup:input_type -> product.v1.groups.DeleteGroupRequest
-	2, // 6: product.v1.groups.GroupService.GetGroup:output_type -> product.v1.groups.GetGroupResponse
-	1, // 7: product.v1.groups.GroupService.CreateGroup:output_type -> product.v1.groups.CreateGroupResponse
-	4, // 8: product.v1.groups.GroupService.UpdateGroup:output_type -> product.v1.groups.UpdateGroupResponse
-	6, // 9: product.v1.groups.GroupService.DeleteGroup:output_type -> product.v1.groups.DeleteGroupResponse
-	6, // [6:10] is the sub-list for method output_type
-	2, // [2:6] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	0, // 0: product.v1.groups.CreateGroupRequest.group_type:type_name -> product.v1.groups.GroupType
+	8, // 1: product.v1.groups.GetGroupResponse.group_level1:type_name -> product.v1.groups.Group
+	8, // 2: product.v1.groups.UpdateGroupRequest.group:type_name -> product.v1.groups.Group
+	9, // 3: product.v1.groups.GroupService.GetGroup:input_type -> google.protobuf.Empty
+	1, // 4: product.v1.groups.GroupService.CreateGroup:input_type -> product.v1.groups.CreateGroupRequest
+	4, // 5: product.v1.groups.GroupService.UpdateGroup:input_type -> product.v1.groups.UpdateGroupRequest
+	6, // 6: product.v1.groups.GroupService.DeleteGroup:input_type -> product.v1.groups.DeleteGroupRequest
+	3, // 7: product.v1.groups.GroupService.GetGroup:output_type -> product.v1.groups.GetGroupResponse
+	2, // 8: product.v1.groups.GroupService.CreateGroup:output_type -> product.v1.groups.CreateGroupResponse
+	5, // 9: product.v1.groups.GroupService.UpdateGroup:output_type -> product.v1.groups.UpdateGroupResponse
+	7, // 10: product.v1.groups.GroupService.DeleteGroup:output_type -> product.v1.groups.DeleteGroupResponse
+	7, // [7:11] is the sub-list for method output_type
+	3, // [3:7] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_product_service_v1_groups_groups_proto_init() }
@@ -508,13 +574,14 @@ func file_product_service_v1_groups_groups_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_product_service_v1_groups_groups_proto_rawDesc), len(file_product_service_v1_groups_groups_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_product_service_v1_groups_groups_proto_goTypes,
 		DependencyIndexes: file_product_service_v1_groups_groups_proto_depIdxs,
+		EnumInfos:         file_product_service_v1_groups_groups_proto_enumTypes,
 		MessageInfos:      file_product_service_v1_groups_groups_proto_msgTypes,
 	}.Build()
 	File_product_service_v1_groups_groups_proto = out.File

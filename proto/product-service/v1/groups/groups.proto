@@ -17,6 +17,7 @@ service GroupService {
 	string name = 2;
 	bytes image = 3;
 	string sort = 4;
+	GroupType group_type = 5;
  }
 
  message CreateGroupResponse {
@@ -53,4 +54,10 @@ message GetGroupResponse {
 	string name = 3;
 	string image = 4;
 	string sort = 5;
+ }
+
+ enum GroupType {
+	GROUP_TYPE_LEVEL1 = 0;
+	GROUP_TYPE_LEVEL2 = 1;
+	GROUP_TYPE_LEVEL3 = 2;
  }
