@@ -17,7 +17,8 @@ service GroupService {
 	string name = 2;
 	bytes image = 3;
 	uint64 sort = 4;
-	GroupType group_type = 5;
+	string sub_folder = 5;
+	GroupType group_type = 6;
  }
 
  message CreateGroupResponse {
