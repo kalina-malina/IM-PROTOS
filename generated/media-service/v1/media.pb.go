@@ -85,8 +85,9 @@ type UploadImageRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Type          MediaType              `protobuf:"varint,1,opt,name=type,proto3,enum=media.v1.MediaType" json:"type,omitempty"`
 	EntityId      string                 `protobuf:"bytes,2,opt,name=entity_id,json=entityId,proto3" json:"entity_id,omitempty"`
-	IsThumbnail   bool                   `protobuf:"varint,3,opt,name=is_thumbnail,json=isThumbnail,proto3" json:"is_thumbnail,omitempty"` // делать ли превью
-	Data          []byte                 `protobuf:"bytes,4,opt,name=data,proto3" json:"data,omitempty"`
+	SubFolder     string                 `protobuf:"bytes,3,opt,name=sub_folder,json=subFolder,proto3" json:"sub_folder,omitempty"`        //дополнительные уровень папки
+	IsThumbnail   bool                   `protobuf:"varint,4,opt,name=is_thumbnail,json=isThumbnail,proto3" json:"is_thumbnail,omitempty"` // делать ли превью
+	Data          []byte                 `protobuf:"bytes,5,opt,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -131,6 +132,13 @@ func (x *UploadImageRequest) GetType() MediaType {
 func (x *UploadImageRequest) GetEntityId() string {
 	if x != nil {
 		return x.EntityId
+	}
+	return ""
+}
+
+func (x *UploadImageRequest) GetSubFolder() string {
+	if x != nil {
+		return x.SubFolder
 	}
 	return ""
 }
@@ -540,12 +548,14 @@ var File_media_service_v1_media_proto protoreflect.FileDescriptor
 
 const file_media_service_v1_media_proto_rawDesc = "" +
 	"\n" +
-	"\x1cmedia-service/v1/media.proto\x12\bmedia.v1\"\x91\x01\n" +
+	"\x1cmedia-service/v1/media.proto\x12\bmedia.v1\"\xb0\x01\n" +
 	"\x12UploadImageRequest\x12'\n" +
 	"\x04type\x18\x01 \x01(\x0e2\x13.media.v1.MediaTypeR\x04type\x12\x1b\n" +
-	"\tentity_id\x18\x02 \x01(\tR\bentityId\x12!\n" +
-	"\fis_thumbnail\x18\x03 \x01(\bR\visThumbnail\x12\x12\n" +
-	"\x04data\x18\x04 \x01(\fR\x04data\"_\n" +
+	"\tentity_id\x18\x02 \x01(\tR\bentityId\x12\x1d\n" +
+	"\n" +
+	"sub_folder\x18\x03 \x01(\tR\tsubFolder\x12!\n" +
+	"\fis_thumbnail\x18\x04 \x01(\bR\visThumbnail\x12\x12\n" +
+	"\x04data\x18\x05 \x01(\fR\x04data\"_\n" +
 	"\x13UploadImageResponse\x12H\n" +
 	"\x12urls_images_result\x18\x01 \x01(\v2\x1a.media.v1.UrlsImagesResultR\x10urlsImagesResult\"o\n" +
 	"\x13UploadImagesRequest\x12'\n" +
