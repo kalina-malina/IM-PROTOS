@@ -268,11 +268,11 @@ func (ABTestGroup) EnumDescriptor() ([]byte, []int) {
 // доступно пользователям всем
 type UpdateUserProfileRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	FirstName     string                 `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName      string                 `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	DateOfBirth   string                 `protobuf:"bytes,4,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
-	Email         string                 `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
+	Id            *uint64                `protobuf:"varint,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
+	FirstName     *string                `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3,oneof" json:"first_name,omitempty"`
+	LastName      *string                `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3,oneof" json:"last_name,omitempty"`
+	DateOfBirth   *string                `protobuf:"bytes,4,opt,name=date_of_birth,json=dateOfBirth,proto3,oneof" json:"date_of_birth,omitempty"`
+	Email         *string                `protobuf:"bytes,5,opt,name=email,proto3,oneof" json:"email,omitempty"`
 	Childrens     []*Childrens           `protobuf:"bytes,6,rep,name=childrens,proto3" json:"childrens,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -309,36 +309,36 @@ func (*UpdateUserProfileRequest) Descriptor() ([]byte, []int) {
 }
 
 func (x *UpdateUserProfileRequest) GetId() uint64 {
-	if x != nil {
-		return x.Id
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return 0
 }
 
 func (x *UpdateUserProfileRequest) GetFirstName() string {
-	if x != nil {
-		return x.FirstName
+	if x != nil && x.FirstName != nil {
+		return *x.FirstName
 	}
 	return ""
 }
 
 func (x *UpdateUserProfileRequest) GetLastName() string {
-	if x != nil {
-		return x.LastName
+	if x != nil && x.LastName != nil {
+		return *x.LastName
 	}
 	return ""
 }
 
 func (x *UpdateUserProfileRequest) GetDateOfBirth() string {
-	if x != nil {
-		return x.DateOfBirth
+	if x != nil && x.DateOfBirth != nil {
+		return *x.DateOfBirth
 	}
 	return ""
 }
 
 func (x *UpdateUserProfileRequest) GetEmail() string {
-	if x != nil {
-		return x.Email
+	if x != nil && x.Email != nil {
+		return *x.Email
 	}
 	return ""
 }
@@ -1232,15 +1232,21 @@ var File_users_v1_users_proto protoreflect.FileDescriptor
 
 const file_users_v1_users_proto_rawDesc = "" +
 	"\n" +
-	"\x14users/v1/users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\"\xd3\x01\n" +
-	"\x18UpdateUserProfileRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n" +
+	"\x14users/v1/users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\"\xac\x02\n" +
+	"\x18UpdateUserProfileRequest\x12\x13\n" +
+	"\x02id\x18\x01 \x01(\x04H\x00R\x02id\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"first_name\x18\x02 \x01(\tR\tfirstName\x12\x1b\n" +
-	"\tlast_name\x18\x03 \x01(\tR\blastName\x12\"\n" +
-	"\rdate_of_birth\x18\x04 \x01(\tR\vdateOfBirth\x12\x14\n" +
-	"\x05email\x18\x05 \x01(\tR\x05email\x121\n" +
-	"\tchildrens\x18\x06 \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"\xc4\x01\n" +
+	"first_name\x18\x02 \x01(\tH\x01R\tfirstName\x88\x01\x01\x12 \n" +
+	"\tlast_name\x18\x03 \x01(\tH\x02R\blastName\x88\x01\x01\x12'\n" +
+	"\rdate_of_birth\x18\x04 \x01(\tH\x03R\vdateOfBirth\x88\x01\x01\x12\x19\n" +
+	"\x05email\x18\x05 \x01(\tH\x04R\x05email\x88\x01\x01\x121\n" +
+	"\tchildrens\x18\x06 \x03(\v2\x13.users.v1.ChildrensR\tchildrensB\x05\n" +
+	"\x03_idB\r\n" +
+	"\v_first_nameB\f\n" +
+	"\n" +
+	"_last_nameB\x10\n" +
+	"\x0e_date_of_birthB\b\n" +
+	"\x06_email\"\xc4\x01\n" +
 	"\x19UpdateUserProfileResponse\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x01 \x01(\tR\tfirstName\x12\x1b\n" +
@@ -1421,6 +1427,7 @@ func file_users_v1_users_proto_init() {
 	if File_users_v1_users_proto != nil {
 		return
 	}
+	file_users_v1_users_proto_msgTypes[0].OneofWrappers = []any{}
 	file_users_v1_users_proto_msgTypes[6].OneofWrappers = []any{}
 	file_users_v1_users_proto_msgTypes[12].OneofWrappers = []any{}
 	type x struct{}

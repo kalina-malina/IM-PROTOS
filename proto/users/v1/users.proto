@@ -24,11 +24,11 @@ service UsersService {
 ////////////////////////////////////////////////////////////
 //доступно пользователям всем
 message UpdateUserProfileRequest {
-  uint64 id = 1;
-  string first_name = 2;
-  string last_name = 3;
-  string date_of_birth = 4;
-  string email = 5;
+  optional uint64 id = 1;
+  optional string first_name = 2;
+  optional string last_name = 3;
+  optional string date_of_birth = 4;
+  optional string email = 5;
   repeated Childrens childrens = 6;
 }
 
@@ -39,6 +39,7 @@ message UpdateUserProfileResponse {
   string email = 4;
   repeated Childrens childrens = 5;
 }
+
 
 ////////////////////////////////////////////////////////////
 //доступно только администратору
