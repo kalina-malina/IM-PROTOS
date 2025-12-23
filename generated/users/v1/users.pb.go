@@ -271,10 +271,9 @@ type UpdateUserProfileRequest struct {
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	FirstName     string                 `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName      string                 `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	MiddleName    string                 `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
-	DateOfBirth   string                 `protobuf:"bytes,5,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
-	Email         string                 `protobuf:"bytes,6,opt,name=email,proto3" json:"email,omitempty"`
-	Childrens     []*Childrens           `protobuf:"bytes,7,rep,name=childrens,proto3" json:"childrens,omitempty"`
+	DateOfBirth   string                 `protobuf:"bytes,4,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
+	Email         string                 `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
+	Childrens     []*Childrens           `protobuf:"bytes,6,rep,name=childrens,proto3" json:"childrens,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -330,13 +329,6 @@ func (x *UpdateUserProfileRequest) GetLastName() string {
 	return ""
 }
 
-func (x *UpdateUserProfileRequest) GetMiddleName() string {
-	if x != nil {
-		return x.MiddleName
-	}
-	return ""
-}
-
 func (x *UpdateUserProfileRequest) GetDateOfBirth() string {
 	if x != nil {
 		return x.DateOfBirth
@@ -362,10 +354,9 @@ type UpdateUserProfileResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FirstName     string                 `protobuf:"bytes,1,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName      string                 `protobuf:"bytes,2,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	MiddleName    string                 `protobuf:"bytes,3,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
-	DateOfBirth   string                 `protobuf:"bytes,4,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
-	Email         string                 `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
-	Childrens     []*Childrens           `protobuf:"bytes,6,rep,name=childrens,proto3" json:"childrens,omitempty"`
+	DateOfBirth   string                 `protobuf:"bytes,3,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
+	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
+	Childrens     []*Childrens           `protobuf:"bytes,5,rep,name=childrens,proto3" json:"childrens,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -414,13 +405,6 @@ func (x *UpdateUserProfileResponse) GetLastName() string {
 	return ""
 }
 
-func (x *UpdateUserProfileResponse) GetMiddleName() string {
-	if x != nil {
-		return x.MiddleName
-	}
-	return ""
-}
-
 func (x *UpdateUserProfileResponse) GetDateOfBirth() string {
 	if x != nil {
 		return x.DateOfBirth
@@ -450,14 +434,13 @@ type GetAllUsersRequest struct {
 	Email         []string               `protobuf:"bytes,3,rep,name=email,proto3" json:"email,omitempty"`
 	FirstName     []string               `protobuf:"bytes,4,rep,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName      []string               `protobuf:"bytes,5,rep,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	MiddleName    []string               `protobuf:"bytes,6,rep,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
-	DateOfBirth   []string               `protobuf:"bytes,7,rep,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
-	Role          []Role                 `protobuf:"varint,8,rep,packed,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
-	AbTestGroup   []ABTestGroup          `protobuf:"varint,9,rep,packed,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
-	LastLogin     string                 `protobuf:"bytes,10,opt,name=last_login,json=lastLogin,proto3" json:"last_login,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Page          uint64                 `protobuf:"varint,12,opt,name=page,proto3" json:"page,omitempty"`
-	Limit         uint64                 `protobuf:"varint,13,opt,name=limit,proto3" json:"limit,omitempty"`
+	DateOfBirth   []string               `protobuf:"bytes,6,rep,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
+	Role          []Role                 `protobuf:"varint,7,rep,packed,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
+	AbTestGroup   []ABTestGroup          `protobuf:"varint,8,rep,packed,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
+	LastLogin     string                 `protobuf:"bytes,9,opt,name=last_login,json=lastLogin,proto3" json:"last_login,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Page          uint64                 `protobuf:"varint,11,opt,name=page,proto3" json:"page,omitempty"`
+	Limit         uint64                 `protobuf:"varint,12,opt,name=limit,proto3" json:"limit,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -523,13 +506,6 @@ func (x *GetAllUsersRequest) GetFirstName() []string {
 func (x *GetAllUsersRequest) GetLastName() []string {
 	if x != nil {
 		return x.LastName
-	}
-	return nil
-}
-
-func (x *GetAllUsersRequest) GetMiddleName() []string {
-	if x != nil {
-		return x.MiddleName
 	}
 	return nil
 }
@@ -935,16 +911,15 @@ type User struct {
 	Role               Role                   `protobuf:"varint,3,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
 	FirstName          string                 `protobuf:"bytes,4,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName           string                 `protobuf:"bytes,5,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	MiddleName         string                 `protobuf:"bytes,6,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
-	DateOfBirth        string                 `protobuf:"bytes,7,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
-	CardNumber         uint64                 `protobuf:"varint,8,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
-	Phone              uint64                 `protobuf:"varint,9,opt,name=phone,proto3" json:"phone,omitempty"`
-	Email              string                 `protobuf:"bytes,10,opt,name=email,proto3" json:"email,omitempty"`
-	LastComentDelivery string                 `protobuf:"bytes,11,opt,name=last_coment_delivery,json=lastComentDelivery,proto3" json:"last_coment_delivery,omitempty"`
-	FullBlocked        bool                   `protobuf:"varint,12,opt,name=full_blocked,json=fullBlocked,proto3" json:"full_blocked,omitempty"`
-	SelectedStoreId    uint32                 `protobuf:"varint,13,opt,name=selected_store_id,json=selectedStoreId,proto3" json:"selected_store_id,omitempty"`
-	Children           []*Childrens           `protobuf:"bytes,14,rep,name=children,proto3" json:"children,omitempty"`
-	AbTestGroup        ABTestGroup            `protobuf:"varint,15,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
+	DateOfBirth        string                 `protobuf:"bytes,6,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
+	CardNumber         uint64                 `protobuf:"varint,7,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
+	Phone              uint64                 `protobuf:"varint,8,opt,name=phone,proto3" json:"phone,omitempty"`
+	Email              string                 `protobuf:"bytes,9,opt,name=email,proto3" json:"email,omitempty"`
+	LastComentDelivery string                 `protobuf:"bytes,10,opt,name=last_coment_delivery,json=lastComentDelivery,proto3" json:"last_coment_delivery,omitempty"`
+	FullBlocked        bool                   `protobuf:"varint,11,opt,name=full_blocked,json=fullBlocked,proto3" json:"full_blocked,omitempty"`
+	SelectedStoreId    uint32                 `protobuf:"varint,12,opt,name=selected_store_id,json=selectedStoreId,proto3" json:"selected_store_id,omitempty"`
+	Children           []*Childrens           `protobuf:"bytes,13,rep,name=children,proto3" json:"children,omitempty"`
+	AbTestGroup        ABTestGroup            `protobuf:"varint,14,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -1010,13 +985,6 @@ func (x *User) GetFirstName() string {
 func (x *User) GetLastName() string {
 	if x != nil {
 		return x.LastName
-	}
-	return ""
-}
-
-func (x *User) GetMiddleName() string {
-	if x != nil {
-		return x.MiddleName
 	}
 	return ""
 }
@@ -1089,9 +1057,8 @@ type Childrens struct {
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	FirstName     string                 `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName      string                 `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	MiddleName    string                 `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
-	DateOfBirth   string                 `protobuf:"bytes,5,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
-	Mail          string                 `protobuf:"bytes,6,opt,name=mail,proto3" json:"mail,omitempty"`
+	DateOfBirth   string                 `protobuf:"bytes,4,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
+	Mail          string                 `protobuf:"bytes,5,opt,name=mail,proto3" json:"mail,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1143,13 +1110,6 @@ func (x *Childrens) GetFirstName() string {
 func (x *Childrens) GetLastName() string {
 	if x != nil {
 		return x.LastName
-	}
-	return ""
-}
-
-func (x *Childrens) GetMiddleName() string {
-	if x != nil {
-		return x.MiddleName
 	}
 	return ""
 }
@@ -1272,26 +1232,22 @@ var File_users_v1_users_proto protoreflect.FileDescriptor
 
 const file_users_v1_users_proto_rawDesc = "" +
 	"\n" +
-	"\x14users/v1/users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\"\xf4\x01\n" +
+	"\x14users/v1/users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\"\xd3\x01\n" +
 	"\x18UpdateUserProfileRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x02 \x01(\tR\tfirstName\x12\x1b\n" +
-	"\tlast_name\x18\x03 \x01(\tR\blastName\x12\x1f\n" +
-	"\vmiddle_name\x18\x04 \x01(\tR\n" +
-	"middleName\x12\"\n" +
-	"\rdate_of_birth\x18\x05 \x01(\tR\vdateOfBirth\x12\x14\n" +
-	"\x05email\x18\x06 \x01(\tR\x05email\x121\n" +
-	"\tchildrens\x18\a \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"\xe5\x01\n" +
+	"\tlast_name\x18\x03 \x01(\tR\blastName\x12\"\n" +
+	"\rdate_of_birth\x18\x04 \x01(\tR\vdateOfBirth\x12\x14\n" +
+	"\x05email\x18\x05 \x01(\tR\x05email\x121\n" +
+	"\tchildrens\x18\x06 \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"\xc4\x01\n" +
 	"\x19UpdateUserProfileResponse\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x01 \x01(\tR\tfirstName\x12\x1b\n" +
-	"\tlast_name\x18\x02 \x01(\tR\blastName\x12\x1f\n" +
-	"\vmiddle_name\x18\x03 \x01(\tR\n" +
-	"middleName\x12\"\n" +
-	"\rdate_of_birth\x18\x04 \x01(\tR\vdateOfBirth\x12\x14\n" +
-	"\x05email\x18\x05 \x01(\tR\x05email\x121\n" +
-	"\tchildrens\x18\x06 \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"\xa7\x03\n" +
+	"\tlast_name\x18\x02 \x01(\tR\blastName\x12\"\n" +
+	"\rdate_of_birth\x18\x03 \x01(\tR\vdateOfBirth\x12\x14\n" +
+	"\x05email\x18\x04 \x01(\tR\x05email\x121\n" +
+	"\tchildrens\x18\x05 \x03(\v2\x13.users.v1.ChildrensR\tchildrens\"\x86\x03\n" +
 	"\x12GetAllUsersRequest\x12\x12\n" +
 	"\x04guid\x18\x01 \x03(\x04R\x04guid\x12\x1f\n" +
 	"\vcard_number\x18\x02 \x03(\x04R\n" +
@@ -1299,19 +1255,17 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\x05email\x18\x03 \x03(\tR\x05email\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x04 \x03(\tR\tfirstName\x12\x1b\n" +
-	"\tlast_name\x18\x05 \x03(\tR\blastName\x12\x1f\n" +
-	"\vmiddle_name\x18\x06 \x03(\tR\n" +
-	"middleName\x12\"\n" +
-	"\rdate_of_birth\x18\a \x03(\tR\vdateOfBirth\x12\"\n" +
-	"\x04role\x18\b \x03(\x0e2\x0e.users.v1.RoleR\x04role\x129\n" +
-	"\rab_test_group\x18\t \x03(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup\x12\x1d\n" +
+	"\tlast_name\x18\x05 \x03(\tR\blastName\x12\"\n" +
+	"\rdate_of_birth\x18\x06 \x03(\tR\vdateOfBirth\x12\"\n" +
+	"\x04role\x18\a \x03(\x0e2\x0e.users.v1.RoleR\x04role\x129\n" +
+	"\rab_test_group\x18\b \x03(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup\x12\x1d\n" +
 	"\n" +
-	"last_login\x18\n" +
-	" \x01(\tR\tlastLogin\x12\x1d\n" +
+	"last_login\x18\t \x01(\tR\tlastLogin\x12\x1d\n" +
 	"\n" +
-	"created_at\x18\v \x01(\tR\tcreatedAt\x12\x12\n" +
-	"\x04page\x18\f \x01(\x04R\x04page\x12\x14\n" +
-	"\x05limit\x18\r \x01(\x04R\x05limit\";\n" +
+	"created_at\x18\n" +
+	" \x01(\tR\tcreatedAt\x12\x12\n" +
+	"\x04page\x18\v \x01(\x04R\x04page\x12\x14\n" +
+	"\x05limit\x18\f \x01(\x04R\x05limit\";\n" +
 	"\x13GetAllUsersResponse\x12$\n" +
 	"\x05users\x18\x01 \x03(\v2\x0e.users.v1.UserR\x05users\"T\n" +
 	"\x15ChangeUserRoleRequest\x12\x17\n" +
@@ -1330,36 +1284,32 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12\x16\n" +
 	"\x06reason\x18\x02 \x01(\tR\x06reason\"-\n" +
 	"\x11UnbanUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x8f\x04\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xee\x03\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x18\n" +
 	"\adeleted\x18\x02 \x01(\bR\adeleted\x12\"\n" +
 	"\x04role\x18\x03 \x01(\x0e2\x0e.users.v1.RoleR\x04role\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x04 \x01(\tR\tfirstName\x12\x1b\n" +
-	"\tlast_name\x18\x05 \x01(\tR\blastName\x12\x1f\n" +
-	"\vmiddle_name\x18\x06 \x01(\tR\n" +
-	"middleName\x12\"\n" +
-	"\rdate_of_birth\x18\a \x01(\tR\vdateOfBirth\x12\x1f\n" +
-	"\vcard_number\x18\b \x01(\x04R\n" +
+	"\tlast_name\x18\x05 \x01(\tR\blastName\x12\"\n" +
+	"\rdate_of_birth\x18\x06 \x01(\tR\vdateOfBirth\x12\x1f\n" +
+	"\vcard_number\x18\a \x01(\x04R\n" +
 	"cardNumber\x12\x14\n" +
-	"\x05phone\x18\t \x01(\x04R\x05phone\x12\x14\n" +
-	"\x05email\x18\n" +
-	" \x01(\tR\x05email\x120\n" +
-	"\x14last_coment_delivery\x18\v \x01(\tR\x12lastComentDelivery\x12!\n" +
-	"\ffull_blocked\x18\f \x01(\bR\vfullBlocked\x12*\n" +
-	"\x11selected_store_id\x18\r \x01(\rR\x0fselectedStoreId\x12/\n" +
-	"\bchildren\x18\x0e \x03(\v2\x13.users.v1.ChildrensR\bchildren\x129\n" +
-	"\rab_test_group\x18\x0f \x01(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup\"\xb4\x01\n" +
+	"\x05phone\x18\b \x01(\x04R\x05phone\x12\x14\n" +
+	"\x05email\x18\t \x01(\tR\x05email\x120\n" +
+	"\x14last_coment_delivery\x18\n" +
+	" \x01(\tR\x12lastComentDelivery\x12!\n" +
+	"\ffull_blocked\x18\v \x01(\bR\vfullBlocked\x12*\n" +
+	"\x11selected_store_id\x18\f \x01(\rR\x0fselectedStoreId\x12/\n" +
+	"\bchildren\x18\r \x03(\v2\x13.users.v1.ChildrensR\bchildren\x129\n" +
+	"\rab_test_group\x18\x0e \x01(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup\"\x93\x01\n" +
 	"\tChildrens\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x02 \x01(\tR\tfirstName\x12\x1b\n" +
-	"\tlast_name\x18\x03 \x01(\tR\blastName\x12\x1f\n" +
-	"\vmiddle_name\x18\x04 \x01(\tR\n" +
-	"middleName\x12\"\n" +
-	"\rdate_of_birth\x18\x05 \x01(\tR\vdateOfBirth\x12\x12\n" +
-	"\x04mail\x18\x06 \x01(\tR\x04mail\"\x94\x03\n" +
+	"\tlast_name\x18\x03 \x01(\tR\blastName\x12\"\n" +
+	"\rdate_of_birth\x18\x04 \x01(\tR\vdateOfBirth\x12\x12\n" +
+	"\x04mail\x18\x05 \x01(\tR\x04mail\"\x94\x03\n" +
 	"\fUserSettings\x12-\n" +
 	"\x12push_notifications\x18\x01 \x01(\bR\x11pushNotifications\x12/\n" +
 	"\x13email_notifications\x18\x02 \x01(\bR\x12emailNotifications\x12+\n" +

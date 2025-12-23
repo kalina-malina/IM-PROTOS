@@ -27,19 +27,17 @@ message UpdateUserProfileRequest {
   uint64 id = 1;
   string first_name = 2;
   string last_name = 3;
-  string middle_name = 4;
-  string date_of_birth = 5;
-  string email = 6;
-  repeated Childrens childrens = 7;
+  string date_of_birth = 4;
+  string email = 5;
+  repeated Childrens childrens = 6;
 }
 
 message UpdateUserProfileResponse {
   string first_name = 1;
   string last_name = 2;
-  string middle_name = 3;
-  string date_of_birth = 4;
-  string email = 5;
-  repeated Childrens childrens = 6;
+  string date_of_birth = 3;
+  string email = 4;
+  repeated Childrens childrens = 5;
 }
 
 ////////////////////////////////////////////////////////////
@@ -52,14 +50,13 @@ message GetAllUsersRequest {
   repeated string email = 3;
   repeated string first_name = 4;
   repeated string last_name = 5;
-  repeated string middle_name = 6;
-  repeated string date_of_birth = 7;
-  repeated Role role = 8;
-  repeated ABTestGroup ab_test_group = 9;
-  string last_login = 10;
-  string created_at = 11;
-  uint64 page = 12;
-  uint64 limit = 13;
+  repeated string date_of_birth = 6;
+  repeated Role role = 7;
+  repeated ABTestGroup ab_test_group = 8;
+  string last_login = 9;
+  string created_at = 10;
+  uint64 page = 11;
+  uint64 limit = 12;
 }
 
 message GetAllUsersResponse {
@@ -104,16 +101,15 @@ message User{
   Role role = 3;
   string first_name = 4;
   string last_name = 5;
-  string middle_name = 6;
-  string date_of_birth = 7;
-  uint64 card_number = 8;
-  uint64 phone = 9;
-  string email = 10;
-  string last_coment_delivery = 11;
-  bool  full_blocked = 12;
-  uint32 selected_store_id = 13;
-  repeated Childrens children = 14;
-  ABTestGroup ab_test_group = 15;
+  string date_of_birth = 6;
+  uint64 card_number = 7;
+  uint64 phone = 8;
+  string email = 9;
+  string last_coment_delivery = 10;
+  bool  full_blocked = 11;
+  uint32 selected_store_id = 12;
+  repeated Childrens children = 13;
+  ABTestGroup ab_test_group = 14;
 }
 
 
@@ -121,9 +117,8 @@ message Childrens {
   string name = 1;
   string first_name = 2;
   string last_name = 3;
-  string middle_name = 4;
-  string date_of_birth = 5;
-  string mail = 6;
+  string date_of_birth = 4;
+  string mail = 5;
 }
 
 message UserSettings {
