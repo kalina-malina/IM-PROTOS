@@ -20,6 +20,7 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	UsersService_UpdateUserProfile_FullMethodName = "/users.v1.UsersService/UpdateUserProfile"
+	UsersService_GetByOneUser_FullMethodName      = "/users.v1.UsersService/GetByOneUser"
 	UsersService_GetAllUsers_FullMethodName       = "/users.v1.UsersService/GetAllUsers"
 	UsersService_ChangeUserRole_FullMethodName    = "/users.v1.UsersService/ChangeUserRole"
 	UsersService_BanUser_FullMethodName           = "/users.v1.UsersService/BanUser"
@@ -32,6 +33,7 @@ const (
 type UsersServiceClient interface {
 	// доступно пользователям всем
 	UpdateUserProfile(ctx context.Context, in *UpdateUserProfileRequest, opts ...grpc.CallOption) (*UpdateUserProfileResponse, error)
+	GetByOneUser(ctx context.Context, in *GetByOneUserRequest, opts ...grpc.CallOption) (*GetByOneUserResponse, error)
 	// доступно только администратору
 	GetAllUsers(ctx context.Context, in *GetAllUsersRequest, opts ...grpc.CallOption) (*GetAllUsersResponse, error)
 	ChangeUserRole(ctx context.Context, in *ChangeUserRoleRequest, opts ...grpc.CallOption) (*ChangeUserRoleResponse, error)
@@ -51,6 +53,16 @@ func (c *usersServiceClient) UpdateUserProfile(ctx context.Context, in *UpdateUs
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UpdateUserProfileResponse)
 	err := c.cc.Invoke(ctx, UsersService_UpdateUserProfile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *usersServiceClient) GetByOneUser(ctx context.Context, in *GetByOneUserRequest, opts ...grpc.CallOption) (*GetByOneUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetByOneUserResponse)
+	err := c.cc.Invoke(ctx, UsersService_GetByOneUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -103,6 +115,7 @@ func (c *usersServiceClient) UnbanUser(ctx context.Context, in *UnbanUserRequest
 type UsersServiceServer interface {
 	// доступно пользователям всем
 	UpdateUserProfile(context.Context, *UpdateUserProfileRequest) (*UpdateUserProfileResponse, error)
+	GetByOneUser(context.Context, *GetByOneUserRequest) (*GetByOneUserResponse, error)
 	// доступно только администратору
 	GetAllUsers(context.Context, *GetAllUsersRequest) (*GetAllUsersResponse, error)
 	ChangeUserRole(context.Context, *ChangeUserRoleRequest) (*ChangeUserRoleResponse, error)
@@ -120,6 +133,9 @@ type UnimplementedUsersServiceServer struct{}
 
 func (UnimplementedUsersServiceServer) UpdateUserProfile(context.Context, *UpdateUserProfileRequest) (*UpdateUserProfileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserProfile not implemented")
+}
+func (UnimplementedUsersServiceServer) GetByOneUser(context.Context, *GetByOneUserRequest) (*GetByOneUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetByOneUser not implemented")
 }
 func (UnimplementedUsersServiceServer) GetAllUsers(context.Context, *GetAllUsersRequest) (*GetAllUsersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllUsers not implemented")
@@ -168,6 +184,24 @@ func _UsersService_UpdateUserProfile_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UsersServiceServer).UpdateUserProfile(ctx, req.(*UpdateUserProfileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UsersService_GetByOneUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByOneUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsersServiceServer).GetByOneUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UsersService_GetByOneUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsersServiceServer).GetByOneUser(ctx, req.(*GetByOneUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -254,6 +288,10 @@ var UsersService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateUserProfile",
 			Handler:    _UsersService_UpdateUserProfile_Handler,
+		},
+		{
+			MethodName: "GetByOneUser",
+			Handler:    _UsersService_GetByOneUser_Handler,
 		},
 		{
 			MethodName: "GetAllUsers",
