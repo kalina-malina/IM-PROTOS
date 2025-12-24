@@ -59,19 +59,18 @@ message GetByOneUserResponse {
 
 //получение всех пользователей
 message GetAllUsersRequest {
-  optional uint64 guid = 1;
-  optional uint64 card_number = 2;
-  optional string email = 3;
-  optional string first_name = 4;
-  optional string last_name = 5;
-  optional string date_of_birth = 6;
-  optional uint32 year_of_birth = 7;
-  optional Role role = 8;
-  optional ABTestGroup ab_test_group = 9;
-  optional string last_login = 10;
-  optional string created_at = 11;
-  uint64 page = 12;
-  uint64 limit = 13;
+  repeated uint64 guid = 1;
+  repeated uint64 card_number = 2;
+  repeated string email = 3;
+  repeated string first_name = 4;
+  repeated string last_name = 5;
+  repeated string date_of_birth = 6;
+  repeated Role role = 7;
+  repeated ABTestGroup ab_test_group = 8;
+  repeated string last_login = 9;
+  repeated string created_at = 10;
+  uint64 page = 11;
+  uint64 limit = 12;
 }
 
 message GetAllUsersResponse {
