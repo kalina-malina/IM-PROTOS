@@ -264,6 +264,119 @@ func (ABTestGroup) EnumDescriptor() ([]byte, []int) {
 	return file_users_v1_users_proto_rawDescGZIP(), []int{3}
 }
 
+type SortBy int32
+
+const (
+	SortBy_SORT_BY_GUID           SortBy = 0
+	SortBy_SORT_BY_FIRST_NAME     SortBy = 1
+	SortBy_SORT_BY_LAST_NAME      SortBy = 2
+	SortBy_SORT_BY_CARD_NUMBER    SortBy = 4
+	SortBy_SORT_BY_EMAIL          SortBy = 5
+	SortBy_SORT_BY_ROLE           SortBy = 6
+	SortBy_SORT_BY_AB_TEST_GROUP  SortBy = 7
+	SortBy_SORT_BY_VERIFIED_EMAIL SortBy = 8
+	SortBy_SORT_BY_PHONE          SortBy = 9
+)
+
+// Enum value maps for SortBy.
+var (
+	SortBy_name = map[int32]string{
+		0: "SORT_BY_GUID",
+		1: "SORT_BY_FIRST_NAME",
+		2: "SORT_BY_LAST_NAME",
+		4: "SORT_BY_CARD_NUMBER",
+		5: "SORT_BY_EMAIL",
+		6: "SORT_BY_ROLE",
+		7: "SORT_BY_AB_TEST_GROUP",
+		8: "SORT_BY_VERIFIED_EMAIL",
+		9: "SORT_BY_PHONE",
+	}
+	SortBy_value = map[string]int32{
+		"SORT_BY_GUID":           0,
+		"SORT_BY_FIRST_NAME":     1,
+		"SORT_BY_LAST_NAME":      2,
+		"SORT_BY_CARD_NUMBER":    4,
+		"SORT_BY_EMAIL":          5,
+		"SORT_BY_ROLE":           6,
+		"SORT_BY_AB_TEST_GROUP":  7,
+		"SORT_BY_VERIFIED_EMAIL": 8,
+		"SORT_BY_PHONE":          9,
+	}
+)
+
+func (x SortBy) Enum() *SortBy {
+	p := new(SortBy)
+	*p = x
+	return p
+}
+
+func (x SortBy) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SortBy) Descriptor() protoreflect.EnumDescriptor {
+	return file_users_v1_users_proto_enumTypes[4].Descriptor()
+}
+
+func (SortBy) Type() protoreflect.EnumType {
+	return &file_users_v1_users_proto_enumTypes[4]
+}
+
+func (x SortBy) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SortBy.Descriptor instead.
+func (SortBy) EnumDescriptor() ([]byte, []int) {
+	return file_users_v1_users_proto_rawDescGZIP(), []int{4}
+}
+
+type SortOrder int32
+
+const (
+	SortOrder_SORT_ORDER_ASC  SortOrder = 0
+	SortOrder_SORT_ORDER_DESC SortOrder = 1
+)
+
+// Enum value maps for SortOrder.
+var (
+	SortOrder_name = map[int32]string{
+		0: "SORT_ORDER_ASC",
+		1: "SORT_ORDER_DESC",
+	}
+	SortOrder_value = map[string]int32{
+		"SORT_ORDER_ASC":  0,
+		"SORT_ORDER_DESC": 1,
+	}
+)
+
+func (x SortOrder) Enum() *SortOrder {
+	p := new(SortOrder)
+	*p = x
+	return p
+}
+
+func (x SortOrder) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SortOrder) Descriptor() protoreflect.EnumDescriptor {
+	return file_users_v1_users_proto_enumTypes[5].Descriptor()
+}
+
+func (SortOrder) Type() protoreflect.EnumType {
+	return &file_users_v1_users_proto_enumTypes[5]
+}
+
+func (x SortOrder) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SortOrder.Descriptor instead.
+func (SortOrder) EnumDescriptor() ([]byte, []int) {
+	return file_users_v1_users_proto_rawDescGZIP(), []int{5}
+}
+
 // //////////////////////////////////////////////////////////
 // доступно пользователям всем
 type UpdateUserProfileRequest struct {
@@ -495,15 +608,17 @@ type GetAllUsersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Guid          uint64                 `protobuf:"varint,1,opt,name=guid,proto3" json:"guid,omitempty"`
 	CardNumber    uint64                 `protobuf:"varint,2,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
-	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	FirstName     string                 `protobuf:"bytes,4,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName      string                 `protobuf:"bytes,5,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	Role          []Role                 `protobuf:"varint,6,rep,packed,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
-	AbTestGroup   []ABTestGroup          `protobuf:"varint,7,rep,packed,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
-	Page          uint64                 `protobuf:"varint,8,opt,name=page,proto3" json:"page,omitempty"`
-	Limit         uint64                 `protobuf:"varint,9,opt,name=limit,proto3" json:"limit,omitempty"`
-	SortBy        string                 `protobuf:"bytes,10,opt,name=sort_by,json=sortBy,proto3" json:"sort_by,omitempty"`
-	SortOrder     string                 `protobuf:"bytes,11,opt,name=sort_order,json=sortOrder,proto3" json:"sort_order,omitempty"`
+	VerifiedEmail bool                   `protobuf:"varint,3,opt,name=verified_email,json=verifiedEmail,proto3" json:"verified_email,omitempty"`
+	Phone         uint64                 `protobuf:"varint,4,opt,name=phone,proto3" json:"phone,omitempty"`
+	Email         string                 `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
+	FirstName     string                 `protobuf:"bytes,6,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      string                 `protobuf:"bytes,7,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	Role          []Role                 `protobuf:"varint,8,rep,packed,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
+	AbTestGroup   []ABTestGroup          `protobuf:"varint,9,rep,packed,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
+	Page          uint64                 `protobuf:"varint,10,opt,name=page,proto3" json:"page,omitempty"`
+	Limit         uint64                 `protobuf:"varint,11,opt,name=limit,proto3" json:"limit,omitempty"`
+	SortBy        SortBy                 `protobuf:"varint,12,opt,name=sort_by,json=sortBy,proto3,enum=users.v1.SortBy" json:"sort_by,omitempty"`
+	SortOrder     SortOrder              `protobuf:"varint,13,opt,name=sort_order,json=sortOrder,proto3,enum=users.v1.SortOrder" json:"sort_order,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -548,6 +663,20 @@ func (x *GetAllUsersRequest) GetGuid() uint64 {
 func (x *GetAllUsersRequest) GetCardNumber() uint64 {
 	if x != nil {
 		return x.CardNumber
+	}
+	return 0
+}
+
+func (x *GetAllUsersRequest) GetVerifiedEmail() bool {
+	if x != nil {
+		return x.VerifiedEmail
+	}
+	return false
+}
+
+func (x *GetAllUsersRequest) GetPhone() uint64 {
+	if x != nil {
+		return x.Phone
 	}
 	return 0
 }
@@ -601,18 +730,18 @@ func (x *GetAllUsersRequest) GetLimit() uint64 {
 	return 0
 }
 
-func (x *GetAllUsersRequest) GetSortBy() string {
+func (x *GetAllUsersRequest) GetSortBy() SortBy {
 	if x != nil {
 		return x.SortBy
 	}
-	return ""
+	return SortBy_SORT_BY_GUID
 }
 
-func (x *GetAllUsersRequest) GetSortOrder() string {
+func (x *GetAllUsersRequest) GetSortOrder() SortOrder {
 	if x != nil {
 		return x.SortOrder
 	}
-	return ""
+	return SortOrder_SORT_ORDER_ASC
 }
 
 type GetAllUsersResponse struct {
@@ -1308,23 +1437,25 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\x13GetByOneUserRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\":\n" +
 	"\x14GetByOneUserResponse\x12\"\n" +
-	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\xdc\x02\n" +
+	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\xc0\x03\n" +
 	"\x12GetAllUsersRequest\x12\x12\n" +
 	"\x04guid\x18\x01 \x01(\x04R\x04guid\x12\x1f\n" +
 	"\vcard_number\x18\x02 \x01(\x04R\n" +
-	"cardNumber\x12\x14\n" +
-	"\x05email\x18\x03 \x01(\tR\x05email\x12\x1d\n" +
+	"cardNumber\x12%\n" +
+	"\x0everified_email\x18\x03 \x01(\bR\rverifiedEmail\x12\x14\n" +
+	"\x05phone\x18\x04 \x01(\x04R\x05phone\x12\x14\n" +
+	"\x05email\x18\x05 \x01(\tR\x05email\x12\x1d\n" +
 	"\n" +
-	"first_name\x18\x04 \x01(\tR\tfirstName\x12\x1b\n" +
-	"\tlast_name\x18\x05 \x01(\tR\blastName\x12\"\n" +
-	"\x04role\x18\x06 \x03(\x0e2\x0e.users.v1.RoleR\x04role\x129\n" +
-	"\rab_test_group\x18\a \x03(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup\x12\x12\n" +
-	"\x04page\x18\b \x01(\x04R\x04page\x12\x14\n" +
-	"\x05limit\x18\t \x01(\x04R\x05limit\x12\x17\n" +
-	"\asort_by\x18\n" +
-	" \x01(\tR\x06sortBy\x12\x1d\n" +
+	"first_name\x18\x06 \x01(\tR\tfirstName\x12\x1b\n" +
+	"\tlast_name\x18\a \x01(\tR\blastName\x12\"\n" +
+	"\x04role\x18\b \x03(\x0e2\x0e.users.v1.RoleR\x04role\x129\n" +
+	"\rab_test_group\x18\t \x03(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup\x12\x12\n" +
+	"\x04page\x18\n" +
+	" \x01(\x04R\x04page\x12\x14\n" +
+	"\x05limit\x18\v \x01(\x04R\x05limit\x12)\n" +
+	"\asort_by\x18\f \x01(\x0e2\x10.users.v1.SortByR\x06sortBy\x122\n" +
 	"\n" +
-	"sort_order\x18\v \x01(\tR\tsortOrder\"Q\n" +
+	"sort_order\x18\r \x01(\x0e2\x13.users.v1.SortOrderR\tsortOrder\"Q\n" +
 	"\x13GetAllUsersResponse\x12$\n" +
 	"\x05users\x18\x01 \x03(\v2\x0e.users.v1.UserR\x05users\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x04R\x05total\"T\n" +
@@ -1406,7 +1537,20 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\x0fAB_TEST_GROUP_A\x10\x00\x12\x13\n" +
 	"\x0fAB_TEST_GROUP_B\x10\x01\x12\x13\n" +
 	"\x0fAB_TEST_GROUP_C\x10\x02\x12\x13\n" +
-	"\x0fAB_TEST_GROUP_D\x10\x032\xe2\x03\n" +
+	"\x0fAB_TEST_GROUP_D\x10\x03*\xd1\x01\n" +
+	"\x06SortBy\x12\x10\n" +
+	"\fSORT_BY_GUID\x10\x00\x12\x16\n" +
+	"\x12SORT_BY_FIRST_NAME\x10\x01\x12\x15\n" +
+	"\x11SORT_BY_LAST_NAME\x10\x02\x12\x17\n" +
+	"\x13SORT_BY_CARD_NUMBER\x10\x04\x12\x11\n" +
+	"\rSORT_BY_EMAIL\x10\x05\x12\x10\n" +
+	"\fSORT_BY_ROLE\x10\x06\x12\x19\n" +
+	"\x15SORT_BY_AB_TEST_GROUP\x10\a\x12\x1a\n" +
+	"\x16SORT_BY_VERIFIED_EMAIL\x10\b\x12\x11\n" +
+	"\rSORT_BY_PHONE\x10\t*4\n" +
+	"\tSortOrder\x12\x12\n" +
+	"\x0eSORT_ORDER_ASC\x10\x00\x12\x13\n" +
+	"\x0fSORT_ORDER_DESC\x10\x012\xe2\x03\n" +
 	"\fUsersService\x12\\\n" +
 	"\x11UpdateUserProfile\x12\".users.v1.UpdateUserProfileRequest\x1a#.users.v1.UpdateUserProfileResponse\x12M\n" +
 	"\fGetByOneUser\x12\x1d.users.v1.GetByOneUserRequest\x1a\x1e.users.v1.GetByOneUserResponse\x12J\n" +
@@ -1427,57 +1571,61 @@ func file_users_v1_users_proto_rawDescGZIP() []byte {
 	return file_users_v1_users_proto_rawDescData
 }
 
-var file_users_v1_users_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
+var file_users_v1_users_proto_enumTypes = make([]protoimpl.EnumInfo, 6)
 var file_users_v1_users_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_users_v1_users_proto_goTypes = []any{
 	(ReasonTypeEnum)(0),               // 0: users.v1.ReasonTypeEnum
 	(BanReasonTypeEnum)(0),            // 1: users.v1.BanReasonTypeEnum
 	(Role)(0),                         // 2: users.v1.Role
 	(ABTestGroup)(0),                  // 3: users.v1.ABTestGroup
-	(*UpdateUserProfileRequest)(nil),  // 4: users.v1.UpdateUserProfileRequest
-	(*UpdateUserProfileResponse)(nil), // 5: users.v1.UpdateUserProfileResponse
-	(*GetByOneUserRequest)(nil),       // 6: users.v1.GetByOneUserRequest
-	(*GetByOneUserResponse)(nil),      // 7: users.v1.GetByOneUserResponse
-	(*GetAllUsersRequest)(nil),        // 8: users.v1.GetAllUsersRequest
-	(*GetAllUsersResponse)(nil),       // 9: users.v1.GetAllUsersResponse
-	(*ChangeUserRoleRequest)(nil),     // 10: users.v1.ChangeUserRoleRequest
-	(*ChangeUserRoleResponse)(nil),    // 11: users.v1.ChangeUserRoleResponse
-	(*BanUserRequest)(nil),            // 12: users.v1.BanUserRequest
-	(*BanUserResponse)(nil),           // 13: users.v1.BanUserResponse
-	(*UnbanUserRequest)(nil),          // 14: users.v1.UnbanUserRequest
-	(*UnbanUserResponse)(nil),         // 15: users.v1.UnbanUserResponse
-	(*User)(nil),                      // 16: users.v1.User
-	(*Childrens)(nil),                 // 17: users.v1.Childrens
-	(*UserSettings)(nil),              // 18: users.v1.UserSettings
+	(SortBy)(0),                       // 4: users.v1.SortBy
+	(SortOrder)(0),                    // 5: users.v1.SortOrder
+	(*UpdateUserProfileRequest)(nil),  // 6: users.v1.UpdateUserProfileRequest
+	(*UpdateUserProfileResponse)(nil), // 7: users.v1.UpdateUserProfileResponse
+	(*GetByOneUserRequest)(nil),       // 8: users.v1.GetByOneUserRequest
+	(*GetByOneUserResponse)(nil),      // 9: users.v1.GetByOneUserResponse
+	(*GetAllUsersRequest)(nil),        // 10: users.v1.GetAllUsersRequest
+	(*GetAllUsersResponse)(nil),       // 11: users.v1.GetAllUsersResponse
+	(*ChangeUserRoleRequest)(nil),     // 12: users.v1.ChangeUserRoleRequest
+	(*ChangeUserRoleResponse)(nil),    // 13: users.v1.ChangeUserRoleResponse
+	(*BanUserRequest)(nil),            // 14: users.v1.BanUserRequest
+	(*BanUserResponse)(nil),           // 15: users.v1.BanUserResponse
+	(*UnbanUserRequest)(nil),          // 16: users.v1.UnbanUserRequest
+	(*UnbanUserResponse)(nil),         // 17: users.v1.UnbanUserResponse
+	(*User)(nil),                      // 18: users.v1.User
+	(*Childrens)(nil),                 // 19: users.v1.Childrens
+	(*UserSettings)(nil),              // 20: users.v1.UserSettings
 }
 var file_users_v1_users_proto_depIdxs = []int32{
-	17, // 0: users.v1.UpdateUserProfileRequest.childrens:type_name -> users.v1.Childrens
-	16, // 1: users.v1.GetByOneUserResponse.user:type_name -> users.v1.User
+	19, // 0: users.v1.UpdateUserProfileRequest.childrens:type_name -> users.v1.Childrens
+	18, // 1: users.v1.GetByOneUserResponse.user:type_name -> users.v1.User
 	2,  // 2: users.v1.GetAllUsersRequest.role:type_name -> users.v1.Role
 	3,  // 3: users.v1.GetAllUsersRequest.ab_test_group:type_name -> users.v1.ABTestGroup
-	16, // 4: users.v1.GetAllUsersResponse.users:type_name -> users.v1.User
-	2,  // 5: users.v1.ChangeUserRoleRequest.role:type_name -> users.v1.Role
-	1,  // 6: users.v1.BanUserRequest.reason:type_name -> users.v1.BanReasonTypeEnum
-	2,  // 7: users.v1.User.role:type_name -> users.v1.Role
-	3,  // 8: users.v1.User.ab_test_group:type_name -> users.v1.ABTestGroup
-	17, // 9: users.v1.User.children:type_name -> users.v1.Childrens
-	4,  // 10: users.v1.UsersService.UpdateUserProfile:input_type -> users.v1.UpdateUserProfileRequest
-	6,  // 11: users.v1.UsersService.GetByOneUser:input_type -> users.v1.GetByOneUserRequest
-	8,  // 12: users.v1.UsersService.GetAllUsers:input_type -> users.v1.GetAllUsersRequest
-	10, // 13: users.v1.UsersService.ChangeUserRole:input_type -> users.v1.ChangeUserRoleRequest
-	12, // 14: users.v1.UsersService.BanUser:input_type -> users.v1.BanUserRequest
-	14, // 15: users.v1.UsersService.UnbanUser:input_type -> users.v1.UnbanUserRequest
-	5,  // 16: users.v1.UsersService.UpdateUserProfile:output_type -> users.v1.UpdateUserProfileResponse
-	7,  // 17: users.v1.UsersService.GetByOneUser:output_type -> users.v1.GetByOneUserResponse
-	9,  // 18: users.v1.UsersService.GetAllUsers:output_type -> users.v1.GetAllUsersResponse
-	11, // 19: users.v1.UsersService.ChangeUserRole:output_type -> users.v1.ChangeUserRoleResponse
-	13, // 20: users.v1.UsersService.BanUser:output_type -> users.v1.BanUserResponse
-	15, // 21: users.v1.UsersService.UnbanUser:output_type -> users.v1.UnbanUserResponse
-	16, // [16:22] is the sub-list for method output_type
-	10, // [10:16] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	4,  // 4: users.v1.GetAllUsersRequest.sort_by:type_name -> users.v1.SortBy
+	5,  // 5: users.v1.GetAllUsersRequest.sort_order:type_name -> users.v1.SortOrder
+	18, // 6: users.v1.GetAllUsersResponse.users:type_name -> users.v1.User
+	2,  // 7: users.v1.ChangeUserRoleRequest.role:type_name -> users.v1.Role
+	1,  // 8: users.v1.BanUserRequest.reason:type_name -> users.v1.BanReasonTypeEnum
+	2,  // 9: users.v1.User.role:type_name -> users.v1.Role
+	3,  // 10: users.v1.User.ab_test_group:type_name -> users.v1.ABTestGroup
+	19, // 11: users.v1.User.children:type_name -> users.v1.Childrens
+	6,  // 12: users.v1.UsersService.UpdateUserProfile:input_type -> users.v1.UpdateUserProfileRequest
+	8,  // 13: users.v1.UsersService.GetByOneUser:input_type -> users.v1.GetByOneUserRequest
+	10, // 14: users.v1.UsersService.GetAllUsers:input_type -> users.v1.GetAllUsersRequest
+	12, // 15: users.v1.UsersService.ChangeUserRole:input_type -> users.v1.ChangeUserRoleRequest
+	14, // 16: users.v1.UsersService.BanUser:input_type -> users.v1.BanUserRequest
+	16, // 17: users.v1.UsersService.UnbanUser:input_type -> users.v1.UnbanUserRequest
+	7,  // 18: users.v1.UsersService.UpdateUserProfile:output_type -> users.v1.UpdateUserProfileResponse
+	9,  // 19: users.v1.UsersService.GetByOneUser:output_type -> users.v1.GetByOneUserResponse
+	11, // 20: users.v1.UsersService.GetAllUsers:output_type -> users.v1.GetAllUsersResponse
+	13, // 21: users.v1.UsersService.ChangeUserRole:output_type -> users.v1.ChangeUserRoleResponse
+	15, // 22: users.v1.UsersService.BanUser:output_type -> users.v1.BanUserResponse
+	17, // 23: users.v1.UsersService.UnbanUser:output_type -> users.v1.UnbanUserResponse
+	18, // [18:24] is the sub-list for method output_type
+	12, // [12:18] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_users_v1_users_proto_init() }
@@ -1493,7 +1641,7 @@ func file_users_v1_users_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_users_proto_rawDesc), len(file_users_v1_users_proto_rawDesc)),
-			NumEnums:      4,
+			NumEnums:      6,
 			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   1,
