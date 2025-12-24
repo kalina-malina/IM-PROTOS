@@ -626,6 +626,7 @@ func (x *GetAllUsersRequest) GetLimit() uint64 {
 type GetAllUsersResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Users         []*User                `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	Total         uint64                 `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -665,6 +666,13 @@ func (x *GetAllUsersResponse) GetUsers() []*User {
 		return x.Users
 	}
 	return nil
+}
+
+func (x *GetAllUsersResponse) GetTotal() uint64 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
 }
 
 // изменение роли пользователя
@@ -1326,9 +1334,10 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"created_at\x18\n" +
 	" \x03(\tR\tcreatedAt\x12\x12\n" +
 	"\x04page\x18\v \x01(\x04R\x04page\x12\x14\n" +
-	"\x05limit\x18\f \x01(\x04R\x05limit\";\n" +
+	"\x05limit\x18\f \x01(\x04R\x05limit\"Q\n" +
 	"\x13GetAllUsersResponse\x12$\n" +
-	"\x05users\x18\x01 \x03(\v2\x0e.users.v1.UserR\x05users\"T\n" +
+	"\x05users\x18\x01 \x03(\v2\x0e.users.v1.UserR\x05users\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x04R\x05total\"T\n" +
 	"\x15ChangeUserRoleRequest\x12\x17\n" +
 	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12\"\n" +
 	"\x04role\x18\x02 \x01(\x0e2\x0e.users.v1.RoleR\x04role\"2\n" +

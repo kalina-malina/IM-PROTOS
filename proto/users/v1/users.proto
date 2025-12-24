@@ -75,6 +75,7 @@ message GetAllUsersRequest {
 
 message GetAllUsersResponse {
   repeated User users = 1;
+  uint64 total = 2;
 }
 
 //изменение роли пользователя
