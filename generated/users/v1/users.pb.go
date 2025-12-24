@@ -493,18 +493,17 @@ func (x *GetByOneUserResponse) GetUser() *User {
 // получение всех пользователей
 type GetAllUsersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Guid          []uint64               `protobuf:"varint,1,rep,packed,name=guid,proto3" json:"guid,omitempty"`
-	CardNumber    []uint64               `protobuf:"varint,2,rep,packed,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
-	Email         []string               `protobuf:"bytes,3,rep,name=email,proto3" json:"email,omitempty"`
-	FirstName     []string               `protobuf:"bytes,4,rep,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName      []string               `protobuf:"bytes,5,rep,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	DateOfBirth   []string               `protobuf:"bytes,6,rep,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
-	Role          []Role                 `protobuf:"varint,7,rep,packed,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
-	AbTestGroup   []ABTestGroup          `protobuf:"varint,8,rep,packed,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
-	LastLogin     []string               `protobuf:"bytes,9,rep,name=last_login,json=lastLogin,proto3" json:"last_login,omitempty"`
-	CreatedAt     []string               `protobuf:"bytes,10,rep,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Page          uint64                 `protobuf:"varint,11,opt,name=page,proto3" json:"page,omitempty"`
-	Limit         uint64                 `protobuf:"varint,12,opt,name=limit,proto3" json:"limit,omitempty"`
+	Guid          uint64                 `protobuf:"varint,1,opt,name=guid,proto3" json:"guid,omitempty"`
+	CardNumber    uint64                 `protobuf:"varint,2,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
+	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	FirstName     string                 `protobuf:"bytes,4,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      string                 `protobuf:"bytes,5,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	Role          []Role                 `protobuf:"varint,6,rep,packed,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
+	AbTestGroup   []ABTestGroup          `protobuf:"varint,7,rep,packed,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
+	Page          uint64                 `protobuf:"varint,8,opt,name=page,proto3" json:"page,omitempty"`
+	Limit         uint64                 `protobuf:"varint,9,opt,name=limit,proto3" json:"limit,omitempty"`
+	SortBy        string                 `protobuf:"bytes,10,opt,name=sort_by,json=sortBy,proto3" json:"sort_by,omitempty"`
+	SortOrder     string                 `protobuf:"bytes,11,opt,name=sort_order,json=sortOrder,proto3" json:"sort_order,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -539,46 +538,39 @@ func (*GetAllUsersRequest) Descriptor() ([]byte, []int) {
 	return file_users_v1_users_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *GetAllUsersRequest) GetGuid() []uint64 {
+func (x *GetAllUsersRequest) GetGuid() uint64 {
 	if x != nil {
 		return x.Guid
 	}
-	return nil
+	return 0
 }
 
-func (x *GetAllUsersRequest) GetCardNumber() []uint64 {
+func (x *GetAllUsersRequest) GetCardNumber() uint64 {
 	if x != nil {
 		return x.CardNumber
 	}
-	return nil
+	return 0
 }
 
-func (x *GetAllUsersRequest) GetEmail() []string {
+func (x *GetAllUsersRequest) GetEmail() string {
 	if x != nil {
 		return x.Email
 	}
-	return nil
+	return ""
 }
 
-func (x *GetAllUsersRequest) GetFirstName() []string {
+func (x *GetAllUsersRequest) GetFirstName() string {
 	if x != nil {
 		return x.FirstName
 	}
-	return nil
+	return ""
 }
 
-func (x *GetAllUsersRequest) GetLastName() []string {
+func (x *GetAllUsersRequest) GetLastName() string {
 	if x != nil {
 		return x.LastName
 	}
-	return nil
-}
-
-func (x *GetAllUsersRequest) GetDateOfBirth() []string {
-	if x != nil {
-		return x.DateOfBirth
-	}
-	return nil
+	return ""
 }
 
 func (x *GetAllUsersRequest) GetRole() []Role {
@@ -595,20 +587,6 @@ func (x *GetAllUsersRequest) GetAbTestGroup() []ABTestGroup {
 	return nil
 }
 
-func (x *GetAllUsersRequest) GetLastLogin() []string {
-	if x != nil {
-		return x.LastLogin
-	}
-	return nil
-}
-
-func (x *GetAllUsersRequest) GetCreatedAt() []string {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return nil
-}
-
 func (x *GetAllUsersRequest) GetPage() uint64 {
 	if x != nil {
 		return x.Page
@@ -621,6 +599,20 @@ func (x *GetAllUsersRequest) GetLimit() uint64 {
 		return x.Limit
 	}
 	return 0
+}
+
+func (x *GetAllUsersRequest) GetSortBy() string {
+	if x != nil {
+		return x.SortBy
+	}
+	return ""
+}
+
+func (x *GetAllUsersRequest) GetSortOrder() string {
+	if x != nil {
+		return x.SortOrder
+	}
+	return ""
 }
 
 type GetAllUsersResponse struct {
@@ -1316,25 +1308,23 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\x13GetByOneUserRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\":\n" +
 	"\x14GetByOneUserResponse\x12\"\n" +
-	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\x86\x03\n" +
+	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\xdc\x02\n" +
 	"\x12GetAllUsersRequest\x12\x12\n" +
-	"\x04guid\x18\x01 \x03(\x04R\x04guid\x12\x1f\n" +
-	"\vcard_number\x18\x02 \x03(\x04R\n" +
+	"\x04guid\x18\x01 \x01(\x04R\x04guid\x12\x1f\n" +
+	"\vcard_number\x18\x02 \x01(\x04R\n" +
 	"cardNumber\x12\x14\n" +
-	"\x05email\x18\x03 \x03(\tR\x05email\x12\x1d\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\x12\x1d\n" +
 	"\n" +
-	"first_name\x18\x04 \x03(\tR\tfirstName\x12\x1b\n" +
-	"\tlast_name\x18\x05 \x03(\tR\blastName\x12\"\n" +
-	"\rdate_of_birth\x18\x06 \x03(\tR\vdateOfBirth\x12\"\n" +
-	"\x04role\x18\a \x03(\x0e2\x0e.users.v1.RoleR\x04role\x129\n" +
-	"\rab_test_group\x18\b \x03(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup\x12\x1d\n" +
+	"first_name\x18\x04 \x01(\tR\tfirstName\x12\x1b\n" +
+	"\tlast_name\x18\x05 \x01(\tR\blastName\x12\"\n" +
+	"\x04role\x18\x06 \x03(\x0e2\x0e.users.v1.RoleR\x04role\x129\n" +
+	"\rab_test_group\x18\a \x03(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup\x12\x12\n" +
+	"\x04page\x18\b \x01(\x04R\x04page\x12\x14\n" +
+	"\x05limit\x18\t \x01(\x04R\x05limit\x12\x17\n" +
+	"\asort_by\x18\n" +
+	" \x01(\tR\x06sortBy\x12\x1d\n" +
 	"\n" +
-	"last_login\x18\t \x03(\tR\tlastLogin\x12\x1d\n" +
-	"\n" +
-	"created_at\x18\n" +
-	" \x03(\tR\tcreatedAt\x12\x12\n" +
-	"\x04page\x18\v \x01(\x04R\x04page\x12\x14\n" +
-	"\x05limit\x18\f \x01(\x04R\x05limit\"Q\n" +
+	"sort_order\x18\v \x01(\tR\tsortOrder\"Q\n" +
 	"\x13GetAllUsersResponse\x12$\n" +
 	"\x05users\x18\x01 \x03(\v2\x0e.users.v1.UserR\x05users\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x04R\x05total\"T\n" +
