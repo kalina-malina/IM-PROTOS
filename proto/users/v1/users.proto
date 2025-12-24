@@ -4,7 +4,9 @@ package users.v1;
 
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
 import "google/protobuf/empty.proto";
-
+import "users/v1/getallUsers.proto";
+import "users/v1/role/role.proto";
+import "users/v1/abGroups/abGroups.proto";
 
 service UsersService {
   // доступно пользователям всем
@@ -57,27 +59,8 @@ message GetByOneUserResponse {
 ////////////////////////////////////////////////////////////
 //доступно только администратору
 
-//получение всех пользователей
-message GetAllUsersRequest {
-  optional uint64 guid = 1;
-  optional uint64 card_number = 2;
-  optional bool verified_email = 3;
-  optional uint64 phone = 4;
-  optional string email = 5;
-  optional string first_name = 6;
-  optional string last_name = 7;
-  repeated Role role = 8;
-  repeated ABTestGroup ab_test_group = 9;
-  uint64 page = 10;
-  uint64 limit = 11;
-  optional SortBy sort_by = 12;
-  optional SortOrder sort_order = 13;
-}
 
-message GetAllUsersResponse {
-  repeated User users = 1;
-  uint64 total = 2;
-}
+
 
 //изменение роли пользователя
 message ChangeUserRoleRequest {
@@ -182,35 +165,6 @@ enum BanReasonTypeEnum {
 }
 
 
-enum Role {
-  ROLE_CLIENT = 0;
-  ROLE_ADMIN = 1;
-  ROLE_OPERATOR = 2;
-  ROLE_MARKETING = 3;
-  ROLE_SUPPORT = 4;
-  ROLE_MANAGEMENT = 5;
-}
 
-enum ABTestGroup {
-  AB_TEST_GROUP_A = 0;
-  AB_TEST_GROUP_B = 1;
-  AB_TEST_GROUP_C = 2;
-  AB_TEST_GROUP_D = 3;
-}
 
-enum SortBy {
-  SORT_BY_GUID = 0;
-  SORT_BY_FIRST_NAME = 1;
-  SORT_BY_LAST_NAME = 2;
-  SORT_BY_CARD_NUMBER = 4;
-  SORT_BY_EMAIL = 5;
-  SORT_BY_ROLE = 6;
-  SORT_BY_AB_TEST_GROUP = 7;
-  SORT_BY_VERIFIED_EMAIL = 8;
-  SORT_BY_PHONE = 9;
-}
 
-enum SortOrder {
-  SORT_ORDER_ASC = 0;
-  SORT_ORDER_DESC = 1;
-}

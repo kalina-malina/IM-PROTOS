@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package users.v1;
+
+option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
+
+enum Role {
+  ROLE_CLIENT = 0;
+  ROLE_ADMIN = 1;
+  ROLE_OPERATOR = 2;
+  ROLE_MARKETING = 3;
+  ROLE_SUPPORT = 4;
+  ROLE_MANAGEMENT = 5;
+}
