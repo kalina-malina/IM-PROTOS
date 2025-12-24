@@ -606,19 +606,19 @@ func (x *GetByOneUserResponse) GetUser() *User {
 // получение всех пользователей
 type GetAllUsersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Guid          uint64                 `protobuf:"varint,1,opt,name=guid,proto3" json:"guid,omitempty"`
-	CardNumber    uint64                 `protobuf:"varint,2,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
-	VerifiedEmail bool                   `protobuf:"varint,3,opt,name=verified_email,json=verifiedEmail,proto3" json:"verified_email,omitempty"`
-	Phone         uint64                 `protobuf:"varint,4,opt,name=phone,proto3" json:"phone,omitempty"`
-	Email         string                 `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
-	FirstName     string                 `protobuf:"bytes,6,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName      string                 `protobuf:"bytes,7,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	Guid          *uint64                `protobuf:"varint,1,opt,name=guid,proto3,oneof" json:"guid,omitempty"`
+	CardNumber    *uint64                `protobuf:"varint,2,opt,name=card_number,json=cardNumber,proto3,oneof" json:"card_number,omitempty"`
+	VerifiedEmail *bool                  `protobuf:"varint,3,opt,name=verified_email,json=verifiedEmail,proto3,oneof" json:"verified_email,omitempty"`
+	Phone         *uint64                `protobuf:"varint,4,opt,name=phone,proto3,oneof" json:"phone,omitempty"`
+	Email         *string                `protobuf:"bytes,5,opt,name=email,proto3,oneof" json:"email,omitempty"`
+	FirstName     *string                `protobuf:"bytes,6,opt,name=first_name,json=firstName,proto3,oneof" json:"first_name,omitempty"`
+	LastName      *string                `protobuf:"bytes,7,opt,name=last_name,json=lastName,proto3,oneof" json:"last_name,omitempty"`
 	Role          []Role                 `protobuf:"varint,8,rep,packed,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
 	AbTestGroup   []ABTestGroup          `protobuf:"varint,9,rep,packed,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
 	Page          uint64                 `protobuf:"varint,10,opt,name=page,proto3" json:"page,omitempty"`
 	Limit         uint64                 `protobuf:"varint,11,opt,name=limit,proto3" json:"limit,omitempty"`
-	SortBy        SortBy                 `protobuf:"varint,12,opt,name=sort_by,json=sortBy,proto3,enum=users.v1.SortBy" json:"sort_by,omitempty"`
-	SortOrder     SortOrder              `protobuf:"varint,13,opt,name=sort_order,json=sortOrder,proto3,enum=users.v1.SortOrder" json:"sort_order,omitempty"`
+	SortBy        *SortBy                `protobuf:"varint,12,opt,name=sort_by,json=sortBy,proto3,enum=users.v1.SortBy,oneof" json:"sort_by,omitempty"`
+	SortOrder     *SortOrder             `protobuf:"varint,13,opt,name=sort_order,json=sortOrder,proto3,enum=users.v1.SortOrder,oneof" json:"sort_order,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -654,50 +654,50 @@ func (*GetAllUsersRequest) Descriptor() ([]byte, []int) {
 }
 
 func (x *GetAllUsersRequest) GetGuid() uint64 {
-	if x != nil {
-		return x.Guid
+	if x != nil && x.Guid != nil {
+		return *x.Guid
 	}
 	return 0
 }
 
 func (x *GetAllUsersRequest) GetCardNumber() uint64 {
-	if x != nil {
-		return x.CardNumber
+	if x != nil && x.CardNumber != nil {
+		return *x.CardNumber
 	}
 	return 0
 }
 
 func (x *GetAllUsersRequest) GetVerifiedEmail() bool {
-	if x != nil {
-		return x.VerifiedEmail
+	if x != nil && x.VerifiedEmail != nil {
+		return *x.VerifiedEmail
 	}
 	return false
 }
 
 func (x *GetAllUsersRequest) GetPhone() uint64 {
-	if x != nil {
-		return x.Phone
+	if x != nil && x.Phone != nil {
+		return *x.Phone
 	}
 	return 0
 }
 
 func (x *GetAllUsersRequest) GetEmail() string {
-	if x != nil {
-		return x.Email
+	if x != nil && x.Email != nil {
+		return *x.Email
 	}
 	return ""
 }
 
 func (x *GetAllUsersRequest) GetFirstName() string {
-	if x != nil {
-		return x.FirstName
+	if x != nil && x.FirstName != nil {
+		return *x.FirstName
 	}
 	return ""
 }
 
 func (x *GetAllUsersRequest) GetLastName() string {
-	if x != nil {
-		return x.LastName
+	if x != nil && x.LastName != nil {
+		return *x.LastName
 	}
 	return ""
 }
@@ -731,15 +731,15 @@ func (x *GetAllUsersRequest) GetLimit() uint64 {
 }
 
 func (x *GetAllUsersRequest) GetSortBy() SortBy {
-	if x != nil {
-		return x.SortBy
+	if x != nil && x.SortBy != nil {
+		return *x.SortBy
 	}
 	return SortBy_SORT_BY_GUID
 }
 
 func (x *GetAllUsersRequest) GetSortOrder() SortOrder {
-	if x != nil {
-		return x.SortOrder
+	if x != nil && x.SortOrder != nil {
+		return *x.SortOrder
 	}
 	return SortOrder_SORT_ORDER_ASC
 }
@@ -1437,25 +1437,36 @@ const file_users_v1_users_proto_rawDesc = "" +
 	"\x13GetByOneUserRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\":\n" +
 	"\x14GetByOneUserResponse\x12\"\n" +
-	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\xc0\x03\n" +
-	"\x12GetAllUsersRequest\x12\x12\n" +
-	"\x04guid\x18\x01 \x01(\x04R\x04guid\x12\x1f\n" +
-	"\vcard_number\x18\x02 \x01(\x04R\n" +
-	"cardNumber\x12%\n" +
-	"\x0everified_email\x18\x03 \x01(\bR\rverifiedEmail\x12\x14\n" +
-	"\x05phone\x18\x04 \x01(\x04R\x05phone\x12\x14\n" +
-	"\x05email\x18\x05 \x01(\tR\x05email\x12\x1d\n" +
+	"\x04user\x18\x01 \x01(\v2\x0e.users.v1.UserR\x04user\"\xe5\x04\n" +
+	"\x12GetAllUsersRequest\x12\x17\n" +
+	"\x04guid\x18\x01 \x01(\x04H\x00R\x04guid\x88\x01\x01\x12$\n" +
+	"\vcard_number\x18\x02 \x01(\x04H\x01R\n" +
+	"cardNumber\x88\x01\x01\x12*\n" +
+	"\x0everified_email\x18\x03 \x01(\bH\x02R\rverifiedEmail\x88\x01\x01\x12\x19\n" +
+	"\x05phone\x18\x04 \x01(\x04H\x03R\x05phone\x88\x01\x01\x12\x19\n" +
+	"\x05email\x18\x05 \x01(\tH\x04R\x05email\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"first_name\x18\x06 \x01(\tR\tfirstName\x12\x1b\n" +
-	"\tlast_name\x18\a \x01(\tR\blastName\x12\"\n" +
+	"first_name\x18\x06 \x01(\tH\x05R\tfirstName\x88\x01\x01\x12 \n" +
+	"\tlast_name\x18\a \x01(\tH\x06R\blastName\x88\x01\x01\x12\"\n" +
 	"\x04role\x18\b \x03(\x0e2\x0e.users.v1.RoleR\x04role\x129\n" +
 	"\rab_test_group\x18\t \x03(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup\x12\x12\n" +
 	"\x04page\x18\n" +
 	" \x01(\x04R\x04page\x12\x14\n" +
-	"\x05limit\x18\v \x01(\x04R\x05limit\x12)\n" +
-	"\asort_by\x18\f \x01(\x0e2\x10.users.v1.SortByR\x06sortBy\x122\n" +
+	"\x05limit\x18\v \x01(\x04R\x05limit\x12.\n" +
+	"\asort_by\x18\f \x01(\x0e2\x10.users.v1.SortByH\aR\x06sortBy\x88\x01\x01\x127\n" +
 	"\n" +
-	"sort_order\x18\r \x01(\x0e2\x13.users.v1.SortOrderR\tsortOrder\"Q\n" +
+	"sort_order\x18\r \x01(\x0e2\x13.users.v1.SortOrderH\bR\tsortOrder\x88\x01\x01B\a\n" +
+	"\x05_guidB\x0e\n" +
+	"\f_card_numberB\x11\n" +
+	"\x0f_verified_emailB\b\n" +
+	"\x06_phoneB\b\n" +
+	"\x06_emailB\r\n" +
+	"\v_first_nameB\f\n" +
+	"\n" +
+	"_last_nameB\n" +
+	"\n" +
+	"\b_sort_byB\r\n" +
+	"\v_sort_order\"Q\n" +
 	"\x13GetAllUsersResponse\x12$\n" +
 	"\x05users\x18\x01 \x03(\v2\x0e.users.v1.UserR\x05users\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x04R\x05total\"T\n" +
@@ -1634,6 +1645,7 @@ func file_users_v1_users_proto_init() {
 		return
 	}
 	file_users_v1_users_proto_msgTypes[0].OneofWrappers = []any{}
+	file_users_v1_users_proto_msgTypes[4].OneofWrappers = []any{}
 	file_users_v1_users_proto_msgTypes[8].OneofWrappers = []any{}
 	file_users_v1_users_proto_msgTypes[14].OneofWrappers = []any{}
 	type x struct{}
