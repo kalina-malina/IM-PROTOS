@@ -2,7 +2,7 @@ package converter
 
 import (
 	"fmt"
-	rolepb "github.com/kalina-malina/IM-PROTOS/generated/users/v1/role"
+	rolepb "github.com/kalina-malina/IM-PROTOS/generated/users/v1/userRole"
 )
 
 const (
