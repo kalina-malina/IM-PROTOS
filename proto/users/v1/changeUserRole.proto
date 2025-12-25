@@ -3,7 +3,7 @@ syntax = "proto3";
 package users.v1;
 
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
-import "users/v1/role/role.proto";
+import "users/v1/userRole/userRole.proto";
 
 //изменение роли пользователя
 message ChangeUserRoleRequest {

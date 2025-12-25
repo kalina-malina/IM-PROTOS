@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        v6.33.0
-// source: users/v1/role/role.proto
+// source: users/v1/userRole/userRole.proto
 
 package v1
 
@@ -63,11 +63,11 @@ func (x Role) String() string {
 }
 
 func (Role) Descriptor() protoreflect.EnumDescriptor {
-	return file_users_v1_role_role_proto_enumTypes[0].Descriptor()
+	return file_users_v1_userRole_userRole_proto_enumTypes[0].Descriptor()
 }
 
 func (Role) Type() protoreflect.EnumType {
-	return &file_users_v1_role_role_proto_enumTypes[0]
+	return &file_users_v1_userRole_userRole_proto_enumTypes[0]
 }
 
 func (x Role) Number() protoreflect.EnumNumber {
@@ -76,14 +76,14 @@ func (x Role) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use Role.Descriptor instead.
 func (Role) EnumDescriptor() ([]byte, []int) {
-	return file_users_v1_role_role_proto_rawDescGZIP(), []int{0}
+	return file_users_v1_userRole_userRole_proto_rawDescGZIP(), []int{0}
 }
 
-var File_users_v1_role_role_proto protoreflect.FileDescriptor
+var File_users_v1_userRole_userRole_proto protoreflect.FileDescriptor
 
-const file_users_v1_role_role_proto_rawDesc = "" +
+const file_users_v1_userRole_userRole_proto_rawDesc = "" +
 	"\n" +
-	"\x18users/v1/role/role.proto\x12\busers.v1*u\n" +
+	" users/v1/userRole/userRole.proto\x12\busers.v1*u\n" +
 	"\x04Role\x12\x0f\n" +
 	"\vROLE_CLIENT\x10\x00\x12\x0e\n" +
 	"\n" +
@@ -94,22 +94,22 @@ const file_users_v1_role_role_proto_rawDesc = "" +
 	"\x0fROLE_MANAGEMENT\x10\x05B7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
 
 var (
-	file_users_v1_role_role_proto_rawDescOnce sync.Once
-	file_users_v1_role_role_proto_rawDescData []byte
+	file_users_v1_userRole_userRole_proto_rawDescOnce sync.Once
+	file_users_v1_userRole_userRole_proto_rawDescData []byte
 )
 
-func file_users_v1_role_role_proto_rawDescGZIP() []byte {
-	file_users_v1_role_role_proto_rawDescOnce.Do(func() {
-		file_users_v1_role_role_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_role_role_proto_rawDesc), len(file_users_v1_role_role_proto_rawDesc)))
+func file_users_v1_userRole_userRole_proto_rawDescGZIP() []byte {
+	file_users_v1_userRole_userRole_proto_rawDescOnce.Do(func() {
+		file_users_v1_userRole_userRole_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_userRole_userRole_proto_rawDesc), len(file_users_v1_userRole_userRole_proto_rawDesc)))
 	})
-	return file_users_v1_role_role_proto_rawDescData
+	return file_users_v1_userRole_userRole_proto_rawDescData
 }
 
-var file_users_v1_role_role_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_users_v1_role_role_proto_goTypes = []any{
+var file_users_v1_userRole_userRole_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_users_v1_userRole_userRole_proto_goTypes = []any{
 	(Role)(0), // 0: users.v1.Role
 }
-var file_users_v1_role_role_proto_depIdxs = []int32{
+var file_users_v1_userRole_userRole_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -117,26 +117,26 @@ var file_users_v1_role_role_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_users_v1_role_role_proto_init() }
-func file_users_v1_role_role_proto_init() {
-	if File_users_v1_role_role_proto != nil {
+func init() { file_users_v1_userRole_userRole_proto_init() }
+func file_users_v1_userRole_userRole_proto_init() {
+	if File_users_v1_userRole_userRole_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_role_role_proto_rawDesc), len(file_users_v1_role_role_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_userRole_userRole_proto_rawDesc), len(file_users_v1_userRole_userRole_proto_rawDesc)),
 			NumEnums:      1,
 			NumMessages:   0,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_users_v1_role_role_proto_goTypes,
-		DependencyIndexes: file_users_v1_role_role_proto_depIdxs,
-		EnumInfos:         file_users_v1_role_role_proto_enumTypes,
+		GoTypes:           file_users_v1_userRole_userRole_proto_goTypes,
+		DependencyIndexes: file_users_v1_userRole_userRole_proto_depIdxs,
+		EnumInfos:         file_users_v1_userRole_userRole_proto_enumTypes,
 	}.Build()
-	File_users_v1_role_role_proto = out.File
-	file_users_v1_role_role_proto_goTypes = nil
-	file_users_v1_role_role_proto_depIdxs = nil
+	File_users_v1_userRole_userRole_proto = out.File
+	file_users_v1_userRole_userRole_proto_goTypes = nil
+	file_users_v1_userRole_userRole_proto_depIdxs = nil
 }

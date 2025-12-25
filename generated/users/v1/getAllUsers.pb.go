@@ -368,7 +368,7 @@ var File_users_v1_getAllUsers_proto protoreflect.FileDescriptor
 
 const file_users_v1_getAllUsers_proto_rawDesc = "" +
 	"\n" +
-	"\x1ausers/v1/getAllUsers.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x18users/v1/role/role.proto\x1a users/v1/abGroups/abGroups.proto\"\xe5\x04\n" +
+	"\x1ausers/v1/getAllUsers.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a users/v1/userRole/userRole.proto\x1a users/v1/abGroups/abGroups.proto\"\xe5\x04\n" +
 	"\x12GetAllUsersRequest\x12\x17\n" +
 	"\x04guid\x18\x01 \x01(\x04H\x00R\x04guid\x88\x01\x01\x12$\n" +
 	"\vcard_number\x18\x02 \x01(\x04H\x01R\n" +
@@ -457,7 +457,7 @@ func file_users_v1_getAllUsers_proto_init() {
 	if File_users_v1_getAllUsers_proto != nil {
 		return
 	}
-	file_users_v1_role_role_proto_init()
+	file_users_v1_userRole_userRole_proto_init()
 	file_users_v1_abGroups_abGroups_proto_init()
 	file_users_v1_getAllUsers_proto_msgTypes[0].OneofWrappers = []any{}
 	type x struct{}

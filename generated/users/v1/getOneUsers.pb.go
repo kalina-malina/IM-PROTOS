@@ -226,7 +226,7 @@ var File_users_v1_getOneUsers_proto protoreflect.FileDescriptor
 
 const file_users_v1_getOneUsers_proto_rawDesc = "" +
 	"\n" +
-	"\x1ausers/v1/getOneUsers.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x18users/v1/role/role.proto\x1a users/v1/abGroups/abGroups.proto\x1a\"users/v1/childrens/childrens.proto\"%\n" +
+	"\x1ausers/v1/getOneUsers.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a users/v1/userRole/userRole.proto\x1a users/v1/abGroups/abGroups.proto\x1a\"users/v1/childrens/childrens.proto\"%\n" +
 	"\x13GetByOneUserRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"\xa5\x04\n" +
 	"\x14GetByOneUserResponse\x12\x0e\n" +
@@ -285,7 +285,7 @@ func file_users_v1_getOneUsers_proto_init() {
 	if File_users_v1_getOneUsers_proto != nil {
 		return
 	}
-	file_users_v1_role_role_proto_init()
+	file_users_v1_userRole_userRole_proto_init()
 	file_users_v1_abGroups_abGroups_proto_init()
 	file_users_v1_childrens_childrens_proto_init()
 	type x struct{}

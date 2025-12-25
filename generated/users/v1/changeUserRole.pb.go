@@ -122,7 +122,7 @@ var File_users_v1_changeUserRole_proto protoreflect.FileDescriptor
 
 const file_users_v1_changeUserRole_proto_rawDesc = "" +
 	"\n" +
-	"\x1dusers/v1/changeUserRole.proto\x12\busers.v1\x1a\x18users/v1/role/role.proto\"T\n" +
+	"\x1dusers/v1/changeUserRole.proto\x12\busers.v1\x1a users/v1/userRole/userRole.proto\"T\n" +
 	"\x15ChangeUserRoleRequest\x12\x17\n" +
 	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12\"\n" +
 	"\x04role\x18\x02 \x01(\x0e2\x0e.users.v1.RoleR\x04role\"2\n" +
@@ -161,7 +161,7 @@ func file_users_v1_changeUserRole_proto_init() {
 	if File_users_v1_changeUserRole_proto != nil {
 		return
 	}
-	file_users_v1_role_role_proto_init()
+	file_users_v1_userRole_userRole_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
