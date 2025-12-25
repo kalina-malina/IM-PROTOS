@@ -82,7 +82,7 @@ const file_users_v1_ab_groups_ab_groups_proto_rawDesc = "" +
 	"\x0fAB_TEST_GROUP_A\x10\x00\x12\x13\n" +
 	"\x0fAB_TEST_GROUP_B\x10\x01\x12\x13\n" +
 	"\x0fAB_TEST_GROUP_C\x10\x02\x12\x13\n" +
-	"\x0fAB_TEST_GROUP_D\x10\x03BKZIgithub.com/kalina-malina/IM-PROTOS/generated/users/v1/ab_groups/ab_groupsb\x06proto3"
+	"\x0fAB_TEST_GROUP_D\x10\x03BAZ?github.com/kalina-malina/IM-PROTOS/generated/users/v1/ab_groupsb\x06proto3"
 
 var (
 	file_users_v1_ab_groups_ab_groups_proto_rawDescOnce sync.Once

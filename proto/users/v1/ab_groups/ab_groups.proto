@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package users.v1.ABTest;
 
-option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ab_groups/ab_groups";
+option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ab_groups";
 
 
 enum ABTestGroup {
