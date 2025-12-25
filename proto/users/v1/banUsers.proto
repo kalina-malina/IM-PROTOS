@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package users.v1;
+
+option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
+import "users/v1/banReasonType/banreason.proto";
+
+
+//Блокировка пользователя
+message BanUserRequest {
+  uint64 id_user = 1;
+  BanReasonTypeEnum reason = 2;
+  optional string reason_description = 3;
+}
+
+message BanUserResponse {
+  bool success = 1;
+}

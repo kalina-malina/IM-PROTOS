@@ -7,6 +7,17 @@ import "google/protobuf/empty.proto";
 import "users/v1/getallUsers.proto";
 import "users/v1/role/role.proto";
 import "users/v1/abGroups/abGroups.proto";
+import "users/v1/childrens/childrens.proto";
+import "users/v1/banReasonType/banreason.proto";
+import "users/v1/settingUsers.proto";
+import "users/v1/banUsers.proto";
+import "users/v1/unbanUsers.proto";
+import "users/v1/changeUserRole.proto";
+import "users/v1/getOneUsers.proto";
+import "users/v1/updateUserProfile.proto";
+
+
+
 
 service UsersService {
   // доступно пользователям всем
@@ -24,73 +35,14 @@ service UsersService {
   
 }
 
-////////////////////////////////////////////////////////////
-//доступно пользователям всем
-message UpdateUserProfileRequest {
-  uint64 id = 1;
-  optional string first_name = 2;
-  optional string last_name = 3;
-  optional string date_of_birth = 4;
-  optional string email = 5;
-  repeated Childrens childrens = 6;
-}
-
-message UpdateUserProfileResponse {
-  bool success = 1;
-  string msg = 2;
-  // string first_name = 1;
-  // string last_name = 2;
-  // string date_of_birth = 3;
-  // string email = 4;
-  // bool verified_email = 5;
-  // string phone = 6;
-  // repeated Childrens childrens = 7;
-}
-
-message GetByOneUserRequest {
-  string id = 1;
-}
-
-message GetByOneUserResponse {
-  User user = 1;
-}
-
-
-////////////////////////////////////////////////////////////
-//доступно только администратору
 
 
 
 
-//изменение роли пользователя
-message ChangeUserRoleRequest {
-  uint64 id_user = 1;
-  Role role = 2;
-}
 
-message ChangeUserRoleResponse {
-  string success = 1;
-}
 
-//Блокировка пользователя
-message BanUserRequest {
-  uint64 id_user = 1;
-  BanReasonTypeEnum reason = 2;
-  optional string reason_description = 3;
-}
 
-message BanUserResponse {
-  bool success = 1;
-}
-//разблокирока пользовательй
-message UnbanUserRequest {
-  uint64 id_user = 1;
-  string reason = 2;
-}
 
-message UnbanUserResponse {
-  bool success = 1;
-}
 
 ////////////////////////////////////////////////////////////
 //общее
@@ -113,56 +65,10 @@ message User{
   
 }
 
-message Childrens {
-  string first_name = 1;
-  string last_name = 2;
-  string date_of_birth = 3;
-}
-
-message UserSettings {
-  bool push_notifications = 1;        // Push уведомления
-  bool email_notifications = 2;       // Email уведомления
-  bool sms_notifications = 3;         // SMS уведомления
-  bool marketing_emails = 4;          // Маркетинговые рассылки
-  bool marketing_sms = 5;             // Маркетинговые SMS
-  bool order_updates = 6;             // Уведомления о заказах
-  bool promotional_offers = 7;        // Промо-акции
-  optional uint32 last_selected_store_id = 8; // Последний выбранный магазин
-}
 
 
 
-enum ReasonTypeEnum {
-  // не понравился продукт и услуга
-  REASON_NOT_LIKED_PRODUCT = 0;
-  // не понравился сервис и обслуживание
-  REASON_NOT_LIKED_SERVICE = 1;
-  // долгая доставка
-  REASON_LONG_DELIVERY = 2;
-  // не понравился качество и обслуживание
-  REASON_NOT_LIKED_QUALITY_AND_SERVICE = 3;
-  // не понравился персонал  
-  REASON_NOT_LIKED_PERSONAL = 4;
-  // не понравился местоположение
-  REASON_NOT_LIKED_LOCATION = 5;
-  // не понравился время работы
-  REASON_NOT_LIKED_TIME = 6;
-  // не понравился цена
-  REASON_NOT_LIKED_PRICE = 7;
-  // другое
-  REASON_OTHER = 8;
-}
 
-enum BanReasonTypeEnum {
-  //не пристойное поведение
-  BAN_REASON_UNPROPER_BEHAVIOR = 0;
-  //спам
-  BAN_REASON_SPAM = 1;
-  //нарушение правил
-  BAN_REASON_VIOLATION_OF_RULES = 2;
-  //другое
-  BAN_REASON_OTHER = 3;
-}
 
 
 

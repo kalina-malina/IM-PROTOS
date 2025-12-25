@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package users.v1;
+
+option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
+import "users/v1/role/role.proto";
+
+//изменение роли пользователя
+message ChangeUserRoleRequest {
+  uint64 id_user = 1;
+  Role role = 2;
+}
+
+message ChangeUserRoleResponse {
+  string success = 1;
+}

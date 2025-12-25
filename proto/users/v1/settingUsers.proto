@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package users.v1;
+
+option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
+
+
+message UserSettings {
+  bool push_notifications = 1;        // Push уведомления
+  bool email_notifications = 2;       // Email уведомления
+  bool sms_notifications = 3;         // SMS уведомления
+  bool marketing_emails = 4;          // Маркетинговые рассылки
+  bool marketing_sms = 5;             // Маркетинговые SMS
+  bool order_updates = 6;             // Уведомления о заказах
+  bool promotional_offers = 7;        // Промо-акции
+  optional uint32 last_selected_store_id = 8; // Последний выбранный магазин
+}

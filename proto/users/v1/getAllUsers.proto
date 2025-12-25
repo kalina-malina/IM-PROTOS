@@ -31,11 +31,10 @@ message GetAllUsersResponse {
   uint64 total = 2;
 }
 
-
 message UsersObject {
   uint64 guid = 1;
-  string first_name = 2;
-  string last_name = 3;
+  string firstname = 2;
+  string lastname = 3;
   string email = 4;
   uint64 phone = 5;
   bool verified_email = 6;
