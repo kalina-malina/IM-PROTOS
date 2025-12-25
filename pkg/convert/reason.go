@@ -2,7 +2,7 @@ package converter
 
 import (
 	"fmt"
-	banreason "github.com/kalina-malina/IM-PROTOS/generated/users/v1/banReasonType"
+	banreason "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ban_reason_type"
 )
 
 const (

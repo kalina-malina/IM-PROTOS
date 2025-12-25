@@ -3,7 +3,7 @@ package converter
 import (
 	"fmt"
 	getUsers "github.com/kalina-malina/IM-PROTOS/generated/users/v1"
-	abGroups "github.com/kalina-malina/IM-PROTOS/generated/users/v1/abGroups"
+	abGroups "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ab_groups"
 )
 
 const (
