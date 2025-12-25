@@ -26,30 +26,59 @@ generate:
 	@echo "Генерация proto файлов..."
 	@mkdir -p generated
 
-	@echo "Генерация auth service..."
-	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
-		--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
-		--proto_path=proto \
-		proto/auth/v1/auth.proto
+	# Генерация Go кода из всех proto файлов
+generate:
+	@echo "Генерация proto файлов..."
+	@mkdir -p generated
+	@for service_dir in $$(find proto -type d -mindepth 1); do \
+		for proto_file in $$(find $$service_dir -maxdepth 1 -name "*.proto" -type f); do \
+			if [ -f $$proto_file ]; then \
+				echo "Генерация $$proto_file..."; \
+				PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
+					--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
+					--proto_path=proto \
+					$$proto_file || exit 1; \
+			fi; \
+		done; \
+	done
+	@echo "✅ Генерация завершена! Файлы в generated/"
+
+	# @echo "Генерация auth service..."
+	# PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
+	# 	--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
+	# 	--proto_path=proto \
+	# 	proto/auth/v1/auth.proto
 
 
-	@echo "Генерация user service..."
-	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
-		--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
-		--proto_path=proto \
-		proto/users/v1/users.proto
+	# @echo "Генерация user service..."
+	# PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
+	# 	--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
+	# 	--proto_path=proto \
+	# 	proto/users/v1/users.proto \
+	# 	proto/users/v1/updateUser.proto \
+	# 	proto/users/v1/banUsers.proto \
+	# 	proto/users/v1/unbanUsers.proto \
+	# 	proto/users/v1/changeUserRole.proto \
+	# 	proto/users/v1/byOneUsers.proto \
+	# 	proto/users/v1/getOneUsers.proto \
+	# 	proto/users/v1/updateUserProfile.proto \
+	# 	proto/users/v1/childrens/childrens.proto \
+	# 	proto/users/v1/role/role.proto \
+	# 	proto/users/v1/abGroups/abGroups.proto \
+	# 	proto/users/v1/banReasonType/banreason.proto \
+	# 	proto/users/v1/settingUsers.proto
 
-	@echo "Генерация user service..."
-	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
-		--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
-		--proto_path=proto \
-		proto/media-service/v1/media.proto
+	# @echo "Генерация user service..."
+	# PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
+	# 	--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
+	# 	--proto_path=proto \
+	# 	proto/media-service/v1/media.proto
 
-	@echo "Генерация product service..."
-	PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
-		--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
-		--proto_path=proto \
-		proto/product-service/v1/groups/groups.proto
+	# @echo "Генерация product service..."
+	# PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
+	# 	--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
+	# 	--proto_path=proto \
+	# 	proto/product-service/v1/groups/groups.proto
     
 
 	# @echo "Генерация user models..."
