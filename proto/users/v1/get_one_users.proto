@@ -27,7 +27,7 @@ message GetByOneUserResponse {
   string last_coment_delivery = 11;
   bool  full_blocked = 12;
   uint32 selected_store_id = 13;
-  users.v1.ABTestGroup.ABTestGroup ab_test_group = 15;
+  users.v1.ABTest.ABTestGroup ab_test_group = 15;
   repeated users.v1.Childrens.Childrens children = 14;
 }
 

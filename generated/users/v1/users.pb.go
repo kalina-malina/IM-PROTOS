@@ -41,7 +41,7 @@ type User struct {
 	LastComentDelivery string                 `protobuf:"bytes,11,opt,name=last_coment_delivery,json=lastComentDelivery,proto3" json:"last_coment_delivery,omitempty"`
 	FullBlocked        bool                   `protobuf:"varint,12,opt,name=full_blocked,json=fullBlocked,proto3" json:"full_blocked,omitempty"`
 	SelectedStoreId    uint32                 `protobuf:"varint,13,opt,name=selected_store_id,json=selectedStoreId,proto3" json:"selected_store_id,omitempty"`
-	AbTestGroup        ab_groups.ABTestGroup  `protobuf:"varint,15,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup.ABTestGroup" json:"ab_test_group,omitempty"`
+	AbTestGroup        ab_groups.ABTestGroup  `protobuf:"varint,15,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTest.ABTestGroup" json:"ab_test_group,omitempty"`
 	Children           []*childrens.Childrens `protobuf:"bytes,14,rep,name=children,proto3" json:"children,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
@@ -186,7 +186,7 @@ var File_users_v1_users_proto protoreflect.FileDescriptor
 
 const file_users_v1_users_proto_rawDesc = "" +
 	"\n" +
-	"\x14users/v1/users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1cusers/v1/get_all_users.proto\x1a\x1dusers/v1/role/user_role.proto\x1a\"users/v1/ab_groups/ab_groups.proto\x1a\"users/v1/childrens/childrens.proto\x1a)users/v1/ban_reason_type/ban_reason.proto\x1a\x1cusers/v1/setting_users.proto\x1a\x18users/v1/ban_users.proto\x1a\x1ausers/v1/unban_users.proto\x1a\x1fusers/v1/change_user_role.proto\x1a\x1cusers/v1/get_one_users.proto\x1a\"users/v1/update_user_profile.proto\"\xb4\x04\n" +
+	"\x14users/v1/users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1cusers/v1/get_all_users.proto\x1a\x1dusers/v1/role/user_role.proto\x1a\"users/v1/ab_groups/ab_groups.proto\x1a\"users/v1/childrens/childrens.proto\x1a)users/v1/ban_reason_type/ban_reason.proto\x1a\x1cusers/v1/setting_users.proto\x1a\x18users/v1/ban_users.proto\x1a\x1ausers/v1/unban_users.proto\x1a\x1fusers/v1/change_user_role.proto\x1a\x1cusers/v1/get_one_users.proto\x1a\"users/v1/update_user_profile.proto\"\xaf\x04\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x18\n" +
 	"\adeleted\x18\x02 \x01(\bR\adeleted\x12+\n" +
@@ -203,8 +203,8 @@ const file_users_v1_users_proto_rawDesc = "" +
 	" \x01(\bR\rverifiedEmail\x120\n" +
 	"\x14last_coment_delivery\x18\v \x01(\tR\x12lastComentDelivery\x12!\n" +
 	"\ffull_blocked\x18\f \x01(\bR\vfullBlocked\x12*\n" +
-	"\x11selected_store_id\x18\r \x01(\rR\x0fselectedStoreId\x12E\n" +
-	"\rab_test_group\x18\x0f \x01(\x0e2!.users.v1.ABTestGroup.ABTestGroupR\vabTestGroup\x129\n" +
+	"\x11selected_store_id\x18\r \x01(\rR\x0fselectedStoreId\x12@\n" +
+	"\rab_test_group\x18\x0f \x01(\x0e2\x1c.users.v1.ABTest.ABTestGroupR\vabTestGroup\x129\n" +
 	"\bchildren\x18\x0e \x03(\v2\x1d.users.v1.Childrens.ChildrensR\bchildren2\xe2\x03\n" +
 	"\fUsersService\x12\\\n" +
 	"\x11UpdateUserProfile\x12\".users.v1.UpdateUserProfileRequest\x1a#.users.v1.UpdateUserProfileResponse\x12M\n" +
@@ -230,7 +230,7 @@ var file_users_v1_users_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_users_v1_users_proto_goTypes = []any{
 	(*User)(nil),                      // 0: users.v1.User
 	(user_role.UserRole)(0),           // 1: users.v1.Role.UserRole
-	(ab_groups.ABTestGroup)(0),        // 2: users.v1.ABTestGroup.ABTestGroup
+	(ab_groups.ABTestGroup)(0),        // 2: users.v1.ABTest.ABTestGroup
 	(*childrens.Childrens)(nil),       // 3: users.v1.Childrens.Childrens
 	(*UpdateUserProfileRequest)(nil),  // 4: users.v1.UpdateUserProfileRequest
 	(*GetByOneUserRequest)(nil),       // 5: users.v1.GetByOneUserRequest
@@ -247,7 +247,7 @@ var file_users_v1_users_proto_goTypes = []any{
 }
 var file_users_v1_users_proto_depIdxs = []int32{
 	1,  // 0: users.v1.User.role:type_name -> users.v1.Role.UserRole
-	2,  // 1: users.v1.User.ab_test_group:type_name -> users.v1.ABTestGroup.ABTestGroup
+	2,  // 1: users.v1.User.ab_test_group:type_name -> users.v1.ABTest.ABTestGroup
 	3,  // 2: users.v1.User.children:type_name -> users.v1.Childrens.Childrens
 	4,  // 3: users.v1.UsersService.UpdateUserProfile:input_type -> users.v1.UpdateUserProfileRequest
 	5,  // 4: users.v1.UsersService.GetByOneUser:input_type -> users.v1.GetByOneUserRequest

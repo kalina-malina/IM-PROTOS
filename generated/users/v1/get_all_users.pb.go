@@ -148,7 +148,7 @@ type GetAllUsersRequest struct {
 	FirstName     *string                 `protobuf:"bytes,6,opt,name=first_name,json=firstName,proto3,oneof" json:"first_name,omitempty"`
 	LastName      *string                 `protobuf:"bytes,7,opt,name=last_name,json=lastName,proto3,oneof" json:"last_name,omitempty"`
 	Role          []user_role.UserRole    `protobuf:"varint,8,rep,packed,name=role,proto3,enum=users.v1.Role.UserRole" json:"role,omitempty"`
-	AbTestGroup   []ab_groups.ABTestGroup `protobuf:"varint,9,rep,packed,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup.ABTestGroup" json:"ab_test_group,omitempty"`
+	AbTestGroup   []ab_groups.ABTestGroup `protobuf:"varint,9,rep,packed,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTest.ABTestGroup" json:"ab_test_group,omitempty"`
 	Page          uint64                  `protobuf:"varint,10,opt,name=page,proto3" json:"page,omitempty"`
 	Limit         uint64                  `protobuf:"varint,11,opt,name=limit,proto3" json:"limit,omitempty"`
 	SortBy        *SortBy                 `protobuf:"varint,12,opt,name=sort_by,json=sortBy,proto3,enum=users.v1.SortBy,oneof" json:"sort_by,omitempty"`
@@ -378,7 +378,7 @@ var File_users_v1_get_all_users_proto protoreflect.FileDescriptor
 
 const file_users_v1_get_all_users_proto_rawDesc = "" +
 	"\n" +
-	"\x1cusers/v1/get_all_users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dusers/v1/role/user_role.proto\x1a\"users/v1/ab_groups/ab_groups.proto\"\xfa\x04\n" +
+	"\x1cusers/v1/get_all_users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dusers/v1/role/user_role.proto\x1a\"users/v1/ab_groups/ab_groups.proto\"\xf5\x04\n" +
 	"\x12GetAllUsersRequest\x12\x17\n" +
 	"\x04guid\x18\x01 \x01(\x04H\x00R\x04guid\x88\x01\x01\x12$\n" +
 	"\vcard_number\x18\x02 \x01(\x04H\x01R\n" +
@@ -389,8 +389,8 @@ const file_users_v1_get_all_users_proto_rawDesc = "" +
 	"\n" +
 	"first_name\x18\x06 \x01(\tH\x05R\tfirstName\x88\x01\x01\x12 \n" +
 	"\tlast_name\x18\a \x01(\tH\x06R\blastName\x88\x01\x01\x12+\n" +
-	"\x04role\x18\b \x03(\x0e2\x17.users.v1.Role.UserRoleR\x04role\x12E\n" +
-	"\rab_test_group\x18\t \x03(\x0e2!.users.v1.ABTestGroup.ABTestGroupR\vabTestGroup\x12\x12\n" +
+	"\x04role\x18\b \x03(\x0e2\x17.users.v1.Role.UserRoleR\x04role\x12@\n" +
+	"\rab_test_group\x18\t \x03(\x0e2\x1c.users.v1.ABTest.ABTestGroupR\vabTestGroup\x12\x12\n" +
 	"\x04page\x18\n" +
 	" \x01(\x04R\x04page\x12\x14\n" +
 	"\x05limit\x18\v \x01(\x04R\x05limit\x12.\n" +
@@ -448,11 +448,11 @@ var file_users_v1_get_all_users_proto_goTypes = []any{
 	(*GetAllUsersResponse)(nil), // 3: users.v1.GetAllUsersResponse
 	(*UsersObject)(nil),         // 4: users.v1.UsersObject
 	(user_role.UserRole)(0),     // 5: users.v1.Role.UserRole
-	(ab_groups.ABTestGroup)(0),  // 6: users.v1.ABTestGroup.ABTestGroup
+	(ab_groups.ABTestGroup)(0),  // 6: users.v1.ABTest.ABTestGroup
 }
 var file_users_v1_get_all_users_proto_depIdxs = []int32{
 	5, // 0: users.v1.GetAllUsersRequest.role:type_name -> users.v1.Role.UserRole
-	6, // 1: users.v1.GetAllUsersRequest.ab_test_group:type_name -> users.v1.ABTestGroup.ABTestGroup
+	6, // 1: users.v1.GetAllUsersRequest.ab_test_group:type_name -> users.v1.ABTest.ABTestGroup
 	0, // 2: users.v1.GetAllUsersRequest.sort_by:type_name -> users.v1.SortBy
 	1, // 3: users.v1.GetAllUsersRequest.sort_order:type_name -> users.v1.SortOrder
 	4, // 4: users.v1.GetAllUsersResponse.users:type_name -> users.v1.UsersObject

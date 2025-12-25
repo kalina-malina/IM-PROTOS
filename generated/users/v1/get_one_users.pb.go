@@ -84,7 +84,7 @@ type GetByOneUserResponse struct {
 	LastComentDelivery string                 `protobuf:"bytes,11,opt,name=last_coment_delivery,json=lastComentDelivery,proto3" json:"last_coment_delivery,omitempty"`
 	FullBlocked        bool                   `protobuf:"varint,12,opt,name=full_blocked,json=fullBlocked,proto3" json:"full_blocked,omitempty"`
 	SelectedStoreId    uint32                 `protobuf:"varint,13,opt,name=selected_store_id,json=selectedStoreId,proto3" json:"selected_store_id,omitempty"`
-	AbTestGroup        ab_groups.ABTestGroup  `protobuf:"varint,15,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup.ABTestGroup" json:"ab_test_group,omitempty"`
+	AbTestGroup        ab_groups.ABTestGroup  `protobuf:"varint,15,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTest.ABTestGroup" json:"ab_test_group,omitempty"`
 	Children           []*childrens.Childrens `protobuf:"bytes,14,rep,name=children,proto3" json:"children,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
@@ -231,7 +231,7 @@ const file_users_v1_get_one_users_proto_rawDesc = "" +
 	"\n" +
 	"\x1cusers/v1/get_one_users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dusers/v1/role/user_role.proto\x1a\"users/v1/ab_groups/ab_groups.proto\x1a\"users/v1/childrens/childrens.proto\"%\n" +
 	"\x13GetByOneUserRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"\xc4\x04\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"\xbf\x04\n" +
 	"\x14GetByOneUserResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x18\n" +
 	"\adeleted\x18\x02 \x01(\bR\adeleted\x12+\n" +
@@ -248,8 +248,8 @@ const file_users_v1_get_one_users_proto_rawDesc = "" +
 	" \x01(\bR\rverifiedEmail\x120\n" +
 	"\x14last_coment_delivery\x18\v \x01(\tR\x12lastComentDelivery\x12!\n" +
 	"\ffull_blocked\x18\f \x01(\bR\vfullBlocked\x12*\n" +
-	"\x11selected_store_id\x18\r \x01(\rR\x0fselectedStoreId\x12E\n" +
-	"\rab_test_group\x18\x0f \x01(\x0e2!.users.v1.ABTestGroup.ABTestGroupR\vabTestGroup\x129\n" +
+	"\x11selected_store_id\x18\r \x01(\rR\x0fselectedStoreId\x12@\n" +
+	"\rab_test_group\x18\x0f \x01(\x0e2\x1c.users.v1.ABTest.ABTestGroupR\vabTestGroup\x129\n" +
 	"\bchildren\x18\x0e \x03(\v2\x1d.users.v1.Childrens.ChildrensR\bchildrenB7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
 
 var (
@@ -269,12 +269,12 @@ var file_users_v1_get_one_users_proto_goTypes = []any{
 	(*GetByOneUserRequest)(nil),  // 0: users.v1.GetByOneUserRequest
 	(*GetByOneUserResponse)(nil), // 1: users.v1.GetByOneUserResponse
 	(user_role.UserRole)(0),      // 2: users.v1.Role.UserRole
-	(ab_groups.ABTestGroup)(0),   // 3: users.v1.ABTestGroup.ABTestGroup
+	(ab_groups.ABTestGroup)(0),   // 3: users.v1.ABTest.ABTestGroup
 	(*childrens.Childrens)(nil),  // 4: users.v1.Childrens.Childrens
 }
 var file_users_v1_get_one_users_proto_depIdxs = []int32{
 	2, // 0: users.v1.GetByOneUserResponse.role:type_name -> users.v1.Role.UserRole
-	3, // 1: users.v1.GetByOneUserResponse.ab_test_group:type_name -> users.v1.ABTestGroup.ABTestGroup
+	3, // 1: users.v1.GetByOneUserResponse.ab_test_group:type_name -> users.v1.ABTest.ABTestGroup
 	4, // 2: users.v1.GetByOneUserResponse.children:type_name -> users.v1.Childrens.Childrens
 	3, // [3:3] is the sub-list for method output_type
 	3, // [3:3] is the sub-list for method input_type

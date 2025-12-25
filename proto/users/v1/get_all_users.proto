@@ -19,7 +19,7 @@ message GetAllUsersRequest {
   optional string first_name = 6;
   optional string last_name = 7;
   repeated users.v1.Role.UserRole role = 8;
-  repeated users.v1.ABTestGroup.ABTestGroup ab_test_group = 9;
+  repeated users.v1.ABTest.ABTestGroup ab_test_group = 9;
   uint64 page = 10;
   uint64 limit = 11;
   optional SortBy sort_by = 12;

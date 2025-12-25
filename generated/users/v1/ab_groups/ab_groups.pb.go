@@ -77,7 +77,7 @@ var File_users_v1_ab_groups_ab_groups_proto protoreflect.FileDescriptor
 
 const file_users_v1_ab_groups_ab_groups_proto_rawDesc = "" +
 	"\n" +
-	"\"users/v1/ab_groups/ab_groups.proto\x12\x14users.v1.ABTestGroup*a\n" +
+	"\"users/v1/ab_groups/ab_groups.proto\x12\x0fusers.v1.ABTest*a\n" +
 	"\vABTestGroup\x12\x13\n" +
 	"\x0fAB_TEST_GROUP_A\x10\x00\x12\x13\n" +
 	"\x0fAB_TEST_GROUP_B\x10\x01\x12\x13\n" +
@@ -98,7 +98,7 @@ func file_users_v1_ab_groups_ab_groups_proto_rawDescGZIP() []byte {
 
 var file_users_v1_ab_groups_ab_groups_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_users_v1_ab_groups_ab_groups_proto_goTypes = []any{
-	(ABTestGroup)(0), // 0: users.v1.ABTestGroup.ABTestGroup
+	(ABTestGroup)(0), // 0: users.v1.ABTest.ABTestGroup
 }
 var file_users_v1_ab_groups_ab_groups_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
