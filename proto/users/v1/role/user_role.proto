@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package users.v1.Role;
 
-option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1/role/user_role";
+option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1/role";
 
 enum UserRole {
   USER_ROLE_CLIENT = 0;

@@ -9,7 +9,7 @@ package v1
 import (
 	ab_groups "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ab_groups"
 	childrens "github.com/kalina-malina/IM-PROTOS/generated/users/v1/childrens"
-	user_role "github.com/kalina-malina/IM-PROTOS/generated/users/v1/role/user_role"
+	role "github.com/kalina-malina/IM-PROTOS/generated/users/v1/role"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/known/emptypb"
@@ -73,7 +73,7 @@ type GetByOneUserResponse struct {
 	state              protoimpl.MessageState `protogen:"open.v1"`
 	Id                 uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Deleted            bool                   `protobuf:"varint,2,opt,name=deleted,proto3" json:"deleted,omitempty"`
-	Role               user_role.UserRole     `protobuf:"varint,3,opt,name=role,proto3,enum=users.v1.Role.UserRole" json:"role,omitempty"`
+	Role               role.UserRole          `protobuf:"varint,3,opt,name=role,proto3,enum=users.v1.Role.UserRole" json:"role,omitempty"`
 	FirstName          string                 `protobuf:"bytes,4,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName           string                 `protobuf:"bytes,5,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 	DateOfBirth        string                 `protobuf:"bytes,6,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
@@ -134,11 +134,11 @@ func (x *GetByOneUserResponse) GetDeleted() bool {
 	return false
 }
 
-func (x *GetByOneUserResponse) GetRole() user_role.UserRole {
+func (x *GetByOneUserResponse) GetRole() role.UserRole {
 	if x != nil {
 		return x.Role
 	}
-	return user_role.UserRole(0)
+	return role.UserRole(0)
 }
 
 func (x *GetByOneUserResponse) GetFirstName() string {
@@ -268,7 +268,7 @@ var file_users_v1_get_one_users_proto_msgTypes = make([]protoimpl.MessageInfo, 2
 var file_users_v1_get_one_users_proto_goTypes = []any{
 	(*GetByOneUserRequest)(nil),  // 0: users.v1.GetByOneUserRequest
 	(*GetByOneUserResponse)(nil), // 1: users.v1.GetByOneUserResponse
-	(user_role.UserRole)(0),      // 2: users.v1.Role.UserRole
+	(role.UserRole)(0),           // 2: users.v1.Role.UserRole
 	(ab_groups.ABTestGroup)(0),   // 3: users.v1.ABTest.ABTestGroup
 	(*childrens.Childrens)(nil),  // 4: users.v1.Childrens.Childrens
 }

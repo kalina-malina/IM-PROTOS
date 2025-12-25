@@ -8,7 +8,7 @@ package v1
 
 import (
 	ab_groups "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ab_groups"
-	user_role "github.com/kalina-malina/IM-PROTOS/generated/users/v1/role/user_role"
+	role "github.com/kalina-malina/IM-PROTOS/generated/users/v1/role"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/known/emptypb"
@@ -147,7 +147,7 @@ type GetAllUsersRequest struct {
 	Email         *string                 `protobuf:"bytes,5,opt,name=email,proto3,oneof" json:"email,omitempty"`
 	FirstName     *string                 `protobuf:"bytes,6,opt,name=first_name,json=firstName,proto3,oneof" json:"first_name,omitempty"`
 	LastName      *string                 `protobuf:"bytes,7,opt,name=last_name,json=lastName,proto3,oneof" json:"last_name,omitempty"`
-	Role          []user_role.UserRole    `protobuf:"varint,8,rep,packed,name=role,proto3,enum=users.v1.Role.UserRole" json:"role,omitempty"`
+	Role          []role.UserRole         `protobuf:"varint,8,rep,packed,name=role,proto3,enum=users.v1.Role.UserRole" json:"role,omitempty"`
 	AbTestGroup   []ab_groups.ABTestGroup `protobuf:"varint,9,rep,packed,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTest.ABTestGroup" json:"ab_test_group,omitempty"`
 	Page          uint64                  `protobuf:"varint,10,opt,name=page,proto3" json:"page,omitempty"`
 	Limit         uint64                  `protobuf:"varint,11,opt,name=limit,proto3" json:"limit,omitempty"`
@@ -236,7 +236,7 @@ func (x *GetAllUsersRequest) GetLastName() string {
 	return ""
 }
 
-func (x *GetAllUsersRequest) GetRole() []user_role.UserRole {
+func (x *GetAllUsersRequest) GetRole() []role.UserRole {
 	if x != nil {
 		return x.Role
 	}
@@ -447,7 +447,7 @@ var file_users_v1_get_all_users_proto_goTypes = []any{
 	(*GetAllUsersRequest)(nil),  // 2: users.v1.GetAllUsersRequest
 	(*GetAllUsersResponse)(nil), // 3: users.v1.GetAllUsersResponse
 	(*UsersObject)(nil),         // 4: users.v1.UsersObject
-	(user_role.UserRole)(0),     // 5: users.v1.Role.UserRole
+	(role.UserRole)(0),          // 5: users.v1.Role.UserRole
 	(ab_groups.ABTestGroup)(0),  // 6: users.v1.ABTest.ABTestGroup
 }
 var file_users_v1_get_all_users_proto_depIdxs = []int32{
