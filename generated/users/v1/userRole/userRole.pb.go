@@ -4,7 +4,7 @@
 // 	protoc        v6.33.0
 // source: users/v1/userRole/userRole.proto
 
-package v1
+package userRole
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -91,7 +91,7 @@ const file_users_v1_userRole_userRole_proto_rawDesc = "" +
 	"\rROLE_OPERATOR\x10\x02\x12\x12\n" +
 	"\x0eROLE_MARKETING\x10\x03\x12\x10\n" +
 	"\fROLE_SUPPORT\x10\x04\x12\x13\n" +
-	"\x0fROLE_MANAGEMENT\x10\x05B7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
+	"\x0fROLE_MANAGEMENT\x10\x05BIZGgithub.com/kalina-malina/IM-PROTOS/generated/users/v1/userRole/userRoleb\x06proto3"
 
 var (
 	file_users_v1_userRole_userRole_proto_rawDescOnce sync.Once

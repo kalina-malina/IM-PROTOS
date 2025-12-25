@@ -4,7 +4,7 @@
 // 	protoc        v6.33.0
 // source: users/v1/abGroups/abGroups.proto
 
-package v1
+package abGroups
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -82,7 +82,7 @@ const file_users_v1_abGroups_abGroups_proto_rawDesc = "" +
 	"\x0fAB_TEST_GROUP_A\x10\x00\x12\x13\n" +
 	"\x0fAB_TEST_GROUP_B\x10\x01\x12\x13\n" +
 	"\x0fAB_TEST_GROUP_C\x10\x02\x12\x13\n" +
-	"\x0fAB_TEST_GROUP_D\x10\x03B7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
+	"\x0fAB_TEST_GROUP_D\x10\x03BIZGgithub.com/kalina-malina/IM-PROTOS/generated/users/v1/abGroups/abGroupsb\x06proto3"
 
 var (
 	file_users_v1_abGroups_abGroups_proto_rawDescOnce sync.Once

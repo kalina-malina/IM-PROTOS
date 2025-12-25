@@ -7,6 +7,7 @@
 package v1
 
 import (
+	childrens "github.com/kalina-malina/IM-PROTOS/generated/users/v1/childrens/childrens"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -29,7 +30,7 @@ type UpdateUserProfileRequest struct {
 	LastName      *string                `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3,oneof" json:"last_name,omitempty"`
 	DateOfBirth   *string                `protobuf:"bytes,4,opt,name=date_of_birth,json=dateOfBirth,proto3,oneof" json:"date_of_birth,omitempty"`
 	Email         *string                `protobuf:"bytes,5,opt,name=email,proto3,oneof" json:"email,omitempty"`
-	Childrens     []*Childrens           `protobuf:"bytes,6,rep,name=childrens,proto3" json:"childrens,omitempty"`
+	Childrens     []*childrens.Childrens `protobuf:"bytes,6,rep,name=childrens,proto3" json:"childrens,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -99,7 +100,7 @@ func (x *UpdateUserProfileRequest) GetEmail() string {
 	return ""
 }
 
-func (x *UpdateUserProfileRequest) GetChildrens() []*Childrens {
+func (x *UpdateUserProfileRequest) GetChildrens() []*childrens.Childrens {
 	if x != nil {
 		return x.Childrens
 	}
@@ -196,7 +197,7 @@ var file_users_v1_updateUserProfile_proto_msgTypes = make([]protoimpl.MessageInf
 var file_users_v1_updateUserProfile_proto_goTypes = []any{
 	(*UpdateUserProfileRequest)(nil),  // 0: users.v1.UpdateUserProfileRequest
 	(*UpdateUserProfileResponse)(nil), // 1: users.v1.UpdateUserProfileResponse
-	(*Childrens)(nil),                 // 2: users.v1.Childrens
+	(*childrens.Childrens)(nil),       // 2: users.v1.Childrens
 }
 var file_users_v1_updateUserProfile_proto_depIdxs = []int32{
 	2, // 0: users.v1.UpdateUserProfileRequest.childrens:type_name -> users.v1.Childrens
@@ -212,7 +213,6 @@ func file_users_v1_updateUserProfile_proto_init() {
 	if File_users_v1_updateUserProfile_proto != nil {
 		return
 	}
-	file_users_v1_childrens_childrens_proto_init()
 	file_users_v1_updateUserProfile_proto_msgTypes[0].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

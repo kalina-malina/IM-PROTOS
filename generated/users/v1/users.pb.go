@@ -7,6 +7,10 @@
 package v1
 
 import (
+	abGroups "github.com/kalina-malina/IM-PROTOS/generated/users/v1/abGroups/abGroups"
+	_ "github.com/kalina-malina/IM-PROTOS/generated/users/v1/banReasonType/banreason"
+	childrens "github.com/kalina-malina/IM-PROTOS/generated/users/v1/childrens/childrens"
+	userRole "github.com/kalina-malina/IM-PROTOS/generated/users/v1/userRole/userRole"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/known/emptypb"
@@ -28,7 +32,7 @@ type User struct {
 	state              protoimpl.MessageState `protogen:"open.v1"`
 	Id                 uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Deleted            bool                   `protobuf:"varint,2,opt,name=deleted,proto3" json:"deleted,omitempty"`
-	Role               Role                   `protobuf:"varint,3,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
+	Role               userRole.Role          `protobuf:"varint,3,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
 	FirstName          string                 `protobuf:"bytes,4,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName           string                 `protobuf:"bytes,5,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 	DateOfBirth        string                 `protobuf:"bytes,6,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
@@ -39,8 +43,8 @@ type User struct {
 	LastComentDelivery string                 `protobuf:"bytes,11,opt,name=last_coment_delivery,json=lastComentDelivery,proto3" json:"last_coment_delivery,omitempty"`
 	FullBlocked        bool                   `protobuf:"varint,12,opt,name=full_blocked,json=fullBlocked,proto3" json:"full_blocked,omitempty"`
 	SelectedStoreId    uint32                 `protobuf:"varint,13,opt,name=selected_store_id,json=selectedStoreId,proto3" json:"selected_store_id,omitempty"`
-	AbTestGroup        ABTestGroup            `protobuf:"varint,15,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
-	Children           []*Childrens           `protobuf:"bytes,14,rep,name=children,proto3" json:"children,omitempty"`
+	AbTestGroup        abGroups.ABTestGroup   `protobuf:"varint,15,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
+	Children           []*childrens.Childrens `protobuf:"bytes,14,rep,name=children,proto3" json:"children,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -89,11 +93,11 @@ func (x *User) GetDeleted() bool {
 	return false
 }
 
-func (x *User) GetRole() Role {
+func (x *User) GetRole() userRole.Role {
 	if x != nil {
 		return x.Role
 	}
-	return Role_ROLE_CLIENT
+	return userRole.Role(0)
 }
 
 func (x *User) GetFirstName() string {
@@ -166,14 +170,14 @@ func (x *User) GetSelectedStoreId() uint32 {
 	return 0
 }
 
-func (x *User) GetAbTestGroup() ABTestGroup {
+func (x *User) GetAbTestGroup() abGroups.ABTestGroup {
 	if x != nil {
 		return x.AbTestGroup
 	}
-	return ABTestGroup_AB_TEST_GROUP_A
+	return abGroups.ABTestGroup(0)
 }
 
-func (x *User) GetChildren() []*Childrens {
+func (x *User) GetChildren() []*childrens.Childrens {
 	if x != nil {
 		return x.Children
 	}
@@ -227,9 +231,9 @@ func file_users_v1_users_proto_rawDescGZIP() []byte {
 var file_users_v1_users_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_users_v1_users_proto_goTypes = []any{
 	(*User)(nil),                      // 0: users.v1.User
-	(Role)(0),                         // 1: users.v1.Role
-	(ABTestGroup)(0),                  // 2: users.v1.ABTestGroup
-	(*Childrens)(nil),                 // 3: users.v1.Childrens
+	(userRole.Role)(0),                // 1: users.v1.Role
+	(abGroups.ABTestGroup)(0),         // 2: users.v1.ABTestGroup
+	(*childrens.Childrens)(nil),       // 3: users.v1.Childrens
 	(*UpdateUserProfileRequest)(nil),  // 4: users.v1.UpdateUserProfileRequest
 	(*GetByOneUserRequest)(nil),       // 5: users.v1.GetByOneUserRequest
 	(*GetAllUsersRequest)(nil),        // 6: users.v1.GetAllUsersRequest
@@ -272,10 +276,6 @@ func file_users_v1_users_proto_init() {
 		return
 	}
 	file_users_v1_getAllUsers_proto_init()
-	file_users_v1_userRole_userRole_proto_init()
-	file_users_v1_abGroups_abGroups_proto_init()
-	file_users_v1_childrens_childrens_proto_init()
-	file_users_v1_banReasonType_banreason_proto_init()
 	file_users_v1_settingUsers_proto_init()
 	file_users_v1_banUsers_proto_init()
 	file_users_v1_unbanUsers_proto_init()

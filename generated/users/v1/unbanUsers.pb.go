@@ -7,6 +7,7 @@
 package v1
 
 import (
+	banreason "github.com/kalina-malina/IM-PROTOS/generated/users/v1/banReasonType/banreason"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -23,10 +24,10 @@ const (
 
 // разблокирока пользовательй
 type UnbanUserRequest struct {
-	state             protoimpl.MessageState `protogen:"open.v1"`
-	IdUser            uint64                 `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
-	Reason            BanReasonTypeEnum      `protobuf:"varint,2,opt,name=reason,proto3,enum=users.v1.BanReasonTypeEnum" json:"reason,omitempty"`
-	ReasonDescription string                 `protobuf:"bytes,3,opt,name=reason_description,json=reasonDescription,proto3" json:"reason_description,omitempty"`
+	state             protoimpl.MessageState      `protogen:"open.v1"`
+	IdUser            uint64                      `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
+	Reason            banreason.BanReasonTypeEnum `protobuf:"varint,2,opt,name=reason,proto3,enum=users.v1.BanReasonTypeEnum" json:"reason,omitempty"`
+	ReasonDescription string                      `protobuf:"bytes,3,opt,name=reason_description,json=reasonDescription,proto3" json:"reason_description,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
@@ -68,11 +69,11 @@ func (x *UnbanUserRequest) GetIdUser() uint64 {
 	return 0
 }
 
-func (x *UnbanUserRequest) GetReason() BanReasonTypeEnum {
+func (x *UnbanUserRequest) GetReason() banreason.BanReasonTypeEnum {
 	if x != nil {
 		return x.Reason
 	}
-	return BanReasonTypeEnum_BAN_REASON_UNPROPER_BEHAVIOR
+	return banreason.BanReasonTypeEnum(0)
 }
 
 func (x *UnbanUserRequest) GetReasonDescription() string {
@@ -152,9 +153,9 @@ func file_users_v1_unbanUsers_proto_rawDescGZIP() []byte {
 
 var file_users_v1_unbanUsers_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_users_v1_unbanUsers_proto_goTypes = []any{
-	(*UnbanUserRequest)(nil),  // 0: users.v1.UnbanUserRequest
-	(*UnbanUserResponse)(nil), // 1: users.v1.UnbanUserResponse
-	(BanReasonTypeEnum)(0),    // 2: users.v1.BanReasonTypeEnum
+	(*UnbanUserRequest)(nil),         // 0: users.v1.UnbanUserRequest
+	(*UnbanUserResponse)(nil),        // 1: users.v1.UnbanUserResponse
+	(banreason.BanReasonTypeEnum)(0), // 2: users.v1.BanReasonTypeEnum
 }
 var file_users_v1_unbanUsers_proto_depIdxs = []int32{
 	2, // 0: users.v1.UnbanUserRequest.reason:type_name -> users.v1.BanReasonTypeEnum
@@ -170,7 +171,6 @@ func file_users_v1_unbanUsers_proto_init() {
 	if File_users_v1_unbanUsers_proto != nil {
 		return
 	}
-	file_users_v1_banReasonType_banreason_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

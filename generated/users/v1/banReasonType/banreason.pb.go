@@ -4,7 +4,7 @@
 // 	protoc        v6.33.0
 // source: users/v1/banReasonType/banreason.proto
 
-package v1
+package banreason
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -172,7 +172,7 @@ const file_users_v1_banReasonType_banreason_proto_rawDesc = "" +
 	"\x1cBAN_REASON_UNPROPER_BEHAVIOR\x10\x00\x12\x13\n" +
 	"\x0fBAN_REASON_SPAM\x10\x01\x12!\n" +
 	"\x1dBAN_REASON_VIOLATION_OF_RULES\x10\x02\x12\x14\n" +
-	"\x10BAN_REASON_OTHER\x10\x03B7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
+	"\x10BAN_REASON_OTHER\x10\x03BOZMgithub.com/kalina-malina/IM-PROTOS/generated/users/v1/banReasonType/banreasonb\x06proto3"
 
 var (
 	file_users_v1_banReasonType_banreason_proto_rawDescOnce sync.Once

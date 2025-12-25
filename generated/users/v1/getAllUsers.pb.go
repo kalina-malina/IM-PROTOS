@@ -7,6 +7,8 @@
 package v1
 
 import (
+	abGroups "github.com/kalina-malina/IM-PROTOS/generated/users/v1/abGroups/abGroups"
+	userRole "github.com/kalina-malina/IM-PROTOS/generated/users/v1/userRole/userRole"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/known/emptypb"
@@ -145,8 +147,8 @@ type GetAllUsersRequest struct {
 	Email         *string                `protobuf:"bytes,5,opt,name=email,proto3,oneof" json:"email,omitempty"`
 	FirstName     *string                `protobuf:"bytes,6,opt,name=first_name,json=firstName,proto3,oneof" json:"first_name,omitempty"`
 	LastName      *string                `protobuf:"bytes,7,opt,name=last_name,json=lastName,proto3,oneof" json:"last_name,omitempty"`
-	Role          []Role                 `protobuf:"varint,8,rep,packed,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
-	AbTestGroup   []ABTestGroup          `protobuf:"varint,9,rep,packed,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
+	Role          []userRole.Role        `protobuf:"varint,8,rep,packed,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
+	AbTestGroup   []abGroups.ABTestGroup `protobuf:"varint,9,rep,packed,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
 	Page          uint64                 `protobuf:"varint,10,opt,name=page,proto3" json:"page,omitempty"`
 	Limit         uint64                 `protobuf:"varint,11,opt,name=limit,proto3" json:"limit,omitempty"`
 	SortBy        *SortBy                `protobuf:"varint,12,opt,name=sort_by,json=sortBy,proto3,enum=users.v1.SortBy,oneof" json:"sort_by,omitempty"`
@@ -234,14 +236,14 @@ func (x *GetAllUsersRequest) GetLastName() string {
 	return ""
 }
 
-func (x *GetAllUsersRequest) GetRole() []Role {
+func (x *GetAllUsersRequest) GetRole() []userRole.Role {
 	if x != nil {
 		return x.Role
 	}
 	return nil
 }
 
-func (x *GetAllUsersRequest) GetAbTestGroup() []ABTestGroup {
+func (x *GetAllUsersRequest) GetAbTestGroup() []abGroups.ABTestGroup {
 	if x != nil {
 		return x.AbTestGroup
 	}
@@ -436,8 +438,8 @@ var file_users_v1_getAllUsers_proto_goTypes = []any{
 	(*GetAllUsersRequest)(nil),  // 2: users.v1.GetAllUsersRequest
 	(*GetAllUsersResponse)(nil), // 3: users.v1.GetAllUsersResponse
 	(*UsersObject)(nil),         // 4: users.v1.UsersObject
-	(Role)(0),                   // 5: users.v1.Role
-	(ABTestGroup)(0),            // 6: users.v1.ABTestGroup
+	(userRole.Role)(0),          // 5: users.v1.Role
+	(abGroups.ABTestGroup)(0),   // 6: users.v1.ABTestGroup
 }
 var file_users_v1_getAllUsers_proto_depIdxs = []int32{
 	5, // 0: users.v1.GetAllUsersRequest.role:type_name -> users.v1.Role
@@ -457,8 +459,6 @@ func file_users_v1_getAllUsers_proto_init() {
 	if File_users_v1_getAllUsers_proto != nil {
 		return
 	}
-	file_users_v1_userRole_userRole_proto_init()
-	file_users_v1_abGroups_abGroups_proto_init()
 	file_users_v1_getAllUsers_proto_msgTypes[0].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

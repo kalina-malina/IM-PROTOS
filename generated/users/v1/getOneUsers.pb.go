@@ -7,6 +7,9 @@
 package v1
 
 import (
+	abGroups "github.com/kalina-malina/IM-PROTOS/generated/users/v1/abGroups/abGroups"
+	childrens "github.com/kalina-malina/IM-PROTOS/generated/users/v1/childrens/childrens"
+	userRole "github.com/kalina-malina/IM-PROTOS/generated/users/v1/userRole/userRole"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/known/emptypb"
@@ -70,7 +73,7 @@ type GetByOneUserResponse struct {
 	state              protoimpl.MessageState `protogen:"open.v1"`
 	Id                 uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Deleted            bool                   `protobuf:"varint,2,opt,name=deleted,proto3" json:"deleted,omitempty"`
-	Role               Role                   `protobuf:"varint,3,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
+	Role               userRole.Role          `protobuf:"varint,3,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
 	FirstName          string                 `protobuf:"bytes,4,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName           string                 `protobuf:"bytes,5,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 	DateOfBirth        string                 `protobuf:"bytes,6,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
@@ -81,8 +84,8 @@ type GetByOneUserResponse struct {
 	LastComentDelivery string                 `protobuf:"bytes,11,opt,name=last_coment_delivery,json=lastComentDelivery,proto3" json:"last_coment_delivery,omitempty"`
 	FullBlocked        bool                   `protobuf:"varint,12,opt,name=full_blocked,json=fullBlocked,proto3" json:"full_blocked,omitempty"`
 	SelectedStoreId    uint32                 `protobuf:"varint,13,opt,name=selected_store_id,json=selectedStoreId,proto3" json:"selected_store_id,omitempty"`
-	AbTestGroup        ABTestGroup            `protobuf:"varint,15,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
-	Children           []*Childrens           `protobuf:"bytes,14,rep,name=children,proto3" json:"children,omitempty"`
+	AbTestGroup        abGroups.ABTestGroup   `protobuf:"varint,15,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
+	Children           []*childrens.Childrens `protobuf:"bytes,14,rep,name=children,proto3" json:"children,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -131,11 +134,11 @@ func (x *GetByOneUserResponse) GetDeleted() bool {
 	return false
 }
 
-func (x *GetByOneUserResponse) GetRole() Role {
+func (x *GetByOneUserResponse) GetRole() userRole.Role {
 	if x != nil {
 		return x.Role
 	}
-	return Role_ROLE_CLIENT
+	return userRole.Role(0)
 }
 
 func (x *GetByOneUserResponse) GetFirstName() string {
@@ -208,14 +211,14 @@ func (x *GetByOneUserResponse) GetSelectedStoreId() uint32 {
 	return 0
 }
 
-func (x *GetByOneUserResponse) GetAbTestGroup() ABTestGroup {
+func (x *GetByOneUserResponse) GetAbTestGroup() abGroups.ABTestGroup {
 	if x != nil {
 		return x.AbTestGroup
 	}
-	return ABTestGroup_AB_TEST_GROUP_A
+	return abGroups.ABTestGroup(0)
 }
 
-func (x *GetByOneUserResponse) GetChildren() []*Childrens {
+func (x *GetByOneUserResponse) GetChildren() []*childrens.Childrens {
 	if x != nil {
 		return x.Children
 	}
@@ -265,9 +268,9 @@ var file_users_v1_getOneUsers_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_users_v1_getOneUsers_proto_goTypes = []any{
 	(*GetByOneUserRequest)(nil),  // 0: users.v1.GetByOneUserRequest
 	(*GetByOneUserResponse)(nil), // 1: users.v1.GetByOneUserResponse
-	(Role)(0),                    // 2: users.v1.Role
-	(ABTestGroup)(0),             // 3: users.v1.ABTestGroup
-	(*Childrens)(nil),            // 4: users.v1.Childrens
+	(userRole.Role)(0),           // 2: users.v1.Role
+	(abGroups.ABTestGroup)(0),    // 3: users.v1.ABTestGroup
+	(*childrens.Childrens)(nil),  // 4: users.v1.Childrens
 }
 var file_users_v1_getOneUsers_proto_depIdxs = []int32{
 	2, // 0: users.v1.GetByOneUserResponse.role:type_name -> users.v1.Role
@@ -285,9 +288,6 @@ func file_users_v1_getOneUsers_proto_init() {
 	if File_users_v1_getOneUsers_proto != nil {
 		return
 	}
-	file_users_v1_userRole_userRole_proto_init()
-	file_users_v1_abGroups_abGroups_proto_init()
-	file_users_v1_childrens_childrens_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

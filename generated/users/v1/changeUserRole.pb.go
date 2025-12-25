@@ -7,6 +7,7 @@
 package v1
 
 import (
+	userRole "github.com/kalina-malina/IM-PROTOS/generated/users/v1/userRole/userRole"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -25,7 +26,7 @@ const (
 type ChangeUserRoleRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	IdUser        uint64                 `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
-	Role          Role                   `protobuf:"varint,2,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
+	Role          userRole.Role          `protobuf:"varint,2,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -67,11 +68,11 @@ func (x *ChangeUserRoleRequest) GetIdUser() uint64 {
 	return 0
 }
 
-func (x *ChangeUserRoleRequest) GetRole() Role {
+func (x *ChangeUserRoleRequest) GetRole() userRole.Role {
 	if x != nil {
 		return x.Role
 	}
-	return Role_ROLE_CLIENT
+	return userRole.Role(0)
 }
 
 type ChangeUserRoleResponse struct {
@@ -145,7 +146,7 @@ var file_users_v1_changeUserRole_proto_msgTypes = make([]protoimpl.MessageInfo, 
 var file_users_v1_changeUserRole_proto_goTypes = []any{
 	(*ChangeUserRoleRequest)(nil),  // 0: users.v1.ChangeUserRoleRequest
 	(*ChangeUserRoleResponse)(nil), // 1: users.v1.ChangeUserRoleResponse
-	(Role)(0),                      // 2: users.v1.Role
+	(userRole.Role)(0),             // 2: users.v1.Role
 }
 var file_users_v1_changeUserRole_proto_depIdxs = []int32{
 	2, // 0: users.v1.ChangeUserRoleRequest.role:type_name -> users.v1.Role
@@ -161,7 +162,6 @@ func file_users_v1_changeUserRole_proto_init() {
 	if File_users_v1_changeUserRole_proto != nil {
 		return
 	}
-	file_users_v1_userRole_userRole_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
