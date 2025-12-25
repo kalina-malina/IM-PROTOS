@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        v6.33.0
-// source: users/v1/banReasonType/banreason.proto
+// source: users/v1/ban_reason_type/ban_reason.proto
 
-package banreason
+package ban_reason
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -81,11 +81,11 @@ func (x ReasonTypeEnum) String() string {
 }
 
 func (ReasonTypeEnum) Descriptor() protoreflect.EnumDescriptor {
-	return file_users_v1_banReasonType_banreason_proto_enumTypes[0].Descriptor()
+	return file_users_v1_ban_reason_type_ban_reason_proto_enumTypes[0].Descriptor()
 }
 
 func (ReasonTypeEnum) Type() protoreflect.EnumType {
-	return &file_users_v1_banReasonType_banreason_proto_enumTypes[0]
+	return &file_users_v1_ban_reason_type_ban_reason_proto_enumTypes[0]
 }
 
 func (x ReasonTypeEnum) Number() protoreflect.EnumNumber {
@@ -94,7 +94,7 @@ func (x ReasonTypeEnum) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ReasonTypeEnum.Descriptor instead.
 func (ReasonTypeEnum) EnumDescriptor() ([]byte, []int) {
-	return file_users_v1_banReasonType_banreason_proto_rawDescGZIP(), []int{0}
+	return file_users_v1_ban_reason_type_ban_reason_proto_rawDescGZIP(), []int{0}
 }
 
 type BanReasonTypeEnum int32
@@ -137,11 +137,11 @@ func (x BanReasonTypeEnum) String() string {
 }
 
 func (BanReasonTypeEnum) Descriptor() protoreflect.EnumDescriptor {
-	return file_users_v1_banReasonType_banreason_proto_enumTypes[1].Descriptor()
+	return file_users_v1_ban_reason_type_ban_reason_proto_enumTypes[1].Descriptor()
 }
 
 func (BanReasonTypeEnum) Type() protoreflect.EnumType {
-	return &file_users_v1_banReasonType_banreason_proto_enumTypes[1]
+	return &file_users_v1_ban_reason_type_ban_reason_proto_enumTypes[1]
 }
 
 func (x BanReasonTypeEnum) Number() protoreflect.EnumNumber {
@@ -150,14 +150,14 @@ func (x BanReasonTypeEnum) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use BanReasonTypeEnum.Descriptor instead.
 func (BanReasonTypeEnum) EnumDescriptor() ([]byte, []int) {
-	return file_users_v1_banReasonType_banreason_proto_rawDescGZIP(), []int{1}
+	return file_users_v1_ban_reason_type_ban_reason_proto_rawDescGZIP(), []int{1}
 }
 
-var File_users_v1_banReasonType_banreason_proto protoreflect.FileDescriptor
+var File_users_v1_ban_reason_type_ban_reason_proto protoreflect.FileDescriptor
 
-const file_users_v1_banReasonType_banreason_proto_rawDesc = "" +
+const file_users_v1_ban_reason_type_ban_reason_proto_rawDesc = "" +
 	"\n" +
-	"&users/v1/banReasonType/banreason.proto\x12\busers.v1*\x97\x02\n" +
+	")users/v1/ban_reason_type/ban_reason.proto\x12\x16users.v1.BanReasonType*\x97\x02\n" +
 	"\x0eReasonTypeEnum\x12\x1c\n" +
 	"\x18REASON_NOT_LIKED_PRODUCT\x10\x00\x12\x1c\n" +
 	"\x18REASON_NOT_LIKED_SERVICE\x10\x01\x12\x18\n" +
@@ -172,26 +172,26 @@ const file_users_v1_banReasonType_banreason_proto_rawDesc = "" +
 	"\x1cBAN_REASON_UNPROPER_BEHAVIOR\x10\x00\x12\x13\n" +
 	"\x0fBAN_REASON_SPAM\x10\x01\x12!\n" +
 	"\x1dBAN_REASON_VIOLATION_OF_RULES\x10\x02\x12\x14\n" +
-	"\x10BAN_REASON_OTHER\x10\x03BOZMgithub.com/kalina-malina/IM-PROTOS/generated/users/v1/banReasonType/banreasonb\x06proto3"
+	"\x10BAN_REASON_OTHER\x10\x03BRZPgithub.com/kalina-malina/IM-PROTOS/generated/users/v1/ban_reason_type/ban_reasonb\x06proto3"
 
 var (
-	file_users_v1_banReasonType_banreason_proto_rawDescOnce sync.Once
-	file_users_v1_banReasonType_banreason_proto_rawDescData []byte
+	file_users_v1_ban_reason_type_ban_reason_proto_rawDescOnce sync.Once
+	file_users_v1_ban_reason_type_ban_reason_proto_rawDescData []byte
 )
 
-func file_users_v1_banReasonType_banreason_proto_rawDescGZIP() []byte {
-	file_users_v1_banReasonType_banreason_proto_rawDescOnce.Do(func() {
-		file_users_v1_banReasonType_banreason_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_banReasonType_banreason_proto_rawDesc), len(file_users_v1_banReasonType_banreason_proto_rawDesc)))
+func file_users_v1_ban_reason_type_ban_reason_proto_rawDescGZIP() []byte {
+	file_users_v1_ban_reason_type_ban_reason_proto_rawDescOnce.Do(func() {
+		file_users_v1_ban_reason_type_ban_reason_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_ban_reason_type_ban_reason_proto_rawDesc), len(file_users_v1_ban_reason_type_ban_reason_proto_rawDesc)))
 	})
-	return file_users_v1_banReasonType_banreason_proto_rawDescData
+	return file_users_v1_ban_reason_type_ban_reason_proto_rawDescData
 }
 
-var file_users_v1_banReasonType_banreason_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_users_v1_banReasonType_banreason_proto_goTypes = []any{
-	(ReasonTypeEnum)(0),    // 0: users.v1.ReasonTypeEnum
-	(BanReasonTypeEnum)(0), // 1: users.v1.BanReasonTypeEnum
+var file_users_v1_ban_reason_type_ban_reason_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_users_v1_ban_reason_type_ban_reason_proto_goTypes = []any{
+	(ReasonTypeEnum)(0),    // 0: users.v1.BanReasonType.ReasonTypeEnum
+	(BanReasonTypeEnum)(0), // 1: users.v1.BanReasonType.BanReasonTypeEnum
 }
-var file_users_v1_banReasonType_banreason_proto_depIdxs = []int32{
+var file_users_v1_ban_reason_type_ban_reason_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -199,26 +199,26 @@ var file_users_v1_banReasonType_banreason_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_users_v1_banReasonType_banreason_proto_init() }
-func file_users_v1_banReasonType_banreason_proto_init() {
-	if File_users_v1_banReasonType_banreason_proto != nil {
+func init() { file_users_v1_ban_reason_type_ban_reason_proto_init() }
+func file_users_v1_ban_reason_type_ban_reason_proto_init() {
+	if File_users_v1_ban_reason_type_ban_reason_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_banReasonType_banreason_proto_rawDesc), len(file_users_v1_banReasonType_banreason_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_ban_reason_type_ban_reason_proto_rawDesc), len(file_users_v1_ban_reason_type_ban_reason_proto_rawDesc)),
 			NumEnums:      2,
 			NumMessages:   0,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_users_v1_banReasonType_banreason_proto_goTypes,
-		DependencyIndexes: file_users_v1_banReasonType_banreason_proto_depIdxs,
-		EnumInfos:         file_users_v1_banReasonType_banreason_proto_enumTypes,
+		GoTypes:           file_users_v1_ban_reason_type_ban_reason_proto_goTypes,
+		DependencyIndexes: file_users_v1_ban_reason_type_ban_reason_proto_depIdxs,
+		EnumInfos:         file_users_v1_ban_reason_type_ban_reason_proto_enumTypes,
 	}.Build()
-	File_users_v1_banReasonType_banreason_proto = out.File
-	file_users_v1_banReasonType_banreason_proto_goTypes = nil
-	file_users_v1_banReasonType_banreason_proto_depIdxs = nil
+	File_users_v1_ban_reason_type_ban_reason_proto = out.File
+	file_users_v1_ban_reason_type_ban_reason_proto_goTypes = nil
+	file_users_v1_ban_reason_type_ban_reason_proto_depIdxs = nil
 }

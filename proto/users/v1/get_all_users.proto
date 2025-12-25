@@ -4,8 +4,8 @@ package users.v1;
 
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
 import "google/protobuf/empty.proto";
-import "users/v1/userRole/userRole.proto";
-import "users/v1/abGroups/abGroups.proto";
+import "users/v1/role/user_role.proto";
+import "users/v1/ab_groups/ab_groups.proto";
 
 
 
@@ -18,8 +18,8 @@ message GetAllUsersRequest {
   optional string email = 5;
   optional string first_name = 6;
   optional string last_name = 7;
-  repeated Role role = 8;
-  repeated ABTestGroup ab_test_group = 9;
+  repeated users.v1.Role.UserRole role = 8;
+  repeated users.v1.ABTestGroup.ABTestGroup ab_test_group = 9;
   uint64 page = 10;
   uint64 limit = 11;
   optional SortBy sort_by = 12;
@@ -32,7 +32,7 @@ message GetAllUsersResponse {
 }
 
 message UsersObject {
- 
+  uint64 id = 1;
 }
 
 

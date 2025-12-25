@@ -3,18 +3,18 @@ syntax = "proto3";
 package users.v1;
 
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
-import "google/protobuf/empty.proto";
-import "users/v1/getAllUsers.proto";
-import "users/v1/userRole/userRole.proto";
-import "users/v1/abGroups/abGroups.proto";
+import "google/protobuf/empty.proto" ;
+import "users/v1/get_all_users.proto";
+import "users/v1/role/user_role.proto";
+import "users/v1/ab_groups/ab_groups.proto";
 import "users/v1/childrens/childrens.proto";
-import "users/v1/banReasonType/banreason.proto";
-import "users/v1/settingUsers.proto";
-import "users/v1/banUsers.proto";
-import "users/v1/unbanUsers.proto";
-import "users/v1/changeUserRole.proto";
-import "users/v1/getOneUsers.proto";
-import "users/v1/updateUserProfile.proto";
+import "users/v1/ban_reason_type/ban_reason.proto";
+import "users/v1/setting_users.proto";
+import "users/v1/ban_users.proto";
+import "users/v1/unban_users.proto";
+import "users/v1/change_user_role.proto";
+import "users/v1/get_one_users.proto";
+import "users/v1/update_user_profile.proto";
 
 
 
@@ -35,21 +35,10 @@ service UsersService {
   
 }
 
-
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////
-//общее
 message User{
   uint64 id = 1;
   bool deleted = 2;
-  Role role = 3;
+  users.v1.Role.UserRole role = 3;
   string first_name = 4;
   string last_name = 5;
   string date_of_birth = 6;
@@ -60,8 +49,8 @@ message User{
   string last_coment_delivery = 11;
   bool  full_blocked = 12;
   uint32 selected_store_id = 13;
-  ABTestGroup ab_test_group = 15;
-  repeated Childrens children = 14;
+  users.v1.ABTestGroup.ABTestGroup ab_test_group = 15;
+  repeated users.v1.Childrens.Childrens children = 14;
   
 }
 

@@ -4,8 +4,8 @@ package users.v1;
 
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
 import "google/protobuf/empty.proto";
-import "users/v1/userRole/userRole.proto";
-import "users/v1/abGroups/abGroups.proto";
+import "users/v1/role/user_role.proto";
+import "users/v1/ab_groups/ab_groups.proto";
 import "users/v1/childrens/childrens.proto";
 
 
@@ -16,7 +16,7 @@ message GetByOneUserRequest {
 message GetByOneUserResponse {
   uint64 id = 1;
   bool deleted = 2;
-  Role role = 3;
+  users.v1.Role.UserRole role = 3;
   string first_name = 4;
   string last_name = 5;
   string date_of_birth = 6;
@@ -27,8 +27,8 @@ message GetByOneUserResponse {
   string last_coment_delivery = 11;
   bool  full_blocked = 12;
   uint32 selected_store_id = 13;
-  ABTestGroup ab_test_group = 15;
-  repeated Childrens children = 14;
+  users.v1.ABTestGroup.ABTestGroup ab_test_group = 15;
+  repeated users.v1.Childrens.Childrens children = 14;
 }
 
 

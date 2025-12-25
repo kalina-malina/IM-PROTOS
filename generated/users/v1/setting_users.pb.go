@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        v6.33.0
-// source: users/v1/settingUsers.proto
+// source: users/v1/setting_users.proto
 
 package v1
 
@@ -37,7 +37,7 @@ type UserSettings struct {
 
 func (x *UserSettings) Reset() {
 	*x = UserSettings{}
-	mi := &file_users_v1_settingUsers_proto_msgTypes[0]
+	mi := &file_users_v1_setting_users_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -49,7 +49,7 @@ func (x *UserSettings) String() string {
 func (*UserSettings) ProtoMessage() {}
 
 func (x *UserSettings) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_settingUsers_proto_msgTypes[0]
+	mi := &file_users_v1_setting_users_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -62,7 +62,7 @@ func (x *UserSettings) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserSettings.ProtoReflect.Descriptor instead.
 func (*UserSettings) Descriptor() ([]byte, []int) {
-	return file_users_v1_settingUsers_proto_rawDescGZIP(), []int{0}
+	return file_users_v1_setting_users_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *UserSettings) GetPushNotifications() bool {
@@ -121,11 +121,11 @@ func (x *UserSettings) GetLastSelectedStoreId() uint32 {
 	return 0
 }
 
-var File_users_v1_settingUsers_proto protoreflect.FileDescriptor
+var File_users_v1_setting_users_proto protoreflect.FileDescriptor
 
-const file_users_v1_settingUsers_proto_rawDesc = "" +
+const file_users_v1_setting_users_proto_rawDesc = "" +
 	"\n" +
-	"\x1busers/v1/settingUsers.proto\x12\busers.v1\"\x94\x03\n" +
+	"\x1cusers/v1/setting_users.proto\x12\busers.v1\"\x94\x03\n" +
 	"\fUserSettings\x12-\n" +
 	"\x12push_notifications\x18\x01 \x01(\bR\x11pushNotifications\x12/\n" +
 	"\x13email_notifications\x18\x02 \x01(\bR\x12emailNotifications\x12+\n" +
@@ -138,22 +138,22 @@ const file_users_v1_settingUsers_proto_rawDesc = "" +
 	"\x17_last_selected_store_idB7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
 
 var (
-	file_users_v1_settingUsers_proto_rawDescOnce sync.Once
-	file_users_v1_settingUsers_proto_rawDescData []byte
+	file_users_v1_setting_users_proto_rawDescOnce sync.Once
+	file_users_v1_setting_users_proto_rawDescData []byte
 )
 
-func file_users_v1_settingUsers_proto_rawDescGZIP() []byte {
-	file_users_v1_settingUsers_proto_rawDescOnce.Do(func() {
-		file_users_v1_settingUsers_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_settingUsers_proto_rawDesc), len(file_users_v1_settingUsers_proto_rawDesc)))
+func file_users_v1_setting_users_proto_rawDescGZIP() []byte {
+	file_users_v1_setting_users_proto_rawDescOnce.Do(func() {
+		file_users_v1_setting_users_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_setting_users_proto_rawDesc), len(file_users_v1_setting_users_proto_rawDesc)))
 	})
-	return file_users_v1_settingUsers_proto_rawDescData
+	return file_users_v1_setting_users_proto_rawDescData
 }
 
-var file_users_v1_settingUsers_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_users_v1_settingUsers_proto_goTypes = []any{
+var file_users_v1_setting_users_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_users_v1_setting_users_proto_goTypes = []any{
 	(*UserSettings)(nil), // 0: users.v1.UserSettings
 }
-var file_users_v1_settingUsers_proto_depIdxs = []int32{
+var file_users_v1_setting_users_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -161,27 +161,27 @@ var file_users_v1_settingUsers_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_users_v1_settingUsers_proto_init() }
-func file_users_v1_settingUsers_proto_init() {
-	if File_users_v1_settingUsers_proto != nil {
+func init() { file_users_v1_setting_users_proto_init() }
+func file_users_v1_setting_users_proto_init() {
+	if File_users_v1_setting_users_proto != nil {
 		return
 	}
-	file_users_v1_settingUsers_proto_msgTypes[0].OneofWrappers = []any{}
+	file_users_v1_setting_users_proto_msgTypes[0].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_settingUsers_proto_rawDesc), len(file_users_v1_settingUsers_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_setting_users_proto_rawDesc), len(file_users_v1_setting_users_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_users_v1_settingUsers_proto_goTypes,
-		DependencyIndexes: file_users_v1_settingUsers_proto_depIdxs,
-		MessageInfos:      file_users_v1_settingUsers_proto_msgTypes,
+		GoTypes:           file_users_v1_setting_users_proto_goTypes,
+		DependencyIndexes: file_users_v1_setting_users_proto_depIdxs,
+		MessageInfos:      file_users_v1_setting_users_proto_msgTypes,
 	}.Build()
-	File_users_v1_settingUsers_proto = out.File
-	file_users_v1_settingUsers_proto_goTypes = nil
-	file_users_v1_settingUsers_proto_depIdxs = nil
+	File_users_v1_setting_users_proto = out.File
+	file_users_v1_setting_users_proto_goTypes = nil
+	file_users_v1_setting_users_proto_depIdxs = nil
 }

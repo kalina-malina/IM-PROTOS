@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package users.v1;
+package users.v1.ABTestGroup;
 
-option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1/abGroups/abGroups";
+option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ab_groups/ab_groups";
 
 
 enum ABTestGroup {

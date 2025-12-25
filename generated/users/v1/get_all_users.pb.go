@@ -2,13 +2,13 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        v6.33.0
-// source: users/v1/getAllUsers.proto
+// source: users/v1/get_all_users.proto
 
 package v1
 
 import (
-	abGroups "github.com/kalina-malina/IM-PROTOS/generated/users/v1/abGroups/abGroups"
-	userRole "github.com/kalina-malina/IM-PROTOS/generated/users/v1/userRole"
+	ab_groups "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ab_groups/ab_groups"
+	user_role "github.com/kalina-malina/IM-PROTOS/generated/users/v1/role/user_role"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/known/emptypb"
@@ -75,11 +75,11 @@ func (x SortBy) String() string {
 }
 
 func (SortBy) Descriptor() protoreflect.EnumDescriptor {
-	return file_users_v1_getAllUsers_proto_enumTypes[0].Descriptor()
+	return file_users_v1_get_all_users_proto_enumTypes[0].Descriptor()
 }
 
 func (SortBy) Type() protoreflect.EnumType {
-	return &file_users_v1_getAllUsers_proto_enumTypes[0]
+	return &file_users_v1_get_all_users_proto_enumTypes[0]
 }
 
 func (x SortBy) Number() protoreflect.EnumNumber {
@@ -88,7 +88,7 @@ func (x SortBy) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use SortBy.Descriptor instead.
 func (SortBy) EnumDescriptor() ([]byte, []int) {
-	return file_users_v1_getAllUsers_proto_rawDescGZIP(), []int{0}
+	return file_users_v1_get_all_users_proto_rawDescGZIP(), []int{0}
 }
 
 type SortOrder int32
@@ -121,11 +121,11 @@ func (x SortOrder) String() string {
 }
 
 func (SortOrder) Descriptor() protoreflect.EnumDescriptor {
-	return file_users_v1_getAllUsers_proto_enumTypes[1].Descriptor()
+	return file_users_v1_get_all_users_proto_enumTypes[1].Descriptor()
 }
 
 func (SortOrder) Type() protoreflect.EnumType {
-	return &file_users_v1_getAllUsers_proto_enumTypes[1]
+	return &file_users_v1_get_all_users_proto_enumTypes[1]
 }
 
 func (x SortOrder) Number() protoreflect.EnumNumber {
@@ -134,32 +134,32 @@ func (x SortOrder) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use SortOrder.Descriptor instead.
 func (SortOrder) EnumDescriptor() ([]byte, []int) {
-	return file_users_v1_getAllUsers_proto_rawDescGZIP(), []int{1}
+	return file_users_v1_get_all_users_proto_rawDescGZIP(), []int{1}
 }
 
 // получение всех пользователей
 type GetAllUsersRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Guid          *uint64                `protobuf:"varint,1,opt,name=guid,proto3,oneof" json:"guid,omitempty"`
-	CardNumber    *uint64                `protobuf:"varint,2,opt,name=card_number,json=cardNumber,proto3,oneof" json:"card_number,omitempty"`
-	VerifiedEmail *bool                  `protobuf:"varint,3,opt,name=verified_email,json=verifiedEmail,proto3,oneof" json:"verified_email,omitempty"`
-	Phone         *uint64                `protobuf:"varint,4,opt,name=phone,proto3,oneof" json:"phone,omitempty"`
-	Email         *string                `protobuf:"bytes,5,opt,name=email,proto3,oneof" json:"email,omitempty"`
-	FirstName     *string                `protobuf:"bytes,6,opt,name=first_name,json=firstName,proto3,oneof" json:"first_name,omitempty"`
-	LastName      *string                `protobuf:"bytes,7,opt,name=last_name,json=lastName,proto3,oneof" json:"last_name,omitempty"`
-	Role          []userRole.Role        `protobuf:"varint,8,rep,packed,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
-	AbTestGroup   []abGroups.ABTestGroup `protobuf:"varint,9,rep,packed,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
-	Page          uint64                 `protobuf:"varint,10,opt,name=page,proto3" json:"page,omitempty"`
-	Limit         uint64                 `protobuf:"varint,11,opt,name=limit,proto3" json:"limit,omitempty"`
-	SortBy        *SortBy                `protobuf:"varint,12,opt,name=sort_by,json=sortBy,proto3,enum=users.v1.SortBy,oneof" json:"sort_by,omitempty"`
-	SortOrder     *SortOrder             `protobuf:"varint,13,opt,name=sort_order,json=sortOrder,proto3,enum=users.v1.SortOrder,oneof" json:"sort_order,omitempty"`
+	state         protoimpl.MessageState  `protogen:"open.v1"`
+	Guid          *uint64                 `protobuf:"varint,1,opt,name=guid,proto3,oneof" json:"guid,omitempty"`
+	CardNumber    *uint64                 `protobuf:"varint,2,opt,name=card_number,json=cardNumber,proto3,oneof" json:"card_number,omitempty"`
+	VerifiedEmail *bool                   `protobuf:"varint,3,opt,name=verified_email,json=verifiedEmail,proto3,oneof" json:"verified_email,omitempty"`
+	Phone         *uint64                 `protobuf:"varint,4,opt,name=phone,proto3,oneof" json:"phone,omitempty"`
+	Email         *string                 `protobuf:"bytes,5,opt,name=email,proto3,oneof" json:"email,omitempty"`
+	FirstName     *string                 `protobuf:"bytes,6,opt,name=first_name,json=firstName,proto3,oneof" json:"first_name,omitempty"`
+	LastName      *string                 `protobuf:"bytes,7,opt,name=last_name,json=lastName,proto3,oneof" json:"last_name,omitempty"`
+	Role          []user_role.UserRole    `protobuf:"varint,8,rep,packed,name=role,proto3,enum=users.v1.Role.UserRole" json:"role,omitempty"`
+	AbTestGroup   []ab_groups.ABTestGroup `protobuf:"varint,9,rep,packed,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup.ABTestGroup" json:"ab_test_group,omitempty"`
+	Page          uint64                  `protobuf:"varint,10,opt,name=page,proto3" json:"page,omitempty"`
+	Limit         uint64                  `protobuf:"varint,11,opt,name=limit,proto3" json:"limit,omitempty"`
+	SortBy        *SortBy                 `protobuf:"varint,12,opt,name=sort_by,json=sortBy,proto3,enum=users.v1.SortBy,oneof" json:"sort_by,omitempty"`
+	SortOrder     *SortOrder              `protobuf:"varint,13,opt,name=sort_order,json=sortOrder,proto3,enum=users.v1.SortOrder,oneof" json:"sort_order,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetAllUsersRequest) Reset() {
 	*x = GetAllUsersRequest{}
-	mi := &file_users_v1_getAllUsers_proto_msgTypes[0]
+	mi := &file_users_v1_get_all_users_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -171,7 +171,7 @@ func (x *GetAllUsersRequest) String() string {
 func (*GetAllUsersRequest) ProtoMessage() {}
 
 func (x *GetAllUsersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_getAllUsers_proto_msgTypes[0]
+	mi := &file_users_v1_get_all_users_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -184,7 +184,7 @@ func (x *GetAllUsersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllUsersRequest.ProtoReflect.Descriptor instead.
 func (*GetAllUsersRequest) Descriptor() ([]byte, []int) {
-	return file_users_v1_getAllUsers_proto_rawDescGZIP(), []int{0}
+	return file_users_v1_get_all_users_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *GetAllUsersRequest) GetGuid() uint64 {
@@ -236,14 +236,14 @@ func (x *GetAllUsersRequest) GetLastName() string {
 	return ""
 }
 
-func (x *GetAllUsersRequest) GetRole() []userRole.Role {
+func (x *GetAllUsersRequest) GetRole() []user_role.UserRole {
 	if x != nil {
 		return x.Role
 	}
 	return nil
 }
 
-func (x *GetAllUsersRequest) GetAbTestGroup() []abGroups.ABTestGroup {
+func (x *GetAllUsersRequest) GetAbTestGroup() []ab_groups.ABTestGroup {
 	if x != nil {
 		return x.AbTestGroup
 	}
@@ -288,7 +288,7 @@ type GetAllUsersResponse struct {
 
 func (x *GetAllUsersResponse) Reset() {
 	*x = GetAllUsersResponse{}
-	mi := &file_users_v1_getAllUsers_proto_msgTypes[1]
+	mi := &file_users_v1_get_all_users_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -300,7 +300,7 @@ func (x *GetAllUsersResponse) String() string {
 func (*GetAllUsersResponse) ProtoMessage() {}
 
 func (x *GetAllUsersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_getAllUsers_proto_msgTypes[1]
+	mi := &file_users_v1_get_all_users_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -313,7 +313,7 @@ func (x *GetAllUsersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllUsersResponse.ProtoReflect.Descriptor instead.
 func (*GetAllUsersResponse) Descriptor() ([]byte, []int) {
-	return file_users_v1_getAllUsers_proto_rawDescGZIP(), []int{1}
+	return file_users_v1_get_all_users_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *GetAllUsersResponse) GetUsers() []*UsersObject {
@@ -332,13 +332,14 @@ func (x *GetAllUsersResponse) GetTotal() uint64 {
 
 type UsersObject struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UsersObject) Reset() {
 	*x = UsersObject{}
-	mi := &file_users_v1_getAllUsers_proto_msgTypes[2]
+	mi := &file_users_v1_get_all_users_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -350,7 +351,7 @@ func (x *UsersObject) String() string {
 func (*UsersObject) ProtoMessage() {}
 
 func (x *UsersObject) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_getAllUsers_proto_msgTypes[2]
+	mi := &file_users_v1_get_all_users_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -363,14 +364,21 @@ func (x *UsersObject) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UsersObject.ProtoReflect.Descriptor instead.
 func (*UsersObject) Descriptor() ([]byte, []int) {
-	return file_users_v1_getAllUsers_proto_rawDescGZIP(), []int{2}
+	return file_users_v1_get_all_users_proto_rawDescGZIP(), []int{2}
 }
 
-var File_users_v1_getAllUsers_proto protoreflect.FileDescriptor
+func (x *UsersObject) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
 
-const file_users_v1_getAllUsers_proto_rawDesc = "" +
+var File_users_v1_get_all_users_proto protoreflect.FileDescriptor
+
+const file_users_v1_get_all_users_proto_rawDesc = "" +
 	"\n" +
-	"\x1ausers/v1/getAllUsers.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a users/v1/userRole/userRole.proto\x1a users/v1/abGroups/abGroups.proto\"\xe5\x04\n" +
+	"\x1cusers/v1/get_all_users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dusers/v1/role/user_role.proto\x1a\"users/v1/ab_groups/ab_groups.proto\"\xfa\x04\n" +
 	"\x12GetAllUsersRequest\x12\x17\n" +
 	"\x04guid\x18\x01 \x01(\x04H\x00R\x04guid\x88\x01\x01\x12$\n" +
 	"\vcard_number\x18\x02 \x01(\x04H\x01R\n" +
@@ -380,9 +388,9 @@ const file_users_v1_getAllUsers_proto_rawDesc = "" +
 	"\x05email\x18\x05 \x01(\tH\x04R\x05email\x88\x01\x01\x12\"\n" +
 	"\n" +
 	"first_name\x18\x06 \x01(\tH\x05R\tfirstName\x88\x01\x01\x12 \n" +
-	"\tlast_name\x18\a \x01(\tH\x06R\blastName\x88\x01\x01\x12\"\n" +
-	"\x04role\x18\b \x03(\x0e2\x0e.users.v1.RoleR\x04role\x129\n" +
-	"\rab_test_group\x18\t \x03(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup\x12\x12\n" +
+	"\tlast_name\x18\a \x01(\tH\x06R\blastName\x88\x01\x01\x12+\n" +
+	"\x04role\x18\b \x03(\x0e2\x17.users.v1.Role.UserRoleR\x04role\x12E\n" +
+	"\rab_test_group\x18\t \x03(\x0e2!.users.v1.ABTestGroup.ABTestGroupR\vabTestGroup\x12\x12\n" +
 	"\x04page\x18\n" +
 	" \x01(\x04R\x04page\x12\x14\n" +
 	"\x05limit\x18\v \x01(\x04R\x05limit\x12.\n" +
@@ -402,8 +410,9 @@ const file_users_v1_getAllUsers_proto_rawDesc = "" +
 	"\v_sort_order\"X\n" +
 	"\x13GetAllUsersResponse\x12+\n" +
 	"\x05users\x18\x01 \x03(\v2\x15.users.v1.UsersObjectR\x05users\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x04R\x05total\"\r\n" +
-	"\vUsersObject*\xd1\x01\n" +
+	"\x05total\x18\x02 \x01(\x04R\x05total\"\x1d\n" +
+	"\vUsersObject\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id*\xd1\x01\n" +
 	"\x06SortBy\x12\x10\n" +
 	"\fSORT_BY_GUID\x10\x00\x12\x16\n" +
 	"\x12SORT_BY_FIRST_NAME\x10\x01\x12\x15\n" +
@@ -419,31 +428,31 @@ const file_users_v1_getAllUsers_proto_rawDesc = "" +
 	"\x0fSORT_ORDER_DESC\x10\x01B7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
 
 var (
-	file_users_v1_getAllUsers_proto_rawDescOnce sync.Once
-	file_users_v1_getAllUsers_proto_rawDescData []byte
+	file_users_v1_get_all_users_proto_rawDescOnce sync.Once
+	file_users_v1_get_all_users_proto_rawDescData []byte
 )
 
-func file_users_v1_getAllUsers_proto_rawDescGZIP() []byte {
-	file_users_v1_getAllUsers_proto_rawDescOnce.Do(func() {
-		file_users_v1_getAllUsers_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_getAllUsers_proto_rawDesc), len(file_users_v1_getAllUsers_proto_rawDesc)))
+func file_users_v1_get_all_users_proto_rawDescGZIP() []byte {
+	file_users_v1_get_all_users_proto_rawDescOnce.Do(func() {
+		file_users_v1_get_all_users_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_get_all_users_proto_rawDesc), len(file_users_v1_get_all_users_proto_rawDesc)))
 	})
-	return file_users_v1_getAllUsers_proto_rawDescData
+	return file_users_v1_get_all_users_proto_rawDescData
 }
 
-var file_users_v1_getAllUsers_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_users_v1_getAllUsers_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
-var file_users_v1_getAllUsers_proto_goTypes = []any{
+var file_users_v1_get_all_users_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_users_v1_get_all_users_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_users_v1_get_all_users_proto_goTypes = []any{
 	(SortBy)(0),                 // 0: users.v1.SortBy
 	(SortOrder)(0),              // 1: users.v1.SortOrder
 	(*GetAllUsersRequest)(nil),  // 2: users.v1.GetAllUsersRequest
 	(*GetAllUsersResponse)(nil), // 3: users.v1.GetAllUsersResponse
 	(*UsersObject)(nil),         // 4: users.v1.UsersObject
-	(userRole.Role)(0),          // 5: users.v1.Role
-	(abGroups.ABTestGroup)(0),   // 6: users.v1.ABTestGroup
+	(user_role.UserRole)(0),     // 5: users.v1.Role.UserRole
+	(ab_groups.ABTestGroup)(0),  // 6: users.v1.ABTestGroup.ABTestGroup
 }
-var file_users_v1_getAllUsers_proto_depIdxs = []int32{
-	5, // 0: users.v1.GetAllUsersRequest.role:type_name -> users.v1.Role
-	6, // 1: users.v1.GetAllUsersRequest.ab_test_group:type_name -> users.v1.ABTestGroup
+var file_users_v1_get_all_users_proto_depIdxs = []int32{
+	5, // 0: users.v1.GetAllUsersRequest.role:type_name -> users.v1.Role.UserRole
+	6, // 1: users.v1.GetAllUsersRequest.ab_test_group:type_name -> users.v1.ABTestGroup.ABTestGroup
 	0, // 2: users.v1.GetAllUsersRequest.sort_by:type_name -> users.v1.SortBy
 	1, // 3: users.v1.GetAllUsersRequest.sort_order:type_name -> users.v1.SortOrder
 	4, // 4: users.v1.GetAllUsersResponse.users:type_name -> users.v1.UsersObject
@@ -454,28 +463,28 @@ var file_users_v1_getAllUsers_proto_depIdxs = []int32{
 	0, // [0:5] is the sub-list for field type_name
 }
 
-func init() { file_users_v1_getAllUsers_proto_init() }
-func file_users_v1_getAllUsers_proto_init() {
-	if File_users_v1_getAllUsers_proto != nil {
+func init() { file_users_v1_get_all_users_proto_init() }
+func file_users_v1_get_all_users_proto_init() {
+	if File_users_v1_get_all_users_proto != nil {
 		return
 	}
-	file_users_v1_getAllUsers_proto_msgTypes[0].OneofWrappers = []any{}
+	file_users_v1_get_all_users_proto_msgTypes[0].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_getAllUsers_proto_rawDesc), len(file_users_v1_getAllUsers_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_get_all_users_proto_rawDesc), len(file_users_v1_get_all_users_proto_rawDesc)),
 			NumEnums:      2,
 			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_users_v1_getAllUsers_proto_goTypes,
-		DependencyIndexes: file_users_v1_getAllUsers_proto_depIdxs,
-		EnumInfos:         file_users_v1_getAllUsers_proto_enumTypes,
-		MessageInfos:      file_users_v1_getAllUsers_proto_msgTypes,
+		GoTypes:           file_users_v1_get_all_users_proto_goTypes,
+		DependencyIndexes: file_users_v1_get_all_users_proto_depIdxs,
+		EnumInfos:         file_users_v1_get_all_users_proto_enumTypes,
+		MessageInfos:      file_users_v1_get_all_users_proto_msgTypes,
 	}.Build()
-	File_users_v1_getAllUsers_proto = out.File
-	file_users_v1_getAllUsers_proto_goTypes = nil
-	file_users_v1_getAllUsers_proto_depIdxs = nil
+	File_users_v1_get_all_users_proto = out.File
+	file_users_v1_get_all_users_proto_goTypes = nil
+	file_users_v1_get_all_users_proto_depIdxs = nil
 }

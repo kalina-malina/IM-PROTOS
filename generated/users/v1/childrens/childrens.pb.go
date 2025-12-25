@@ -85,7 +85,7 @@ var File_users_v1_childrens_childrens_proto protoreflect.FileDescriptor
 
 const file_users_v1_childrens_childrens_proto_rawDesc = "" +
 	"\n" +
-	"\"users/v1/childrens/childrens.proto\x12\busers.v1\"k\n" +
+	"\"users/v1/childrens/childrens.proto\x12\x12users.v1.Childrens\"k\n" +
 	"\tChildrens\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x01 \x01(\tR\tfirstName\x12\x1b\n" +
@@ -106,7 +106,7 @@ func file_users_v1_childrens_childrens_proto_rawDescGZIP() []byte {
 
 var file_users_v1_childrens_childrens_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_users_v1_childrens_childrens_proto_goTypes = []any{
-	(*Childrens)(nil), // 0: users.v1.Childrens
+	(*Childrens)(nil), // 0: users.v1.Childrens.Childrens
 }
 var file_users_v1_childrens_childrens_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type

@@ -2,12 +2,12 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        v6.33.0
-// source: users/v1/changeUserRole.proto
+// source: users/v1/change_user_role.proto
 
 package v1
 
 import (
-	userRole "github.com/kalina-malina/IM-PROTOS/generated/users/v1/userRole"
+	user_role "github.com/kalina-malina/IM-PROTOS/generated/users/v1/role/user_role"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -26,14 +26,14 @@ const (
 type ChangeUserRoleRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	IdUser        uint64                 `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
-	Role          userRole.Role          `protobuf:"varint,2,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
+	Role          user_role.UserRole     `protobuf:"varint,2,opt,name=role,proto3,enum=users.v1.Role.UserRole" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ChangeUserRoleRequest) Reset() {
 	*x = ChangeUserRoleRequest{}
-	mi := &file_users_v1_changeUserRole_proto_msgTypes[0]
+	mi := &file_users_v1_change_user_role_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -45,7 +45,7 @@ func (x *ChangeUserRoleRequest) String() string {
 func (*ChangeUserRoleRequest) ProtoMessage() {}
 
 func (x *ChangeUserRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_changeUserRole_proto_msgTypes[0]
+	mi := &file_users_v1_change_user_role_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,7 +58,7 @@ func (x *ChangeUserRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUserRoleRequest.ProtoReflect.Descriptor instead.
 func (*ChangeUserRoleRequest) Descriptor() ([]byte, []int) {
-	return file_users_v1_changeUserRole_proto_rawDescGZIP(), []int{0}
+	return file_users_v1_change_user_role_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ChangeUserRoleRequest) GetIdUser() uint64 {
@@ -68,11 +68,11 @@ func (x *ChangeUserRoleRequest) GetIdUser() uint64 {
 	return 0
 }
 
-func (x *ChangeUserRoleRequest) GetRole() userRole.Role {
+func (x *ChangeUserRoleRequest) GetRole() user_role.UserRole {
 	if x != nil {
 		return x.Role
 	}
-	return userRole.Role(0)
+	return user_role.UserRole(0)
 }
 
 type ChangeUserRoleResponse struct {
@@ -84,7 +84,7 @@ type ChangeUserRoleResponse struct {
 
 func (x *ChangeUserRoleResponse) Reset() {
 	*x = ChangeUserRoleResponse{}
-	mi := &file_users_v1_changeUserRole_proto_msgTypes[1]
+	mi := &file_users_v1_change_user_role_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -96,7 +96,7 @@ func (x *ChangeUserRoleResponse) String() string {
 func (*ChangeUserRoleResponse) ProtoMessage() {}
 
 func (x *ChangeUserRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_changeUserRole_proto_msgTypes[1]
+	mi := &file_users_v1_change_user_role_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -109,7 +109,7 @@ func (x *ChangeUserRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUserRoleResponse.ProtoReflect.Descriptor instead.
 func (*ChangeUserRoleResponse) Descriptor() ([]byte, []int) {
-	return file_users_v1_changeUserRole_proto_rawDescGZIP(), []int{1}
+	return file_users_v1_change_user_role_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ChangeUserRoleResponse) GetSuccess() string {
@@ -119,37 +119,37 @@ func (x *ChangeUserRoleResponse) GetSuccess() string {
 	return ""
 }
 
-var File_users_v1_changeUserRole_proto protoreflect.FileDescriptor
+var File_users_v1_change_user_role_proto protoreflect.FileDescriptor
 
-const file_users_v1_changeUserRole_proto_rawDesc = "" +
+const file_users_v1_change_user_role_proto_rawDesc = "" +
 	"\n" +
-	"\x1dusers/v1/changeUserRole.proto\x12\busers.v1\x1a users/v1/userRole/userRole.proto\"T\n" +
+	"\x1fusers/v1/change_user_role.proto\x12\busers.v1\x1a\x1dusers/v1/role/user_role.proto\"]\n" +
 	"\x15ChangeUserRoleRequest\x12\x17\n" +
-	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12\"\n" +
-	"\x04role\x18\x02 \x01(\x0e2\x0e.users.v1.RoleR\x04role\"2\n" +
+	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12+\n" +
+	"\x04role\x18\x02 \x01(\x0e2\x17.users.v1.Role.UserRoleR\x04role\"2\n" +
 	"\x16ChangeUserRoleResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\tR\asuccessB7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
 
 var (
-	file_users_v1_changeUserRole_proto_rawDescOnce sync.Once
-	file_users_v1_changeUserRole_proto_rawDescData []byte
+	file_users_v1_change_user_role_proto_rawDescOnce sync.Once
+	file_users_v1_change_user_role_proto_rawDescData []byte
 )
 
-func file_users_v1_changeUserRole_proto_rawDescGZIP() []byte {
-	file_users_v1_changeUserRole_proto_rawDescOnce.Do(func() {
-		file_users_v1_changeUserRole_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_changeUserRole_proto_rawDesc), len(file_users_v1_changeUserRole_proto_rawDesc)))
+func file_users_v1_change_user_role_proto_rawDescGZIP() []byte {
+	file_users_v1_change_user_role_proto_rawDescOnce.Do(func() {
+		file_users_v1_change_user_role_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_change_user_role_proto_rawDesc), len(file_users_v1_change_user_role_proto_rawDesc)))
 	})
-	return file_users_v1_changeUserRole_proto_rawDescData
+	return file_users_v1_change_user_role_proto_rawDescData
 }
 
-var file_users_v1_changeUserRole_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_users_v1_changeUserRole_proto_goTypes = []any{
+var file_users_v1_change_user_role_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_users_v1_change_user_role_proto_goTypes = []any{
 	(*ChangeUserRoleRequest)(nil),  // 0: users.v1.ChangeUserRoleRequest
 	(*ChangeUserRoleResponse)(nil), // 1: users.v1.ChangeUserRoleResponse
-	(userRole.Role)(0),             // 2: users.v1.Role
+	(user_role.UserRole)(0),        // 2: users.v1.Role.UserRole
 }
-var file_users_v1_changeUserRole_proto_depIdxs = []int32{
-	2, // 0: users.v1.ChangeUserRoleRequest.role:type_name -> users.v1.Role
+var file_users_v1_change_user_role_proto_depIdxs = []int32{
+	2, // 0: users.v1.ChangeUserRoleRequest.role:type_name -> users.v1.Role.UserRole
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -157,26 +157,26 @@ var file_users_v1_changeUserRole_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_users_v1_changeUserRole_proto_init() }
-func file_users_v1_changeUserRole_proto_init() {
-	if File_users_v1_changeUserRole_proto != nil {
+func init() { file_users_v1_change_user_role_proto_init() }
+func file_users_v1_change_user_role_proto_init() {
+	if File_users_v1_change_user_role_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_changeUserRole_proto_rawDesc), len(file_users_v1_changeUserRole_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_change_user_role_proto_rawDesc), len(file_users_v1_change_user_role_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_users_v1_changeUserRole_proto_goTypes,
-		DependencyIndexes: file_users_v1_changeUserRole_proto_depIdxs,
-		MessageInfos:      file_users_v1_changeUserRole_proto_msgTypes,
+		GoTypes:           file_users_v1_change_user_role_proto_goTypes,
+		DependencyIndexes: file_users_v1_change_user_role_proto_depIdxs,
+		MessageInfos:      file_users_v1_change_user_role_proto_msgTypes,
 	}.Build()
-	File_users_v1_changeUserRole_proto = out.File
-	file_users_v1_changeUserRole_proto_goTypes = nil
-	file_users_v1_changeUserRole_proto_depIdxs = nil
+	File_users_v1_change_user_role_proto = out.File
+	file_users_v1_change_user_role_proto_goTypes = nil
+	file_users_v1_change_user_role_proto_depIdxs = nil
 }

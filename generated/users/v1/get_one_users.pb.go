@@ -2,14 +2,14 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        v6.33.0
-// source: users/v1/getOneUsers.proto
+// source: users/v1/get_one_users.proto
 
 package v1
 
 import (
-	abGroups "github.com/kalina-malina/IM-PROTOS/generated/users/v1/abGroups/abGroups"
+	ab_groups "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ab_groups/ab_groups"
 	childrens "github.com/kalina-malina/IM-PROTOS/generated/users/v1/childrens/childrens"
-	userRole "github.com/kalina-malina/IM-PROTOS/generated/users/v1/userRole"
+	user_role "github.com/kalina-malina/IM-PROTOS/generated/users/v1/role/user_role"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/known/emptypb"
@@ -34,7 +34,7 @@ type GetByOneUserRequest struct {
 
 func (x *GetByOneUserRequest) Reset() {
 	*x = GetByOneUserRequest{}
-	mi := &file_users_v1_getOneUsers_proto_msgTypes[0]
+	mi := &file_users_v1_get_one_users_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -46,7 +46,7 @@ func (x *GetByOneUserRequest) String() string {
 func (*GetByOneUserRequest) ProtoMessage() {}
 
 func (x *GetByOneUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_getOneUsers_proto_msgTypes[0]
+	mi := &file_users_v1_get_one_users_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -59,7 +59,7 @@ func (x *GetByOneUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetByOneUserRequest.ProtoReflect.Descriptor instead.
 func (*GetByOneUserRequest) Descriptor() ([]byte, []int) {
-	return file_users_v1_getOneUsers_proto_rawDescGZIP(), []int{0}
+	return file_users_v1_get_one_users_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *GetByOneUserRequest) GetId() string {
@@ -73,7 +73,7 @@ type GetByOneUserResponse struct {
 	state              protoimpl.MessageState `protogen:"open.v1"`
 	Id                 uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Deleted            bool                   `protobuf:"varint,2,opt,name=deleted,proto3" json:"deleted,omitempty"`
-	Role               userRole.Role          `protobuf:"varint,3,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
+	Role               user_role.UserRole     `protobuf:"varint,3,opt,name=role,proto3,enum=users.v1.Role.UserRole" json:"role,omitempty"`
 	FirstName          string                 `protobuf:"bytes,4,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName           string                 `protobuf:"bytes,5,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 	DateOfBirth        string                 `protobuf:"bytes,6,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
@@ -84,7 +84,7 @@ type GetByOneUserResponse struct {
 	LastComentDelivery string                 `protobuf:"bytes,11,opt,name=last_coment_delivery,json=lastComentDelivery,proto3" json:"last_coment_delivery,omitempty"`
 	FullBlocked        bool                   `protobuf:"varint,12,opt,name=full_blocked,json=fullBlocked,proto3" json:"full_blocked,omitempty"`
 	SelectedStoreId    uint32                 `protobuf:"varint,13,opt,name=selected_store_id,json=selectedStoreId,proto3" json:"selected_store_id,omitempty"`
-	AbTestGroup        abGroups.ABTestGroup   `protobuf:"varint,15,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
+	AbTestGroup        ab_groups.ABTestGroup  `protobuf:"varint,15,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup.ABTestGroup" json:"ab_test_group,omitempty"`
 	Children           []*childrens.Childrens `protobuf:"bytes,14,rep,name=children,proto3" json:"children,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
@@ -92,7 +92,7 @@ type GetByOneUserResponse struct {
 
 func (x *GetByOneUserResponse) Reset() {
 	*x = GetByOneUserResponse{}
-	mi := &file_users_v1_getOneUsers_proto_msgTypes[1]
+	mi := &file_users_v1_get_one_users_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -104,7 +104,7 @@ func (x *GetByOneUserResponse) String() string {
 func (*GetByOneUserResponse) ProtoMessage() {}
 
 func (x *GetByOneUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_getOneUsers_proto_msgTypes[1]
+	mi := &file_users_v1_get_one_users_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -117,7 +117,7 @@ func (x *GetByOneUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetByOneUserResponse.ProtoReflect.Descriptor instead.
 func (*GetByOneUserResponse) Descriptor() ([]byte, []int) {
-	return file_users_v1_getOneUsers_proto_rawDescGZIP(), []int{1}
+	return file_users_v1_get_one_users_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *GetByOneUserResponse) GetId() uint64 {
@@ -134,11 +134,11 @@ func (x *GetByOneUserResponse) GetDeleted() bool {
 	return false
 }
 
-func (x *GetByOneUserResponse) GetRole() userRole.Role {
+func (x *GetByOneUserResponse) GetRole() user_role.UserRole {
 	if x != nil {
 		return x.Role
 	}
-	return userRole.Role(0)
+	return user_role.UserRole(0)
 }
 
 func (x *GetByOneUserResponse) GetFirstName() string {
@@ -211,11 +211,11 @@ func (x *GetByOneUserResponse) GetSelectedStoreId() uint32 {
 	return 0
 }
 
-func (x *GetByOneUserResponse) GetAbTestGroup() abGroups.ABTestGroup {
+func (x *GetByOneUserResponse) GetAbTestGroup() ab_groups.ABTestGroup {
 	if x != nil {
 		return x.AbTestGroup
 	}
-	return abGroups.ABTestGroup(0)
+	return ab_groups.ABTestGroup(0)
 }
 
 func (x *GetByOneUserResponse) GetChildren() []*childrens.Childrens {
@@ -225,17 +225,17 @@ func (x *GetByOneUserResponse) GetChildren() []*childrens.Childrens {
 	return nil
 }
 
-var File_users_v1_getOneUsers_proto protoreflect.FileDescriptor
+var File_users_v1_get_one_users_proto protoreflect.FileDescriptor
 
-const file_users_v1_getOneUsers_proto_rawDesc = "" +
+const file_users_v1_get_one_users_proto_rawDesc = "" +
 	"\n" +
-	"\x1ausers/v1/getOneUsers.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a users/v1/userRole/userRole.proto\x1a users/v1/abGroups/abGroups.proto\x1a\"users/v1/childrens/childrens.proto\"%\n" +
+	"\x1cusers/v1/get_one_users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dusers/v1/role/user_role.proto\x1a\"users/v1/ab_groups/ab_groups.proto\x1a\"users/v1/childrens/childrens.proto\"%\n" +
 	"\x13GetByOneUserRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"\xa5\x04\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"\xc4\x04\n" +
 	"\x14GetByOneUserResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x18\n" +
-	"\adeleted\x18\x02 \x01(\bR\adeleted\x12\"\n" +
-	"\x04role\x18\x03 \x01(\x0e2\x0e.users.v1.RoleR\x04role\x12\x1d\n" +
+	"\adeleted\x18\x02 \x01(\bR\adeleted\x12+\n" +
+	"\x04role\x18\x03 \x01(\x0e2\x17.users.v1.Role.UserRoleR\x04role\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x04 \x01(\tR\tfirstName\x12\x1b\n" +
 	"\tlast_name\x18\x05 \x01(\tR\blastName\x12\"\n" +
@@ -248,34 +248,34 @@ const file_users_v1_getOneUsers_proto_rawDesc = "" +
 	" \x01(\bR\rverifiedEmail\x120\n" +
 	"\x14last_coment_delivery\x18\v \x01(\tR\x12lastComentDelivery\x12!\n" +
 	"\ffull_blocked\x18\f \x01(\bR\vfullBlocked\x12*\n" +
-	"\x11selected_store_id\x18\r \x01(\rR\x0fselectedStoreId\x129\n" +
-	"\rab_test_group\x18\x0f \x01(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup\x12/\n" +
-	"\bchildren\x18\x0e \x03(\v2\x13.users.v1.ChildrensR\bchildrenB7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
+	"\x11selected_store_id\x18\r \x01(\rR\x0fselectedStoreId\x12E\n" +
+	"\rab_test_group\x18\x0f \x01(\x0e2!.users.v1.ABTestGroup.ABTestGroupR\vabTestGroup\x129\n" +
+	"\bchildren\x18\x0e \x03(\v2\x1d.users.v1.Childrens.ChildrensR\bchildrenB7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
 
 var (
-	file_users_v1_getOneUsers_proto_rawDescOnce sync.Once
-	file_users_v1_getOneUsers_proto_rawDescData []byte
+	file_users_v1_get_one_users_proto_rawDescOnce sync.Once
+	file_users_v1_get_one_users_proto_rawDescData []byte
 )
 
-func file_users_v1_getOneUsers_proto_rawDescGZIP() []byte {
-	file_users_v1_getOneUsers_proto_rawDescOnce.Do(func() {
-		file_users_v1_getOneUsers_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_getOneUsers_proto_rawDesc), len(file_users_v1_getOneUsers_proto_rawDesc)))
+func file_users_v1_get_one_users_proto_rawDescGZIP() []byte {
+	file_users_v1_get_one_users_proto_rawDescOnce.Do(func() {
+		file_users_v1_get_one_users_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_get_one_users_proto_rawDesc), len(file_users_v1_get_one_users_proto_rawDesc)))
 	})
-	return file_users_v1_getOneUsers_proto_rawDescData
+	return file_users_v1_get_one_users_proto_rawDescData
 }
 
-var file_users_v1_getOneUsers_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_users_v1_getOneUsers_proto_goTypes = []any{
+var file_users_v1_get_one_users_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_users_v1_get_one_users_proto_goTypes = []any{
 	(*GetByOneUserRequest)(nil),  // 0: users.v1.GetByOneUserRequest
 	(*GetByOneUserResponse)(nil), // 1: users.v1.GetByOneUserResponse
-	(userRole.Role)(0),           // 2: users.v1.Role
-	(abGroups.ABTestGroup)(0),    // 3: users.v1.ABTestGroup
-	(*childrens.Childrens)(nil),  // 4: users.v1.Childrens
+	(user_role.UserRole)(0),      // 2: users.v1.Role.UserRole
+	(ab_groups.ABTestGroup)(0),   // 3: users.v1.ABTestGroup.ABTestGroup
+	(*childrens.Childrens)(nil),  // 4: users.v1.Childrens.Childrens
 }
-var file_users_v1_getOneUsers_proto_depIdxs = []int32{
-	2, // 0: users.v1.GetByOneUserResponse.role:type_name -> users.v1.Role
-	3, // 1: users.v1.GetByOneUserResponse.ab_test_group:type_name -> users.v1.ABTestGroup
-	4, // 2: users.v1.GetByOneUserResponse.children:type_name -> users.v1.Childrens
+var file_users_v1_get_one_users_proto_depIdxs = []int32{
+	2, // 0: users.v1.GetByOneUserResponse.role:type_name -> users.v1.Role.UserRole
+	3, // 1: users.v1.GetByOneUserResponse.ab_test_group:type_name -> users.v1.ABTestGroup.ABTestGroup
+	4, // 2: users.v1.GetByOneUserResponse.children:type_name -> users.v1.Childrens.Childrens
 	3, // [3:3] is the sub-list for method output_type
 	3, // [3:3] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -283,26 +283,26 @@ var file_users_v1_getOneUsers_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_users_v1_getOneUsers_proto_init() }
-func file_users_v1_getOneUsers_proto_init() {
-	if File_users_v1_getOneUsers_proto != nil {
+func init() { file_users_v1_get_one_users_proto_init() }
+func file_users_v1_get_one_users_proto_init() {
+	if File_users_v1_get_one_users_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_getOneUsers_proto_rawDesc), len(file_users_v1_getOneUsers_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_get_one_users_proto_rawDesc), len(file_users_v1_get_one_users_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_users_v1_getOneUsers_proto_goTypes,
-		DependencyIndexes: file_users_v1_getOneUsers_proto_depIdxs,
-		MessageInfos:      file_users_v1_getOneUsers_proto_msgTypes,
+		GoTypes:           file_users_v1_get_one_users_proto_goTypes,
+		DependencyIndexes: file_users_v1_get_one_users_proto_depIdxs,
+		MessageInfos:      file_users_v1_get_one_users_proto_msgTypes,
 	}.Build()
-	File_users_v1_getOneUsers_proto = out.File
-	file_users_v1_getOneUsers_proto_goTypes = nil
-	file_users_v1_getOneUsers_proto_depIdxs = nil
+	File_users_v1_get_one_users_proto = out.File
+	file_users_v1_get_one_users_proto_goTypes = nil
+	file_users_v1_get_one_users_proto_depIdxs = nil
 }

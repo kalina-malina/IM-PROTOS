@@ -3,13 +3,13 @@ syntax = "proto3";
 package users.v1;
 
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
-import "users/v1/banReasonType/banreason.proto";
+import "users/v1/ban_reason_type/ban_reason.proto";
 
 
 //Блокировка пользователя
 message BanUserRequest {
   uint64 id_user = 1;
-  BanReasonTypeEnum reason = 2;
+  users.v1.BanReasonType.BanReasonTypeEnum reason = 2;
   optional string reason_description = 3;
 }
 

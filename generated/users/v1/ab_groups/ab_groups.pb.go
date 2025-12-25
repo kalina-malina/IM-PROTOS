@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        v6.33.0
-// source: users/v1/abGroups/abGroups.proto
+// source: users/v1/ab_groups/ab_groups.proto
 
-package abGroups
+package ab_groups
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -57,11 +57,11 @@ func (x ABTestGroup) String() string {
 }
 
 func (ABTestGroup) Descriptor() protoreflect.EnumDescriptor {
-	return file_users_v1_abGroups_abGroups_proto_enumTypes[0].Descriptor()
+	return file_users_v1_ab_groups_ab_groups_proto_enumTypes[0].Descriptor()
 }
 
 func (ABTestGroup) Type() protoreflect.EnumType {
-	return &file_users_v1_abGroups_abGroups_proto_enumTypes[0]
+	return &file_users_v1_ab_groups_ab_groups_proto_enumTypes[0]
 }
 
 func (x ABTestGroup) Number() protoreflect.EnumNumber {
@@ -70,37 +70,37 @@ func (x ABTestGroup) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ABTestGroup.Descriptor instead.
 func (ABTestGroup) EnumDescriptor() ([]byte, []int) {
-	return file_users_v1_abGroups_abGroups_proto_rawDescGZIP(), []int{0}
+	return file_users_v1_ab_groups_ab_groups_proto_rawDescGZIP(), []int{0}
 }
 
-var File_users_v1_abGroups_abGroups_proto protoreflect.FileDescriptor
+var File_users_v1_ab_groups_ab_groups_proto protoreflect.FileDescriptor
 
-const file_users_v1_abGroups_abGroups_proto_rawDesc = "" +
+const file_users_v1_ab_groups_ab_groups_proto_rawDesc = "" +
 	"\n" +
-	" users/v1/abGroups/abGroups.proto\x12\busers.v1*a\n" +
+	"\"users/v1/ab_groups/ab_groups.proto\x12\x14users.v1.ABTestGroup*a\n" +
 	"\vABTestGroup\x12\x13\n" +
 	"\x0fAB_TEST_GROUP_A\x10\x00\x12\x13\n" +
 	"\x0fAB_TEST_GROUP_B\x10\x01\x12\x13\n" +
 	"\x0fAB_TEST_GROUP_C\x10\x02\x12\x13\n" +
-	"\x0fAB_TEST_GROUP_D\x10\x03BIZGgithub.com/kalina-malina/IM-PROTOS/generated/users/v1/abGroups/abGroupsb\x06proto3"
+	"\x0fAB_TEST_GROUP_D\x10\x03BKZIgithub.com/kalina-malina/IM-PROTOS/generated/users/v1/ab_groups/ab_groupsb\x06proto3"
 
 var (
-	file_users_v1_abGroups_abGroups_proto_rawDescOnce sync.Once
-	file_users_v1_abGroups_abGroups_proto_rawDescData []byte
+	file_users_v1_ab_groups_ab_groups_proto_rawDescOnce sync.Once
+	file_users_v1_ab_groups_ab_groups_proto_rawDescData []byte
 )
 
-func file_users_v1_abGroups_abGroups_proto_rawDescGZIP() []byte {
-	file_users_v1_abGroups_abGroups_proto_rawDescOnce.Do(func() {
-		file_users_v1_abGroups_abGroups_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_abGroups_abGroups_proto_rawDesc), len(file_users_v1_abGroups_abGroups_proto_rawDesc)))
+func file_users_v1_ab_groups_ab_groups_proto_rawDescGZIP() []byte {
+	file_users_v1_ab_groups_ab_groups_proto_rawDescOnce.Do(func() {
+		file_users_v1_ab_groups_ab_groups_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_ab_groups_ab_groups_proto_rawDesc), len(file_users_v1_ab_groups_ab_groups_proto_rawDesc)))
 	})
-	return file_users_v1_abGroups_abGroups_proto_rawDescData
+	return file_users_v1_ab_groups_ab_groups_proto_rawDescData
 }
 
-var file_users_v1_abGroups_abGroups_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_users_v1_abGroups_abGroups_proto_goTypes = []any{
-	(ABTestGroup)(0), // 0: users.v1.ABTestGroup
+var file_users_v1_ab_groups_ab_groups_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_users_v1_ab_groups_ab_groups_proto_goTypes = []any{
+	(ABTestGroup)(0), // 0: users.v1.ABTestGroup.ABTestGroup
 }
-var file_users_v1_abGroups_abGroups_proto_depIdxs = []int32{
+var file_users_v1_ab_groups_ab_groups_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -108,26 +108,26 @@ var file_users_v1_abGroups_abGroups_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_users_v1_abGroups_abGroups_proto_init() }
-func file_users_v1_abGroups_abGroups_proto_init() {
-	if File_users_v1_abGroups_abGroups_proto != nil {
+func init() { file_users_v1_ab_groups_ab_groups_proto_init() }
+func file_users_v1_ab_groups_ab_groups_proto_init() {
+	if File_users_v1_ab_groups_ab_groups_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_abGroups_abGroups_proto_rawDesc), len(file_users_v1_abGroups_abGroups_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_ab_groups_ab_groups_proto_rawDesc), len(file_users_v1_ab_groups_ab_groups_proto_rawDesc)),
 			NumEnums:      1,
 			NumMessages:   0,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_users_v1_abGroups_abGroups_proto_goTypes,
-		DependencyIndexes: file_users_v1_abGroups_abGroups_proto_depIdxs,
-		EnumInfos:         file_users_v1_abGroups_abGroups_proto_enumTypes,
+		GoTypes:           file_users_v1_ab_groups_ab_groups_proto_goTypes,
+		DependencyIndexes: file_users_v1_ab_groups_ab_groups_proto_depIdxs,
+		EnumInfos:         file_users_v1_ab_groups_ab_groups_proto_enumTypes,
 	}.Build()
-	File_users_v1_abGroups_abGroups_proto = out.File
-	file_users_v1_abGroups_abGroups_proto_goTypes = nil
-	file_users_v1_abGroups_abGroups_proto_depIdxs = nil
+	File_users_v1_ab_groups_ab_groups_proto = out.File
+	file_users_v1_ab_groups_ab_groups_proto_goTypes = nil
+	file_users_v1_ab_groups_ab_groups_proto_depIdxs = nil
 }

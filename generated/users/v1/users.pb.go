@@ -7,10 +7,10 @@
 package v1
 
 import (
-	abGroups "github.com/kalina-malina/IM-PROTOS/generated/users/v1/abGroups/abGroups"
-	_ "github.com/kalina-malina/IM-PROTOS/generated/users/v1/banReasonType/banreason"
+	ab_groups "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ab_groups/ab_groups"
+	_ "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ban_reason_type/ban_reason"
 	childrens "github.com/kalina-malina/IM-PROTOS/generated/users/v1/childrens/childrens"
-	userRole "github.com/kalina-malina/IM-PROTOS/generated/users/v1/userRole"
+	user_role "github.com/kalina-malina/IM-PROTOS/generated/users/v1/role/user_role"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/known/emptypb"
@@ -26,13 +26,11 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// //////////////////////////////////////////////////////////
-// общее
 type User struct {
 	state              protoimpl.MessageState `protogen:"open.v1"`
 	Id                 uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Deleted            bool                   `protobuf:"varint,2,opt,name=deleted,proto3" json:"deleted,omitempty"`
-	Role               userRole.Role          `protobuf:"varint,3,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
+	Role               user_role.UserRole     `protobuf:"varint,3,opt,name=role,proto3,enum=users.v1.Role.UserRole" json:"role,omitempty"`
 	FirstName          string                 `protobuf:"bytes,4,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName           string                 `protobuf:"bytes,5,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 	DateOfBirth        string                 `protobuf:"bytes,6,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
@@ -43,7 +41,7 @@ type User struct {
 	LastComentDelivery string                 `protobuf:"bytes,11,opt,name=last_coment_delivery,json=lastComentDelivery,proto3" json:"last_coment_delivery,omitempty"`
 	FullBlocked        bool                   `protobuf:"varint,12,opt,name=full_blocked,json=fullBlocked,proto3" json:"full_blocked,omitempty"`
 	SelectedStoreId    uint32                 `protobuf:"varint,13,opt,name=selected_store_id,json=selectedStoreId,proto3" json:"selected_store_id,omitempty"`
-	AbTestGroup        abGroups.ABTestGroup   `protobuf:"varint,15,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
+	AbTestGroup        ab_groups.ABTestGroup  `protobuf:"varint,15,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup.ABTestGroup" json:"ab_test_group,omitempty"`
 	Children           []*childrens.Childrens `protobuf:"bytes,14,rep,name=children,proto3" json:"children,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
@@ -93,11 +91,11 @@ func (x *User) GetDeleted() bool {
 	return false
 }
 
-func (x *User) GetRole() userRole.Role {
+func (x *User) GetRole() user_role.UserRole {
 	if x != nil {
 		return x.Role
 	}
-	return userRole.Role(0)
+	return user_role.UserRole(0)
 }
 
 func (x *User) GetFirstName() string {
@@ -170,11 +168,11 @@ func (x *User) GetSelectedStoreId() uint32 {
 	return 0
 }
 
-func (x *User) GetAbTestGroup() abGroups.ABTestGroup {
+func (x *User) GetAbTestGroup() ab_groups.ABTestGroup {
 	if x != nil {
 		return x.AbTestGroup
 	}
-	return abGroups.ABTestGroup(0)
+	return ab_groups.ABTestGroup(0)
 }
 
 func (x *User) GetChildren() []*childrens.Childrens {
@@ -188,11 +186,11 @@ var File_users_v1_users_proto protoreflect.FileDescriptor
 
 const file_users_v1_users_proto_rawDesc = "" +
 	"\n" +
-	"\x14users/v1/users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1ausers/v1/getAllUsers.proto\x1a users/v1/userRole/userRole.proto\x1a users/v1/abGroups/abGroups.proto\x1a\"users/v1/childrens/childrens.proto\x1a&users/v1/banReasonType/banreason.proto\x1a\x1busers/v1/settingUsers.proto\x1a\x17users/v1/banUsers.proto\x1a\x19users/v1/unbanUsers.proto\x1a\x1dusers/v1/changeUserRole.proto\x1a\x1ausers/v1/getOneUsers.proto\x1a users/v1/updateUserProfile.proto\"\x95\x04\n" +
+	"\x14users/v1/users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1cusers/v1/get_all_users.proto\x1a\x1dusers/v1/role/user_role.proto\x1a\"users/v1/ab_groups/ab_groups.proto\x1a\"users/v1/childrens/childrens.proto\x1a)users/v1/ban_reason_type/ban_reason.proto\x1a\x1cusers/v1/setting_users.proto\x1a\x18users/v1/ban_users.proto\x1a\x1ausers/v1/unban_users.proto\x1a\x1fusers/v1/change_user_role.proto\x1a\x1cusers/v1/get_one_users.proto\x1a\"users/v1/update_user_profile.proto\"\xb4\x04\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x18\n" +
-	"\adeleted\x18\x02 \x01(\bR\adeleted\x12\"\n" +
-	"\x04role\x18\x03 \x01(\x0e2\x0e.users.v1.RoleR\x04role\x12\x1d\n" +
+	"\adeleted\x18\x02 \x01(\bR\adeleted\x12+\n" +
+	"\x04role\x18\x03 \x01(\x0e2\x17.users.v1.Role.UserRoleR\x04role\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x04 \x01(\tR\tfirstName\x12\x1b\n" +
 	"\tlast_name\x18\x05 \x01(\tR\blastName\x12\"\n" +
@@ -205,9 +203,9 @@ const file_users_v1_users_proto_rawDesc = "" +
 	" \x01(\bR\rverifiedEmail\x120\n" +
 	"\x14last_coment_delivery\x18\v \x01(\tR\x12lastComentDelivery\x12!\n" +
 	"\ffull_blocked\x18\f \x01(\bR\vfullBlocked\x12*\n" +
-	"\x11selected_store_id\x18\r \x01(\rR\x0fselectedStoreId\x129\n" +
-	"\rab_test_group\x18\x0f \x01(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup\x12/\n" +
-	"\bchildren\x18\x0e \x03(\v2\x13.users.v1.ChildrensR\bchildren2\xe2\x03\n" +
+	"\x11selected_store_id\x18\r \x01(\rR\x0fselectedStoreId\x12E\n" +
+	"\rab_test_group\x18\x0f \x01(\x0e2!.users.v1.ABTestGroup.ABTestGroupR\vabTestGroup\x129\n" +
+	"\bchildren\x18\x0e \x03(\v2\x1d.users.v1.Childrens.ChildrensR\bchildren2\xe2\x03\n" +
 	"\fUsersService\x12\\\n" +
 	"\x11UpdateUserProfile\x12\".users.v1.UpdateUserProfileRequest\x1a#.users.v1.UpdateUserProfileResponse\x12M\n" +
 	"\fGetByOneUser\x12\x1d.users.v1.GetByOneUserRequest\x1a\x1e.users.v1.GetByOneUserResponse\x12J\n" +
@@ -231,9 +229,9 @@ func file_users_v1_users_proto_rawDescGZIP() []byte {
 var file_users_v1_users_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_users_v1_users_proto_goTypes = []any{
 	(*User)(nil),                      // 0: users.v1.User
-	(userRole.Role)(0),                // 1: users.v1.Role
-	(abGroups.ABTestGroup)(0),         // 2: users.v1.ABTestGroup
-	(*childrens.Childrens)(nil),       // 3: users.v1.Childrens
+	(user_role.UserRole)(0),           // 1: users.v1.Role.UserRole
+	(ab_groups.ABTestGroup)(0),        // 2: users.v1.ABTestGroup.ABTestGroup
+	(*childrens.Childrens)(nil),       // 3: users.v1.Childrens.Childrens
 	(*UpdateUserProfileRequest)(nil),  // 4: users.v1.UpdateUserProfileRequest
 	(*GetByOneUserRequest)(nil),       // 5: users.v1.GetByOneUserRequest
 	(*GetAllUsersRequest)(nil),        // 6: users.v1.GetAllUsersRequest
@@ -248,9 +246,9 @@ var file_users_v1_users_proto_goTypes = []any{
 	(*UnbanUserResponse)(nil),         // 15: users.v1.UnbanUserResponse
 }
 var file_users_v1_users_proto_depIdxs = []int32{
-	1,  // 0: users.v1.User.role:type_name -> users.v1.Role
-	2,  // 1: users.v1.User.ab_test_group:type_name -> users.v1.ABTestGroup
-	3,  // 2: users.v1.User.children:type_name -> users.v1.Childrens
+	1,  // 0: users.v1.User.role:type_name -> users.v1.Role.UserRole
+	2,  // 1: users.v1.User.ab_test_group:type_name -> users.v1.ABTestGroup.ABTestGroup
+	3,  // 2: users.v1.User.children:type_name -> users.v1.Childrens.Childrens
 	4,  // 3: users.v1.UsersService.UpdateUserProfile:input_type -> users.v1.UpdateUserProfileRequest
 	5,  // 4: users.v1.UsersService.GetByOneUser:input_type -> users.v1.GetByOneUserRequest
 	6,  // 5: users.v1.UsersService.GetAllUsers:input_type -> users.v1.GetAllUsersRequest
@@ -275,13 +273,13 @@ func file_users_v1_users_proto_init() {
 	if File_users_v1_users_proto != nil {
 		return
 	}
-	file_users_v1_getAllUsers_proto_init()
-	file_users_v1_settingUsers_proto_init()
-	file_users_v1_banUsers_proto_init()
-	file_users_v1_unbanUsers_proto_init()
-	file_users_v1_changeUserRole_proto_init()
-	file_users_v1_getOneUsers_proto_init()
-	file_users_v1_updateUserProfile_proto_init()
+	file_users_v1_get_all_users_proto_init()
+	file_users_v1_setting_users_proto_init()
+	file_users_v1_ban_users_proto_init()
+	file_users_v1_unban_users_proto_init()
+	file_users_v1_change_user_role_proto_init()
+	file_users_v1_get_one_users_proto_init()
+	file_users_v1_update_user_profile_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

@@ -2,12 +2,12 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        v6.33.0
-// source: users/v1/unbanUsers.proto
+// source: users/v1/unban_users.proto
 
 package v1
 
 import (
-	banreason "github.com/kalina-malina/IM-PROTOS/generated/users/v1/banReasonType/banreason"
+	ban_reason "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ban_reason_type/ban_reason"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -24,17 +24,17 @@ const (
 
 // разблокирока пользовательй
 type UnbanUserRequest struct {
-	state             protoimpl.MessageState      `protogen:"open.v1"`
-	IdUser            uint64                      `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
-	Reason            banreason.BanReasonTypeEnum `protobuf:"varint,2,opt,name=reason,proto3,enum=users.v1.BanReasonTypeEnum" json:"reason,omitempty"`
-	ReasonDescription string                      `protobuf:"bytes,3,opt,name=reason_description,json=reasonDescription,proto3" json:"reason_description,omitempty"`
+	state             protoimpl.MessageState       `protogen:"open.v1"`
+	IdUser            uint64                       `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
+	Reason            ban_reason.BanReasonTypeEnum `protobuf:"varint,2,opt,name=reason,proto3,enum=users.v1.BanReasonType.BanReasonTypeEnum" json:"reason,omitempty"`
+	ReasonDescription string                       `protobuf:"bytes,3,opt,name=reason_description,json=reasonDescription,proto3" json:"reason_description,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
 
 func (x *UnbanUserRequest) Reset() {
 	*x = UnbanUserRequest{}
-	mi := &file_users_v1_unbanUsers_proto_msgTypes[0]
+	mi := &file_users_v1_unban_users_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -46,7 +46,7 @@ func (x *UnbanUserRequest) String() string {
 func (*UnbanUserRequest) ProtoMessage() {}
 
 func (x *UnbanUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_unbanUsers_proto_msgTypes[0]
+	mi := &file_users_v1_unban_users_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -59,7 +59,7 @@ func (x *UnbanUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnbanUserRequest.ProtoReflect.Descriptor instead.
 func (*UnbanUserRequest) Descriptor() ([]byte, []int) {
-	return file_users_v1_unbanUsers_proto_rawDescGZIP(), []int{0}
+	return file_users_v1_unban_users_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *UnbanUserRequest) GetIdUser() uint64 {
@@ -69,11 +69,11 @@ func (x *UnbanUserRequest) GetIdUser() uint64 {
 	return 0
 }
 
-func (x *UnbanUserRequest) GetReason() banreason.BanReasonTypeEnum {
+func (x *UnbanUserRequest) GetReason() ban_reason.BanReasonTypeEnum {
 	if x != nil {
 		return x.Reason
 	}
-	return banreason.BanReasonTypeEnum(0)
+	return ban_reason.BanReasonTypeEnum(0)
 }
 
 func (x *UnbanUserRequest) GetReasonDescription() string {
@@ -92,7 +92,7 @@ type UnbanUserResponse struct {
 
 func (x *UnbanUserResponse) Reset() {
 	*x = UnbanUserResponse{}
-	mi := &file_users_v1_unbanUsers_proto_msgTypes[1]
+	mi := &file_users_v1_unban_users_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -104,7 +104,7 @@ func (x *UnbanUserResponse) String() string {
 func (*UnbanUserResponse) ProtoMessage() {}
 
 func (x *UnbanUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_unbanUsers_proto_msgTypes[1]
+	mi := &file_users_v1_unban_users_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -117,7 +117,7 @@ func (x *UnbanUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnbanUserResponse.ProtoReflect.Descriptor instead.
 func (*UnbanUserResponse) Descriptor() ([]byte, []int) {
-	return file_users_v1_unbanUsers_proto_rawDescGZIP(), []int{1}
+	return file_users_v1_unban_users_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *UnbanUserResponse) GetSuccess() bool {
@@ -127,38 +127,38 @@ func (x *UnbanUserResponse) GetSuccess() bool {
 	return false
 }
 
-var File_users_v1_unbanUsers_proto protoreflect.FileDescriptor
+var File_users_v1_unban_users_proto protoreflect.FileDescriptor
 
-const file_users_v1_unbanUsers_proto_rawDesc = "" +
+const file_users_v1_unban_users_proto_rawDesc = "" +
 	"\n" +
-	"\x19users/v1/unbanUsers.proto\x12\busers.v1\x1a&users/v1/banReasonType/banreason.proto\"\x8f\x01\n" +
+	"\x1ausers/v1/unban_users.proto\x12\busers.v1\x1a)users/v1/ban_reason_type/ban_reason.proto\"\x9d\x01\n" +
 	"\x10UnbanUserRequest\x12\x17\n" +
-	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x123\n" +
-	"\x06reason\x18\x02 \x01(\x0e2\x1b.users.v1.BanReasonTypeEnumR\x06reason\x12-\n" +
+	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12A\n" +
+	"\x06reason\x18\x02 \x01(\x0e2).users.v1.BanReasonType.BanReasonTypeEnumR\x06reason\x12-\n" +
 	"\x12reason_description\x18\x03 \x01(\tR\x11reasonDescription\"-\n" +
 	"\x11UnbanUserResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccessB7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
 
 var (
-	file_users_v1_unbanUsers_proto_rawDescOnce sync.Once
-	file_users_v1_unbanUsers_proto_rawDescData []byte
+	file_users_v1_unban_users_proto_rawDescOnce sync.Once
+	file_users_v1_unban_users_proto_rawDescData []byte
 )
 
-func file_users_v1_unbanUsers_proto_rawDescGZIP() []byte {
-	file_users_v1_unbanUsers_proto_rawDescOnce.Do(func() {
-		file_users_v1_unbanUsers_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_unbanUsers_proto_rawDesc), len(file_users_v1_unbanUsers_proto_rawDesc)))
+func file_users_v1_unban_users_proto_rawDescGZIP() []byte {
+	file_users_v1_unban_users_proto_rawDescOnce.Do(func() {
+		file_users_v1_unban_users_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_unban_users_proto_rawDesc), len(file_users_v1_unban_users_proto_rawDesc)))
 	})
-	return file_users_v1_unbanUsers_proto_rawDescData
+	return file_users_v1_unban_users_proto_rawDescData
 }
 
-var file_users_v1_unbanUsers_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_users_v1_unbanUsers_proto_goTypes = []any{
-	(*UnbanUserRequest)(nil),         // 0: users.v1.UnbanUserRequest
-	(*UnbanUserResponse)(nil),        // 1: users.v1.UnbanUserResponse
-	(banreason.BanReasonTypeEnum)(0), // 2: users.v1.BanReasonTypeEnum
+var file_users_v1_unban_users_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_users_v1_unban_users_proto_goTypes = []any{
+	(*UnbanUserRequest)(nil),          // 0: users.v1.UnbanUserRequest
+	(*UnbanUserResponse)(nil),         // 1: users.v1.UnbanUserResponse
+	(ban_reason.BanReasonTypeEnum)(0), // 2: users.v1.BanReasonType.BanReasonTypeEnum
 }
-var file_users_v1_unbanUsers_proto_depIdxs = []int32{
-	2, // 0: users.v1.UnbanUserRequest.reason:type_name -> users.v1.BanReasonTypeEnum
+var file_users_v1_unban_users_proto_depIdxs = []int32{
+	2, // 0: users.v1.UnbanUserRequest.reason:type_name -> users.v1.BanReasonType.BanReasonTypeEnum
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -166,26 +166,26 @@ var file_users_v1_unbanUsers_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_users_v1_unbanUsers_proto_init() }
-func file_users_v1_unbanUsers_proto_init() {
-	if File_users_v1_unbanUsers_proto != nil {
+func init() { file_users_v1_unban_users_proto_init() }
+func file_users_v1_unban_users_proto_init() {
+	if File_users_v1_unban_users_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_unbanUsers_proto_rawDesc), len(file_users_v1_unbanUsers_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_unban_users_proto_rawDesc), len(file_users_v1_unban_users_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_users_v1_unbanUsers_proto_goTypes,
-		DependencyIndexes: file_users_v1_unbanUsers_proto_depIdxs,
-		MessageInfos:      file_users_v1_unbanUsers_proto_msgTypes,
+		GoTypes:           file_users_v1_unban_users_proto_goTypes,
+		DependencyIndexes: file_users_v1_unban_users_proto_depIdxs,
+		MessageInfos:      file_users_v1_unban_users_proto_msgTypes,
 	}.Build()
-	File_users_v1_unbanUsers_proto = out.File
-	file_users_v1_unbanUsers_proto_goTypes = nil
-	file_users_v1_unbanUsers_proto_depIdxs = nil
+	File_users_v1_unban_users_proto = out.File
+	file_users_v1_unban_users_proto_goTypes = nil
+	file_users_v1_unban_users_proto_depIdxs = nil
 }

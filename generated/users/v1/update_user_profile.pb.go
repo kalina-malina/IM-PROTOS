@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        v6.33.0
-// source: users/v1/updateUserProfile.proto
+// source: users/v1/update_user_profile.proto
 
 package v1
 
@@ -37,7 +37,7 @@ type UpdateUserProfileRequest struct {
 
 func (x *UpdateUserProfileRequest) Reset() {
 	*x = UpdateUserProfileRequest{}
-	mi := &file_users_v1_updateUserProfile_proto_msgTypes[0]
+	mi := &file_users_v1_update_user_profile_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -49,7 +49,7 @@ func (x *UpdateUserProfileRequest) String() string {
 func (*UpdateUserProfileRequest) ProtoMessage() {}
 
 func (x *UpdateUserProfileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_updateUserProfile_proto_msgTypes[0]
+	mi := &file_users_v1_update_user_profile_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -62,7 +62,7 @@ func (x *UpdateUserProfileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateUserProfileRequest.ProtoReflect.Descriptor instead.
 func (*UpdateUserProfileRequest) Descriptor() ([]byte, []int) {
-	return file_users_v1_updateUserProfile_proto_rawDescGZIP(), []int{0}
+	return file_users_v1_update_user_profile_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *UpdateUserProfileRequest) GetId() uint64 {
@@ -117,7 +117,7 @@ type UpdateUserProfileResponse struct {
 
 func (x *UpdateUserProfileResponse) Reset() {
 	*x = UpdateUserProfileResponse{}
-	mi := &file_users_v1_updateUserProfile_proto_msgTypes[1]
+	mi := &file_users_v1_update_user_profile_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -129,7 +129,7 @@ func (x *UpdateUserProfileResponse) String() string {
 func (*UpdateUserProfileResponse) ProtoMessage() {}
 
 func (x *UpdateUserProfileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_v1_updateUserProfile_proto_msgTypes[1]
+	mi := &file_users_v1_update_user_profile_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -142,7 +142,7 @@ func (x *UpdateUserProfileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateUserProfileResponse.ProtoReflect.Descriptor instead.
 func (*UpdateUserProfileResponse) Descriptor() ([]byte, []int) {
-	return file_users_v1_updateUserProfile_proto_rawDescGZIP(), []int{1}
+	return file_users_v1_update_user_profile_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *UpdateUserProfileResponse) GetSuccess() bool {
@@ -159,19 +159,19 @@ func (x *UpdateUserProfileResponse) GetMsg() string {
 	return ""
 }
 
-var File_users_v1_updateUserProfile_proto protoreflect.FileDescriptor
+var File_users_v1_update_user_profile_proto protoreflect.FileDescriptor
 
-const file_users_v1_updateUserProfile_proto_rawDesc = "" +
+const file_users_v1_update_user_profile_proto_rawDesc = "" +
 	"\n" +
-	" users/v1/updateUserProfile.proto\x12\busers.v1\x1a\"users/v1/childrens/childrens.proto\"\xa0\x02\n" +
+	"\"users/v1/update_user_profile.proto\x12\busers.v1\x1a\"users/v1/childrens/childrens.proto\"\xaa\x02\n" +
 	"\x18UpdateUserProfileRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\"\n" +
 	"\n" +
 	"first_name\x18\x02 \x01(\tH\x00R\tfirstName\x88\x01\x01\x12 \n" +
 	"\tlast_name\x18\x03 \x01(\tH\x01R\blastName\x88\x01\x01\x12'\n" +
 	"\rdate_of_birth\x18\x04 \x01(\tH\x02R\vdateOfBirth\x88\x01\x01\x12\x19\n" +
-	"\x05email\x18\x05 \x01(\tH\x03R\x05email\x88\x01\x01\x121\n" +
-	"\tchildrens\x18\x06 \x03(\v2\x13.users.v1.ChildrensR\tchildrensB\r\n" +
+	"\x05email\x18\x05 \x01(\tH\x03R\x05email\x88\x01\x01\x12;\n" +
+	"\tchildrens\x18\x06 \x03(\v2\x1d.users.v1.Childrens.ChildrensR\tchildrensB\r\n" +
 	"\v_first_nameB\f\n" +
 	"\n" +
 	"_last_nameB\x10\n" +
@@ -182,25 +182,25 @@ const file_users_v1_updateUserProfile_proto_rawDesc = "" +
 	"\x03msg\x18\x02 \x01(\tR\x03msgB7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
 
 var (
-	file_users_v1_updateUserProfile_proto_rawDescOnce sync.Once
-	file_users_v1_updateUserProfile_proto_rawDescData []byte
+	file_users_v1_update_user_profile_proto_rawDescOnce sync.Once
+	file_users_v1_update_user_profile_proto_rawDescData []byte
 )
 
-func file_users_v1_updateUserProfile_proto_rawDescGZIP() []byte {
-	file_users_v1_updateUserProfile_proto_rawDescOnce.Do(func() {
-		file_users_v1_updateUserProfile_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_updateUserProfile_proto_rawDesc), len(file_users_v1_updateUserProfile_proto_rawDesc)))
+func file_users_v1_update_user_profile_proto_rawDescGZIP() []byte {
+	file_users_v1_update_user_profile_proto_rawDescOnce.Do(func() {
+		file_users_v1_update_user_profile_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_users_v1_update_user_profile_proto_rawDesc), len(file_users_v1_update_user_profile_proto_rawDesc)))
 	})
-	return file_users_v1_updateUserProfile_proto_rawDescData
+	return file_users_v1_update_user_profile_proto_rawDescData
 }
 
-var file_users_v1_updateUserProfile_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_users_v1_updateUserProfile_proto_goTypes = []any{
+var file_users_v1_update_user_profile_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_users_v1_update_user_profile_proto_goTypes = []any{
 	(*UpdateUserProfileRequest)(nil),  // 0: users.v1.UpdateUserProfileRequest
 	(*UpdateUserProfileResponse)(nil), // 1: users.v1.UpdateUserProfileResponse
-	(*childrens.Childrens)(nil),       // 2: users.v1.Childrens
+	(*childrens.Childrens)(nil),       // 2: users.v1.Childrens.Childrens
 }
-var file_users_v1_updateUserProfile_proto_depIdxs = []int32{
-	2, // 0: users.v1.UpdateUserProfileRequest.childrens:type_name -> users.v1.Childrens
+var file_users_v1_update_user_profile_proto_depIdxs = []int32{
+	2, // 0: users.v1.UpdateUserProfileRequest.childrens:type_name -> users.v1.Childrens.Childrens
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -208,27 +208,27 @@ var file_users_v1_updateUserProfile_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_users_v1_updateUserProfile_proto_init() }
-func file_users_v1_updateUserProfile_proto_init() {
-	if File_users_v1_updateUserProfile_proto != nil {
+func init() { file_users_v1_update_user_profile_proto_init() }
+func file_users_v1_update_user_profile_proto_init() {
+	if File_users_v1_update_user_profile_proto != nil {
 		return
 	}
-	file_users_v1_updateUserProfile_proto_msgTypes[0].OneofWrappers = []any{}
+	file_users_v1_update_user_profile_proto_msgTypes[0].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_updateUserProfile_proto_rawDesc), len(file_users_v1_updateUserProfile_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_update_user_profile_proto_rawDesc), len(file_users_v1_update_user_profile_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_users_v1_updateUserProfile_proto_goTypes,
-		DependencyIndexes: file_users_v1_updateUserProfile_proto_depIdxs,
-		MessageInfos:      file_users_v1_updateUserProfile_proto_msgTypes,
+		GoTypes:           file_users_v1_update_user_profile_proto_goTypes,
+		DependencyIndexes: file_users_v1_update_user_profile_proto_depIdxs,
+		MessageInfos:      file_users_v1_update_user_profile_proto_msgTypes,
 	}.Build()
-	File_users_v1_updateUserProfile_proto = out.File
-	file_users_v1_updateUserProfile_proto_goTypes = nil
-	file_users_v1_updateUserProfile_proto_depIdxs = nil
+	File_users_v1_update_user_profile_proto = out.File
+	file_users_v1_update_user_profile_proto_goTypes = nil
+	file_users_v1_update_user_profile_proto_depIdxs = nil
 }
