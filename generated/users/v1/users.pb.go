@@ -10,7 +10,7 @@ import (
 	abGroups "github.com/kalina-malina/IM-PROTOS/generated/users/v1/abGroups/abGroups"
 	_ "github.com/kalina-malina/IM-PROTOS/generated/users/v1/banReasonType/banreason"
 	childrens "github.com/kalina-malina/IM-PROTOS/generated/users/v1/childrens/childrens"
-	userRole "github.com/kalina-malina/IM-PROTOS/generated/users/v1/userRole/userRole"
+	userRole "github.com/kalina-malina/IM-PROTOS/generated/users/v1/userRole"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/known/emptypb"

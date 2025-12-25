@@ -7,7 +7,7 @@
 package v1
 
 import (
-	userRole "github.com/kalina-malina/IM-PROTOS/generated/users/v1/userRole/userRole"
+	userRole "github.com/kalina-malina/IM-PROTOS/generated/users/v1/userRole"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
