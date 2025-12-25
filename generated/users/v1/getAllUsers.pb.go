@@ -336,8 +336,8 @@ type UsersObject struct {
 	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
 	Phone         uint64                 `protobuf:"varint,5,opt,name=phone,proto3" json:"phone,omitempty"`
 	VerifiedEmail bool                   `protobuf:"varint,6,opt,name=verified_email,json=verifiedEmail,proto3" json:"verified_email,omitempty"`
-	Role          []Role                 `protobuf:"varint,7,rep,packed,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
-	AbTestGroup   []ABTestGroup          `protobuf:"varint,8,rep,packed,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
+	Role          Role                   `protobuf:"varint,7,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
+	AbTestGroup   ABTestGroup            `protobuf:"varint,8,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -414,18 +414,18 @@ func (x *UsersObject) GetVerifiedEmail() bool {
 	return false
 }
 
-func (x *UsersObject) GetRole() []Role {
+func (x *UsersObject) GetRole() Role {
 	if x != nil {
 		return x.Role
 	}
-	return nil
+	return Role_ROLE_CLIENT
 }
 
-func (x *UsersObject) GetAbTestGroup() []ABTestGroup {
+func (x *UsersObject) GetAbTestGroup() ABTestGroup {
 	if x != nil {
 		return x.AbTestGroup
 	}
-	return nil
+	return ABTestGroup_AB_TEST_GROUP_A
 }
 
 var File_users_v1_getAllUsers_proto protoreflect.FileDescriptor
@@ -472,8 +472,8 @@ const file_users_v1_getAllUsers_proto_rawDesc = "" +
 	"\x05email\x18\x04 \x01(\tR\x05email\x12\x14\n" +
 	"\x05phone\x18\x05 \x01(\x04R\x05phone\x12%\n" +
 	"\x0everified_email\x18\x06 \x01(\bR\rverifiedEmail\x12\"\n" +
-	"\x04role\x18\a \x03(\x0e2\x0e.users.v1.RoleR\x04role\x129\n" +
-	"\rab_test_group\x18\b \x03(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup*\xd1\x01\n" +
+	"\x04role\x18\a \x01(\x0e2\x0e.users.v1.RoleR\x04role\x129\n" +
+	"\rab_test_group\x18\b \x01(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup*\xd1\x01\n" +
 	"\x06SortBy\x12\x10\n" +
 	"\fSORT_BY_GUID\x10\x00\x12\x16\n" +
 	"\x12SORT_BY_FIRST_NAME\x10\x01\x12\x15\n" +

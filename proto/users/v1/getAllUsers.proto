@@ -38,8 +38,8 @@ message UsersObject {
   string email = 4;
   uint64 phone = 5;
   bool verified_email = 6;
-  repeated Role role = 7;
-  repeated ABTestGroup ab_test_group = 8;
+  Role role = 7;
+  ABTestGroup ab_test_group = 8;
 }
 
 
