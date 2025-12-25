@@ -184,7 +184,7 @@ var File_users_v1_users_proto protoreflect.FileDescriptor
 
 const file_users_v1_users_proto_rawDesc = "" +
 	"\n" +
-	"\x14users/v1/users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1ausers/v1/getallUsers.proto\x1a users/v1/userRole/userRole.proto\x1a users/v1/abGroups/abGroups.proto\x1a\"users/v1/childrens/childrens.proto\x1a&users/v1/banReasonType/banreason.proto\x1a\x1busers/v1/settingUsers.proto\x1a\x17users/v1/banUsers.proto\x1a\x19users/v1/unbanUsers.proto\x1a\x1dusers/v1/changeUserRole.proto\x1a\x1ausers/v1/getOneUsers.proto\x1a users/v1/updateUserProfile.proto\"\x95\x04\n" +
+	"\x14users/v1/users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1ausers/v1/getAllUsers.proto\x1a users/v1/userRole/userRole.proto\x1a users/v1/abGroups/abGroups.proto\x1a\"users/v1/childrens/childrens.proto\x1a&users/v1/banReasonType/banreason.proto\x1a\x1busers/v1/settingUsers.proto\x1a\x17users/v1/banUsers.proto\x1a\x19users/v1/unbanUsers.proto\x1a\x1dusers/v1/changeUserRole.proto\x1a\x1ausers/v1/getOneUsers.proto\x1a users/v1/updateUserProfile.proto\"\x95\x04\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x18\n" +
 	"\adeleted\x18\x02 \x01(\bR\adeleted\x12\"\n" +
@@ -271,7 +271,7 @@ func file_users_v1_users_proto_init() {
 	if File_users_v1_users_proto != nil {
 		return
 	}
-	file_users_v1_getallUsers_proto_init()
+	file_users_v1_getAllUsers_proto_init()
 	file_users_v1_userRole_userRole_proto_init()
 	file_users_v1_abGroups_abGroups_proto_init()
 	file_users_v1_childrens_childrens_proto_init()

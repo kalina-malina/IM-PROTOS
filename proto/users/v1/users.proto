@@ -4,7 +4,7 @@ package users.v1;
 
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
 import "google/protobuf/empty.proto";
-import "users/v1/getallUsers.proto";
+import "users/v1/getAllUsers.proto";
 import "users/v1/userRole/userRole.proto";
 import "users/v1/abGroups/abGroups.proto";
 import "users/v1/childrens/childrens.proto";

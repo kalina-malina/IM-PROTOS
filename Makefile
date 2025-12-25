@@ -28,21 +28,22 @@ generate:
 
 	# Генерация Go кода из всех proto файлов
 generate:
+	# Генерация Go кода из всех proto файлов
+generate:
 	@echo "Генерация proto файлов..."
 	@mkdir -p generated
-	@for service_dir in $$(find proto -type d -mindepth 1); do \
-		for proto_file in $$(find $$service_dir -maxdepth 1 -name "*.proto" -type f); do \
-			if [ -f $$proto_file ]; then \
-				echo "Генерация $$proto_file..."; \
-				PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
-					--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
-					--proto_path=proto \
-					$$proto_file || exit 1; \
-			fi; \
-		done; \
+	@for proto_file in $$(find proto -name "*.proto" -type f | sort); do \
+		if grep -q "^service " $$proto_file 2>/dev/null; then \
+			echo "Генерация $$proto_file..."; \
+			PROTO_DIR=$$(dirname $$proto_file); \
+			ALL_PROTOS_IN_DIR=$$(find $$PROTO_DIR -name "*.proto" -type f | sed 's|^proto/||' | sort); \
+			PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
+				--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
+				--proto_path=proto \
+				$$ALL_PROTOS_IN_DIR || exit 1; \
+		fi; \
 	done
 	@echo "✅ Генерация завершена! Файлы в generated/"
-
 	# @echo "Генерация auth service..."
 	# PATH=$(GOPATH_BIN):$$PATH protoc --go_out=generated --go_opt=paths=source_relative \
 	# 	--go-grpc_out=generated --go-grpc_opt=paths=source_relative \
