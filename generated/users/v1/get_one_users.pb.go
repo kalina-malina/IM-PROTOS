@@ -8,7 +8,7 @@ package v1
 
 import (
 	ab_groups "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ab_groups/ab_groups"
-	childrens "github.com/kalina-malina/IM-PROTOS/generated/users/v1/childrens/childrens"
+	childrens "github.com/kalina-malina/IM-PROTOS/generated/users/v1/childrens"
 	user_role "github.com/kalina-malina/IM-PROTOS/generated/users/v1/role/user_role"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"

@@ -90,7 +90,7 @@ const file_users_v1_childrens_childrens_proto_rawDesc = "" +
 	"\n" +
 	"first_name\x18\x01 \x01(\tR\tfirstName\x12\x1b\n" +
 	"\tlast_name\x18\x02 \x01(\tR\blastName\x12\"\n" +
-	"\rdate_of_birth\x18\x03 \x01(\tR\vdateOfBirthBKZIgithub.com/kalina-malina/IM-PROTOS/generated/users/v1/childrens/childrensb\x06proto3"
+	"\rdate_of_birth\x18\x03 \x01(\tR\vdateOfBirthBAZ?github.com/kalina-malina/IM-PROTOS/generated/users/v1/childrensb\x06proto3"
 
 var (
 	file_users_v1_childrens_childrens_proto_rawDescOnce sync.Once

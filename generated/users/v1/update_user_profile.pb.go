@@ -7,7 +7,7 @@
 package v1
 
 import (
-	childrens "github.com/kalina-malina/IM-PROTOS/generated/users/v1/childrens/childrens"
+	childrens "github.com/kalina-malina/IM-PROTOS/generated/users/v1/childrens"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
