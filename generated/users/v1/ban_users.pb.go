@@ -7,7 +7,6 @@
 package v1
 
 import (
-	ban_reason "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ban_reason_type/ban_reason"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -22,12 +21,144 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type ReasonTypeEnum int32
+
+const (
+	// не понравился продукт и услуга
+	ReasonTypeEnum_REASON_NOT_LIKED_PRODUCT ReasonTypeEnum = 0
+	// не понравился сервис и обслуживание
+	ReasonTypeEnum_REASON_NOT_LIKED_SERVICE ReasonTypeEnum = 1
+	// долгая доставка
+	ReasonTypeEnum_REASON_LONG_DELIVERY ReasonTypeEnum = 2
+	// не понравился качество и обслуживание
+	ReasonTypeEnum_REASON_NOT_LIKED_QUALITY_AND_SERVICE ReasonTypeEnum = 3
+	// не понравился персонал
+	ReasonTypeEnum_REASON_NOT_LIKED_PERSONAL ReasonTypeEnum = 4
+	// не понравился местоположение
+	ReasonTypeEnum_REASON_NOT_LIKED_LOCATION ReasonTypeEnum = 5
+	// не понравился время работы
+	ReasonTypeEnum_REASON_NOT_LIKED_TIME ReasonTypeEnum = 6
+	// не понравился цена
+	ReasonTypeEnum_REASON_NOT_LIKED_PRICE ReasonTypeEnum = 7
+	// другое
+	ReasonTypeEnum_REASON_OTHER ReasonTypeEnum = 8
+)
+
+// Enum value maps for ReasonTypeEnum.
+var (
+	ReasonTypeEnum_name = map[int32]string{
+		0: "REASON_NOT_LIKED_PRODUCT",
+		1: "REASON_NOT_LIKED_SERVICE",
+		2: "REASON_LONG_DELIVERY",
+		3: "REASON_NOT_LIKED_QUALITY_AND_SERVICE",
+		4: "REASON_NOT_LIKED_PERSONAL",
+		5: "REASON_NOT_LIKED_LOCATION",
+		6: "REASON_NOT_LIKED_TIME",
+		7: "REASON_NOT_LIKED_PRICE",
+		8: "REASON_OTHER",
+	}
+	ReasonTypeEnum_value = map[string]int32{
+		"REASON_NOT_LIKED_PRODUCT":             0,
+		"REASON_NOT_LIKED_SERVICE":             1,
+		"REASON_LONG_DELIVERY":                 2,
+		"REASON_NOT_LIKED_QUALITY_AND_SERVICE": 3,
+		"REASON_NOT_LIKED_PERSONAL":            4,
+		"REASON_NOT_LIKED_LOCATION":            5,
+		"REASON_NOT_LIKED_TIME":                6,
+		"REASON_NOT_LIKED_PRICE":               7,
+		"REASON_OTHER":                         8,
+	}
+)
+
+func (x ReasonTypeEnum) Enum() *ReasonTypeEnum {
+	p := new(ReasonTypeEnum)
+	*p = x
+	return p
+}
+
+func (x ReasonTypeEnum) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ReasonTypeEnum) Descriptor() protoreflect.EnumDescriptor {
+	return file_users_v1_ban_users_proto_enumTypes[0].Descriptor()
+}
+
+func (ReasonTypeEnum) Type() protoreflect.EnumType {
+	return &file_users_v1_ban_users_proto_enumTypes[0]
+}
+
+func (x ReasonTypeEnum) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ReasonTypeEnum.Descriptor instead.
+func (ReasonTypeEnum) EnumDescriptor() ([]byte, []int) {
+	return file_users_v1_ban_users_proto_rawDescGZIP(), []int{0}
+}
+
+type BanReasonTypeEnum int32
+
+const (
+	// не пристойное поведение
+	BanReasonTypeEnum_BAN_REASON_UNPROPER_BEHAVIOR BanReasonTypeEnum = 0
+	// спам
+	BanReasonTypeEnum_BAN_REASON_SPAM BanReasonTypeEnum = 1
+	// нарушение правил
+	BanReasonTypeEnum_BAN_REASON_VIOLATION_OF_RULES BanReasonTypeEnum = 2
+	// другое
+	BanReasonTypeEnum_BAN_REASON_OTHER BanReasonTypeEnum = 3
+)
+
+// Enum value maps for BanReasonTypeEnum.
+var (
+	BanReasonTypeEnum_name = map[int32]string{
+		0: "BAN_REASON_UNPROPER_BEHAVIOR",
+		1: "BAN_REASON_SPAM",
+		2: "BAN_REASON_VIOLATION_OF_RULES",
+		3: "BAN_REASON_OTHER",
+	}
+	BanReasonTypeEnum_value = map[string]int32{
+		"BAN_REASON_UNPROPER_BEHAVIOR":  0,
+		"BAN_REASON_SPAM":               1,
+		"BAN_REASON_VIOLATION_OF_RULES": 2,
+		"BAN_REASON_OTHER":              3,
+	}
+)
+
+func (x BanReasonTypeEnum) Enum() *BanReasonTypeEnum {
+	p := new(BanReasonTypeEnum)
+	*p = x
+	return p
+}
+
+func (x BanReasonTypeEnum) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (BanReasonTypeEnum) Descriptor() protoreflect.EnumDescriptor {
+	return file_users_v1_ban_users_proto_enumTypes[1].Descriptor()
+}
+
+func (BanReasonTypeEnum) Type() protoreflect.EnumType {
+	return &file_users_v1_ban_users_proto_enumTypes[1]
+}
+
+func (x BanReasonTypeEnum) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use BanReasonTypeEnum.Descriptor instead.
+func (BanReasonTypeEnum) EnumDescriptor() ([]byte, []int) {
+	return file_users_v1_ban_users_proto_rawDescGZIP(), []int{1}
+}
+
 // Блокировка пользователя
 type BanUserRequest struct {
-	state             protoimpl.MessageState       `protogen:"open.v1"`
-	IdUser            uint64                       `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
-	Reason            ban_reason.BanReasonTypeEnum `protobuf:"varint,2,opt,name=reason,proto3,enum=users.v1.BanReasonType.BanReasonTypeEnum" json:"reason,omitempty"`
-	ReasonDescription *string                      `protobuf:"bytes,3,opt,name=reason_description,json=reasonDescription,proto3,oneof" json:"reason_description,omitempty"`
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	IdUser            uint64                 `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
+	Reason            BanReasonTypeEnum      `protobuf:"varint,2,opt,name=reason,proto3,enum=users.v1.BanReasonTypeEnum" json:"reason,omitempty"`
+	ReasonDescription *string                `protobuf:"bytes,3,opt,name=reason_description,json=reasonDescription,proto3,oneof" json:"reason_description,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
@@ -69,11 +200,11 @@ func (x *BanUserRequest) GetIdUser() uint64 {
 	return 0
 }
 
-func (x *BanUserRequest) GetReason() ban_reason.BanReasonTypeEnum {
+func (x *BanUserRequest) GetReason() BanReasonTypeEnum {
 	if x != nil {
 		return x.Reason
 	}
-	return ban_reason.BanReasonTypeEnum(0)
+	return BanReasonTypeEnum_BAN_REASON_UNPROPER_BEHAVIOR
 }
 
 func (x *BanUserRequest) GetReasonDescription() string {
@@ -131,14 +262,29 @@ var File_users_v1_ban_users_proto protoreflect.FileDescriptor
 
 const file_users_v1_ban_users_proto_rawDesc = "" +
 	"\n" +
-	"\x18users/v1/ban_users.proto\x12\busers.v1\x1a)users/v1/ban_reason_type/ban_reason.proto\"\xb7\x01\n" +
+	"\x18users/v1/ban_users.proto\x12\busers.v1\"\xa9\x01\n" +
 	"\x0eBanUserRequest\x12\x17\n" +
-	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12A\n" +
-	"\x06reason\x18\x02 \x01(\x0e2).users.v1.BanReasonType.BanReasonTypeEnumR\x06reason\x122\n" +
+	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x123\n" +
+	"\x06reason\x18\x02 \x01(\x0e2\x1b.users.v1.BanReasonTypeEnumR\x06reason\x122\n" +
 	"\x12reason_description\x18\x03 \x01(\tH\x00R\x11reasonDescription\x88\x01\x01B\x15\n" +
 	"\x13_reason_description\"+\n" +
 	"\x0fBanUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccessB7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
+	"\asuccess\x18\x01 \x01(\bR\asuccess*\x97\x02\n" +
+	"\x0eReasonTypeEnum\x12\x1c\n" +
+	"\x18REASON_NOT_LIKED_PRODUCT\x10\x00\x12\x1c\n" +
+	"\x18REASON_NOT_LIKED_SERVICE\x10\x01\x12\x18\n" +
+	"\x14REASON_LONG_DELIVERY\x10\x02\x12(\n" +
+	"$REASON_NOT_LIKED_QUALITY_AND_SERVICE\x10\x03\x12\x1d\n" +
+	"\x19REASON_NOT_LIKED_PERSONAL\x10\x04\x12\x1d\n" +
+	"\x19REASON_NOT_LIKED_LOCATION\x10\x05\x12\x19\n" +
+	"\x15REASON_NOT_LIKED_TIME\x10\x06\x12\x1a\n" +
+	"\x16REASON_NOT_LIKED_PRICE\x10\a\x12\x10\n" +
+	"\fREASON_OTHER\x10\b*\x83\x01\n" +
+	"\x11BanReasonTypeEnum\x12 \n" +
+	"\x1cBAN_REASON_UNPROPER_BEHAVIOR\x10\x00\x12\x13\n" +
+	"\x0fBAN_REASON_SPAM\x10\x01\x12!\n" +
+	"\x1dBAN_REASON_VIOLATION_OF_RULES\x10\x02\x12\x14\n" +
+	"\x10BAN_REASON_OTHER\x10\x03B7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
 
 var (
 	file_users_v1_ban_users_proto_rawDescOnce sync.Once
@@ -152,14 +298,16 @@ func file_users_v1_ban_users_proto_rawDescGZIP() []byte {
 	return file_users_v1_ban_users_proto_rawDescData
 }
 
+var file_users_v1_ban_users_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_users_v1_ban_users_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_users_v1_ban_users_proto_goTypes = []any{
-	(*BanUserRequest)(nil),            // 0: users.v1.BanUserRequest
-	(*BanUserResponse)(nil),           // 1: users.v1.BanUserResponse
-	(ban_reason.BanReasonTypeEnum)(0), // 2: users.v1.BanReasonType.BanReasonTypeEnum
+	(ReasonTypeEnum)(0),     // 0: users.v1.ReasonTypeEnum
+	(BanReasonTypeEnum)(0),  // 1: users.v1.BanReasonTypeEnum
+	(*BanUserRequest)(nil),  // 2: users.v1.BanUserRequest
+	(*BanUserResponse)(nil), // 3: users.v1.BanUserResponse
 }
 var file_users_v1_ban_users_proto_depIdxs = []int32{
-	2, // 0: users.v1.BanUserRequest.reason:type_name -> users.v1.BanReasonType.BanReasonTypeEnum
+	1, // 0: users.v1.BanUserRequest.reason:type_name -> users.v1.BanReasonTypeEnum
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -178,13 +326,14 @@ func file_users_v1_ban_users_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_v1_ban_users_proto_rawDesc), len(file_users_v1_ban_users_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      2,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_users_v1_ban_users_proto_goTypes,
 		DependencyIndexes: file_users_v1_ban_users_proto_depIdxs,
+		EnumInfos:         file_users_v1_ban_users_proto_enumTypes,
 		MessageInfos:      file_users_v1_ban_users_proto_msgTypes,
 	}.Build()
 	File_users_v1_ban_users_proto = out.File

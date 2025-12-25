@@ -4,13 +4,11 @@ syntax = "proto3";
 package users.v1;
 
 option go_package = "github.com/kalina-malina/IM-PROTOS/generated/users/v1";
-import "users/v1/ban_reason_type/ban_reason.proto";
 
 
 //разблокирока пользовательй
 message UnbanUserRequest {
   uint64 id_user = 1;
-  users.v1.BanReasonType.BanReasonTypeEnum reason = 2;
   string reason_description = 3;
 }
 

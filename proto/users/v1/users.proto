@@ -8,7 +8,6 @@ import "users/v1/get_all_users.proto";
 import "users/v1/role/user_role.proto";
 import "users/v1/ab_groups/ab_groups.proto";
 import "users/v1/childrens/childrens.proto";
-import "users/v1/ban_reason_type/ban_reason.proto";
 import "users/v1/setting_users.proto";
 import "users/v1/ban_users.proto";
 import "users/v1/unban_users.proto";

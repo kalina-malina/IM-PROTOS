@@ -8,7 +8,6 @@ package v1
 
 import (
 	ab_groups "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ab_groups/ab_groups"
-	_ "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ban_reason_type/ban_reason"
 	childrens "github.com/kalina-malina/IM-PROTOS/generated/users/v1/childrens/childrens"
 	user_role "github.com/kalina-malina/IM-PROTOS/generated/users/v1/role/user_role"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -186,7 +185,7 @@ var File_users_v1_users_proto protoreflect.FileDescriptor
 
 const file_users_v1_users_proto_rawDesc = "" +
 	"\n" +
-	"\x14users/v1/users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1cusers/v1/get_all_users.proto\x1a\x1dusers/v1/role/user_role.proto\x1a\"users/v1/ab_groups/ab_groups.proto\x1a\"users/v1/childrens/childrens.proto\x1a)users/v1/ban_reason_type/ban_reason.proto\x1a\x1cusers/v1/setting_users.proto\x1a\x18users/v1/ban_users.proto\x1a\x1ausers/v1/unban_users.proto\x1a\x1fusers/v1/change_user_role.proto\x1a\x1cusers/v1/get_one_users.proto\x1a\"users/v1/update_user_profile.proto\"\xaf\x04\n" +
+	"\x14users/v1/users.proto\x12\busers.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1cusers/v1/get_all_users.proto\x1a\x1dusers/v1/role/user_role.proto\x1a\"users/v1/ab_groups/ab_groups.proto\x1a\"users/v1/childrens/childrens.proto\x1a\x1cusers/v1/setting_users.proto\x1a\x18users/v1/ban_users.proto\x1a\x1ausers/v1/unban_users.proto\x1a\x1fusers/v1/change_user_role.proto\x1a\x1cusers/v1/get_one_users.proto\x1a\"users/v1/update_user_profile.proto\"\xaf\x04\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x18\n" +
 	"\adeleted\x18\x02 \x01(\bR\adeleted\x12+\n" +

@@ -7,7 +7,6 @@
 package v1
 
 import (
-	ban_reason "github.com/kalina-malina/IM-PROTOS/generated/users/v1/ban_reason_type/ban_reason"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -24,10 +23,9 @@ const (
 
 // разблокирока пользовательй
 type UnbanUserRequest struct {
-	state             protoimpl.MessageState       `protogen:"open.v1"`
-	IdUser            uint64                       `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
-	Reason            ban_reason.BanReasonTypeEnum `protobuf:"varint,2,opt,name=reason,proto3,enum=users.v1.BanReasonType.BanReasonTypeEnum" json:"reason,omitempty"`
-	ReasonDescription string                       `protobuf:"bytes,3,opt,name=reason_description,json=reasonDescription,proto3" json:"reason_description,omitempty"`
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	IdUser            uint64                 `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
+	ReasonDescription string                 `protobuf:"bytes,3,opt,name=reason_description,json=reasonDescription,proto3" json:"reason_description,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
@@ -67,13 +65,6 @@ func (x *UnbanUserRequest) GetIdUser() uint64 {
 		return x.IdUser
 	}
 	return 0
-}
-
-func (x *UnbanUserRequest) GetReason() ban_reason.BanReasonTypeEnum {
-	if x != nil {
-		return x.Reason
-	}
-	return ban_reason.BanReasonTypeEnum(0)
 }
 
 func (x *UnbanUserRequest) GetReasonDescription() string {
@@ -131,10 +122,9 @@ var File_users_v1_unban_users_proto protoreflect.FileDescriptor
 
 const file_users_v1_unban_users_proto_rawDesc = "" +
 	"\n" +
-	"\x1ausers/v1/unban_users.proto\x12\busers.v1\x1a)users/v1/ban_reason_type/ban_reason.proto\"\x9d\x01\n" +
+	"\x1ausers/v1/unban_users.proto\x12\busers.v1\"Z\n" +
 	"\x10UnbanUserRequest\x12\x17\n" +
-	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12A\n" +
-	"\x06reason\x18\x02 \x01(\x0e2).users.v1.BanReasonType.BanReasonTypeEnumR\x06reason\x12-\n" +
+	"\aid_user\x18\x01 \x01(\x04R\x06idUser\x12-\n" +
 	"\x12reason_description\x18\x03 \x01(\tR\x11reasonDescription\"-\n" +
 	"\x11UnbanUserResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccessB7Z5github.com/kalina-malina/IM-PROTOS/generated/users/v1b\x06proto3"
@@ -153,17 +143,15 @@ func file_users_v1_unban_users_proto_rawDescGZIP() []byte {
 
 var file_users_v1_unban_users_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_users_v1_unban_users_proto_goTypes = []any{
-	(*UnbanUserRequest)(nil),          // 0: users.v1.UnbanUserRequest
-	(*UnbanUserResponse)(nil),         // 1: users.v1.UnbanUserResponse
-	(ban_reason.BanReasonTypeEnum)(0), // 2: users.v1.BanReasonType.BanReasonTypeEnum
+	(*UnbanUserRequest)(nil),  // 0: users.v1.UnbanUserRequest
+	(*UnbanUserResponse)(nil), // 1: users.v1.UnbanUserResponse
 }
 var file_users_v1_unban_users_proto_depIdxs = []int32{
-	2, // 0: users.v1.UnbanUserRequest.reason:type_name -> users.v1.BanReasonType.BanReasonTypeEnum
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0, // [0:0] is the sub-list for method output_type
+	0, // [0:0] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_users_v1_unban_users_proto_init() }
