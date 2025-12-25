@@ -330,14 +330,6 @@ func (x *GetAllUsersResponse) GetTotal() uint64 {
 
 type UsersObject struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Guid          uint64                 `protobuf:"varint,1,opt,name=guid,proto3" json:"guid,omitempty"`
-	Firstname     string                 `protobuf:"bytes,2,opt,name=firstname,proto3" json:"firstname,omitempty"`
-	Lastname      string                 `protobuf:"bytes,3,opt,name=lastname,proto3" json:"lastname,omitempty"`
-	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
-	Phone         uint64                 `protobuf:"varint,5,opt,name=phone,proto3" json:"phone,omitempty"`
-	VerifiedEmail bool                   `protobuf:"varint,6,opt,name=verified_email,json=verifiedEmail,proto3" json:"verified_email,omitempty"`
-	Role          Role                   `protobuf:"varint,7,opt,name=role,proto3,enum=users.v1.Role" json:"role,omitempty"`
-	AbTestGroup   ABTestGroup            `protobuf:"varint,8,opt,name=ab_test_group,json=abTestGroup,proto3,enum=users.v1.ABTestGroup" json:"ab_test_group,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -370,62 +362,6 @@ func (x *UsersObject) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UsersObject.ProtoReflect.Descriptor instead.
 func (*UsersObject) Descriptor() ([]byte, []int) {
 	return file_users_v1_getAllUsers_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *UsersObject) GetGuid() uint64 {
-	if x != nil {
-		return x.Guid
-	}
-	return 0
-}
-
-func (x *UsersObject) GetFirstname() string {
-	if x != nil {
-		return x.Firstname
-	}
-	return ""
-}
-
-func (x *UsersObject) GetLastname() string {
-	if x != nil {
-		return x.Lastname
-	}
-	return ""
-}
-
-func (x *UsersObject) GetEmail() string {
-	if x != nil {
-		return x.Email
-	}
-	return ""
-}
-
-func (x *UsersObject) GetPhone() uint64 {
-	if x != nil {
-		return x.Phone
-	}
-	return 0
-}
-
-func (x *UsersObject) GetVerifiedEmail() bool {
-	if x != nil {
-		return x.VerifiedEmail
-	}
-	return false
-}
-
-func (x *UsersObject) GetRole() Role {
-	if x != nil {
-		return x.Role
-	}
-	return Role_ROLE_CLIENT
-}
-
-func (x *UsersObject) GetAbTestGroup() ABTestGroup {
-	if x != nil {
-		return x.AbTestGroup
-	}
-	return ABTestGroup_AB_TEST_GROUP_A
 }
 
 var File_users_v1_getAllUsers_proto protoreflect.FileDescriptor
@@ -464,16 +400,8 @@ const file_users_v1_getAllUsers_proto_rawDesc = "" +
 	"\v_sort_order\"X\n" +
 	"\x13GetAllUsersResponse\x12+\n" +
 	"\x05users\x18\x01 \x03(\v2\x15.users.v1.UsersObjectR\x05users\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x04R\x05total\"\x8d\x02\n" +
-	"\vUsersObject\x12\x12\n" +
-	"\x04guid\x18\x01 \x01(\x04R\x04guid\x12\x1c\n" +
-	"\tfirstname\x18\x02 \x01(\tR\tfirstname\x12\x1a\n" +
-	"\blastname\x18\x03 \x01(\tR\blastname\x12\x14\n" +
-	"\x05email\x18\x04 \x01(\tR\x05email\x12\x14\n" +
-	"\x05phone\x18\x05 \x01(\x04R\x05phone\x12%\n" +
-	"\x0everified_email\x18\x06 \x01(\bR\rverifiedEmail\x12\"\n" +
-	"\x04role\x18\a \x01(\x0e2\x0e.users.v1.RoleR\x04role\x129\n" +
-	"\rab_test_group\x18\b \x01(\x0e2\x15.users.v1.ABTestGroupR\vabTestGroup*\xd1\x01\n" +
+	"\x05total\x18\x02 \x01(\x04R\x05total\"\r\n" +
+	"\vUsersObject*\xd1\x01\n" +
 	"\x06SortBy\x12\x10\n" +
 	"\fSORT_BY_GUID\x10\x00\x12\x16\n" +
 	"\x12SORT_BY_FIRST_NAME\x10\x01\x12\x15\n" +
@@ -517,13 +445,11 @@ var file_users_v1_getAllUsers_proto_depIdxs = []int32{
 	0, // 2: users.v1.GetAllUsersRequest.sort_by:type_name -> users.v1.SortBy
 	1, // 3: users.v1.GetAllUsersRequest.sort_order:type_name -> users.v1.SortOrder
 	4, // 4: users.v1.GetAllUsersResponse.users:type_name -> users.v1.UsersObject
-	5, // 5: users.v1.UsersObject.role:type_name -> users.v1.Role
-	6, // 6: users.v1.UsersObject.ab_test_group:type_name -> users.v1.ABTestGroup
-	7, // [7:7] is the sub-list for method output_type
-	7, // [7:7] is the sub-list for method input_type
-	7, // [7:7] is the sub-list for extension type_name
-	7, // [7:7] is the sub-list for extension extendee
-	0, // [0:7] is the sub-list for field type_name
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_users_v1_getAllUsers_proto_init() }

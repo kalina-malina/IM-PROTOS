@@ -2,7 +2,7 @@ package converter
 
 import (
 	"fmt"
-	userspb "github.com/kalina-malina/IM-PROTOS/generated/users/v1/role"
+	rolepb "github.com/kalina-malina/IM-PROTOS/generated/users/v1/role"
 )
 
 const (
@@ -14,38 +14,38 @@ const (
 	management = "management"
 )
 
-func StringToTypeRole(r string) (userspb.Role, error) {
+func StringToTypeRole(r string) (rolepb.Role, error) {
 	switch r {
 	case client:
-		return userspb.Role_ROLE_CLIENT, nil
+		return rolepb.Role_ROLE_CLIENT, nil
 	case admin:
-		return userspb.Role_ROLE_ADMIN, nil
+		return rolepb.Role_ROLE_ADMIN, nil
 	case operator:
-		return userspb.Role_ROLE_OPERATOR, nil
+		return rolepb.Role_ROLE_OPERATOR, nil
 	case marketing:
-		return userspb.Role_ROLE_MARKETING, nil
+		return rolepb.Role_ROLE_MARKETING, nil
 	case support:
-		return userspb.Role_ROLE_SUPPORT, nil
+		return rolepb.Role_ROLE_SUPPORT, nil
 	case management:
-		return userspb.Role_ROLE_MANAGEMENT, nil
+		return rolepb.Role_ROLE_MANAGEMENT, nil
 	default:
 		return 0, fmt.Errorf("неизвестная роль в StringToTypeRole: %s", r)
 	}
 }
 
-func RoleToString(r userspb.Role) (string, error) {
+func RoleToString(r rolepb.Role) (string, error) {
 	switch r {
-	case userspb.Role_ROLE_CLIENT:
+	case rolepb.Role_ROLE_CLIENT:
 		return client, nil
-	case userspb.Role_ROLE_ADMIN:
+	case rolepb.Role_ROLE_ADMIN:
 		return admin, nil
-	case userspb.Role_ROLE_OPERATOR:
+	case rolepb.Role_ROLE_OPERATOR:
 		return operator, nil
-	case userspb.Role_ROLE_MARKETING:
+	case rolepb.Role_ROLE_MARKETING:
 		return marketing, nil
-	case userspb.Role_ROLE_SUPPORT:
+	case rolepb.Role_ROLE_SUPPORT:
 		return support, nil
-	case userspb.Role_ROLE_MANAGEMENT:
+	case rolepb.Role_ROLE_MANAGEMENT:
 		return management, nil
 	default:
 		return "", fmt.Errorf("неизвестная роль в RoleToString: %s", r)

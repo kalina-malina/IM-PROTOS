@@ -32,14 +32,7 @@ message GetAllUsersResponse {
 }
 
 message UsersObject {
-  uint64 guid = 1;
-  string firstname = 2;
-  string lastname = 3;
-  string email = 4;
-  uint64 phone = 5;
-  bool verified_email = 6;
-  Role role = 7;
-  ABTestGroup ab_test_group = 8;
+ 
 }
 
 
